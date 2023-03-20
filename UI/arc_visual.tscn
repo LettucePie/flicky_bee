@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://jgdg1uwq2rq6"]
+
+[ext_resource type="Script" path="res://UI/arc_visual.gd" id="1_ntwhv"]
+[ext_resource type="Texture2D" uid="uid://c5s252ekp6rgf" path="res://UI/Art/Target_Ring_Orange.png" id="2_832vd"]
+[ext_resource type="Texture2D" uid="uid://bqy51gujhckdh" path="res://UI/Art/Target_Ring_Red.png" id="3_5n1gk"]
+[ext_resource type="Script" path="res://UI/Target.gd" id="3_kvw4q"]
+
+[sub_resource type="Curve" id="Curve_846qp"]
+_data = [Vector2(0, 1), 0.0, -2.7641, 0, 0, Vector2(1, 0), -0.0515733, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_jewux"]
+offsets = PackedFloat32Array(0, 0.662252, 0.960265)
+colors = PackedColorArray(1, 0, 0, 0.917647, 1, 0.635294, 0, 0.690196, 1, 0.635294, 0, 0)
+
+[node name="Arc_Visual" type="Node2D"]
+script = ExtResource("1_ntwhv")
+
+[node name="Line2D" type="Line2D" parent="."]
+width_curve = SubResource("Curve_846qp")
+gradient = SubResource("Gradient_jewux")
+
+[node name="Target" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_832vd")
+script = ExtResource("3_kvw4q")
+
+[node name="Target_Red" type="Sprite2D" parent="Target"]
+z_index = -1
+texture = ExtResource("3_5n1gk")

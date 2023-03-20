@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://mbuajppf2uh8"]
+
+[ext_resource type="PackedScene" uid="uid://bgr1iyupwcr8w" path="res://Core/honey_comb.tscn" id="1_tm5k1"]
+
+[node name="CollectionPatch_2" type="Node3D"]
+
+[node name="Honey_Comb2" parent="." instance=ExtResource("1_tm5k1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="Honey_Comb7" parent="." instance=ExtResource("1_tm5k1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="Honey_Comb3" parent="." instance=ExtResource("1_tm5k1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="Honey_Comb6" parent="." instance=ExtResource("1_tm5k1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="Honey_Comb4" parent="." instance=ExtResource("1_tm5k1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+
+[node name="Honey_Comb5" parent="." instance=ExtResource("1_tm5k1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)

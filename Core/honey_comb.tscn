@@ -1,0 +1,96 @@
+[gd_scene load_steps=7 format=3 uid="uid://bgr1iyupwcr8w"]
+
+[ext_resource type="Script" path="res://Core/Collectable.gd" id="1_2j3la"]
+[ext_resource type="PackedScene" uid="uid://bhwwqitf2y30h" path="res://Core/Art/Honey_Comb.glb" id="2_swlcb"]
+
+[sub_resource type="Animation" id="Animation_7rh3i"]
+resource_name = "Idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Turn:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(3.48787e-16, 6.28319, 3.48787e-16)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Turn/Tilt:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.388301, 0, 0), Vector3(-0.387463, 6.28319, 3.48787e-16)]
+}
+
+[sub_resource type="Animation" id="Animation_mkb7i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Turn:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3.48787e-16, 6.28319, 3.48787e-16)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Turn/Tilt:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.388301, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tksl2"]
+_data = {
+"Idle": SubResource("Animation_7rh3i"),
+"RESET": SubResource("Animation_mkb7i")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_stjp6"]
+size = Vector3(1, 6, 1)
+
+[node name="Honey_Comb" type="Node3D"]
+script = ExtResource("1_2j3la")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tksl2")
+}
+
+[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="."]
+
+[node name="Turn" type="Node3D" parent="."]
+transform = Transform3D(1, -3.48785e-16, 4.46638e-06, 3.48787e-16, 1, -3.48787e-16, -4.46638e-06, 3.48789e-16, 1, 0, 0, 0)
+
+[node name="Tilt" type="Node3D" parent="Turn"]
+transform = Transform3D(1, 0, 0, 0, 0.925554, 0.378617, 0, -0.378617, 0.925554, 0, 0, 0)
+
+[node name="Honey_Comb" parent="Turn/Tilt" instance=ExtResource("2_swlcb")]
+transform = Transform3D(0.0236723, 2.33737e-13, -0.314391, 6.369e-09, 0.315281, -2.4164e-10, 0.314391, -3.2687e-08, 0.0236723, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="." groups=["Collectable"]]
+collision_layer = 4
+collision_mask = 2
+metadata/Type = "Honey"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_stjp6")

@@ -1,0 +1,35 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="MiniJam_128"
+run/main_scene="res://Play/play_1.tscn"
+config/features=PackedStringArray("4.0", "Mobile")
+config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1080
+window/size/viewport_height=1920
+window/handheld/orientation=1
+window/stretch/mode="viewport"
+window/stretch/aspect="keep_height"
+
+[layer_names]
+
+3d_physics/layer_1="Base"
+3d_physics/layer_2="Player"
+3d_physics/layer_3="Collect"
+
+[rendering]
+
+renderer/rendering_method="mobile"
+textures/vram_compression/import_s3tc_bptc=true

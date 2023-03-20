@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://g0wnk3bbmql8"]
+
+[ext_resource type="PackedScene" uid="uid://bgr1iyupwcr8w" path="res://Core/honey_comb.tscn" id="1_lrwvr"]
+[ext_resource type="PackedScene" uid="uid://c2tv84geoh3j3" path="res://Core/wing.tscn" id="2_qn1au"]
+
+[node name="CollectionPatch_Wing_1" type="Node3D"]
+
+[node name="Honey_Comb7" parent="." instance=ExtResource("1_lrwvr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="Honey_Comb6" parent="." instance=ExtResource("1_lrwvr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="Honey_Comb4" parent="." instance=ExtResource("1_lrwvr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+
+[node name="Honey_Comb5" parent="." instance=ExtResource("1_lrwvr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="Wing" parent="." instance=ExtResource("2_qn1au")]

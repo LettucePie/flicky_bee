@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://yxtju6v5sytc"]
+
+[ext_resource type="Texture2D" uid="uid://b4wfi8iftksuj" path="res://UI/Art/Control_Knob_Base.png" id="1_u5xs6"]
+[ext_resource type="Texture2D" uid="uid://g2p61xm73yaq" path="res://UI/Art/Control_Knob_Stick.png" id="2_7kgap"]
+[ext_resource type="Script" path="res://UI/knob_visual.gd" id="2_llci5"]
+
+[node name="Knob_Visual" type="Sprite2D"]
+texture = ExtResource("1_u5xs6")
+script = ExtResource("2_llci5")
+
+[node name="Stick" type="Sprite2D" parent="."]
+texture = ExtResource("2_7kgap")

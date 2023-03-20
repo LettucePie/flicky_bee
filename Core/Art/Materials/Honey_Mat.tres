@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dkt8jfih4ah4y"]
+
+[resource]
+resource_name = "Honey_Mat"
+shading_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.906332, 0.868041, 0.309742, 1)
+roughness = 0.0
