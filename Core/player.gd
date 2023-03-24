@@ -11,6 +11,9 @@ signal collected(obj)
 @export var wing_sound : AudioStreamWAV
 @export var flower_sound : AudioStreamWAV
 
+@export var anim_lib : AnimationLibrary
+@onready var anim = $Turn/Bee/AnimationPlayer
+
 var flick_target : Vector3
 var start_point : Vector3
 var flicked := false
@@ -36,6 +39,8 @@ var magnet_col : Array
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	anim.add_animation_library("Base", anim_lib)
+	anim.play("Base/Rest")
 	pass # Replace with function body.
 
 
@@ -56,6 +61,8 @@ func _physics_process(delta):
 				flown = true
 				fly_force = 0.1
 				fly_amp = 0.1
+				if anim.current_animation != "Base/Fly":
+					anim.play("Base/Fly")
 				if !$Buzz.playing:
 					$Buzz.playing = true
 			self.set_position(pos)
@@ -96,6 +103,8 @@ func _fly_to(direction : Vector3, amp : float) -> void:
 	fly_dir = direction
 	fly_amp = amp
 	_point_forward(fly_dir)
+	if anim.current_animation != "Base/Fly":
+		anim.play("Base/Fly")
 	if !$Buzz.playing:
 		$Buzz.playing = true
 
@@ -137,6 +146,7 @@ func _on_area_entered(area):
 
 func _landed(area) -> void:
 	print("Player Landed on Platform")
+	anim.play("Base/Rest")
 	$Buzz.stop()
 	$Pickup.stream = flower_sound
 	$Pickup.play()

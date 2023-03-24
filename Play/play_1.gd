@@ -66,12 +66,11 @@ func _setup():
 	$HUD._update_health_bar(time, life_time)
 	$HUD._update_fly_bar(flight, flight_reserve)
 	$HUD._setup()
-	grass_patches = [$Grass_Patch1, 
-	$Grass_Patch2, $Grass_Patch3, $Grass_Patch4, $Grass_Patch5]
-	var point = 40
+	grass_patches = [$Grass_Patch1, $Grass_Patch2, $Grass_Patch3]
+	var grass_point = 60
 	for g in grass_patches:
-		g.set_position(Vector3(0, -5, point))
-		point -= 20
+		g.set_position(Vector3(0, -5, grass_point))
+		grass_point -= 60
 
 
 func _spawn_player() -> void:
@@ -94,6 +93,19 @@ func _update_camera_target(offset : float) -> void:
 	camera_offset.y = 13.0
 	camera_offset.z -= offset
 	camera_target = camera_offset
+	if grass_patches.size() > 0:
+		_move_grass_patches()
+
+
+func _move_grass_patches() -> void:
+	var mid_z = grass_patches[1].get_position().z
+#	var back_z = grass_patches.back().get_position().z
+	if camera_target.z < mid_z:
+		var new_back = grass_patches.pop_front()
+		var pos = new_back.get_position()
+		pos.z -= 120
+		new_back.set_position(pos)
+		grass_patches.push_back(new_back)
 
 
 func _process(delta):
@@ -157,9 +169,13 @@ func _input(event):
 					flick_trajectory = (player_pos_2d + offset).clamp(
 						left_2d_bound, right_2d_bound
 					)
+					if flick_trajectory.y > player_pos_2d.y:
+						flick_trajectory.y = player_pos_2d.y
 					flick_target = $Camera3D.project_position(
 						flick_trajectory, 12.5
 					)
+					if flick_target.z > player.get_position().z:
+						flick_target.z = player.get_position().z
 					$Arc_Visual._update_target_point(flick_trajectory)
 				else:
 					flick_valid = false
@@ -264,30 +280,14 @@ func _on_rest_timer_timeout():
 
 
 func _on_bottom_detect_area_entered(area):
-	if area.is_in_group("Player"):
-		_update_camera_target(-4.0)
+	pass
+#	if area.is_in_group("Player"):
+#		_update_camera_target(-4.0)
 
 
 func _on_top_detect_area_entered(area):
 	if area.is_in_group("Player"):
 		_update_camera_target(4.0)
-
-
-func _on_screen_notif_screen_entered(extra_arg_0):
-	if grass_patches.back() == get_node(extra_arg_0):
-		print(extra_arg_0, " is the back of the patches")
-		var new_back = grass_patches.pop_front()
-		var pos = new_back.get_position()
-		pos.z -= 60
-		new_back.set_position(pos)
-		grass_patches.push_back(new_back)
-	if grass_patches.front() == get_node(extra_arg_0):
-		print(extra_arg_0, " is the front of the patches")
-		var new_front = grass_patches.pop_back()
-		var pos = new_front.get_position()
-		pos.z += 60
-		new_front.set_position(pos)
-		grass_patches.push_front(new_front)
 
 
 func _on_hud_play_again():
