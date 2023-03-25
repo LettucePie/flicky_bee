@@ -20,6 +20,7 @@ var flight := 5.0
 ##
 ## HUD
 ##
+var max_dimension := Vector2.ZERO
 var left_2d_bound := Vector2.ZERO
 var right_2d_bound := Vector2.ZERO
 ##
@@ -133,64 +134,78 @@ func _process(delta):
 
 func _input(event):
 	if event is InputEventMouseButton and time > 0.0:
-		if !touching and event.pressed:
-			touching = true
-			touch_start = event.position
-			if !traveling:
-				player_pos_2d = $Camera3D.unproject_position(player.get_position())
-				$Arc_Visual._assign_start_point(player_pos_2d)
-			else:
-				$Knob_Visual._assign_start_point(touch_start)
-		elif !event.pressed:
-			touching = false
-			touch_start = Vector2.ZERO
-			if flick_valid:
-				_flick_player()
-				$Arc_Visual._release()
-			else:
-				$Arc_Visual._cancel()
-			if traveling:
-				if player != null:
-					player._release_flight()
-					print("Release Flight")
-					flying = false
-					flight_strength = 0.0
-				$Knob_Visual._release()
+		_process_click(event)
 	if event is InputEventMouseMotion and time > 0.0:
 		if touching:
-			var direction = touch_start.direction_to(event.position)
-			var tension = touch_start.distance_to(event.position)
-			if !traveling:
-				direction *= -1.0
-				tension *= 2.0
-				if tension > 150 and player != null:
-					flick_valid = true
-					var offset = direction * tension
-					flick_trajectory = (player_pos_2d + offset).clamp(
-						left_2d_bound, right_2d_bound
-					)
-					if flick_trajectory.y > player_pos_2d.y:
-						flick_trajectory.y = player_pos_2d.y
-					flick_target = $Camera3D.project_position(
-						flick_trajectory, 12.5
-					)
-					if flick_target.z > player.get_position().z:
-						flick_target.z = player.get_position().z
-					$Arc_Visual._update_target_point(flick_trajectory)
-				else:
-					flick_valid = false
-					$Arc_Visual._cancel()
-			else:
-				flight_strength = clamp(
-					tension, 0.0, flight_bound
-					) / flight_bound
-				var dir_3d = Vector3(direction.x, 0.0, direction.y)
-				if flight < 1.0:
-					flight_strength = clamp(flight, 0.1, 1.0)
-				if player != null:
-					player._fly_to(dir_3d, flight_strength)
-					flying = true
-				$Knob_Visual._update_target_point(event.position)
+			_process_drag(event)
+
+###
+### The Logic for establishing whether the player is flicking or flying
+func _process_click(event : InputEventMouseButton) -> void:
+	if !touching and event.pressed:
+		touching = true
+		touch_start = event.position
+		if !traveling:
+			player_pos_2d = $Camera3D.unproject_position(player.get_position())
+			$Arc_Visual._assign_start_point(player_pos_2d)
+		else:
+			$Knob_Visual._assign_start_point(touch_start)
+	elif !event.pressed:
+		touching = false
+		touch_start = Vector2.ZERO
+		if flick_valid:
+			_flick_player()
+			$Arc_Visual._release()
+		else:
+			$Arc_Visual._cancel()
+		if traveling:
+			if player != null:
+				player._release_flight()
+				print("Release Flight")
+				flying = false
+				flight_strength = 0.0
+			$Knob_Visual._release()
+
+###
+### The Logic for controlling which direction the player is flicked,
+### and the direction they fly
+func _process_drag(event : InputEventMouseMotion) -> void:
+	var direction = touch_start.direction_to(event.position)
+	var tension = clamp(
+		touch_start.distance_to(event.position),
+		0,
+		max_dimension.y * 0.4
+		)
+	if !traveling:
+		direction *= -1.0
+		if tension > max_dimension.y * 0.1 and player != null:
+			flick_valid = true
+			var offset = direction * tension
+			flick_trajectory = (player_pos_2d + offset).clamp(
+				left_2d_bound, right_2d_bound
+			)
+			if flick_trajectory.y > player_pos_2d.y:
+				flick_trajectory.y = player_pos_2d.y
+			flick_target = $Camera3D.project_position(
+				flick_trajectory, 12.5
+			)
+			if flick_target.z > player.get_position().z:
+				flick_target.z = player.get_position().z
+			$Arc_Visual._update_target_point(flick_trajectory)
+		else:
+			flick_valid = false
+			$Arc_Visual._cancel()
+	else:
+		flight_strength = clamp(
+			tension, 0.0, flight_bound
+			) / flight_bound
+		var dir_3d = Vector3(direction.x, 0.0, direction.y)
+		if flight < 1.0:
+			flight_strength = clamp(flight, 0.1, 1.0)
+		if player != null:
+			player._fly_to(dir_3d, flight_strength)
+			flying = true
+		$Knob_Visual._update_target_point(event.position)
 
 
 func _physics_process(delta):
@@ -220,11 +235,17 @@ func _on_hud_resized():
 func _establish_bounds() -> void:
 #	var max = get_window().size
 #	var max = DisplayServer.window_get_size()
-	var max = $HUD/Max.get_position()
-	var center = max * 0.5
-	print("Max ", max, " Center ", center)
-	left_2d_bound = Vector2(clamp(center.x - 540, 0, max.x), 0)
-	right_2d_bound = Vector2(clamp(max.x - left_2d_bound.x, 0, max.x), max.y)
+	max_dimension = $HUD/Max.get_position()
+	var center = max_dimension * 0.5
+	print("Max ", max_dimension, " Center ", center)
+	left_2d_bound = Vector2(
+		clamp(center.x - 540, 0, max_dimension.x), 
+			0
+		)
+	right_2d_bound = Vector2(
+		clamp(max_dimension.x - left_2d_bound.x, 0, max_dimension.x), 
+			max_dimension.y
+		)
 	print("LeftBound: ", left_2d_bound, " RightBound: ", right_2d_bound)
 
 
@@ -240,7 +261,7 @@ func _on_player_finished_travel(points):
 	$Life_Timer.stop()
 	$Rest_Timer.start(rest_time)
 	time = clamp(time + 1.0, 0.0, life_time)
-	flight = clamp(flight + 1.0, 0.0, flight_reserve)
+	flight = clamp(flight + 2.0, 0.0, flight_reserve)
 	platform_score += 2
 	$HUD._update_score(2, platform_score)
 

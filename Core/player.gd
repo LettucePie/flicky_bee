@@ -6,6 +6,8 @@ signal finished_travel(count)
 signal flick_depleted()
 signal collected(obj)
 
+@export var flick_acc_curve : Curve
+
 @export var honey_sound : AudioStreamWAV
 @export var jar_sound: AudioStreamWAV
 @export var wing_sound : AudioStreamWAV
@@ -16,6 +18,7 @@ signal collected(obj)
 
 var flick_target : Vector3
 var start_point : Vector3
+var total_distance : float
 var flicked := false
 var flown := false
 var trace := true
@@ -28,9 +31,9 @@ var previous_dir : Vector3
 var fly_dir := Vector3.FORWARD
 var fly_amp := 0.0
 var fly_force := 1.0
-var initial_acc := 8.0
-var drag := 0.05
-var final_acc := 2.0
+var initial_acc := 12.0
+#var drag := 0.05
+var final_acc := 4.0
 var speed := 0.0
 ##
 ##
@@ -54,20 +57,25 @@ func _physics_process(delta):
 			$Buzz.pitch_scale = 0.9 + fly_force
 		else:
 			var pos = self.get_position()
-			if pos.distance_to(flick_target) > 0.5:
+			var distance = pos.distance_to(flick_target)
+			var percent = distance / total_distance
+			speed = lerp(
+				initial_acc,
+				final_acc,
+				flick_acc_curve.sample(percent)
+				)
+			if pos.distance_to(flick_target) <= 0.95:
 				pos = pos.move_toward(flick_target, speed * delta)
 			else:
 				emit_signal("flick_depleted")
 				flown = true
-				fly_force = 0.1
+				fly_force = 1.0
 				fly_amp = 0.1
 				if anim.current_animation != "Base/Fly":
 					anim.play("Base/Fly")
 				if !$Buzz.playing:
 					$Buzz.playing = true
 			self.set_position(pos)
-		if speed > final_acc:
-			speed = clamp(speed - drag, final_acc, initial_acc)
 	if magnet_col.size() > 0:
 		for m in magnet_col:
 			var m_pos = m.get_global_position()
@@ -88,6 +96,7 @@ func _flick_to(target : Vector3) -> void:
 	flick_target = target
 	start_point = self.get_position()
 	flick_target.y = start_point.y
+	total_distance = start_point.distance_to(flick_target)
 	speed = initial_acc
 	flown = false
 	previous_dir = fly_dir

@@ -1,14 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://byv8nd4kxpkro"]
+[gd_scene load_steps=15 format=3 uid="uid://byv8nd4kxpkro"]
 
 [ext_resource type="Script" path="res://Core/player.gd" id="1_igtm3"]
-[ext_resource type="AudioStream" uid="uid://4pxv5abssbnd" path="res://Core/Sound/Pickup_Honey.wav" id="2_4u6o7"]
-[ext_resource type="PackedScene" uid="uid://rch8dpbktmk2" path="res://Core/Art/Bee_Static.glb" id="2_rb71e"]
-[ext_resource type="AudioStream" uid="uid://cfyrrdxckkthf" path="res://Core/Sound/Pickup_Jar.wav" id="3_d0pwn"]
-[ext_resource type="AudioStream" uid="uid://dbcrb7wvphvt4" path="res://Core/Sound/Buzz.wav" id="3_gfl7y"]
-[ext_resource type="AudioStream" uid="uid://d26ee8rkbsmf6" path="res://Core/Sound/Pickup_Wing.wav" id="4_3cdhx"]
-[ext_resource type="AudioStream" uid="uid://dknybi874y4on" path="res://Core/Sound/Flower_Land.wav" id="5_um41a"]
+[ext_resource type="AudioStream" uid="uid://b0yp3fg6r7aa5" path="res://Core/Sound/Pickup_Honey.wav" id="2_4u6o7"]
+[ext_resource type="Curve" uid="uid://dgwlo3h2c16iw" path="res://Core/player_flick_acc_curve.tres" id="2_6vkyy"]
+[ext_resource type="PackedScene" uid="uid://d2eg8c0vjrofy" path="res://Core/Art/Bee_Static.glb" id="2_rb71e"]
+[ext_resource type="AudioStream" uid="uid://buswc01p8s40d" path="res://Core/Sound/Pickup_Jar.wav" id="3_d0pwn"]
+[ext_resource type="AudioStream" uid="uid://brrif5m1ggn5l" path="res://Core/Sound/Buzz.wav" id="3_gfl7y"]
+[ext_resource type="AudioStream" uid="uid://b1gkytcm4mfey" path="res://Core/Sound/Pickup_Wing.wav" id="4_3cdhx"]
+[ext_resource type="AudioStream" uid="uid://chcsbdvc02wgt" path="res://Core/Sound/Flower_Land.wav" id="5_um41a"]
 [ext_resource type="AnimationLibrary" uid="uid://c1ugy47v2irx5" path="res://Core/Art/Animations/Bee/Bee_Library.res" id="6_8bfam"]
-[ext_resource type="PackedScene" uid="uid://b6o2j1lylqq4o" path="res://Core/Art/Bee.glb" id="7_kt7jm"]
+[ext_resource type="PackedScene" uid="uid://c5kfxx6ta1732" path="res://Core/Art/Bee.glb" id="7_kt7jm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jkrjm"]
 albedo_color = Color(0, 0.0117647, 1, 1)
@@ -25,6 +26,7 @@ radius = 1.5
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_igtm3")
+flick_acc_curve = ExtResource("2_6vkyy")
 honey_sound = ExtResource("2_4u6o7")
 jar_sound = ExtResource("3_d0pwn")
 wing_sound = ExtResource("4_3cdhx")
