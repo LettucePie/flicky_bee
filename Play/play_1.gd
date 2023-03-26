@@ -13,6 +13,8 @@ var player = null
 var camera_target := Vector3.ZERO
 var traveling := false
 var platform_score := 0
+var current_platform : Area3D
+var current_flower : Node3D
 var furthest_distance := 0.0
 var game_started := false
 var time := 10.0
@@ -83,7 +85,9 @@ func _spawn_player() -> void:
 	player.finished_travel.connect(_on_player_finished_travel)
 	player.flick_depleted.connect(_on_player_flick_depleted)
 	player.collected.connect(_on_player_collect)
-	player.set_position($Generator.starting_platform.get_position())
+	current_platform = $Generator.starting_platform
+	current_flower = current_platform._return_flower()
+	player.set_position(current_platform.get_position())
 	add_child(player)
 	_update_camera_target(6.0)
 
@@ -192,9 +196,15 @@ func _process_drag(event : InputEventMouseMotion) -> void:
 			if flick_target.z > player.get_position().z:
 				flick_target.z = player.get_position().z
 			$Arc_Visual._update_target_point(flick_trajectory)
+			if current_flower != null:
+				var angle = touch_start.angle_to_point(event.position)
+				var percent = tension / (max_dimension.y * 0.4)
+				current_flower._bend_flower(angle, percent)
 		else:
 			flick_valid = false
 			$Arc_Visual._cancel()
+			if current_flower != null:
+				current_flower._bend_flower(0, 0.0)
 	else:
 		flight_strength = clamp(
 			tension, 0.0, flight_bound
@@ -220,6 +230,7 @@ func _physics_process(delta):
 func _flick_player() -> void:
 	if player != null and !traveling:
 		traveling = true
+		current_flower._flick_flower()
 		player._flick_to(flick_target)
 		if !game_started:
 			game_started = true
@@ -249,8 +260,10 @@ func _establish_bounds() -> void:
 	print("LeftBound: ", left_2d_bound, " RightBound: ", right_2d_bound)
 
 
-func _on_player_finished_travel(points):
+func _on_player_finished_travel(platform):
 	print("Player Finished Travel")
+	current_platform = platform
+	current_flower = current_platform._return_flower()
 	traveling = false
 	touching = false
 	flick_valid = false

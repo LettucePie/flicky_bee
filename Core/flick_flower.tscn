@@ -1,0 +1,137 @@
+[gd_scene load_steps=16 format=3 uid="uid://xmhllfh46po8"]
+
+[ext_resource type="Script" path="res://Core/flick_flower.gd" id="1_lqgyg"]
+[ext_resource type="PackedScene" uid="uid://x8ewpeksibhk" path="res://Core/Art/Flower_Top.glb" id="2_gsx71"]
+[ext_resource type="PackedScene" uid="uid://jrp7t6oqfuo7" path="res://Core/Art/Flower_Stem.glb" id="3_bakby"]
+[ext_resource type="Animation" uid="uid://cr3tqn1wapomx" path="res://Core/Art/Animations/Flower_Stem/flower_stem_bend_anim.res" id="4_hi2b5"]
+[ext_resource type="Animation" uid="uid://cd7es0bxc38od" path="res://Core/Art/Animations/Flower_Stem/flower_stem_ripple_anim.res" id="5_i6twq"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wocv6"]
+animation = &"Bend"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_xuuk7"]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_jof6o"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gvpd6"]
+animation = &"Ripple"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fk1wg"]
+animation = &"Base"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ne50l"]
+graph_offset = Vector2(-52.4411, 24.4198)
+nodes/Bend/node = SubResource("AnimationNodeAnimation_wocv6")
+nodes/Bend/position = Vector2(0, 190)
+nodes/Bend_Blend/node = SubResource("AnimationNodeBlend2_xuuk7")
+nodes/Bend_Blend/position = Vector2(200, 90)
+nodes/OneShot/node = SubResource("AnimationNodeOneShot_jof6o")
+nodes/OneShot/position = Vector2(410, 120)
+nodes/Ripple/node = SubResource("AnimationNodeAnimation_gvpd6")
+nodes/Ripple/position = Vector2(210, 290)
+nodes/Still/node = SubResource("AnimationNodeAnimation_fk1wg")
+nodes/Still/position = Vector2(0, 90)
+nodes/output/position = Vector2(610, 130)
+node_connections = [&"output", 0, &"OneShot", &"Bend_Blend", 0, &"Still", &"Bend_Blend", 1, &"Bend", &"OneShot", 0, &"Bend_Blend", &"OneShot", 1, &"Ripple"]
+
+[sub_resource type="Animation" id="Animation_3ov2b"]
+resource_name = "Base"
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flower_Arm/Skeleton3D:Bone.001")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, -5.17467, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = true
+tracks/1/enabled = true
+tracks/1/path = NodePath("Flower_Arm/Skeleton3D:Bone.001")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/2/type = "position_3d"
+tracks/2/imported = true
+tracks/2/enabled = true
+tracks/2/path = NodePath("Flower_Arm/Skeleton3D:Top_Base")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0, -1.22477, 0)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = true
+tracks/3/enabled = true
+tracks/3/path = NodePath("Flower_Arm/Skeleton3D:Top_Base")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_tnjmp"]
+resource_name = "Bend001"
+length = 1.66667
+tracks/0/type = "position_3d"
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flower_Arm/Skeleton3D:Bone.001")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, -5.17467, 0, 0.0333333, 1, 0, -5.1748, 0.000932706, 0.0666667, 1, 0, -5.17509, 0.00321704, 0.1, 1, 0, -5.17556, 0.00680559, 0.133333, 1, 0, -5.17619, 0.0116509, 0.166667, 1, 0, -5.17697, 0.0177056, 0.2, 1, 0, -5.17796, 0.0252779, 0.233333, 1, 0, -5.17908, 0.0339173, 0.266667, 1, 0, -5.18033, 0.0435763, 0.3, 1, 0, -5.18171, 0.0542076, 0.333333, 1, 0, -5.18321, 0.0657637, 0.366667, 1, 0, -5.18486, 0.0784579, 0.4, 1, 0, -5.18661, 0.0919348, 0.433333, 1, 0, -5.18845, 0.106147, 0.466667, 1, 0, -5.19039, 0.121046, 0.5, 1, 0, -5.19241, 0.136586, 0.533333, 1, 0, -5.19452, 0.152885, 0.566667, 1, 0, -5.1967, 0.169681, 0.6, 1, 0, -5.19894, 0.186928, 0.633333, 1, 0, -5.20123, 0.204579, 0.666667, 1, 0, -5.20357, 0.222585, 0.7, 1, 0, -5.20596, 0.24097, 0.766667, 1, 0, -5.21081, 0.278334, 0.933333, 1, 0, -5.22307, 0.372774, 0.966667, 1, 0, -5.22548, 0.391373, 1, 1, 0, -5.22787, 0.409758, 1.03333, 1, 0, -5.23021, 0.427764, 1.06667, 1, 0, -5.2325, 0.445414, 1.1, 1, 0, -5.23474, 0.462662, 1.13333, 1, 0, -5.23692, 0.479458, 1.16667, 1, 0, -5.23903, 0.495757, 1.2, 1, 0, -5.24105, 0.511297, 1.23333, 1, 0, -5.24299, 0.526196, 1.26667, 1, 0, -5.24483, 0.540408, 1.3, 1, 0, -5.24658, 0.553885, 1.33333, 1, 0, -5.24823, 0.566579, 1.36667, 1, 0, -5.24973, 0.578135, 1.4, 1, 0, -5.25111, 0.588767, 1.43333, 1, 0, -5.25236, 0.598426, 1.46667, 1, 0, -5.25348, 0.607065, 1.5, 1, 0, -5.25447, 0.614637, 1.53333, 1, 0, -5.25525, 0.620692, 1.56667, 1, 0, -5.25588, 0.625537, 1.6, 1, 0, -5.25635, 0.629126, 1.63333, 1, 0, -5.25665, 0.63141, 1.66667, 1, 0, -5.25677, 0.632343)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = true
+tracks/1/enabled = true
+tracks/1/path = NodePath("Flower_Arm/Skeleton3D:Bone.001")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.0666667, 1, 0.00108539, 0, 0, 0.999999, 0.1, 1, 0.00229643, 0, 0, 0.999997, 0.133333, 1, 0.00393203, 0, 0, 0.999992, 0.166667, 1, 0.0059765, 0, 0, 0.999982, 0.2, 1, 0.00853488, 0, 0, 0.999964, 0.233333, 1, 0.0114553, 0, 0, 0.999934, 0.266667, 1, 0.0147221, 0, 0, 0.999892, 0.3, 1, 0.0183196, 0, 0, 0.999832, 0.333333, 1, 0.0222322, 0, 0, 0.999753, 0.366667, 1, 0.0265336, 0, 0, 0.999648, 0.4, 1, 0.0311027, 0, 0, 0.999516, 0.433333, 1, 0.0359235, 0, 0, 0.999355, 0.466667, 1, 0.0409801, 0, 0, 0.99916, 0.5, 1, 0.0462562, 0, 0, 0.99893, 0.533333, 1, 0.0517931, 0, 0, 0.998658, 0.566667, 1, 0.0575008, 0, 0, 0.998345, 0.6, 1, 0.0633629, 0, 0, 0.997991, 0.633333, 1, 0.0693626, 0, 0, 0.997592, 0.666667, 1, 0.0754834, 0, 0, 0.997147, 0.7, 1, 0.0817333, 0, 0, 0.996654, 0.733333, 1, 0.0880543, 0, 0, 0.996116, 0.933333, 1, 0.126456, 0, 0, 0.991972, 0.966667, 1, 0.132747, 0, 0, 0.99115, 1, 1, 0.138958, 0, 0, 0.990298, 1.03333, 1, 0.145033, 0, 0, 0.989427, 1.06667, 1, 0.15098, 0, 0, 0.988537, 1.1, 1, 0.156782, 0, 0, 0.987633, 1.13333, 1, 0.162425, 0, 0, 0.986721, 1.16667, 1, 0.167893, 0, 0, 0.985805, 1.2, 1, 0.173097, 0, 0, 0.984905, 1.23333, 1, 0.178078, 0, 0, 0.984016, 1.26667, 1, 0.182823, 0, 0, 0.983146, 1.3, 1, 0.187315, 0, 0, 0.9823, 1.33333, 1, 0.191539, 0, 0, 0.981485, 1.36667, 1, 0.195379, 0, 0, 0.980728, 1.4, 1, 0.198906, 0, 0, 0.980018, 1.43333, 1, 0.202107, 0, 0, 0.979363, 1.46667, 1, 0.204967, 0, 0, 0.978769, 1.5, 1, 0.20747, 0, 0, 0.978241, 1.53333, 1, 0.20947, 0, 0, 0.977815, 1.56667, 1, 0.211069, 0, 0, 0.977471, 1.6, 1, 0.212252, 0, 0, 0.977215, 1.66667, 1, 0.213313, 0, 0, 0.976984)
+tracks/2/type = "position_3d"
+tracks/2/imported = true
+tracks/2/enabled = true
+tracks/2/path = NodePath("Flower_Arm/Skeleton3D:Top_Base")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0, -1.22477, 0, 0.0333333, 1, 0, -1.22651, 0.00413956, 0.0666667, 1, 0, -1.23076, 0.014278, 0.1, 1, 0, -1.23744, 0.0302048, 0.133333, 1, 0, -1.24646, 0.0517095, 0.166667, 1, 0, -1.25773, 0.0785815, 0.2, 1, 0, -1.27182, 0.112189, 0.233333, 1, 0, -1.2879, 0.150533, 0.266667, 1, 0, -1.30588, 0.193402, 0.3, 1, 0, -1.32567, 0.240586, 0.333333, 1, 0, -1.34718, 0.291874, 0.366667, 1, 0, -1.37081, 0.348214, 0.4, 1, 0, -1.39589, 0.408028, 0.433333, 1, 0, -1.42234, 0.471103, 0.466667, 1, 0, -1.45007, 0.537231, 0.5, 1, 0, -1.479, 0.6062, 0.533333, 1, 0, -1.50933, 0.678537, 0.566667, 1, 0, -1.5406, 0.753085, 0.6, 1, 0, -1.5727, 0.829632, 0.633333, 1, 0, -1.60555, 0.907968, 0.666667, 1, 0, -1.63906, 0.987882, 0.7, 1, 0, -1.67328, 1.06948, 0.766667, 1, 0, -1.74283, 1.23531, 0.933333, 1, 0, -1.91861, 1.65446, 0.966667, 1, 0, -1.95322, 1.737, 1, 1, 0, -1.98744, 1.8186, 1.03333, 1, 0, -2.02096, 1.89852, 1.06667, 1, 0, -2.05381, 1.97685, 1.1, 1, 0, -2.08591, 2.0534, 1.13333, 1, 0, -2.11717, 2.12795, 1.16667, 1, 0, -2.14751, 2.20028, 1.2, 1, 0, -2.17643, 2.26925, 1.23333, 1, 0, -2.20417, 2.33538, 1.26667, 1, 0, -2.23062, 2.39846, 1.3, 1, 0, -2.2557, 2.45827, 1.33333, 1, 0, -2.27933, 2.51461, 1.36667, 1, 0, -2.30084, 2.5659, 1.4, 1, 0, -2.32063, 2.61308, 1.43333, 1, 0, -2.33861, 2.65595, 1.46667, 1, 0, -2.35469, 2.69429, 1.5, 1, 0, -2.36878, 2.7279, 1.53333, 1, 0, -2.38005, 2.75477, 1.56667, 1, 0, -2.38907, 2.77628, 1.6, 1, 0, -2.39575, 2.79221, 1.63333, 1, 0, -2.4, 2.80234, 1.66667, 1, 0, -2.40173, 2.80648)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = true
+tracks/3/enabled = true
+tracks/3/path = NodePath("Flower_Arm/Skeleton3D:Top_Base")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.0333333, 1, 0.000739335, 0, 0, 1, 0.0666667, 1, 0.00255165, 0, 0, 0.999997, 0.1, 1, 0.00540227, 0, 0, 0.999985, 0.133333, 1, 0.00925718, 0, 0, 0.999957, 0.166667, 1, 0.014083, 0, 0, 0.999901, 0.2, 1, 0.0201388, 0, 0, 0.999797, 0.233333, 1, 0.0270691, 0, 0, 0.999634, 0.266667, 1, 0.0348416, 0, 0, 0.999393, 0.3, 1, 0.0434239, 0, 0, 0.999057, 0.333333, 1, 0.0527828, 0, 0, 0.998606, 0.366667, 1, 0.063112, 0, 0, 0.998006, 0.4, 1, 0.0741157, 0, 0, 0.99725, 0.433333, 1, 0.0857567, 0, 0, 0.996316, 0.466667, 1, 0.097997, 0, 0, 0.995187, 0.5, 1, 0.110797, 0, 0, 0.993843, 0.533333, 1, 0.12427, 0, 0, 0.992248, 0.566667, 1, 0.13818, 0, 0, 0.990407, 0.6, 1, 0.152482, 0, 0, 0.988306, 0.633333, 1, 0.167128, 0, 0, 0.985935, 0.666667, 1, 0.182074, 0, 0, 0.983285, 0.7, 1, 0.197336, 0, 0, 0.980336, 0.766667, 1, 0.22828, 0, 0, 0.973596, 0.933333, 1, 0.305533, 0, 0, 0.952182, 0.966667, 1, 0.320495, 0, 0, 0.94725, 1, 1, 0.335181, 0, 0, 0.942154, 1.03333, 1, 0.349442, 0, 0, 0.936958, 1.06667, 1, 0.363305, 0, 0, 0.93167, 1.1, 1, 0.376734, 0, 0, 0.926321, 1.13333, 1, 0.389694, 0, 0, 0.920944, 1.16667, 1, 0.402153, 0, 0, 0.915573, 1.2, 1, 0.413903, 0, 0, 0.910321, 1.23333, 1, 0.425061, 0, 0, 0.905165, 1.26667, 1, 0.435603, 0, 0, 0.900139, 1.3, 1, 0.445505, 0, 0, 0.89528, 1.33333, 1, 0.454744, 0, 0, 0.890622, 1.36667, 1, 0.463069, 0, 0, 0.886322, 1.4, 1, 0.470664, 0, 0, 0.882313, 1.43333, 1, 0.477511, 0, 0, 0.878626, 1.46667, 1, 0.48359, 0, 0, 0.875295, 1.5, 1, 0.488883, 0, 0, 0.87235, 1.53333, 1, 0.493087, 0, 0, 0.86998, 1.56667, 1, 0.496437, 0, 0, 0.868073, 1.6, 1, 0.49891, 0, 0, 0.866654, 1.63333, 1, 0.50048, 0, 0, 0.865748, 1.66667, 1, 0.50112, 0, 0, 0.865378)
+
+[sub_resource type="Animation" id="Animation_n82ap"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sq680"]
+_data = {
+"Base": SubResource("Animation_3ov2b"),
+"Bend": ExtResource("4_hi2b5"),
+"Bend001": SubResource("Animation_tnjmp"),
+"RESET": SubResource("Animation_n82ap"),
+"Ripple": ExtResource("5_i6twq")
+}
+
+[node name="Flick_Flower" type="Node3D"]
+script = ExtResource("1_lqgyg")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeBlendTree_ne50l")
+anim_player = NodePath("../Flower_Stem/AnimationPlayer")
+active = true
+parameters/Bend_Blend/blend_amount = 0.0
+parameters/OneShot/active = false
+parameters/OneShot/request = 0
+
+[node name="Head" type="Node3D" parent="."]
+
+[node name="Flower_Top" parent="Head" instance=ExtResource("2_gsx71")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00216563, 0, 0.00463634)
+
+[node name="Flower_Stem" parent="." instance=ExtResource("3_bakby")]
+
+[node name="AnimationPlayer" parent="Flower_Stem" index="1"]
+speed_scale = 3.0
+libraries = {
+"": SubResource("AnimationLibrary_sq680")
+}
+
+[editable path="Flower_Stem"]

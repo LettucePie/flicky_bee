@@ -2,7 +2,7 @@ extends Area3D
 
 class_name Player
 
-signal finished_travel(count)
+signal finished_travel(platform)
 signal flick_depleted()
 signal collected(obj)
 
@@ -171,7 +171,7 @@ func _landed(area) -> void:
 	pos.x = area_pos.x
 	pos.z = area_pos.z
 	self.set_position(pos)
-	emit_signal("finished_travel", platform_count)
+	emit_signal("finished_travel", area)
 
 
 func _on_magnet_area_entered(area):

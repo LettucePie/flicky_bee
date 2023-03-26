@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://jgdg1uwq2rq6" path="res://UI/arc_visual.tscn" id="4_weoh5"]
 [ext_resource type="PackedScene" uid="uid://yxtju6v5sytc" path="res://UI/knob_visual.tscn" id="5_3g4qb"]
 [ext_resource type="PackedScene" uid="uid://dys2nli2rglts" path="res://UI/hud.tscn" id="5_rm8qy"]
-[ext_resource type="AudioStream" uid="uid://i8j41hcv6bly" path="res://Core/Sound/Song.mp3" id="8_hw42c"]
+[ext_resource type="AudioStream" uid="uid://cnypws5cu7ia4" path="res://Core/Sound/Song.mp3" id="8_hw42c"]
 [ext_resource type="PackedScene" uid="uid://5vual8pkwjvk" path="res://Core/grass_patch.tscn" id="8_r0s2t"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i3iu5"]
