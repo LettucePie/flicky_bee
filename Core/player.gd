@@ -1,4 +1,4 @@
-extends Area3D
+extends CharacterBody3D
 
 class_name Player
 
@@ -16,6 +16,8 @@ signal collected(obj)
 @export var anim_lib : AnimationLibrary
 @onready var anim = $Turn/Bee/AnimationPlayer
 
+var first_parent = null
+var bee_object : Node3D
 var flick_target : Vector3
 var start_point : Vector3
 var total_distance : float
@@ -23,17 +25,18 @@ var flicked := false
 var flown := false
 var trace := true
 var current_platform = null
+var current_flower = null
 var platform_count := 0
 ##
 ## Movement
 ##
 var previous_dir : Vector3
 var fly_dir := Vector3.FORWARD
-var fly_amp := 0.0
 var fly_force := 1.0
+var fly_target_force := 1.0
 var initial_acc := 12.0
-#var drag := 0.05
-var final_acc := 4.0
+var fly_acc = 8.0
+var final_acc := 2.0
 var speed := 0.0
 ##
 ##
@@ -42,6 +45,8 @@ var magnet_col : Array
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	first_parent = get_parent()
+	bee_object = $Turn/Bee
 	anim.add_animation_library("Base", anim_lib)
 	anim.play("Base/Rest")
 	pass # Replace with function body.
@@ -51,9 +56,8 @@ func _ready():
 func _physics_process(delta):
 	if flicked:
 		if flown:
-			fly_force = lerp(fly_force, fly_amp, delta)
-			var force = (initial_acc * delta) * fly_force
-			translate(fly_dir * force)
+			fly_force = lerp(fly_force, fly_target_force, delta * 3)
+			speed = fly_acc * fly_force
 			$Buzz.pitch_scale = 0.9 + fly_force
 		else:
 			var pos = self.get_position()
@@ -64,18 +68,34 @@ func _physics_process(delta):
 				final_acc,
 				flick_acc_curve.sample(percent)
 				)
-			if pos.distance_to(flick_target) <= 0.95:
-				pos = pos.move_toward(flick_target, speed * delta)
-			else:
+			speed += 2
+			if pos.distance_to(flick_target) <= 0.05:
 				emit_signal("flick_depleted")
 				flown = true
-				fly_force = 1.0
-				fly_amp = 0.1
+				fly_force = 0.5
+				fly_target_force = 0.2
 				if anim.current_animation != "Base/Fly":
 					anim.play("Base/Fly")
 				if !$Buzz.playing:
 					$Buzz.playing = true
 			self.set_position(pos)
+		velocity = fly_dir * speed
+		velocity.y = 0
+		if move_and_slide():
+			if !flown:
+				emit_signal("flick_depleted")
+				flown = true
+				fly_force = 0.5
+				fly_target_force = 0.2
+				if anim.current_animation != "Base/Fly":
+					anim.play("Base/Fly")
+				if !$Buzz.playing:
+					$Buzz.playing = true
+#	else:
+#		if current_flower != null:
+#			var trace = current_flower._return_trace()
+#			var trace_global = to_global(trace.get_position())
+#			self.set_position(trace_global)
 	if magnet_col.size() > 0:
 		for m in magnet_col:
 			var m_pos = m.get_global_position()
@@ -93,6 +113,9 @@ func _die() -> void:
 
 func _flick_to(target : Vector3) -> void:
 	print("Player Flicking to ", target)
+	bee_object.get_parent().remove_child(bee_object)
+	$Turn.add_child(bee_object)
+	bee_object.set_rotation(Vector3(0, PI * -0.5, 0))
 	flick_target = target
 	start_point = self.get_position()
 	flick_target.y = start_point.y
@@ -106,11 +129,16 @@ func _flick_to(target : Vector3) -> void:
 	_point_forward(fly_dir)
 
 
-func _fly_to(direction : Vector3, amp : float) -> void:
+func _fly_to(direction : Vector3, flight : float) -> void:
 	flown = true
+	fly_target_force = 0.2
+	if flight > 0.0:
+		fly_target_force = 1.0
 	previous_dir = fly_dir
 	fly_dir = direction
-	fly_amp = amp
+#	$Turn.set_rotation(Vector3.ZERO)
+#	self.set_rotation(Vector3.ZERO)
+#	$Turn/Bee.set_position(Vector3.ZERO)
 	_point_forward(fly_dir)
 	if anim.current_animation != "Base/Fly":
 		anim.play("Base/Fly")
@@ -119,12 +147,13 @@ func _fly_to(direction : Vector3, amp : float) -> void:
 
 
 func _release_flight() -> void:
-	fly_amp = 0.1
+	fly_target_force = 0.2
 
 
 func _point_forward(direction) -> void:
 #	var angle = previous_dir.angle_to(direction)
 	var angle = Vector3.BACK.signed_angle_to(direction, Vector3.UP)
+#	var turn_rot = $Turn.get_rotation()
 	$Turn.rotation = Vector3(0, angle, 0)
 
 
@@ -160,6 +189,13 @@ func _landed(area) -> void:
 	$Pickup.stream = flower_sound
 	$Pickup.play()
 	current_platform = area
+	current_flower = current_platform._return_flower()
+	$Turn.remove_child(bee_object)
+	current_flower._return_trace().add_child(bee_object)
+	bee_object.set_rotation(Vector3.ZERO)
+#	get_parent().remove_child(self)
+#	current_flower._return_trace().add_child(self)
+#	self.set_position(Vector3.ZERO)
 	platform_count += 1
 	speed = 0
 	flicked = false
@@ -185,3 +221,4 @@ func _on_magnet_area_exited(area):
 	if area.is_in_group("Collectable"):
 		if magnet_col.has(area.get_parent()):
 			magnet_col.erase(area.get_parent())
+

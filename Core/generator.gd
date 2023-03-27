@@ -3,13 +3,14 @@ extends Node3D
 class_name Generator
 
 @export var platform_scene : PackedScene
+@export var obstacle_scenes : Array[PackedScene]
 #@export var grass_patch_scene : PackedScene
 @export var collection_patches : Array[PackedScene]
 
 var platforms : Array
 var starting_platform : Node3D
 #var grass_patches : Array
-var collections : Array
+var gaps : Array
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,12 +29,12 @@ func _clear_platforms() -> void:
 				p.queue_free()
 	platforms.clear()
 	platforms.resize(0)
-	if collections.size() > 0:
-		for c in collections:
-			if is_instance_valid(c):
-				c.queue_free()
-	collections.clear()
-	collections.resize(0)
+	if gaps.size() > 0:
+		for g in gaps:
+			if is_instance_valid(g):
+				g.queue_free()
+	gaps.clear()
+	gaps.resize(0)
 
 
 func _generate(num : int, z_start : float) -> void:
@@ -59,17 +60,26 @@ func _generate(num : int, z_start : float) -> void:
 			add_child(new_plat)
 			##
 			if abs(z_point) - abs(z_previous) >= 10.0:
-				collection_patches.shuffle()
-				var new_patch = collection_patches.front().instantiate()
-				new_patch.set_position(
-					Vector3(
-						randf_range(-4.5, 4.5),
-						0,
-						lerp(z_previous, z_point, 0.5)
+				var new_gap = null
+				var x_pos = 0.0
+				var y_pos = 0.0
+				if randf() >= 0.5:
+					obstacle_scenes.shuffle()
+					new_gap = obstacle_scenes.front().instantiate()
+				else:
+					x_pos = randf_range(-4.0, 4.0)
+					collection_patches.shuffle()
+					new_gap = collection_patches.front().instantiate()
+				if new_gap != null:
+					new_gap.set_position(
+						Vector3(
+							x_pos,
+							y_pos,
+							lerp(z_previous, z_point, 0.5)
+						)
 					)
-				)
-				collections.append(new_patch)
-				add_child(new_patch)
+					gaps.append(new_gap)
+					add_child(new_gap)
 			##
 			z_previous = z_point
 			z_point -= randf_range(6.5, 15.5)

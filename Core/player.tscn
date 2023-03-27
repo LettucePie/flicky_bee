@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://byv8nd4kxpkro"]
+[gd_scene load_steps=16 format=3 uid="uid://byv8nd4kxpkro"]
 
 [ext_resource type="Script" path="res://Core/player.gd" id="1_igtm3"]
 [ext_resource type="AudioStream" uid="uid://4pxv5abssbnd" path="res://Core/Sound/Pickup_Honey.wav" id="2_4u6o7"]
@@ -22,9 +22,13 @@ material = SubResource("StandardMaterial3D_jkrjm")
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_cbwow"]
 radius = 1.5
 
-[node name="Player" type="Area3D" groups=["Player"]]
+[sub_resource type="SphereShape3D" id="SphereShape3D_7w1m1"]
+radius = 0.7
+
+[node name="Player" type="CharacterBody3D" groups=["Player"]]
 collision_layer = 2
 collision_mask = 5
+axis_lock_linear_y = true
 script = ExtResource("1_igtm3")
 flick_acc_curve = ExtResource("2_6vkyy")
 honey_sound = ExtResource("2_4u6o7")
@@ -67,8 +71,15 @@ max_db = 1.0
 
 [node name="Pickup" type="AudioStreamPlayer3D" parent="."]
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[node name="Area" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 5
+
+[node name="AreaShape" type="CollisionShape3D" parent="Area"]
+shape = SubResource("SphereShape3D_7w1m1")
+
 [connection signal="area_entered" from="Magnet" to="." method="_on_magnet_area_entered"]
 [connection signal="area_exited" from="Magnet" to="." method="_on_magnet_area_exited"]
+[connection signal="area_entered" from="Area" to="." method="_on_area_entered"]
 
 [editable path="Turn/Bee"]

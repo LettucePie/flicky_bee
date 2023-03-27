@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://divwo3i3xqtwj"]
+[gd_scene load_steps=14 format=3 uid="uid://divwo3i3xqtwj"]
 
 [ext_resource type="Script" path="res://Play/play_1.gd" id="1_x43xo"]
 [ext_resource type="PackedScene" uid="uid://byv8nd4kxpkro" path="res://Core/player.tscn" id="2_75ge2"]
@@ -8,6 +8,16 @@
 [ext_resource type="PackedScene" uid="uid://dys2nli2rglts" path="res://UI/hud.tscn" id="5_rm8qy"]
 [ext_resource type="AudioStream" uid="uid://cnypws5cu7ia4" path="res://Core/Sound/Song.mp3" id="8_hw42c"]
 [ext_resource type="PackedScene" uid="uid://5vual8pkwjvk" path="res://Core/grass_patch.tscn" id="8_r0s2t"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_e8o1s"]
+ground_bottom_color = Color(0.0980392, 0.203922, 0.113725, 1)
+
+[sub_resource type="Sky" id="Sky_dtcvi"]
+sky_material = SubResource("ProceduralSkyMaterial_e8o1s")
+
+[sub_resource type="Environment" id="Environment_c2osw"]
+background_mode = 2
+sky = SubResource("Sky_dtcvi")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i3iu5"]
 size = Vector3(19.9062, 2.4957, 10.0144)
@@ -28,6 +38,7 @@ shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, -6.97574e-16, -1.5246e-23, -1.5246e-23, -4.37114e-08, 1, -6.97574e-16, -1, -4.37114e-08, 2.08165e-12, 13, 0.025)
+environment = SubResource("Environment_c2osw")
 
 [node name="Bottom_Detect" type="Area3D" parent="Camera3D"]
 transform = Transform3D(1, 0, -5.37244e-31, 0, 1, 0, -5.37244e-31, 0, 1, 2.08165e-12, -8, -12.307)
@@ -77,7 +88,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -5, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -5, -60)
 
 [connection signal="area_entered" from="Camera3D/Bottom_Detect" to="." method="_on_bottom_detect_area_entered"]
+[connection signal="body_entered" from="Camera3D/Bottom_Detect" to="." method="_on_bottom_detect_area_entered"]
 [connection signal="area_entered" from="Camera3D/Top_Detect" to="." method="_on_top_detect_area_entered"]
+[connection signal="body_entered" from="Camera3D/Top_Detect" to="." method="_on_top_detect_area_entered"]
 [connection signal="play_again" from="HUD" to="." method="_on_hud_play_again"]
 [connection signal="resized" from="HUD" to="." method="_on_hud_resized"]
 [connection signal="timeout" from="Life_Timer" to="." method="_on_life_timer_timeout"]

@@ -35,7 +35,6 @@ var flick_trajectory := Vector2.ZERO
 var flick_target := Vector3.ZERO
 var flick_valid := false
 var flying := false
-var flight_strength = 0.0
 ##
 ##
 ##
@@ -167,7 +166,6 @@ func _process_click(event : InputEventMouseButton) -> void:
 				player._release_flight()
 				print("Release Flight")
 				flying = false
-				flight_strength = 0.0
 			$Knob_Visual._release()
 
 ###
@@ -200,20 +198,19 @@ func _process_drag(event : InputEventMouseMotion) -> void:
 				var angle = touch_start.angle_to_point(event.position)
 				var percent = tension / (max_dimension.y * 0.4)
 				current_flower._bend_flower(angle, percent)
+#				var flower_tran = current_flower._return_top_pos_rot()
+#				player.set_position(flower_tran[0])
+#				player.set_position($Generator.to_global(flower_tran[0]))
+#				player.set_rotation(flower_tran[1])
 		else:
 			flick_valid = false
 			$Arc_Visual._cancel()
 			if current_flower != null:
 				current_flower._bend_flower(0, 0.0)
 	else:
-		flight_strength = clamp(
-			tension, 0.0, flight_bound
-			) / flight_bound
 		var dir_3d = Vector3(direction.x, 0.0, direction.y)
-		if flight < 1.0:
-			flight_strength = clamp(flight, 0.1, 1.0)
 		if player != null:
-			player._fly_to(dir_3d, flight_strength)
+			player._fly_to(dir_3d, flight)
 			flying = true
 		$Knob_Visual._update_target_point(event.position)
 
@@ -221,7 +218,7 @@ func _process_drag(event : InputEventMouseMotion) -> void:
 func _physics_process(delta):
 	if flying:
 		flight = clamp(
-			flight - ((flight_strength * 3) * delta),
+			flight - (delta * 2),
 			0.0,
 			flight_reserve
 		)
@@ -282,7 +279,6 @@ func _on_player_finished_travel(platform):
 func _on_player_flick_depleted() -> void:
 	print("Player Flick ran out of force, switching to Wings")
 	flying = true
-	flight_strength = 0.1
 
 
 func _on_player_collect(obj) -> void:

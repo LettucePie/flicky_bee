@@ -10,7 +10,6 @@ var head_boneid : int
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	head_boneid = skeleton.find_bone("Head")
-	$Flower_Stem/AnimationPlayer.speed_scale = 3
 
 
 func _process(delta):
@@ -21,7 +20,6 @@ func _process(delta):
 
 
 func _bend_flower(angle, tension_percent):
-	print("Bend flower angle :", angle)
 	anim.set("parameters/Bend_Blend/blend_amount", tension_percent)
 	rotation = Vector3(0, -angle + (PI / 2), 0)
 	flower_top.rotation = Vector3(0, angle, 0)
@@ -30,3 +28,15 @@ func _bend_flower(angle, tension_percent):
 func _flick_flower():
 	anim.set("parameters/Bend_Blend/blend_amount", 0.0)
 	anim.set("parameters/OneShot/request", 1)
+
+
+func _return_top_pos_rot() -> Array:
+	var result = [Vector3.ZERO, Vector3.ZERO]
+	result[0] = head.get_position()
+	result[1] = head.get_rotation()
+	return result
+
+
+func _return_trace() -> Node3D:
+	var result = $Head/Flower_Top/Trace
+	return result

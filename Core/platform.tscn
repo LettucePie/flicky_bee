@@ -28,4 +28,4 @@ mesh = SubResource("CylinderMesh_oigm2")
 skeleton = NodePath("")
 
 [node name="Flick_Flower" parent="." instance=ExtResource("2_n0h51")]
-transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 0, 0, 0)
+transform = Transform3D(0.48, 0, 0, 0, 0.48, 0, 0, 0, 0.48, 0, 0, 0)
