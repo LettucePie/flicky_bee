@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://djb5of7bwcp00"]
+
+[ext_resource type="Script" path="res://Core/Obstacles/frog.gd" id="1_evudc"]
+[ext_resource type="PackedScene" uid="uid://c01xvhdcfwgon" path="res://Core/Art/Frog.glb" id="1_unsbo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0djic"]
+size = Vector3(16.2456, 7.98823, 1)
+
+[sub_resource type="Curve3D" id="Curve3D_tbjkw"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 6.2, -4, 2.08165e-12, 0, 0, 0, 0, 0, 0, -6.2, 2.08165e-12, 2.08165e-12),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="Frog" type="Node3D"]
+script = ExtResource("1_evudc")
+
+[node name="Frog" parent="." instance=ExtResource("1_unsbo")]
+transform = Transform3D(-2.18557e-08, 1.74393e-16, 0.5, 1.74393e-16, 0.5, -1.74393e-16, -0.5, 1.74393e-16, -2.18557e-08, 6.2, -4.2, 2.08165e-12)
+
+[node name="Skeleton3D" parent="Frog/Armature" index="0"]
+bones/0/position = Vector3(-2.02582e-16, -0.876406, 1.46541)
+bones/2/position = Vector3(1.60101, 1.30745, 0.122708)
+bones/2/rotation = Quaternion(-0.379554, 0.407381, -0.73311, 0.39055)
+bones/3/rotation = Quaternion(-0.167543, 0.0929228, 0.337825, 0.921503)
+bones/4/rotation = Quaternion(-0.269467, 0.267638, -0.262762, 0.886969)
+bones/5/position = Vector3(-1.60101, 1.30745, 0.122708)
+bones/5/rotation = Quaternion(-0.379554, -0.407381, 0.73311, 0.39055)
+bones/6/rotation = Quaternion(-0.167543, -0.0929228, -0.337825, 0.921503)
+bones/7/rotation = Quaternion(-0.269467, -0.267638, 0.262762, 0.886969)
+bones/8/rotation = Quaternion(-0.148808, -0.163883, -0.864062, 0.452102)
+bones/9/rotation = Quaternion(-0.0466508, 0.183528, 0.667107, 0.720493)
+bones/10/rotation = Quaternion(2.50844e-08, 7.94035e-09, -0.923745, 0.383008)
+bones/11/rotation = Quaternion(-0.000968384, -0.214873, 0.92511, 0.313049)
+bones/12/rotation = Quaternion(-0.148808, 0.163883, 0.864062, 0.452102)
+bones/13/rotation = Quaternion(-0.0466508, -0.183528, -0.667107, 0.720493)
+bones/14/rotation = Quaternion(3.36829e-08, -1.26016e-08, 0.923745, 0.383008)
+bones/15/rotation = Quaternion(-0.000968388, 0.214873, -0.92511, 0.313049)
+
+[node name="AnimationPlayer" parent="Frog" index="1"]
+next/Lunge = &"Idle"
+
+[node name="Lunge" type="Timer" parent="."]
+
+[node name="Tongue" type="Node3D" parent="."]
+
+[node name="Area3D" type="Area3D" parent="Tongue"]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tongue/Area3D"]
+shape = SubResource("BoxShape3D_0djic")
+
+[node name="Path3D" type="Path3D" parent="Tongue"]
+curve = SubResource("Curve3D_tbjkw")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Tongue"]
+polygon = PackedVector2Array()
+mode = 2
+path_node = NodePath("../Path3D")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+
+[connection signal="timeout" from="Lunge" to="." method="_on_lunge_timeout"]
+[connection signal="body_entered" from="Tongue/Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Tongue/Area3D" to="." method="_on_area_3d_body_exited"]
+
+[editable path="Frog"]
