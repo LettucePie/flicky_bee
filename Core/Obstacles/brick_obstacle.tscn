@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://brb7iqcfth4s4"]
+[gd_scene load_steps=7 format=3 uid="uid://ddlk84p0x8jfw"]
 
-[ext_resource type="Script" path="res://Core/brick_obstacle.gd" id="1_1hnuq"]
+[ext_resource type="Script" path="res://Core/Obstacles/brick_obstacle.gd" id="1_1hnuq"]
 [ext_resource type="ArrayMesh" uid="uid://gu0u5inefbr" path="res://Core/Art/Meshes/SolidBrick_Mesh.res" id="1_on1bu"]
 [ext_resource type="Material" uid="uid://diu8iw1jolduj" path="res://Core/Art/Materials/BrickMat1.tres" id="2_853y6"]
 [ext_resource type="Material" uid="uid://pnjngj1dumlx" path="res://Core/Art/Materials/BrickMat2.tres" id="3_1q4d7"]

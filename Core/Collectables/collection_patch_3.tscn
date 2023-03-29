@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://t2jgidyqrgm4"]
+[gd_scene load_steps=2 format=3]
 
-[ext_resource type="PackedScene" uid="uid://bgr1iyupwcr8w" path="res://Core/honey_comb.tscn" id="1_btnwi"]
+[ext_resource type="PackedScene" uid="uid://bgr1iyupwcr8w" path="res://Core/Collectables/honey_comb.tscn" id="1_btnwi"]
 
 [node name="CollectionPatch_3" type="Node3D"]
 

@@ -5,6 +5,7 @@ class_name Player
 signal finished_travel(platform)
 signal flick_depleted()
 signal collected(obj)
+signal hit()
 
 @export var flick_acc_curve : Curve
 
@@ -12,6 +13,7 @@ signal collected(obj)
 @export var jar_sound: AudioStreamWAV
 @export var wing_sound : AudioStreamWAV
 @export var flower_sound : AudioStreamWAV
+@export var hit_sound : AudioStreamWAV
 
 @export var anim_lib : AnimationLibrary
 @onready var anim = $Turn/Bee/AnimationPlayer
@@ -76,6 +78,7 @@ func _physics_process(delta):
 				fly_target_force = 0.2
 				if anim.current_animation != "Base/Fly":
 					anim.play("Base/Fly")
+					bee_object.set_rotation(Vector3(0, PI * -0.5, 0))
 				if !$Buzz.playing:
 					$Buzz.playing = true
 			self.set_position(pos)
@@ -89,6 +92,7 @@ func _physics_process(delta):
 				fly_target_force = 0.2
 				if anim.current_animation != "Base/Fly":
 					anim.play("Base/Fly")
+					bee_object.set_rotation(Vector3(0, PI * -0.5, 0))
 				if !$Buzz.playing:
 					$Buzz.playing = true
 #	else:
@@ -106,6 +110,12 @@ func _physics_process(delta):
 	self.set_position(pos)
 
 
+func _hit() -> void:
+	$Pickup.set_stream(hit_sound)
+	$Pickup.play()
+	emit_signal("hit")
+
+
 func _die() -> void:
 	print("Player Dying")
 	self.queue_free()
@@ -116,6 +126,8 @@ func _flick_to(target : Vector3) -> void:
 	bee_object.get_parent().remove_child(bee_object)
 	$Turn.add_child(bee_object)
 	bee_object.set_rotation(Vector3(0, PI * -0.5, 0))
+	if anim.current_animation != "Base/Fly":
+		anim.play("Base/Flick")
 	flick_target = target
 	start_point = self.get_position()
 	flick_target.y = start_point.y
@@ -129,7 +141,7 @@ func _flick_to(target : Vector3) -> void:
 	_point_forward(fly_dir)
 
 
-func _fly_to(direction : Vector3, flight : float) -> void:
+func _fly_to(direction : Vector3, flight : float, tension : float) -> void:
 	flown = true
 	fly_target_force = 0.2
 	if flight > 0.0:
@@ -142,6 +154,7 @@ func _fly_to(direction : Vector3, flight : float) -> void:
 	_point_forward(fly_dir)
 	if anim.current_animation != "Base/Fly":
 		anim.play("Base/Fly")
+		bee_object.set_rotation(Vector3(0, PI * -0.5, 0))
 	if !$Buzz.playing:
 		$Buzz.playing = true
 
@@ -193,9 +206,6 @@ func _landed(area) -> void:
 	$Turn.remove_child(bee_object)
 	current_flower._return_trace().add_child(bee_object)
 	bee_object.set_rotation(Vector3.ZERO)
-#	get_parent().remove_child(self)
-#	current_flower._return_trace().add_child(self)
-#	self.set_position(Vector3.ZERO)
 	platform_count += 1
 	speed = 0
 	flicked = false

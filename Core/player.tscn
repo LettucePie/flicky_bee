@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://byv8nd4kxpkro"]
+[gd_scene load_steps=17 format=3 uid="uid://byv8nd4kxpkro"]
 
 [ext_resource type="Script" path="res://Core/player.gd" id="1_igtm3"]
 [ext_resource type="AudioStream" uid="uid://4pxv5abssbnd" path="res://Core/Sound/Pickup_Honey.wav" id="2_4u6o7"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://dknybi874y4on" path="res://Core/Sound/Flower_Land.wav" id="5_um41a"]
 [ext_resource type="AnimationLibrary" uid="uid://c1ugy47v2irx5" path="res://Core/Art/Animations/Bee/Bee_Library.res" id="6_8bfam"]
 [ext_resource type="PackedScene" uid="uid://b6o2j1lylqq4o" path="res://Core/Art/Bee.glb" id="7_kt7jm"]
+[ext_resource type="AudioStream" uid="uid://cyoxxegt438fo" path="res://Core/Sound/Hit.wav" id="7_m1bdf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jkrjm"]
 albedo_color = Color(0, 0.0117647, 1, 1)
@@ -35,6 +36,7 @@ honey_sound = ExtResource("2_4u6o7")
 jar_sound = ExtResource("3_d0pwn")
 wing_sound = ExtResource("4_3cdhx")
 flower_sound = ExtResource("5_um41a")
+hit_sound = ExtResource("7_m1bdf")
 anim_lib = ExtResource("6_8bfam")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

@@ -1,8 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://xmhllfh46po8"]
+[gd_scene load_steps=17 format=3 uid="uid://xmhllfh46po8"]
 
 [ext_resource type="Script" path="res://Core/flick_flower.gd" id="1_lqgyg"]
-[ext_resource type="PackedScene" uid="uid://x8ewpeksibhk" path="res://Core/Art/Flower_Top.glb" id="2_gsx71"]
-[ext_resource type="PackedScene" uid="uid://jrp7t6oqfuo7" path="res://Core/Art/Flower_Stem.glb" id="3_bakby"]
+[ext_resource type="PackedScene" uid="uid://bvhbolcbybudr" path="res://Core/Art/Flower_Top.glb" id="2_gsx71"]
+[ext_resource type="PackedScene" uid="uid://cad7c5a5c27x4" path="res://Core/Art/Flower_Stem.glb" id="3_bakby"]
 [ext_resource type="Animation" uid="uid://cr3tqn1wapomx" path="res://Core/Art/Animations/Flower_Stem/flower_stem_bend_anim.res" id="4_hi2b5"]
 [ext_resource type="Animation" uid="uid://cd7es0bxc38od" path="res://Core/Art/Animations/Flower_Stem/flower_stem_ripple_anim.res" id="5_i6twq"]
 
@@ -37,13 +37,6 @@ nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_mhs7u")
 nodes/TimeScale/position = Vector2(570, 110)
 nodes/output/position = Vector2(730, 130)
 node_connections = [&"output", 0, &"TimeScale", &"Bend_Blend", 0, &"Still", &"Bend_Blend", 1, &"Bend", &"OneShot", 0, &"Bend_Blend", &"OneShot", 1, &"Ripple", &"TimeScale", 0, &"OneShot"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u0lxc"]
-albedo_color = Color(1, 0, 0, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_v0g6m"]
-material = SubResource("StandardMaterial3D_u0lxc")
-size = Vector3(0.1, 0.4, 0.1)
 
 [sub_resource type="Animation" id="Animation_3ov2b"]
 resource_name = "Base"
@@ -138,9 +131,8 @@ parameters/TimeScale/scale = 2.0
 [node name="Flower_Top" parent="Head" instance=ExtResource("2_gsx71")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00216563, 0, 0.00463634)
 
-[node name="Trace" type="MeshInstance3D" parent="Head/Flower_Top"]
+[node name="Trace" type="Node3D" parent="Head/Flower_Top"]
 transform = Transform3D(1.62, 0, 0, 0, 1.62, 0, 0, 0, 1.62, 0, 0.37069, 0)
-mesh = SubResource("BoxMesh_v0g6m")
 
 [node name="Flower_Stem" parent="." instance=ExtResource("3_bakby")]
 

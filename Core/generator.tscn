@@ -1,22 +1,23 @@
-[gd_scene load_steps=12 format=3 uid="uid://cabm53a6wssti"]
+[gd_scene load_steps=13 format=3 uid="uid://2gkm2rsvmoiy"]
 
 [ext_resource type="Script" path="res://Core/generator.gd" id="1_govy5"]
 [ext_resource type="PackedScene" uid="uid://binixehfbq4hi" path="res://Core/platform.tscn" id="2_47aoa"]
-[ext_resource type="PackedScene" uid="uid://cux3a618t32qi" path="res://Core/Obstacles/brick_pattern_1.tscn" id="3_wpdg5"]
-[ext_resource type="PackedScene" uid="uid://k80f0637j1qu" path="res://Core/collection_patch_1.tscn" id="4_6ihs4"]
-[ext_resource type="PackedScene" uid="uid://bdi636boudohc" path="res://Core/Obstacles/brick_pattern_2.tscn" id="4_ilki3"]
-[ext_resource type="PackedScene" uid="uid://mbuajppf2uh8" path="res://Core/collection_patch_2.tscn" id="5_16ejx"]
-[ext_resource type="PackedScene" uid="uid://u3g8phb3urp8" path="res://Core/Obstacles/brick_pattern_3.tscn" id="5_bxuv1"]
-[ext_resource type="PackedScene" uid="uid://t2jgidyqrgm4" path="res://Core/collection_patch_3.tscn" id="6_rtqgm"]
-[ext_resource type="PackedScene" uid="uid://bc2fqva8urgmm" path="res://Core/collection_patch_4.tscn" id="7_d0w2r"]
-[ext_resource type="PackedScene" uid="uid://xu70yi6aem2m" path="res://Core/collection_patch_jar_1.tscn" id="8_gmsqb"]
-[ext_resource type="PackedScene" uid="uid://g0wnk3bbmql8" path="res://Core/collection_patch_wing_1.tscn" id="9_hvaae"]
+[ext_resource type="PackedScene" path="res://Core/Obstacles/brick_pattern_1.tscn" id="3_wpdg5"]
+[ext_resource type="PackedScene" path="res://Core/Obstacles/brick_pattern_2.tscn" id="4_ilki3"]
+[ext_resource type="PackedScene" path="res://Core/Obstacles/brick_pattern_3.tscn" id="5_bxuv1"]
+[ext_resource type="PackedScene" uid="uid://djb5of7bwcp00" path="res://Core/Obstacles/frog.tscn" id="6_0ilmg"]
+[ext_resource type="PackedScene" path="res://Core/Collectables/collection_patch_1.tscn" id="7_v1ynf"]
+[ext_resource type="PackedScene" path="res://Core/Collectables/collection_patch_2.tscn" id="8_l56k5"]
+[ext_resource type="PackedScene" path="res://Core/Collectables/collection_patch_3.tscn" id="9_5cfgi"]
+[ext_resource type="PackedScene" path="res://Core/Collectables/collection_patch_4.tscn" id="10_movi4"]
+[ext_resource type="PackedScene" path="res://Core/Collectables/collection_patch_jar_1.tscn" id="11_w2wr3"]
+[ext_resource type="PackedScene" path="res://Core/Collectables/collection_patch_wing_1.tscn" id="12_1ycrh"]
 
 [node name="Generator" type="Node3D"]
 script = ExtResource("1_govy5")
 platform_scene = ExtResource("2_47aoa")
-obstacle_scenes = Array[PackedScene]([ExtResource("3_wpdg5"), ExtResource("4_ilki3"), ExtResource("5_bxuv1")])
-collection_patches = Array[PackedScene]([ExtResource("4_6ihs4"), ExtResource("5_16ejx"), ExtResource("6_rtqgm"), ExtResource("7_d0w2r"), ExtResource("4_6ihs4"), ExtResource("5_16ejx"), ExtResource("6_rtqgm"), ExtResource("7_d0w2r"), ExtResource("8_gmsqb"), ExtResource("9_hvaae")])
+obstacle_scenes = Array[PackedScene]([ExtResource("3_wpdg5"), ExtResource("4_ilki3"), ExtResource("5_bxuv1"), ExtResource("6_0ilmg")])
+collection_patches = Array[PackedScene]([ExtResource("7_v1ynf"), ExtResource("8_l56k5"), ExtResource("9_5cfgi"), ExtResource("10_movi4"), ExtResource("7_v1ynf"), ExtResource("8_l56k5"), ExtResource("9_5cfgi"), ExtResource("10_movi4"), ExtResource("11_w2wr3"), ExtResource("12_1ycrh")])
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.937002, 0.189498, 0.293459, -0.349324, 0.508296, 0.787152, 0, -0.840075, 0.542471, 0, 0, 0)

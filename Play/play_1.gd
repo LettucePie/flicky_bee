@@ -84,6 +84,7 @@ func _spawn_player() -> void:
 	player.finished_travel.connect(_on_player_finished_travel)
 	player.flick_depleted.connect(_on_player_flick_depleted)
 	player.collected.connect(_on_player_collect)
+	player.hit.connect(_on_player_hit)
 	current_platform = $Generator.starting_platform
 	current_flower = current_platform._return_flower()
 	player.set_position(current_platform.get_position())
@@ -209,14 +210,19 @@ func _process_drag(event : InputEventMouseMotion) -> void:
 				current_flower._bend_flower(0, 0.0)
 	else:
 		var dir_3d = Vector3(direction.x, 0.0, direction.y)
+		tension = clamp(
+			touch_start.distance_to(event.position),
+			0,
+			max_dimension.y * 0.2
+			)
 		if player != null:
-			player._fly_to(dir_3d, flight)
+			player._fly_to(dir_3d, flight, tension)
 			flying = true
 		$Knob_Visual._update_target_point(event.position)
 
 
 func _physics_process(delta):
-	if flying:
+	if flying and touching:
 		flight = clamp(
 			flight - (delta * 2),
 			0.0,
@@ -296,6 +302,12 @@ func _on_player_collect(obj) -> void:
 		flight = clamp(flight + 2.0, 0.0, flight_reserve)
 	platform_score += difference
 	$HUD._update_score(difference, platform_score)
+
+
+func _on_player_hit():
+	print("Player Hit")
+	time = clamp(time - 2.5, 0.0, life_time)
+	$Life_Timer.start(time)
 
 
 func _on_life_timer_timeout():
