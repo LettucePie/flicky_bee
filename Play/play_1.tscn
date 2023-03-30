@@ -77,6 +77,7 @@ visible = false
 stream = ExtResource("8_hw42c")
 volume_db = -20.0
 autoplay = true
+bus = &"Music"
 
 [node name="Grass_Patch1" parent="." instance=ExtResource("8_r0s2t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -5, 60)

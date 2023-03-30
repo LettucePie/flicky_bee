@@ -199,10 +199,6 @@ func _process_drag(event : InputEventMouseMotion) -> void:
 				var angle = touch_start.angle_to_point(event.position)
 				var percent = tension / (max_dimension.y * 0.4)
 				current_flower._bend_flower(angle, percent)
-#				var flower_tran = current_flower._return_top_pos_rot()
-#				player.set_position(flower_tran[0])
-#				player.set_position($Generator.to_global(flower_tran[0]))
-#				player.set_rotation(flower_tran[1])
 		else:
 			flick_valid = false
 			$Arc_Visual._cancel()
@@ -333,4 +329,5 @@ func _on_top_detect_area_entered(area):
 
 
 func _on_hud_play_again():
+	get_tree().reload_current_scene()
 	_setup()

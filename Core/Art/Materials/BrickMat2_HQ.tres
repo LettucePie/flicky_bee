@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://daoph1iwyakif"]
+
+[ext_resource type="Texture2D" uid="uid://c60yr7vm6l6bi" path="res://Core/Art/Textures/Brick_Texture_2.png" id="1_xwcg1"]
+[ext_resource type="Texture2D" uid="uid://b6cp8cmnu1ah2" path="res://Core/Art/Textures/Brick_Texture_2_Normal.png" id="2_pgp0r"]
+
+[resource]
+resource_name = "Brick_Mat_3"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.803922, 0.803922, 0.803922, 1)
+albedo_texture = ExtResource("1_xwcg1")
+normal_enabled = true
+normal_texture = ExtResource("2_pgp0r")

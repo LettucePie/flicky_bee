@@ -1,18 +1,21 @@
-[gd_scene load_steps=16 format=3 uid="uid://dys2nli2rglts"]
+[gd_scene load_steps=21 format=3 uid="uid://dys2nli2rglts"]
 
 [ext_resource type="Script" path="res://UI/hud.gd" id="1_w0mb1"]
-[ext_resource type="Texture2D" uid="uid://c70pddiw8484q" path="res://UI/Art/Right_Meter_Crop_Bar.png" id="2_38r82"]
-[ext_resource type="Texture2D" uid="uid://cgpjr5rc8bg2k" path="res://UI/Art/Right_Meter_Crop_Overlay.png" id="3_hvlpn"]
-[ext_resource type="Texture2D" uid="uid://b4slce1knnlv6" path="res://UI/Art/Right_Meter_Fill.png" id="3_rko4g"]
-[ext_resource type="Texture2D" uid="uid://r55yevnpngp5" path="res://UI/Art/Center_Dock.png" id="4_4x2ru"]
-[ext_resource type="Texture2D" uid="uid://bg07mt13wamjw" path="res://UI/Art/Left_Meter_Bar.png" id="4_m5gb1"]
-[ext_resource type="Texture2D" uid="uid://utmcqoh3ovsa" path="res://UI/Art/Health_Jar.png" id="4_xo1nj"]
-[ext_resource type="Texture2D" uid="uid://cogp8hvo1ekpw" path="res://UI/Art/Left_Meter_Overlay.png" id="5_gfkuu"]
-[ext_resource type="Texture2D" uid="uid://cqig84r7pptrl" path="res://UI/Art/Left_Meter_Fill.png" id="7_haw5s"]
-[ext_resource type="Texture2D" uid="uid://0ebgon3by8mc" path="res://UI/Art/Wings.png" id="7_pajgt"]
+[ext_resource type="Texture2D" uid="uid://cfajjpirygua1" path="res://UI/Art/Right_Meter_Crop_Bar.png" id="2_38r82"]
+[ext_resource type="Texture2D" uid="uid://b7ydqnwwm063m" path="res://UI/Art/Right_Meter_Crop_Overlay.png" id="3_hvlpn"]
+[ext_resource type="Texture2D" uid="uid://jhr114j0cjwr" path="res://UI/Art/Right_Meter_Fill.png" id="3_rko4g"]
+[ext_resource type="Texture2D" uid="uid://vgrm143lim14" path="res://UI/Art/Center_Dock.png" id="4_4x2ru"]
+[ext_resource type="Texture2D" uid="uid://wklap3wpdmkv" path="res://UI/Art/Left_Meter_Bar.png" id="4_m5gb1"]
+[ext_resource type="Texture2D" uid="uid://deevpp4sj5p7x" path="res://UI/Art/Health_Jar.png" id="4_xo1nj"]
+[ext_resource type="Texture2D" uid="uid://dow8jvmk52bs2" path="res://UI/Art/Left_Meter_Overlay.png" id="5_gfkuu"]
+[ext_resource type="Texture2D" uid="uid://dq1dyjkhs67jg" path="res://UI/Art/Left_Meter_Fill.png" id="7_haw5s"]
+[ext_resource type="Texture2D" uid="uid://bjydtlkxydyf6" path="res://UI/Art/Wings.png" id="7_pajgt"]
 [ext_resource type="LabelSettings" uid="uid://ban0wox1lr7ix" path="res://UI/Label_Setting_Big.tres" id="11_j2abc"]
 [ext_resource type="LabelSettings" uid="uid://d1bmfb6payqdt" path="res://UI/Label_Setting_Small.tres" id="12_ag375"]
 [ext_resource type="PackedScene" uid="uid://cy60dhgo0wcen" path="res://UI/score_pop.tscn" id="13_yn6dh"]
+[ext_resource type="PackedScene" uid="uid://cqxrcyiqso6wa" path="res://UI/help.tscn" id="14_4qtx5"]
+[ext_resource type="Texture2D" uid="uid://p6dnr7aujcvq" path="res://UI/Art/Toggle_On.png" id="14_nln0h"]
+[ext_resource type="Texture2D" uid="uid://bepny1oog33df" path="res://UI/Art/Toggle_Off.png" id="15_tj0bk"]
 
 [sub_resource type="SystemFont" id="SystemFont_uigy6"]
 subpixel_positioning = 0
@@ -20,6 +23,16 @@ subpixel_positioning = 0
 [sub_resource type="LabelSettings" id="LabelSettings_fhcay"]
 font = SubResource("SystemFont_uigy6")
 font_size = 24
+outline_size = 10
+outline_color = Color(0.227451, 0.223529, 0, 1)
+shadow_size = 13
+shadow_color = Color(0, 0, 0, 0.780392)
+
+[sub_resource type="SystemFont" id="SystemFont_vycr6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1aupl"]
+font = SubResource("SystemFont_vycr6")
+font_size = 42
 outline_size = 10
 outline_color = Color(0.227451, 0.223529, 0, 1)
 shadow_size = 13
@@ -337,31 +350,59 @@ autowrap_mode = 2
 [node name="Label2" type="Label" parent="Intro/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Thanks for checking out my submission to Mini Jam 128 : Health
+text = "Thanks for checking out my submission to Improve My Game Jam 26!
 
-Touch/Click and Drag from a flower to \"Flick\".
-Touch/Click and Drag from the air to \"Fly\".
+This was originally submitted to Mini Jam 128 : Health
 
-On the Right is your health meter, and the left is your flight meter."
-label_settings = ExtResource("12_ag375")
+On the Right is your health meter, and the Left is your flight meter. Keep healthy by avoiding frogs, collecting honey, and landing on flowers!"
+label_settings = SubResource("LabelSettings_1aupl")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="CheckButton" type="CheckButton" parent="Intro/VBoxContainer"]
-visible = false
+[node name="HBoxContainer" type="HBoxContainer" parent="Intro/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 50
-text = "Mute"
 alignment = 1
 
-[node name="Continue" type="Button" parent="Intro/VBoxContainer"]
-custom_minimum_size = Vector2(2.08165e-12, 400)
+[node name="Help" type="Button" parent="Intro/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(400, 200)
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 50
-text = "Continue"
+text = "Help
+"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Intro/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Music" type="CheckButton" parent="Intro/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 40
+theme_override_icons/checked = ExtResource("14_nln0h")
+theme_override_icons/unchecked = ExtResource("15_tj0bk")
+button_pressed = true
+text = "Music"
+
+[node name="SFX" type="CheckButton" parent="Intro/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 40
+theme_override_icons/checked = ExtResource("14_nln0h")
+theme_override_icons/unchecked = ExtResource("15_tj0bk")
+button_pressed = true
+text = "SFX"
+
+[node name="Continue" type="Button" parent="Intro/VBoxContainer"]
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 50
+text = "Start"
 
 [node name="Label3" type="Label" parent="Intro/VBoxContainer"]
 layout_mode = 2
@@ -372,5 +413,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="Help" parent="." instance=ExtResource("14_4qtx5")]
+visible = false
+z_index = 3
+layout_mode = 1
+
 [connection signal="pressed" from="TryAgain/VBoxContainer/PlayAgain" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="Intro/VBoxContainer/HBoxContainer/Help" to="." method="_on_help_pressed"]
+[connection signal="toggled" from="Intro/VBoxContainer/HBoxContainer/VBoxContainer/Music" to="." method="_on_music_toggled"]
+[connection signal="toggled" from="Intro/VBoxContainer/HBoxContainer/VBoxContainer/SFX" to="." method="_on_sfx_toggled"]
 [connection signal="pressed" from="Intro/VBoxContainer/Continue" to="." method="_on_continue_pressed"]

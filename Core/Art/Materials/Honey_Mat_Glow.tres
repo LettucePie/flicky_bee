@@ -10,4 +10,3 @@ emission_enabled = true
 emission = Color(1, 0.709804, 0, 1)
 clearcoat = 0.59
 clearcoat_roughness = 0.23
-refraction_enabled = true

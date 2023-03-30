@@ -17,10 +17,12 @@ var score : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Help.hide()
 	hp_bar = $Health_Meter/HealthBar
 	fly_bar = $Flight_Meter/FlyBar
 	_update_score(0, 0)
 	_setup()
+#	print(AudioServer.get_bus_index("Music"), " ", AudioServer.get_bus_index("SFX"))
 
 
 func _setup() -> void:
@@ -77,3 +79,23 @@ func _on_play_again_pressed():
 
 func _on_continue_pressed():
 	$Intro.hide()
+
+
+func _on_help_pressed():
+	print("Showing Help")
+	$Help.show()
+	$Help._ready()
+
+
+func _on_music_toggled(button_pressed):
+	var value = linear_to_db(0.0)
+	if button_pressed:
+		value = linear_to_db(1.0)
+	AudioServer.set_bus_volume_db(1, value)
+
+
+func _on_sfx_toggled(button_pressed):
+	var value = linear_to_db(0.0)
+	if button_pressed:
+		value = linear_to_db(1.0)
+	AudioServer.set_bus_volume_db(2, value)
