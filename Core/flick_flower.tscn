@@ -1,8 +1,8 @@
 [gd_scene load_steps=17 format=3 uid="uid://xmhllfh46po8"]
 
 [ext_resource type="Script" path="res://Core/flick_flower.gd" id="1_lqgyg"]
-[ext_resource type="PackedScene" uid="uid://bvhbolcbybudr" path="res://Core/Art/Flower_Top.glb" id="2_gsx71"]
-[ext_resource type="PackedScene" uid="uid://cad7c5a5c27x4" path="res://Core/Art/Flower_Stem.glb" id="3_bakby"]
+[ext_resource type="PackedScene" uid="uid://bwe6pabvdqm0q" path="res://Core/Art/Flower_Top.glb" id="2_gsx71"]
+[ext_resource type="PackedScene" uid="uid://0aytvpwvmt5k" path="res://Core/Art/Flower_Stem.glb" id="3_bakby"]
 [ext_resource type="Animation" uid="uid://cr3tqn1wapomx" path="res://Core/Art/Animations/Flower_Stem/flower_stem_bend_anim.res" id="4_hi2b5"]
 [ext_resource type="Animation" uid="uid://cd7es0bxc38od" path="res://Core/Art/Animations/Flower_Stem/flower_stem_ripple_anim.res" id="5_i6twq"]
 

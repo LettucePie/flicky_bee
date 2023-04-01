@@ -1,6 +1,7 @@
 extends Node3D
 
 @export var lunge_interval = 2.5
+@export var low_tongue_mat : BaseMaterial3D
 @onready var anim = $Frog/AnimationPlayer
 
 var player_present := false
@@ -9,6 +10,9 @@ var player_body : CharacterBody3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if OS.has_feature("web"):
+		print("Web Testing Frog")
+		$Tongue/Tongue/Armature/Skeleton3D/Tongue2.set_surface_override_material(0, low_tongue_mat)
 	player_body = null
 	$Lunge.start(lunge_interval)
 	anim.play("Idle")
@@ -27,8 +31,6 @@ func _snap_tongue() -> void:
 			print("Player Hit by Frog")
 			if player_body.has_method("_hit"):
 				player_body._hit()
-#			if player_body.has_signal("hit"):
-#				player_body.emit_signal("hit")
 
 
 func _on_animation_player_animation_finished(anim_name):

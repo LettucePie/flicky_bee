@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bbtm5xx7ajq0j"]
+
+[resource]
+resource_name = "BeeBlack_Mat"
+cull_mode = 2
+shading_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.103329, 0.103329, 0.103329, 1)

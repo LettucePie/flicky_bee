@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://djb5of7bwcp00"]
+[gd_scene load_steps=8 format=3 uid="uid://djb5of7bwcp00"]
 
 [ext_resource type="Script" path="res://Core/Obstacles/frog.gd" id="1_evudc"]
-[ext_resource type="PackedScene" uid="uid://dpi2wtt6t3tsr" path="res://Core/Art/Frog.glb" id="1_unsbo"]
-[ext_resource type="PackedScene" uid="uid://caua1msw6v2rc" path="res://Core/Art/Tongue.glb" id="3_ymqfk"]
+[ext_resource type="PackedScene" uid="uid://bd504eurghico" path="res://Core/Art/Frog.glb" id="1_unsbo"]
+[ext_resource type="Material" uid="uid://75dlh3evnlr6" path="res://Core/Art/Materials/tongue_mat_LQ.tres" id="3_4dlj2"]
+[ext_resource type="Material" uid="uid://dca0dwykhthw4" path="res://Core/Art/Materials/Frog_Eye_Mat.tres" id="3_blwpy"]
+[ext_resource type="PackedScene" uid="uid://d0m6kuwy2jsty" path="res://Core/Art/Tongue.glb" id="3_ymqfk"]
 [ext_resource type="Material" uid="uid://77esmdfxgfbs" path="res://Core/Art/Materials/tongue_mat.tres" id="4_mjhfo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0djic"]
@@ -10,6 +12,7 @@ size = Vector3(16.2456, 7.98823, 1)
 
 [node name="Frog" type="Node3D"]
 script = ExtResource("1_evudc")
+low_tongue_mat = ExtResource("3_4dlj2")
 
 [node name="Frog" parent="." instance=ExtResource("1_unsbo")]
 transform = Transform3D(-2.18557e-08, 1.74393e-16, 0.5, 1.74393e-16, 0.5, -1.74393e-16, -0.5, 1.74393e-16, -2.18557e-08, 7.02331, -4.2, 2.08165e-12)
@@ -33,8 +36,13 @@ bones/13/rotation = Quaternion(-0.0466508, -0.183528, -0.667107, 0.720493)
 bones/14/rotation = Quaternion(3.36829e-08, -1.26016e-08, 0.923745, 0.383008)
 bones/15/rotation = Quaternion(-0.000968388, 0.214873, -0.92511, 0.313049)
 
-[node name="AnimationPlayer" parent="Frog" index="1"]
-next/Lunge = &"Idle"
+[node name="EyeL" parent="Frog/Armature/Skeleton3D" index="0"]
+gi_mode = 0
+surface_material_override/0 = ExtResource("3_blwpy")
+
+[node name="EyeL001" parent="Frog/Armature/Skeleton3D" index="1"]
+gi_mode = 0
+surface_material_override/0 = ExtResource("3_blwpy")
 
 [node name="Lunge" type="Timer" parent="."]
 

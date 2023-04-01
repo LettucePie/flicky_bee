@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://ddlk84p0x8jfw"]
+[gd_scene load_steps=10 format=3 uid="uid://ddlk84p0x8jfw"]
 
 [ext_resource type="Script" path="res://Core/Obstacles/brick_obstacle.gd" id="1_1hnuq"]
 [ext_resource type="ArrayMesh" uid="uid://gu0u5inefbr" path="res://Core/Art/Meshes/SolidBrick_Mesh.res" id="1_on1bu"]
 [ext_resource type="Material" uid="uid://diu8iw1jolduj" path="res://Core/Art/Materials/BrickMat1.tres" id="2_853y6"]
+[ext_resource type="Material" uid="uid://c16d4076r1vka" path="res://Core/Art/Materials/BrickMat1_HQ.tres" id="2_loqx6"]
 [ext_resource type="Material" uid="uid://pnjngj1dumlx" path="res://Core/Art/Materials/BrickMat2.tres" id="3_1q4d7"]
+[ext_resource type="Material" uid="uid://daoph1iwyakif" path="res://Core/Art/Materials/BrickMat2_HQ.tres" id="3_61rxq"]
+[ext_resource type="Material" uid="uid://l3d6ggl6dsfb" path="res://Core/Art/Materials/BrickMat3_HQ.tres" id="4_rahf8"]
 [ext_resource type="Material" uid="uid://b3u67m0yx13w5" path="res://Core/Art/Materials/BrickMat3.tres" id="4_xkhss"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_naj6s"]
@@ -12,7 +15,8 @@ size = Vector3(10.2084, 5.08748, 3.63976)
 [node name="Brick_Obstacle" type="StaticBody3D"]
 collision_mask = 3
 script = ExtResource("1_1hnuq")
-materials = Array[BaseMaterial3D]([ExtResource("2_853y6"), ExtResource("3_1q4d7"), ExtResource("4_xkhss")])
+materials = Array[BaseMaterial3D]([ExtResource("2_loqx6"), ExtResource("3_61rxq"), ExtResource("4_rahf8")])
+materials_low = Array[BaseMaterial3D]([ExtResource("2_853y6"), ExtResource("3_1q4d7"), ExtResource("4_xkhss")])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_naj6s")

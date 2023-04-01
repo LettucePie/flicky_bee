@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dq8jhg1xdkrwf"]
 
 [ext_resource type="Script" path="res://Core/Collectables/Collectable.gd" id="1_21g22"]
-[ext_resource type="PackedScene" uid="uid://solnysv8kufo" path="res://Core/Art/Jar.glb" id="2_70b1o"]
+[ext_resource type="PackedScene" uid="uid://ddjof0gg7rdjd" path="res://Core/Art/Jar.glb" id="2_70b1o"]
 [ext_resource type="Material" uid="uid://dkt8jfih4ah4y" path="res://Core/Art/Materials/Honey_Mat.tres" id="3_y4lny"]
 
 [sub_resource type="Animation" id="Animation_7rh3i"]

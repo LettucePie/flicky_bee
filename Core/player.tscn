@@ -1,16 +1,15 @@
-[gd_scene load_steps=17 format=3 uid="uid://byv8nd4kxpkro"]
+[gd_scene load_steps=16 format=3 uid="uid://byv8nd4kxpkro"]
 
 [ext_resource type="Script" path="res://Core/player.gd" id="1_igtm3"]
-[ext_resource type="AudioStream" uid="uid://poecenimu5ft" path="res://Core/Sound/Pickup_Honey.wav" id="2_4u6o7"]
+[ext_resource type="AudioStream" uid="uid://dvi65b4n35yoj" path="res://Core/Sound/Pickup_Honey.wav" id="2_4u6o7"]
 [ext_resource type="Curve" uid="uid://dgwlo3h2c16iw" path="res://Core/player_flick_acc_curve.tres" id="2_6vkyy"]
-[ext_resource type="PackedScene" uid="uid://oqjp30b3a1qp" path="res://Core/Art/Bee_Static.glb" id="2_rb71e"]
-[ext_resource type="AudioStream" uid="uid://ctv32igj5lfyl" path="res://Core/Sound/Pickup_Jar.wav" id="3_d0pwn"]
-[ext_resource type="AudioStream" uid="uid://d2qfbvdba6b2m" path="res://Core/Sound/Buzz.wav" id="3_gfl7y"]
-[ext_resource type="AudioStream" uid="uid://bjpsxfn7hmomt" path="res://Core/Sound/Pickup_Wing.wav" id="4_3cdhx"]
-[ext_resource type="AudioStream" uid="uid://dn5ao0pqeucm2" path="res://Core/Sound/Flower_Land.wav" id="5_um41a"]
+[ext_resource type="AudioStream" uid="uid://ctvqlmm8i7sq5" path="res://Core/Sound/Pickup_Jar.wav" id="3_d0pwn"]
+[ext_resource type="AudioStream" uid="uid://c6aet1lp3e6sh" path="res://Core/Sound/Buzz.wav" id="3_gfl7y"]
+[ext_resource type="AudioStream" uid="uid://timykrlmwymp" path="res://Core/Sound/Pickup_Wing.wav" id="4_3cdhx"]
+[ext_resource type="AudioStream" uid="uid://tg07otgu681n" path="res://Core/Sound/Flower_Land.wav" id="5_um41a"]
 [ext_resource type="AnimationLibrary" uid="uid://c1ugy47v2irx5" path="res://Core/Art/Animations/Bee/Bee_Library.res" id="6_8bfam"]
-[ext_resource type="PackedScene" uid="uid://d6h1kdavkwrt" path="res://Core/Art/Bee.glb" id="7_kt7jm"]
-[ext_resource type="AudioStream" uid="uid://inkarks2sovm" path="res://Core/Sound/Hit.wav" id="7_m1bdf"]
+[ext_resource type="PackedScene" uid="uid://b3s7d5u4vfo3v" path="res://Core/Art/Bee.glb" id="7_kt7jm"]
+[ext_resource type="AudioStream" uid="uid://c0wrsek7p180i" path="res://Core/Sound/Hit.wav" id="7_m1bdf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jkrjm"]
 albedo_color = Color(0, 0.0117647, 1, 1)
@@ -44,10 +43,6 @@ visible = false
 mesh = SubResource("SphereMesh_5pi4y")
 
 [node name="Turn" type="Node3D" parent="."]
-
-[node name="Bee_Static" parent="Turn" instance=ExtResource("2_rb71e")]
-transform = Transform3D(-1.67938e-08, -1.34003e-16, -0.384197, 1.34003e-16, 0.384197, -1.34003e-16, 0.384197, -1.34003e-16, -1.67938e-08, 0, 0.169138, 0)
-visible = false
 
 [node name="Bee" parent="Turn" instance=ExtResource("7_kt7jm")]
 transform = Transform3D(-1.67852e-08, -1.33934e-16, -0.384, 1.33934e-16, 0.384, -1.33934e-16, 0.384, -1.33934e-16, -1.67852e-08, 0, 0, 0)

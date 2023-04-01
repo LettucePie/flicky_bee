@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://dva61vhl13qsd"]
 
 [ext_resource type="PackedScene" uid="uid://ddlk84p0x8jfw" path="res://Core/Obstacles/brick_obstacle.tscn" id="1_8kr7h"]
-[ext_resource type="PackedScene" path="res://Core/Collectables/collection_patch_4.tscn" id="2_alikt"]
+[ext_resource type="PackedScene" uid="uid://csgnx6hw84lqs" path="res://Core/Collectables/collection_patch_4.tscn" id="2_alikt"]
 [ext_resource type="PackedScene" uid="uid://oeyhy4u6gh8y" path="res://Core/Obstacles/dirt_blob_1.tscn" id="3_6k6kl"]
 
 [node name="Brick_Pattern2" type="Node3D"]

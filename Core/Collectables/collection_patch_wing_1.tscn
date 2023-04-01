@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://bei5i40hikwu6"]
 
-[ext_resource type="PackedScene" uid="uid://bgr1iyupwcr8w" path="res://Core/Collectables/honey_comb.tscn" id="1_lrwvr"]
-[ext_resource type="PackedScene" uid="uid://c2tv84geoh3j3" path="res://Core/Collectables/wing.tscn" id="2_qn1au"]
+[ext_resource type="PackedScene" uid="uid://dl1boh4omjs6s" path="res://Core/Collectables/honey_comb.tscn" id="1_lrwvr"]
+[ext_resource type="PackedScene" uid="uid://ctauvryify3d8" path="res://Core/Collectables/wing.tscn" id="2_qn1au"]
 
 [node name="CollectionPatch_Wing_1" type="Node3D"]
 

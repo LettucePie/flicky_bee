@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://jgdg1uwq2rq6"]
 
 [ext_resource type="Script" path="res://UI/arc_visual.gd" id="1_ntwhv"]
-[ext_resource type="Texture2D" uid="uid://c5s252ekp6rgf" path="res://UI/Art/Target_Ring_Orange.png" id="2_832vd"]
-[ext_resource type="Texture2D" uid="uid://bqy51gujhckdh" path="res://UI/Art/Target_Ring_Red.png" id="3_5n1gk"]
+[ext_resource type="Texture2D" uid="uid://7rrq81wlm2hk" path="res://UI/Art/Target_Ring_Orange.png" id="2_832vd"]
+[ext_resource type="Texture2D" uid="uid://ccbcv3hega83" path="res://UI/Art/Target_Ring_Red.png" id="3_5n1gk"]
 [ext_resource type="Script" path="res://UI/Target.gd" id="3_kvw4q"]
 
 [sub_resource type="Curve" id="Curve_846qp"]

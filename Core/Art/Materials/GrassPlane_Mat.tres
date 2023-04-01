@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://claltjg8fkp3t"]
 
-[ext_resource type="Texture2D" uid="uid://b8toc0qkbj88" path="res://Core/Art/Textures/GrassPatch_Texture.png" id="1_2bqv1"]
+[ext_resource type="Texture2D" uid="uid://cy12t1elhduqt" path="res://Core/Art/Textures/GrassPatch_Texture.png" id="1_2bqv1"]
 
 [resource]
 shading_mode = 2

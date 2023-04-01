@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://ctauvryify3d8"]
 
 [ext_resource type="Script" path="res://Core/Collectables/Collectable.gd" id="1_sltnp"]
-[ext_resource type="PackedScene" uid="uid://c4xsp5qh033vm" path="res://Core/Art/Wings.glb" id="2_wr87k"]
+[ext_resource type="PackedScene" uid="uid://c53g8vww2x2el" path="res://Core/Art/Wings.glb" id="2_wr87k"]
 
 [sub_resource type="Animation" id="Animation_7rh3i"]
 resource_name = "Idle"

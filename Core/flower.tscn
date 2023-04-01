@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://b4dtdihaxeywg"]
 
-[ext_resource type="PackedScene" uid="uid://hgtleqrhhlg5" path="res://Core/Art/Flower_Top.glb" id="1_d6ys1"]
+[ext_resource type="PackedScene" uid="uid://bwe6pabvdqm0q" path="res://Core/Art/Flower_Top.glb" id="1_d6ys1"]
 [ext_resource type="Script" path="res://Core/flower.gd" id="1_f07rl"]
 
 [sub_resource type="Animation" id="Animation_qh8yi"]
