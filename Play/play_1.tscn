@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://jgdg1uwq2rq6" path="res://UI/arc_visual.tscn" id="4_weoh5"]
 [ext_resource type="PackedScene" uid="uid://yxtju6v5sytc" path="res://UI/knob_visual.tscn" id="5_3g4qb"]
 [ext_resource type="PackedScene" uid="uid://dys2nli2rglts" path="res://UI/hud.tscn" id="5_rm8qy"]
-[ext_resource type="AudioStream" uid="uid://deql5taifsiew" path="res://Core/Sound/Song.mp3" id="8_hw42c"]
+[ext_resource type="AudioStream" uid="uid://cny8015p2p0uo" path="res://Core/Sound/Song_2.mp3" id="7_cn5s7"]
 [ext_resource type="PackedScene" uid="uid://5vual8pkwjvk" path="res://Core/grass_patch.tscn" id="8_r0s2t"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_e8o1s"]
@@ -74,7 +74,7 @@ visible = false
 [node name="Rest_Timer" type="Timer" parent="."]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_hw42c")
+stream = ExtResource("7_cn5s7")
 volume_db = -20.0
 autoplay = true
 bus = &"Music"
