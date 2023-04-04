@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://clcg6uqm7ta1x"]
+
+[ext_resource type="PackedScene" uid="uid://vkxuc0yyweyw" path="res://Core/Art/Dragonfly.glb" id="1_85p06"]
+[ext_resource type="Script" path="res://Core/Obstacles/dragonfly.gd" id="1_i2i06"]
+
+[sub_resource type="Curve3D" id="Curve3D_7ui8j"]
+_data = {
+"points": PackedVector3Array(-4.3089, 5.34058e-05, 4.6853, 4.3089, -5.34058e-05, -4.6853, -24.8692, -0.668159, -0.667246, -2.90576, 0.200008, -3.16904, 2.90576, -0.200008, 3.16904, 20.6107, 0.287109, -5.27967, 4.06271, 0, -0.706201, -4.06271, 0, 0.706201, 0.145994, 0.194702, 14.4537, -3.96425, -5.34058e-05, 5.94801, 3.96425, 5.34058e-05, -5.94801, -24.8692, -0.668159, -0.667246),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[node name="Dragonfly" type="Node3D"]
+script = ExtResource("1_i2i06")
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2, 2.08165e-12)
+curve = SubResource("Curve3D_7ui8j")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(0.0297994, -0.0240248, 0.999226, 1.86252e-09, 0.999682, 0.0240352, -0.999488, -0.00071629, 0.0297916, -24.8692, -0.668159, -0.667246)
+
+[node name="Dragonfly" parent="Path3D/PathFollow3D" instance=ExtResource("1_85p06")]
+transform = Transform3D(-0.15, 5.2318e-17, -1.31134e-08, 5.2318e-17, 0.15, -5.2318e-17, 1.31134e-08, -5.2318e-17, -0.15, 0, 0, 0)

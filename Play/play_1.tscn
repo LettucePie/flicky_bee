@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://divwo3i3xqtwj"]
+[gd_scene load_steps=15 format=3 uid="uid://divwo3i3xqtwj"]
 
 [ext_resource type="Script" path="res://Play/play_1.gd" id="1_x43xo"]
 [ext_resource type="PackedScene" uid="uid://byv8nd4kxpkro" path="res://Core/player.tscn" id="2_75ge2"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dys2nli2rglts" path="res://UI/hud.tscn" id="5_rm8qy"]
 [ext_resource type="AudioStream" uid="uid://cny8015p2p0uo" path="res://Core/Sound/Song_2.mp3" id="7_cn5s7"]
 [ext_resource type="PackedScene" uid="uid://5vual8pkwjvk" path="res://Core/grass_patch.tscn" id="8_r0s2t"]
+[ext_resource type="PackedScene" uid="uid://clcg6uqm7ta1x" path="res://Core/Obstacles/dragonfly.tscn" id="9_183s7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_e8o1s"]
 ground_bottom_color = Color(0.0980392, 0.203922, 0.113725, 1)
@@ -52,7 +53,7 @@ visible = false
 mesh = SubResource("BoxMesh_r3t2s")
 
 [node name="Top_Detect" type="Area3D" parent="Camera3D"]
-transform = Transform3D(1, 0, -5.37244e-31, 0, 1, 0, -5.37244e-31, 0, 1, 2.08165e-12, 8, -12.307)
+transform = Transform3D(1, 0, -5.37244e-31, 0, 1, 0, -5.37244e-31, 0, 1, 2.08165e-12, 7, -12.307)
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/Top_Detect"]
@@ -87,6 +88,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -5, 0)
 
 [node name="Grass_Patch3" parent="." instance=ExtResource("8_r0s2t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -5, -60)
+
+[node name="Dragonfly" parent="." instance=ExtResource("9_183s7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, -8.415)
 
 [connection signal="area_entered" from="Camera3D/Bottom_Detect" to="." method="_on_bottom_detect_area_entered"]
 [connection signal="body_entered" from="Camera3D/Bottom_Detect" to="." method="_on_bottom_detect_area_entered"]

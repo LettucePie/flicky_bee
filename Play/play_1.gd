@@ -48,7 +48,7 @@ func _ready():
 
 func _setup():
 	$Generator._clear_platforms()
-	$Generator._generate(200, 0.0)
+	$Generator._generate(20, 0.0)
 	camera_target = Vector3.ZERO
 	_spawn_player()
 	_establish_bounds()
@@ -261,6 +261,12 @@ func _establish_bounds() -> void:
 
 func _on_player_finished_travel(platform):
 	print("Player Finished Travel")
+	if $Generator.platforms.find(platform) >= 5:
+		for i in 4:
+			$Generator.platforms.pop_front().queue_free()
+		var last_platform = $Generator.platforms.back()
+		$Generator._generate(4, last_platform.get_position().z)
+		$Generator._clear_extras(last_platform.get_position().z)
 	current_platform = platform
 	current_flower = current_platform._return_flower()
 	traveling = false

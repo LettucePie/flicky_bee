@@ -2,6 +2,8 @@ extends Node3D
 
 class_name Generator
 
+@export var difficulty_curve : Curve
+@export var max_difficulty := 16.0
 @export var platform_scene : PackedScene
 @export var obstacle_scenes : Array[PackedScene]
 #@export var grass_patch_scene : PackedScene
@@ -37,16 +39,30 @@ func _clear_platforms() -> void:
 	gaps.resize(0)
 
 
+func _clear_extras(point) -> void:
+	pass
+
+
 func _generate(num : int, z_start : float) -> void:
 	if platform_scene != null:
 		var z_point = z_start
 		var z_previous = z_start
-		starting_platform = platform_scene.instantiate()
-		starting_platform.set_position(Vector3(0, 0, z_point))
-		platforms.append(starting_platform)
-		add_child(starting_platform)
+		if platforms.size() == 0:
+			starting_platform = platform_scene.instantiate()
+			starting_platform.set_position(Vector3(0, 0, z_point))
+			platforms.append(starting_platform)
+			add_child(starting_platform)
 		randomize()
-		z_point -= randf_range(6.5, 15.5)
+		var difficulty_progress = difficulty_curve.sample(
+			inverse_lerp(0, 1000, abs(z_point))
+		)
+		var difficulty_skew = clamp(
+			lerp(0.0, max_difficulty, difficulty_progress),
+			0.0,
+			max_difficulty
+		)
+		print(difficulty_skew)
+		z_point -= randf_range(6.5, 6.5 + difficulty_skew)
 		for i in num:
 			var new_plat = platform_scene.instantiate()
 			new_plat.set_position(

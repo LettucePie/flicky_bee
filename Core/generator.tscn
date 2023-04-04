@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://2gkm2rsvmoiy"]
+[gd_scene load_steps=14 format=3 uid="uid://2gkm2rsvmoiy"]
 
 [ext_resource type="Script" path="res://Core/generator.gd" id="1_govy5"]
 [ext_resource type="PackedScene" uid="uid://binixehfbq4hi" path="res://Core/platform.tscn" id="2_47aoa"]
@@ -13,8 +13,13 @@
 [ext_resource type="PackedScene" uid="uid://ck3xxvx2rrhh2" path="res://Core/Collectables/collection_patch_jar_1.tscn" id="11_w2wr3"]
 [ext_resource type="PackedScene" uid="uid://bei5i40hikwu6" path="res://Core/Collectables/collection_patch_wing_1.tscn" id="12_1ycrh"]
 
+[sub_resource type="Curve" id="Curve_c8t26"]
+_data = [Vector2(0, 0), 0.0, 0.192868, 0, 0, Vector2(0.385578, 0.102552), 0.595004, 0.595004, 0, 0, Vector2(1, 1), 0.0997758, 0.0, 0, 0]
+point_count = 3
+
 [node name="Generator" type="Node3D"]
 script = ExtResource("1_govy5")
+difficulty_curve = SubResource("Curve_c8t26")
 platform_scene = ExtResource("2_47aoa")
 obstacle_scenes = Array[PackedScene]([ExtResource("3_wpdg5"), ExtResource("4_ilki3"), ExtResource("5_bxuv1"), ExtResource("6_0ilmg")])
 collection_patches = Array[PackedScene]([ExtResource("7_v1ynf"), ExtResource("8_l56k5"), ExtResource("9_5cfgi"), ExtResource("10_movi4"), ExtResource("7_v1ynf"), ExtResource("8_l56k5"), ExtResource("9_5cfgi"), ExtResource("10_movi4"), ExtResource("11_w2wr3"), ExtResource("12_1ycrh")])
