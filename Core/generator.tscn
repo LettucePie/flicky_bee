@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://drha4kqvmn55e" path="res://Core/Obstacles/brick_pattern_1.tscn" id="3_wpdg5"]
 [ext_resource type="PackedScene" uid="uid://dva61vhl13qsd" path="res://Core/Obstacles/brick_pattern_2.tscn" id="4_ilki3"]
 [ext_resource type="PackedScene" uid="uid://q8mgam6ej550" path="res://Core/Obstacles/brick_pattern_3.tscn" id="5_bxuv1"]
-[ext_resource type="PackedScene" uid="uid://djb5of7bwcp00" path="res://Core/Obstacles/frog.tscn" id="6_0ilmg"]
+[ext_resource type="PackedScene" uid="uid://1q4maiuuyl5w" path="res://Core/Obstacles/frog.tscn" id="6_0ilmg"]
 [ext_resource type="PackedScene" uid="uid://cw7y83phl2tb3" path="res://Core/Collectables/collection_patch_1.tscn" id="7_v1ynf"]
 [ext_resource type="PackedScene" uid="uid://w01qs4s6aouq" path="res://Core/Collectables/collection_patch_2.tscn" id="8_l56k5"]
 [ext_resource type="PackedScene" uid="uid://b854y86ayr4a4" path="res://Core/Collectables/collection_patch_3.tscn" id="9_5cfgi"]

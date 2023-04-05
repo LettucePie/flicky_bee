@@ -1,7 +1,0 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://ph4kmpbookx4"]
-
-[resource]
-resource_name = "Petal_Mat"
-shading_mode = 2
-vertex_color_use_as_albedo = true
-metallic_specular = 0.0

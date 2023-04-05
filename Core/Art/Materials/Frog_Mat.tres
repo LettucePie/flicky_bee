@@ -1,7 +1,0 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://d1ksbsv0qbxc1"]
-
-[resource]
-resource_name = "Frog_Mat"
-cull_mode = 2
-vertex_color_use_as_albedo = true
-albedo_color = Color(0.308411, 0.403329, 0.1878, 1)

@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b3s7d5u4vfo3v"
+uid="uid://ctfd8d5pv7p3t"
 path="res://.godot/imported/Bee.glb-dd149094747049a172443c6a3715c4a8.scn"
 
 [deps]
@@ -30,17 +30,9 @@ animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
 "materials": {
-"BeeBlack_Mat": {
+"BaseMaterial": {
 "use_external/enabled": true,
-"use_external/path": "res://Core/Art/Materials/BeeBlack_Mat.tres"
-},
-"BeeTan_Mat": {
-"use_external/enabled": true,
-"use_external/path": "res://Core/Art/Materials/BeeTan_Mat.tres"
-},
-"BeeYellow_Mat": {
-"use_external/enabled": true,
-"use_external/path": "res://Core/Art/Materials/BeeYellow_Mat.tres"
+"use_external/path": "res://Core/Art/Mono_Material/BaseMaterial.tres"
 }
 }
 }

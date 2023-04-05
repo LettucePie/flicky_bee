@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://byv8nd4kxpkro"]
+[gd_scene load_steps=16 format=3]
 
 [ext_resource type="Script" path="res://Core/player.gd" id="1_igtm3"]
 [ext_resource type="AudioStream" uid="uid://dvi65b4n35yoj" path="res://Core/Sound/Pickup_Honey.wav" id="2_4u6o7"]
@@ -8,56 +8,14 @@
 [ext_resource type="AudioStream" uid="uid://timykrlmwymp" path="res://Core/Sound/Pickup_Wing.wav" id="4_3cdhx"]
 [ext_resource type="AudioStream" uid="uid://tg07otgu681n" path="res://Core/Sound/Flower_Land.wav" id="5_um41a"]
 [ext_resource type="AnimationLibrary" uid="uid://c1ugy47v2irx5" path="res://Core/Art/Animations/Bee/Bee_Library.res" id="6_8bfam"]
-[ext_resource type="PackedScene" uid="uid://b3s7d5u4vfo3v" path="res://Core/Art/Bee.glb" id="7_kt7jm"]
 [ext_resource type="AudioStream" uid="uid://c0wrsek7p180i" path="res://Core/Sound/Hit.wav" id="7_m1bdf"]
+[ext_resource type="PackedScene" uid="uid://ctfd8d5pv7p3t" path="res://Core/Art/Bee.glb" id="9_hom12"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jkrjm"]
 albedo_color = Color(0, 0.0117647, 1, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_5pi4y"]
 material = SubResource("StandardMaterial3D_jkrjm")
-
-[sub_resource type="Animation" id="Animation_ya3ck"]
-resource_name = "BackAction"
-length = 0.291667
-tracks/0/type = "rotation_3d"
-tracks/0/imported = true
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body/Back")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.0333333, 1, 0, 0, 0, 1, 0.0666667, 1, 0, -0.0213295, 0, 0.999773, 0.1, 1, 0, -0.049752, 0, 0.998762, 0.133333, 1, 0, -0.0562195, 0, 0.998418, 0.166667, 1, 0, 0.00316832, 0, 0.999995, 0.2, 1, 0, 0.062545, 0, 0.998042, 0.233333, 1, 0, 0.0541816, 0, 0.998531, 0.266667, 1, 0, 0.02323, 0, 0.99973, 0.291667, 1, 0, 0, 0, 1)
-tracks/1/type = "rotation_3d"
-tracks/1/imported = true
-tracks/1/enabled = true
-tracks/1/path = NodePath("Wings")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
-
-[sub_resource type="Animation" id="Animation_bfcxg"]
-resource_name = "WingsAction"
-length = 0.125
-tracks/0/type = "rotation_3d"
-tracks/0/imported = true
-tracks/0/enabled = true
-tracks/0/path = NodePath("Wings")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.0333333, 1, 0, 0, 0, 1, 0.0666667, 1, 0, 0, -0.290301, 0.956936, 0.1, 1, 0, 0, -0.290301, 0.956936, 0.125, 1, 0, 0, 0, 1)
-tracks/1/type = "rotation_3d"
-tracks/1/imported = true
-tracks/1/enabled = true
-tracks/1/path = NodePath("Body/Back")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_f1ckd"]
-_data = {
-"BackAction": SubResource("Animation_ya3ck"),
-"WingsAction": SubResource("Animation_bfcxg")
-}
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_uaofe"]
 
@@ -86,16 +44,8 @@ mesh = SubResource("SphereMesh_5pi4y")
 
 [node name="Turn" type="Node3D" parent="."]
 
-[node name="Bee" parent="Turn" instance=ExtResource("7_kt7jm")]
+[node name="Bee" parent="Turn" instance=ExtResource("9_hom12")]
 transform = Transform3D(-1.67852e-08, -1.33934e-16, -0.384, 1.33934e-16, 0.384, -1.33934e-16, 0.384, -1.33934e-16, -1.67852e-08, 0, 0, 0)
-
-[node name="Wings" parent="Turn/Bee" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75474e-22, 0.787602, 8.4084e-23)
-
-[node name="AnimationPlayer" parent="Turn/Bee" index="5"]
-libraries = {
-"": SubResource("AnimationLibrary_f1ckd")
-}
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_uaofe")

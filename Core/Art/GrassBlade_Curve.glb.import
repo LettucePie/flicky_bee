@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dmh4w5y00suxs"
+uid="uid://bfygg4e03b3ma"
 path="res://.godot/imported/GrassBlade_Curve.glb-084a5ced702ddbb2600c6b4867448781.scn"
 
 [deps]
@@ -28,5 +28,24 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"BaseMaterial": {
+"use_external/enabled": true,
+"use_external/path": "res://Core/Art/Mono_Material/BaseMaterial.tres"
+}
+},
+"meshes": {
+"GrassBlade_Curve_Cube001": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://Core/Art/Mono_Material/Grass_Curve_Mono_Mesh.res"
+}
+}
+}
 gltf/embedded_image_handling=1

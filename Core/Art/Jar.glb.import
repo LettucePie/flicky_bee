@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ddjof0gg7rdjd"
+uid="uid://bgya54gxfkekr"
 path="res://.godot/imported/Jar.glb-848388bb74a1013bd1a5bd6e91c4e26c.scn"
 
 [deps]
@@ -28,5 +28,16 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"BaseMaterial": {
+"use_external/enabled": true,
+"use_external/path": "res://Core/Art/Mono_Material/BaseMaterial.tres"
+},
+"GlossMaterial": {
+"use_external/enabled": true,
+"use_external/path": "res://Core/Art/Mono_Material/GlossMaterial.tres"
+}
+}
+}
 gltf/embedded_image_handling=1

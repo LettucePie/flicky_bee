@@ -1,8 +1,0 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://gdvig4j7d3v1"]
-
-[resource]
-resource_name = "Wing"
-shading_mode = 2
-vertex_color_use_as_albedo = true
-albedo_color = Color(0.589997, 0.589997, 0.589997, 1)
-metallic_specular = 0.0

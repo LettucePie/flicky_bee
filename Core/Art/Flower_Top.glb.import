@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bwe6pabvdqm0q"
+uid="uid://2aghnor46fu6"
 path="res://.godot/imported/Flower_Top.glb-cbc708cf7af91ad9da8b381fff0fb12c.scn"
 
 [deps]
@@ -28,5 +28,12 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"BaseMaterial": {
+"use_external/enabled": true,
+"use_external/path": "res://Core/Art/Mono_Material/BaseMaterial.tres"
+}
+}
+}
 gltf/embedded_image_handling=1

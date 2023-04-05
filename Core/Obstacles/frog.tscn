@@ -1,48 +1,40 @@
-[gd_scene load_steps=8 format=3 uid="uid://djb5of7bwcp00"]
+[gd_scene load_steps=6 format=3 uid="uid://1q4maiuuyl5w"]
 
 [ext_resource type="Script" path="res://Core/Obstacles/frog.gd" id="1_evudc"]
-[ext_resource type="PackedScene" uid="uid://bd504eurghico" path="res://Core/Art/Frog.glb" id="1_unsbo"]
-[ext_resource type="Material" uid="uid://75dlh3evnlr6" path="res://Core/Art/Materials/tongue_mat_LQ.tres" id="3_4dlj2"]
-[ext_resource type="Material" uid="uid://dca0dwykhthw4" path="res://Core/Art/Materials/Frog_Eye_Mat.tres" id="3_blwpy"]
-[ext_resource type="PackedScene" uid="uid://d0m6kuwy2jsty" path="res://Core/Art/Tongue.glb" id="3_ymqfk"]
-[ext_resource type="Material" uid="uid://77esmdfxgfbs" path="res://Core/Art/Materials/tongue_mat.tres" id="4_mjhfo"]
+[ext_resource type="PackedScene" uid="uid://xgudm7l021ox" path="res://Core/Art/Frog.glb" id="3_x01xu"]
+[ext_resource type="PackedScene" uid="uid://eyycua2bub72" path="res://Core/Art/Tongue.glb" id="4_ywenn"]
+[ext_resource type="Material" uid="uid://cp668a6ut4ukq" path="res://Core/Art/Mono_Material/GlossMaterial.tres" id="5_xw3uc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0djic"]
 size = Vector3(16.2456, 7.98823, 1)
 
 [node name="Frog" type="Node3D"]
 script = ExtResource("1_evudc")
-low_tongue_mat = ExtResource("3_4dlj2")
 
-[node name="Frog" parent="." instance=ExtResource("1_unsbo")]
-transform = Transform3D(-2.18557e-08, 1.74393e-16, 0.5, 1.74393e-16, 0.5, -1.74393e-16, -0.5, 1.74393e-16, -2.18557e-08, 7.02331, -4.2, 2.08165e-12)
+[node name="Frog" parent="." instance=ExtResource("3_x01xu")]
+transform = Transform3D(-2.18557e-08, 1.74393e-16, 0.5, 1.74393e-16, 0.5, -1.74393e-16, -0.5, 1.74393e-16, -2.18557e-08, 7, -4.2, 2.08165e-12)
 
 [node name="Skeleton3D" parent="Frog/Armature" index="0"]
-bones/0/position = Vector3(-2.02582e-16, -0.876406, 1.46541)
+bones/0/position = Vector3(2.21669e-09, 0.0591139, 0.120602)
 bones/2/position = Vector3(1.60101, 1.30745, 0.122708)
-bones/2/rotation = Quaternion(-0.379554, 0.407381, -0.73311, 0.39055)
+bones/2/rotation = Quaternion(-0.475197, 0.181312, -0.818862, 0.266042)
 bones/3/rotation = Quaternion(-0.167543, 0.0929228, 0.337825, 0.921503)
 bones/4/rotation = Quaternion(-0.269467, 0.267638, -0.262762, 0.886969)
 bones/5/position = Vector3(-1.60101, 1.30745, 0.122708)
-bones/5/rotation = Quaternion(-0.379554, -0.407381, 0.73311, 0.39055)
+bones/5/rotation = Quaternion(-0.475197, -0.181312, 0.818862, 0.266042)
 bones/6/rotation = Quaternion(-0.167543, -0.0929228, -0.337825, 0.921503)
 bones/7/rotation = Quaternion(-0.269467, -0.267638, 0.262762, 0.886969)
 bones/8/rotation = Quaternion(-0.148808, -0.163883, -0.864062, 0.452102)
-bones/9/rotation = Quaternion(-0.0466508, 0.183528, 0.667107, 0.720493)
-bones/10/rotation = Quaternion(2.50844e-08, 7.94035e-09, -0.923745, 0.383008)
+bones/9/rotation = Quaternion(-0.0693522, 0.176038, 0.310998, 0.931387)
+bones/10/rotation = Quaternion(-0.0240402, 0.00577199, -0.872518, 0.487957)
 bones/11/rotation = Quaternion(-0.000968384, -0.214873, 0.92511, 0.313049)
 bones/12/rotation = Quaternion(-0.148808, 0.163883, 0.864062, 0.452102)
-bones/13/rotation = Quaternion(-0.0466508, -0.183528, -0.667107, 0.720493)
-bones/14/rotation = Quaternion(3.36829e-08, -1.26016e-08, 0.923745, 0.383008)
+bones/13/rotation = Quaternion(-0.0693462, -0.176046, -0.311136, 0.93134)
+bones/14/rotation = Quaternion(-0.0240402, -0.00577198, 0.872517, 0.487957)
 bones/15/rotation = Quaternion(-0.000968388, 0.214873, -0.92511, 0.313049)
 
-[node name="EyeL" parent="Frog/Armature/Skeleton3D" index="0"]
-gi_mode = 0
-surface_material_override/0 = ExtResource("3_blwpy")
-
-[node name="EyeL001" parent="Frog/Armature/Skeleton3D" index="1"]
-gi_mode = 0
-surface_material_override/0 = ExtResource("3_blwpy")
+[node name="AnimationPlayer" parent="Frog" index="1"]
+next/Lunge = &"Idle"
 
 [node name="Lunge" type="Timer" parent="."]
 
@@ -54,20 +46,19 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tongue/Area3D"]
 shape = SubResource("BoxShape3D_0djic")
 
-[node name="Tongue" parent="Tongue" instance=ExtResource("3_ymqfk")]
-transform = Transform3D(-1.88411e-08, 0.205537, 0.900045, 9.12275e-09, 0.424493, -0.435797, -0.478903, -6.96644e-16, -4.37114e-08, 6.07237, -4.58117, 0)
+[node name="Tongue" parent="Tongue" instance=ExtResource("4_ywenn")]
+transform = Transform3D(-2.09815e-08, 0.204559, 0.900319, 1.50729e-16, 0.42315, -0.435231, -0.48, -8.94154e-09, -3.93542e-08, 6, -4.6, 2.08165e-12)
 visible = false
 
 [node name="Skeleton3D" parent="Tongue/Tongue/Armature" index="0"]
 bones/1/position = Vector3(0, 14.5208, 0)
 
 [node name="Tongue2" parent="Tongue/Tongue/Armature/Skeleton3D" index="0"]
-surface_material_override/0 = ExtResource("4_mjhfo")
+surface_material_override/0 = ExtResource("5_xw3uc")
 
 [connection signal="timeout" from="Lunge" to="." method="_on_lunge_timeout"]
 [connection signal="body_entered" from="Tongue/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Tongue/Area3D" to="." method="_on_area_3d_body_exited"]
-[connection signal="animation_finished" from="Tongue/Tongue/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 
 [editable path="Frog"]
 [editable path="Tongue/Tongue"]

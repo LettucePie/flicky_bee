@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://0jeepmvl6qgi"
+uid="uid://b04cmgpeeyvf2"
 path="res://.godot/imported/Honey_Comb.glb-e220ffa8c2ab10fb6883ced41ad406a3.scn"
 
 [deps]
@@ -28,5 +28,16 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"BaseMaterial": {
+"use_external/enabled": true,
+"use_external/path": "res://Core/Art/Mono_Material/BaseMaterial.tres"
+},
+"GlossMaterial": {
+"use_external/enabled": true,
+"use_external/path": "res://Core/Art/Mono_Material/GlossMaterial.tres"
+}
+}
+}
 gltf/embedded_image_handling=1

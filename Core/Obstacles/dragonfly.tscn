@@ -18,7 +18,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2, 2.08165e-12)
 curve = SubResource("Curve3D_7ui8j")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(0.0297994, -0.0240248, 0.999226, 1.86252e-09, 0.999682, 0.0240352, -0.999488, -0.00071629, 0.0297916, -24.8692, -0.668159, -0.667246)
+transform = Transform3D(-0.736004, 5.6792e-06, 0.676895, -2.27358e-13, 0.999971, -8.38963e-06, -0.676876, -6.1753e-06, -0.736024, -24.8692, -0.668159, -0.667246)
 
 [node name="Dragonfly" parent="Path3D/PathFollow3D" instance=ExtResource("1_85p06")]
 transform = Transform3D(-0.15, 5.2318e-17, -1.31134e-08, 5.2318e-17, 0.15, -5.2318e-17, 1.31134e-08, -5.2318e-17, -0.15, 0, 0, 0)

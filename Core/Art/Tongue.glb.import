@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://d0m6kuwy2jsty"
+uid="uid://eyycua2bub72"
 path="res://.godot/imported/Tongue.glb-9ceb5c26cdc03051745dbe75096cc1d2.scn"
 
 [deps]
@@ -1828,6 +1828,12 @@ _subresources={
 "slice_99/save_to_file/path": "",
 "slice_99/start_frame": 0,
 "slices/amount": null
+}
+},
+"materials": {
+"@MATERIAL:0": {
+"use_external/enabled": true,
+"use_external/path": "res://Core/Art/Mono_Material/BaseMaterial.tres"
 }
 }
 }

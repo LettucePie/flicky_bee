@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bd504eurghico"
+uid="uid://xgudm7l021ox"
 path="res://.godot/imported/Frog.glb-fb991731bcf427a5687c09a171e00aa8.scn"
 
 [deps]
@@ -3630,13 +3630,13 @@ _subresources={
 }
 },
 "materials": {
-"Frog_Eye_Mat": {
+"BaseMaterial": {
 "use_external/enabled": true,
-"use_external/path": "res://Core/Art/Materials/Frog_Eye_Mat.tres"
+"use_external/path": "res://Core/Art/Mono_Material/BaseMaterial.tres"
 },
-"Frog_Mat": {
+"GlossMaterial": {
 "use_external/enabled": true,
-"use_external/path": "res://Core/Art/Materials/Frog_Mat.tres"
+"use_external/path": "res://Core/Art/Mono_Material/GlossMaterial.tres"
 }
 }
 }

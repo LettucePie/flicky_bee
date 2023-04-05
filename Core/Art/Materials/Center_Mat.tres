@@ -1,8 +1,0 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://bjgx6qn7aldd3"]
-
-[resource]
-resource_name = "Center_Mat"
-shading_mode = 2
-vertex_color_use_as_albedo = true
-albedo_color = Color(0.906332, 0.898768, 0.497019, 1)
-metallic_specular = 0.0

@@ -39,8 +39,19 @@ func _clear_platforms() -> void:
 	gaps.resize(0)
 
 
-func _clear_extras(point) -> void:
-	pass
+func _clear_gaps(point) -> void:
+	var stray_gaps : Array
+	if gaps.size() > 0:
+		for g in gaps:
+			var pos = g.get_position()
+			if pos.z < point:
+				stray_gaps.append(g)
+	if stray_gaps.size() > 0:
+		for sg in stray_gaps:
+			gaps.erase(sg)
+			if is_instance_valid(sg):
+				sg.queue_free()
+	stray_gaps.clear()
 
 
 func _generate(num : int, z_start : float) -> void:
@@ -75,7 +86,7 @@ func _generate(num : int, z_start : float) -> void:
 			platforms.append(new_plat)
 			add_child(new_plat)
 			##
-			if abs(z_point) - abs(z_previous) >= 10.0:
+			if abs(z_point) - abs(z_previous) >= 8.5:
 				var new_gap = null
 				var x_pos = 0.0
 				var y_pos = 0.0

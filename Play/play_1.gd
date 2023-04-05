@@ -265,8 +265,8 @@ func _on_player_finished_travel(platform):
 		for i in 4:
 			$Generator.platforms.pop_front().queue_free()
 		var last_platform = $Generator.platforms.back()
+		$Generator._clear_gaps(last_platform.get_position().z)
 		$Generator._generate(4, last_platform.get_position().z)
-		$Generator._clear_extras(last_platform.get_position().z)
 	current_platform = platform
 	current_flower = current_platform._return_flower()
 	traveling = false

@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c53g8vww2x2el"
+uid="uid://bw3odwy56ayw0"
 path="res://.godot/imported/Wings.glb-950e97106ebb0f847e26ed62c9c268e4.scn"
 
 [deps]
@@ -28,5 +28,12 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"BaseMaterial": {
+"use_external/enabled": true,
+"use_external/path": "res://Core/Art/Mono_Material/BaseMaterial.tres"
+}
+}
+}
 gltf/embedded_image_handling=1

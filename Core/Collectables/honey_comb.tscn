@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dl1boh4omjs6s"]
+[gd_scene load_steps=7 format=3]
 
 [ext_resource type="Script" path="res://Core/Collectables/Collectable.gd" id="1_df7ol"]
-[ext_resource type="PackedScene" uid="uid://0jeepmvl6qgi" path="res://Core/Art/Honey_Comb.glb" id="2_o2leo"]
-[ext_resource type="Material" uid="uid://dkt8jfih4ah4y" path="res://Core/Art/Materials/Honey_Mat.tres" id="3_1cxok"]
+[ext_resource type="PackedScene" uid="uid://b04cmgpeeyvf2" path="res://Core/Art/Honey_Comb.glb" id="4_osdy4"]
 
 [sub_resource type="Animation" id="Animation_7rh3i"]
 resource_name = "Idle"
@@ -83,17 +82,8 @@ transform = Transform3D(1, -3.48785e-16, 4.46638e-06, 3.48787e-16, 1, -3.48787e-
 [node name="Tilt" type="Node3D" parent="Turn"]
 transform = Transform3D(1, 0, 0, 0, 0.925554, 0.378617, 0, -0.378617, 0.925554, 0, 0, 0)
 
-[node name="Honey_Comb" parent="Turn/Tilt" instance=ExtResource("2_o2leo")]
-transform = Transform3D(0.0236723, 2.33737e-13, -0.314391, 6.369e-09, 0.315281, -2.4164e-10, 0.314391, -3.2687e-08, 0.0236723, 0, 0, 0)
-
-[node name="Hex" parent="Turn/Tilt/Honey_Comb" index="0"]
-surface_material_override/1 = ExtResource("3_1cxok")
-
-[node name="Hex001" parent="Turn/Tilt/Honey_Comb" index="1"]
-surface_material_override/1 = ExtResource("3_1cxok")
-
-[node name="Hex002" parent="Turn/Tilt/Honey_Comb" index="2"]
-surface_material_override/1 = ExtResource("3_1cxok")
+[node name="Honey_Comb" parent="Turn/Tilt" instance=ExtResource("4_osdy4")]
+transform = Transform3D(0.0236183, -1.17796e-16, -0.314113, 1.09868e-16, 0.315, -1.09868e-16, 0.314113, -1.01321e-16, 0.0236183, 0, 0, 0)
 
 [node name="Area3D" type="Area3D" parent="." groups=["Collectable"]]
 collision_layer = 4
