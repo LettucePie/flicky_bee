@@ -257,6 +257,15 @@ func _establish_bounds() -> void:
 			max_dimension.y
 		)
 	print("LeftBound: ", left_2d_bound, " RightBound: ", right_2d_bound)
+	print("Ratio : ", max_dimension.x / max_dimension.y, " : 1")
+	var ratio = max_dimension.x / max_dimension.y
+	var fov_percent = clamp(
+		inverse_lerp(0.55, 0.45, ratio),
+		0.0,
+		1.0
+	)
+	var fov_offset = lerp(0.0, 10.0, fov_percent)
+	$Camera3D.fov = 75 + fov_offset
 
 
 func _on_player_finished_travel(platform):

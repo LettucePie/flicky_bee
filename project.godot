@@ -21,7 +21,7 @@ window/size/viewport_width=1080
 window/size/viewport_height=1920
 window/handheld/orientation=1
 window/stretch/mode="viewport"
-window/stretch/aspect="keep_height"
+window/stretch/aspect="expand"
 
 [layer_names]
 

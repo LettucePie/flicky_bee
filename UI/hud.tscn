@@ -29,6 +29,7 @@ shadow_size = 13
 shadow_color = Color(0, 0, 0, 0.780392)
 
 [sub_resource type="SystemFont" id="SystemFont_vycr6"]
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_1aupl"]
 font = SubResource("SystemFont_vycr6")
@@ -63,28 +64,28 @@ grow_vertical = 0
 self_modulate = Color(0.341176, 0.180392, 0.113725, 1)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 1.0
+anchor_left = 0.903
 anchor_top = 0.558
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -105.0
+offset_left = -0.240061
 offset_top = -0.360054
 grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("2_38r82")
-expand_mode = 1
+expand_mode = 3
 stretch_mode = 5
 
 [node name="HealthBar" type="TextureProgressBar" parent="Health_Meter"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 1.0
+anchor_left = 0.419
 anchor_top = 0.054
 anchor_right = 1.0
 anchor_bottom = 0.895
-offset_left = -61.0
+offset_left = 0.0049969
 offset_top = 0.153999
-offset_bottom = 0.144966
+offset_bottom = 0.145016
 grow_horizontal = 2
 grow_vertical = 2
 value = 100.0
@@ -100,7 +101,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_hvlpn")
-expand_mode = 1
+expand_mode = 4
 stretch_mode = 5
 
 [node name="HealthJar" type="TextureRect" parent="Health_Meter"]
@@ -119,7 +120,7 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.338594
 texture = ExtResource("4_xo1nj")
-expand_mode = 1
+expand_mode = 4
 stretch_mode = 5
 
 [node name="Flight_Meter" type="TextureRect" parent="."]
@@ -136,7 +137,7 @@ offset_bottom = 5.34058e-05
 grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("4_m5gb1")
-expand_mode = 1
+expand_mode = 3
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
@@ -166,7 +167,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_gfkuu")
-expand_mode = 1
+expand_mode = 4
 stretch_mode = 5
 
 [node name="Wings" type="TextureRect" parent="Flight_Meter"]
@@ -182,23 +183,21 @@ offset_right = 89.015
 offset_bottom = 47.16
 rotation = 0.338594
 texture = ExtResource("7_pajgt")
-expand_mode = 1
+expand_mode = 4
 stretch_mode = 5
 
 [node name="Center_Dock" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.093
-anchor_top = 0.899
-anchor_right = 0.911
+anchor_top = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -100.44
-offset_top = -54.0801
-offset_right = 96.1199
+offset_top = -248.0
+offset_right = -0.00012207
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("4_4x2ru")
-expand_mode = 1
+expand_mode = 2
 stretch_mode = 5
 
 [node name="Frame" type="Control" parent="Center_Dock"]
@@ -320,6 +319,7 @@ theme_override_font_sizes/font_size = 50
 text = "Play Again?"
 
 [node name="Intro" type="ColorRect" parent="."]
+visible = false
 z_index = 2
 layout_mode = 1
 anchors_preset = 15
