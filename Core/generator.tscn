@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://2gkm2rsvmoiy"]
+[gd_scene load_steps=15 format=3 uid="uid://2gkm2rsvmoiy"]
 
 [ext_resource type="Script" path="res://Core/generator.gd" id="1_govy5"]
 [ext_resource type="PackedScene" uid="uid://binixehfbq4hi" path="res://Core/platform.tscn" id="2_47aoa"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://q8mgam6ej550" path="res://Core/Obstacles/brick_pattern_3.tscn" id="5_bxuv1"]
 [ext_resource type="PackedScene" uid="uid://1q4maiuuyl5w" path="res://Core/Obstacles/frog.tscn" id="6_0ilmg"]
 [ext_resource type="PackedScene" uid="uid://cw7y83phl2tb3" path="res://Core/Collectables/collection_patch_1.tscn" id="7_v1ynf"]
+[ext_resource type="PackedScene" uid="uid://clcg6uqm7ta1x" path="res://Core/Obstacles/dragonfly.tscn" id="7_x15y0"]
 [ext_resource type="PackedScene" uid="uid://w01qs4s6aouq" path="res://Core/Collectables/collection_patch_2.tscn" id="8_l56k5"]
 [ext_resource type="PackedScene" uid="uid://b854y86ayr4a4" path="res://Core/Collectables/collection_patch_3.tscn" id="9_5cfgi"]
 [ext_resource type="PackedScene" uid="uid://csgnx6hw84lqs" path="res://Core/Collectables/collection_patch_4.tscn" id="10_movi4"]
@@ -21,7 +22,8 @@ point_count = 3
 script = ExtResource("1_govy5")
 difficulty_curve = SubResource("Curve_c8t26")
 platform_scene = ExtResource("2_47aoa")
-obstacle_scenes = Array[PackedScene]([ExtResource("3_wpdg5"), ExtResource("4_ilki3"), ExtResource("5_bxuv1"), ExtResource("6_0ilmg")])
+obstacle_scenes = Array[PackedScene]([ExtResource("3_wpdg5"), ExtResource("4_ilki3"), ExtResource("5_bxuv1")])
+danger_scenes = Array[PackedScene]([ExtResource("6_0ilmg"), ExtResource("7_x15y0")])
 collection_patches = Array[PackedScene]([ExtResource("7_v1ynf"), ExtResource("8_l56k5"), ExtResource("9_5cfgi"), ExtResource("10_movi4"), ExtResource("7_v1ynf"), ExtResource("8_l56k5"), ExtResource("9_5cfgi"), ExtResource("10_movi4"), ExtResource("11_w2wr3"), ExtResource("12_1ycrh")])
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]

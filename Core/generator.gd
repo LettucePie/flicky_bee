@@ -6,6 +6,7 @@ class_name Generator
 @export var max_difficulty := 16.0
 @export var platform_scene : PackedScene
 @export var obstacle_scenes : Array[PackedScene]
+@export var danger_scenes : Array[PackedScene]
 #@export var grass_patch_scene : PackedScene
 @export var collection_patches : Array[PackedScene]
 
@@ -88,15 +89,30 @@ func _generate(num : int, z_start : float) -> void:
 			##
 			if abs(z_point) - abs(z_previous) >= 8.5:
 				var new_gap = null
+				var bonus_gap = null
 				var x_pos = 0.0
 				var y_pos = 0.0
 				if randf() >= 0.5:
-					obstacle_scenes.shuffle()
-					new_gap = obstacle_scenes.front().instantiate()
+					randomize()
+					if randf() >= 0.5:
+						danger_scenes.shuffle()
+						new_gap = danger_scenes.front().instantiate()
+					else:
+						obstacle_scenes.shuffle()
+						new_gap = obstacle_scenes.front().instantiate()
 				else:
 					x_pos = randf_range(-4.0, 4.0)
 					collection_patches.shuffle()
 					new_gap = collection_patches.front().instantiate()
+					var danger_difficulty = clamp(
+						difficulty_progress,
+						0.08,
+						0.9
+					)
+					randomize()
+					if randf() <= danger_difficulty:
+						danger_scenes.shuffle()
+						bonus_gap = danger_scenes.front().instantiate()
 				if new_gap != null:
 					new_gap.set_position(
 						Vector3(
@@ -107,6 +123,16 @@ func _generate(num : int, z_start : float) -> void:
 					)
 					gaps.append(new_gap)
 					add_child(new_gap)
+					if bonus_gap != null:
+						bonus_gap.set_position(
+							Vector3(
+								0,
+								0,
+								lerp(z_previous, z_point, 0.5)
+							)
+						)
+						gaps.append(bonus_gap)
+						add_child(bonus_gap)
 			##
 			z_previous = z_point
 			z_point -= randf_range(6.5, 15.5)

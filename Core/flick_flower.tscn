@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3]
+[gd_scene load_steps=11 format=3 uid="uid://xx8vpt1dc2ub"]
 
 [ext_resource type="Script" path="res://Core/flick_flower.gd" id="1_lqgyg"]
 [ext_resource type="PackedScene" uid="uid://2aghnor46fu6" path="res://Core/Art/Flower_Top.glb" id="2_opuic"]
@@ -56,4 +56,5 @@ transform = Transform3D(1.62, 0, 0, 0, 1.62, 0, 0, 0, 1.62, -0.00216563, 0.37069
 
 [node name="Flower_Stem" parent="." instance=ExtResource("3_v4chg")]
 
+[editable path="Head/Flower_Top"]
 [editable path="Flower_Stem"]

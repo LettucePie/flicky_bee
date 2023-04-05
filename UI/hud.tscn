@@ -102,7 +102,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_hvlpn")
 expand_mode = 4
-stretch_mode = 5
 
 [node name="HealthJar" type="TextureRect" parent="Health_Meter"]
 z_index = 1
@@ -301,12 +300,14 @@ autowrap_mode = 2
 [node name="Label2" type="Label" parent="TryAgain/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Made by LettucePie for Mini Jam 128 : Health
+text = "Thanks for playing!
 
-Made using Godot 4
+Made using Godot 4.0.1
 Krita 4.0.6
+blender 3.2.0
 LMMS + Audacity
 
+Made by LettucePie
 Twitter @PieLettuce Email thelettucepie@gmail.com"
 label_settings = SubResource("LabelSettings_fhcay")
 horizontal_alignment = 1
@@ -350,9 +351,7 @@ autowrap_mode = 2
 [node name="Label2" type="Label" parent="Intro/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Thanks for checking out my submission to Improve My Game Jam 26!
-
-This was originally submitted to Mini Jam 128 : Health
+text = "Thanks for checking out my game! This was originally submitted to Mini Jam 128 : Health
 
 On the Right is your health meter, and the Left is your flight meter. Keep healthy by avoiding frogs, collecting honey, and landing on flowers!"
 label_settings = SubResource("LabelSettings_1aupl")

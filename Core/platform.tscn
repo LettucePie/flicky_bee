@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://binixehfbq4hi"]
 
 [ext_resource type="Script" path="res://Core/platform.gd" id="1_du06j"]
-[ext_resource type="PackedScene" uid="uid://xmhllfh46po8" path="res://Core/flick_flower.tscn" id="2_n0h51"]
+[ext_resource type="PackedScene" uid="uid://xx8vpt1dc2ub" path="res://Core/flick_flower.tscn" id="2_n0h51"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_x2q1f"]
 height = 4.06212
