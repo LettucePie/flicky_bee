@@ -6,6 +6,8 @@ extends Node
 @export var rest_time := 2.0
 @export var flight_bound := 90.0
 
+var persist : Persist
+var menu = null
 ##
 ## Player Status
 ##
@@ -43,10 +45,13 @@ var grass_patches : Array
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_setup()
+	if get_window().get_child_count() <= 1:
+		_setup(null, null)
 
 
-func _setup():
+func _setup(menu_node : Control, persist_node : Persist):
+	menu = menu_node
+	persist = persist_node
 	$Generator._clear_platforms()
 	$Generator._generate(20, 0.0)
 	camera_target = Vector3.ZERO
@@ -73,6 +78,14 @@ func _setup():
 	for g in grass_patches:
 		g.set_position(Vector3(0, -5, grass_point))
 		grass_point -= 60
+
+
+func _notification(what):
+	if what == NOTIFICATION_APPLICATION_FOCUS_OUT \
+	or what == NOTIFICATION_APPLICATION_PAUSED:
+		print("Device Leaving Focus at ", Time.get_unix_time_from_system())
+		if persist != null:
+			persist._add_progress(platform_score, furthest_distance)
 
 
 func _spawn_player() -> void:
@@ -324,6 +337,8 @@ func _on_player_hit():
 func _on_life_timer_timeout():
 	$Life_Timer.stop()
 	print("Player Ran out of Time")
+	if persist != null:
+		persist._add_progress(platform_score, furthest_distance)
 	$HUD._player_death()
 
 
@@ -344,5 +359,7 @@ func _on_top_detect_area_entered(area):
 
 
 func _on_hud_play_again():
+	print("replace with Results Menu that returns to Main Menu")
 	get_tree().reload_current_scene()
-	_setup()
+	_setup(null, null)
+

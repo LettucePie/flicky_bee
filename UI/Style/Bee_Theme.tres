@@ -1,0 +1,25 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cwteexwb3vbyi"]
+
+[ext_resource type="StyleBox" uid="uid://cvcn82igh6iyj" path="res://UI/Style/Button_Style_Normal.tres" id="1_21sri"]
+[ext_resource type="StyleBox" path="res://UI/Style/Button_Style_Focus.tres" id="1_picxi"]
+[ext_resource type="StyleBox" uid="uid://yrle83fsm8ff" path="res://UI/Style/Panel_Style.tres" id="2_51d7p"]
+[ext_resource type="FontFile" uid="uid://d05v52etrd8gb" path="res://UI/Fonts/Gloria_Hallelujah/GloriaHallelujah-Regular.ttf" id="4_owa64"]
+
+[resource]
+default_font = ExtResource("4_owa64")
+default_font_size = 52
+Button/colors/font_color = Color(0.0470588, 0.0470588, 0.0470588, 1)
+Button/colors/font_focus_color = Color(0.227451, 0.227451, 0.227451, 1)
+Button/colors/font_hover_color = Color(0.227451, 0.227451, 0.227451, 1)
+Button/colors/font_hover_pressed_color = Color(0.298039, 0.298039, 0.298039, 1)
+Button/styles/focus = ExtResource("1_picxi")
+Button/styles/hover = ExtResource("1_picxi")
+Button/styles/normal = ExtResource("1_21sri")
+CheckButton/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+CheckButton/colors/font_outline_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+CheckButton/constants/outline_size = 10
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+Label/constants/line_spacing = 2
+Label/constants/outline_size = 10
+Panel/styles/panel = ExtResource("2_51d7p")

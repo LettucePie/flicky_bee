@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cr7dimn48747s"]
+[gd_scene load_steps=8 format=3 uid="uid://cr7dimn48747s"]
 
 [ext_resource type="Script" path="res://Core/Collectables/Collectable.gd" id="1_21g22"]
 [ext_resource type="PackedScene" uid="uid://bgya54gxfkekr" path="res://Core/Art/Jar.glb" id="2_qtl1w"]
+[ext_resource type="Material" uid="uid://6fqyilk4h7yd" path="res://Core/Art/Materials/Honey_Mat_Glow.tres" id="3_2pm7x"]
 
 [sub_resource type="Animation" id="Animation_7rh3i"]
 resource_name = "Idle"
@@ -84,6 +85,9 @@ transform = Transform3D(1, 0, 0, 0, 0.925554, 0.378617, 0, -0.378617, 0.925554, 
 
 [node name="Jar" parent="Turn/Tilt" instance=ExtResource("2_qtl1w")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Jar2" parent="Turn/Tilt/Jar" index="0"]
+surface_material_override/1 = ExtResource("3_2pm7x")
 
 [node name="Area3D" type="Area3D" parent="." groups=["Collectable"]]
 collision_layer = 4

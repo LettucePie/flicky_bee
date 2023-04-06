@@ -1,0 +1,161 @@
+[gd_scene load_steps=6 format=3 uid="uid://cvdqntuuvw1sn"]
+
+[ext_resource type="Theme" uid="uid://cwteexwb3vbyi" path="res://UI/Style/Bee_Theme.tres" id="1_g7eow"]
+[ext_resource type="PackedScene" uid="uid://dwgh0l2dpnpsf" path="res://Play/persist.tscn" id="1_lnv0w"]
+[ext_resource type="LabelSettings" uid="uid://ban0wox1lr7ix" path="res://UI/Label_Setting_Big.tres" id="2_bh8d8"]
+[ext_resource type="Script" path="res://Play/main_menu.gd" id="2_jrubw"]
+[ext_resource type="Texture2D" uid="uid://b8d1dj5xfdicf" path="res://UI/Art/Play_Icon.png" id="4_2ixlk"]
+
+[node name="MainMenu" type="Control" groups=["Menu"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_g7eow")
+script = ExtResource("2_jrubw")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.226
+offset_bottom = 0.0799789
+text = "Flicky Bee"
+label_settings = ExtResource("2_bh8d8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreCard" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0981481
+anchor_top = 0.270833
+anchor_right = 0.917593
+anchor_bottom = 0.522917
+offset_top = -1.90735e-05
+offset_bottom = -1.52588e-05
+metadata/_edit_use_anchors_ = true
+
+[node name="Play" type="Button" parent="ScoreCard"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.672
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 0.151979
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "Play"
+icon = ExtResource("4_2ixlk")
+expand_icon = true
+
+[node name="Box" type="VBoxContainer" parent="ScoreCard"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.663
+offset_bottom = -0.167019
+alignment = 1
+
+[node name="ScoreContainer" type="HBoxContainer" parent="ScoreCard/Box"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="ScoreCard/Box/ScoreContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Highest Score : "
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="ScoreCard/Box/ScoreContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "0"
+vertical_alignment = 1
+
+[node name="DistContainer" type="HBoxContainer" parent="ScoreCard/Box"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="ScoreCard/Box/DistContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Farthest Journey : "
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Distance" type="Label" parent="ScoreCard/Box/DistContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "0"
+vertical_alignment = 1
+
+[node name="ButtonBox" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.866
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -0.720108
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Edit" type="TextureButton" parent="ButtonBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch_mode = 6
+
+[node name="Options" type="TextureButton" parent="ButtonBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch_mode = 6
+
+[node name="Help" type="TextureButton" parent="ButtonBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch_mode = 6
+
+[node name="Quit" type="TextureButton" parent="ButtonBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch_mode = 6
+
+[node name="Persist" parent="." instance=ExtResource("1_lnv0w")]
+
+[node name="Edit" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Options" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.05
+anchor_right = 0.9
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="pressed" from="ScoreCard/Play" to="." method="_on_play_pressed"]

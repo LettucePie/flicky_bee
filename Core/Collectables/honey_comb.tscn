@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=8 format=3 uid="uid://b38gsdjvdmhmm"]
 
 [ext_resource type="Script" path="res://Core/Collectables/Collectable.gd" id="1_df7ol"]
+[ext_resource type="Material" uid="uid://6fqyilk4h7yd" path="res://Core/Art/Materials/Honey_Mat_Glow.tres" id="3_2dyr2"]
 [ext_resource type="PackedScene" uid="uid://b04cmgpeeyvf2" path="res://Core/Art/Honey_Comb.glb" id="4_osdy4"]
 
 [sub_resource type="Animation" id="Animation_7rh3i"]
@@ -84,6 +85,15 @@ transform = Transform3D(1, 0, 0, 0, 0.925554, 0.378617, 0, -0.378617, 0.925554, 
 
 [node name="Honey_Comb" parent="Turn/Tilt" instance=ExtResource("4_osdy4")]
 transform = Transform3D(0.0236183, -1.17796e-16, -0.314113, 1.09868e-16, 0.315, -1.09868e-16, 0.314113, -1.01321e-16, 0.0236183, 0, 0, 0)
+
+[node name="Hex" parent="Turn/Tilt/Honey_Comb" index="0"]
+surface_material_override/1 = ExtResource("3_2dyr2")
+
+[node name="Hex001" parent="Turn/Tilt/Honey_Comb" index="1"]
+surface_material_override/1 = ExtResource("3_2dyr2")
+
+[node name="Hex002" parent="Turn/Tilt/Honey_Comb" index="2"]
+surface_material_override/1 = ExtResource("3_2dyr2")
 
 [node name="Area3D" type="Area3D" parent="." groups=["Collectable"]]
 collision_layer = 4

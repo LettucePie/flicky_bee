@@ -47,6 +47,7 @@ var magnet_col : Array
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Hurt.hide()
 	first_parent = get_parent()
 	bee_object = $Turn/Bee
 	anim.add_animation_library("Base", anim_lib)
@@ -114,6 +115,7 @@ func _hit() -> void:
 	$Pickup.set_stream(hit_sound)
 	$Pickup.play()
 	emit_signal("hit")
+	$Hurt._blink()
 
 
 func _die() -> void:

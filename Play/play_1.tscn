@@ -1,11 +1,11 @@
 [gd_scene load_steps=14 format=3 uid="uid://divwo3i3xqtwj"]
 
 [ext_resource type="Script" path="res://Play/play_1.gd" id="1_x43xo"]
-[ext_resource type="PackedScene" path="res://Core/player.tscn" id="2_75ge2"]
+[ext_resource type="PackedScene" uid="uid://c8sfs4vj8uoo3" path="res://Core/player.tscn" id="2_75ge2"]
 [ext_resource type="PackedScene" uid="uid://2gkm2rsvmoiy" path="res://Core/generator.tscn" id="2_yeg2j"]
 [ext_resource type="PackedScene" uid="uid://jgdg1uwq2rq6" path="res://UI/arc_visual.tscn" id="4_weoh5"]
 [ext_resource type="PackedScene" uid="uid://yxtju6v5sytc" path="res://UI/knob_visual.tscn" id="5_3g4qb"]
-[ext_resource type="PackedScene" uid="uid://dys2nli2rglts" path="res://UI/hud.tscn" id="5_rm8qy"]
+[ext_resource type="PackedScene" uid="uid://be1u13i3321dd" path="res://UI/hud.tscn" id="5_rm8qy"]
 [ext_resource type="AudioStream" uid="uid://cny8015p2p0uo" path="res://Core/Sound/Song_2.mp3" id="7_cn5s7"]
 [ext_resource type="PackedScene" path="res://Core/grass_patch.tscn" id="8_r0s2t"]
 
@@ -31,7 +31,7 @@ size = Vector3(19.9062, 2.4957, 10.0144)
 [sub_resource type="BoxMesh" id="BoxMesh_r3t2s"]
 size = Vector3(20, 3, 10)
 
-[node name="Play_1" type="Node"]
+[node name="Play_1" type="Node" groups=["Play"]]
 script = ExtResource("1_x43xo")
 player_scene = ExtResource("2_75ge2")
 life_time = 15.0

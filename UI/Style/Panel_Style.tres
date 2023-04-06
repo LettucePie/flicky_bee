@@ -1,0 +1,9 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://yrle83fsm8ff"]
+
+[ext_resource type="Texture2D" uid="uid://7vku2dunk02s" path="res://UI/Art/PanelStyle_1.png" id="1_s4oj6"]
+
+[resource]
+texture = ExtResource("1_s4oj6")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+modulate_color = Color(0.431373, 0.431373, 0.431373, 1)

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwgh0l2dpnpsf"]
+
+[ext_resource type="Script" path="res://Play/persist.gd" id="1_x2eam"]
+
+[node name="Persist" type="Node" groups=["Persist"]]
+script = ExtResource("1_x2eam")
