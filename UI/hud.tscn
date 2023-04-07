@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://v7ojar4c3ctt" path="res://UI/Art/Wings.png" id="7_pajgt"]
 [ext_resource type="LabelSettings" uid="uid://ban0wox1lr7ix" path="res://UI/Label_Setting_Big.tres" id="11_j2abc"]
 [ext_resource type="PackedScene" uid="uid://cy60dhgo0wcen" path="res://UI/score_pop.tscn" id="13_yn6dh"]
-[ext_resource type="Texture2D" uid="uid://dp4u3abr1sl8f" path="res://UI/Art/Pause_Icon.png" id="14_u02pd"]
+[ext_resource type="Texture2D" uid="uid://cpgxsb0sa2if0" path="res://UI/Art/Pause_Icon.png" id="14_u02pd"]
 
 [sub_resource type="SystemFont" id="SystemFont_uigy6"]
 subpixel_positioning = 0
@@ -106,20 +106,20 @@ expand_mode = 4
 z_index = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 1.0
-anchor_top = 1.0
+anchor_left = -0.61
+anchor_top = 0.858
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -169.0
-offset_top = -110.0
+offset_left = 0.0501022
+offset_top = 10.558
 offset_right = 24.0
 offset_bottom = 62.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.338594
 texture = ExtResource("4_xo1nj")
-expand_mode = 4
-stretch_mode = 5
+expand_mode = 5
+stretch_mode = 6
 
 [node name="Flight_Meter" type="TextureRect" parent="."]
 self_modulate = Color(0.294118, 0.305882, 0.411765, 1)
@@ -181,8 +181,8 @@ offset_right = 89.015
 offset_bottom = 47.16
 rotation = 0.338594
 texture = ExtResource("7_pajgt")
-expand_mode = 4
-stretch_mode = 5
+expand_mode = 5
+stretch_mode = 6
 
 [node name="Center_Dock" type="TextureRect" parent="."]
 layout_mode = 1

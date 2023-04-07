@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://coyk1ke2u63qv"
-path.s3tc="res://.godot/imported/Brick_Texture_3.png-3457d45b41c360e128d2046d2d126372.s3tc.ctex"
+uid="uid://c3f4c4g4lsp6l"
+path.s3tc="res://.godot/imported/Hit_FX1.png-77b061879a5118cfb5a566e5e31daf53.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Core/Art/Textures/Brick_Texture_3.png"
-dest_files=["res://.godot/imported/Brick_Texture_3.png-3457d45b41c360e128d2046d2d126372.s3tc.ctex"]
+source_file="res://Core/Art/Textures/Hit_FX1.png"
+dest_files=["res://.godot/imported/Hit_FX1.png-77b061879a5118cfb5a566e5e31daf53.s3tc.ctex"]
 
 [params]
 

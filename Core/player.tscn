@@ -10,7 +10,7 @@
 [ext_resource type="AnimationLibrary" uid="uid://c1ugy47v2irx5" path="res://Core/Art/Animations/Bee/Bee_Library.res" id="6_8bfam"]
 [ext_resource type="AudioStream" uid="uid://c0wrsek7p180i" path="res://Core/Sound/Hit.wav" id="7_m1bdf"]
 [ext_resource type="PackedScene" uid="uid://ctfd8d5pv7p3t" path="res://Core/Art/Bee.glb" id="9_hom12"]
-[ext_resource type="Texture2D" uid="uid://bvpwuolfj3vsc" path="res://Core/Art/Textures/Hit_FX1.png" id="11_cb7ww"]
+[ext_resource type="Texture2D" uid="uid://c3f4c4g4lsp6l" path="res://Core/Art/Textures/Hit_FX1.png" id="11_cb7ww"]
 [ext_resource type="Script" path="res://Core/hurt_blink.gd" id="12_5hnsk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jkrjm"]

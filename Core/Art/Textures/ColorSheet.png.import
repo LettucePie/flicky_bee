@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://coyk1ke2u63qv"
-path.s3tc="res://.godot/imported/Brick_Texture_3.png-3457d45b41c360e128d2046d2d126372.s3tc.ctex"
+uid="uid://b7gar11ok7m30"
+path.s3tc="res://.godot/imported/ColorSheet.png-3ab7c66a959101053b49473a4f4f4c94.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Core/Art/Textures/Brick_Texture_3.png"
-dest_files=["res://.godot/imported/Brick_Texture_3.png-3457d45b41c360e128d2046d2d126372.s3tc.ctex"]
+source_file="res://Core/Art/Textures/ColorSheet.png"
+dest_files=["res://.godot/imported/ColorSheet.png-3ab7c66a959101053b49473a4f4f4c94.s3tc.ctex"]
 
 [params]
 

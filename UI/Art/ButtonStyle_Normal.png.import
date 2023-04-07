@@ -2,27 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://coyk1ke2u63qv"
-path.s3tc="res://.godot/imported/Brick_Texture_3.png-3457d45b41c360e128d2046d2d126372.s3tc.ctex"
+uid="uid://ffpd3l42rpvq"
+path="res://.godot/imported/ButtonStyle_Normal.png-829034695adf48029ba244fbbc67cc41.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://Core/Art/Textures/Brick_Texture_3.png"
-dest_files=["res://.godot/imported/Brick_Texture_3.png-3457d45b41c360e128d2046d2d126372.s3tc.ctex"]
+source_file="res://UI/Art/ButtonStyle_Normal.png"
+dest_files=["res://.godot/imported/ButtonStyle_Normal.png-829034695adf48029ba244fbbc67cc41.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -32,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

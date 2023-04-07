@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvdqntuuvw1sn"]
+[gd_scene load_steps=7 format=3 uid="uid://cvdqntuuvw1sn"]
 
 [ext_resource type="Theme" uid="uid://cwteexwb3vbyi" path="res://UI/Style/Bee_Theme.tres" id="1_g7eow"]
 [ext_resource type="PackedScene" uid="uid://dwgh0l2dpnpsf" path="res://Play/persist.tscn" id="1_lnv0w"]
 [ext_resource type="LabelSettings" uid="uid://ban0wox1lr7ix" path="res://UI/Label_Setting_Big.tres" id="2_bh8d8"]
 [ext_resource type="Script" path="res://Play/main_menu.gd" id="2_jrubw"]
-[ext_resource type="Texture2D" uid="uid://b8d1dj5xfdicf" path="res://UI/Art/Play_Icon.png" id="4_2ixlk"]
+[ext_resource type="Texture2D" uid="uid://brajg1t0x2ouo" path="res://UI/Art/Play_Icon.png" id="4_2ixlk"]
+[ext_resource type="Texture2D" uid="uid://c57h448m0brbc" path="res://UI/Art/Edit_Icon.png" id="5_7l3e5"]
 
 [node name="MainMenu" type="Control" groups=["Menu"]]
 layout_mode = 3
@@ -116,6 +117,8 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+texture_normal = ExtResource("5_7l3e5")
+ignore_texture_size = true
 stretch_mode = 6
 
 [node name="Options" type="TextureButton" parent="ButtonBox"]
