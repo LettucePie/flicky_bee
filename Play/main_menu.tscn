@@ -1,11 +1,319 @@
-[gd_scene load_steps=7 format=3 uid="uid://cvdqntuuvw1sn"]
+[gd_scene load_steps=22 format=3 uid="uid://cvdqntuuvw1sn"]
 
 [ext_resource type="Theme" uid="uid://cwteexwb3vbyi" path="res://UI/Style/Bee_Theme.tres" id="1_g7eow"]
-[ext_resource type="PackedScene" uid="uid://dwgh0l2dpnpsf" path="res://Play/persist.tscn" id="1_lnv0w"]
 [ext_resource type="LabelSettings" uid="uid://ban0wox1lr7ix" path="res://UI/Label_Setting_Big.tres" id="2_bh8d8"]
 [ext_resource type="Script" path="res://Play/main_menu.gd" id="2_jrubw"]
 [ext_resource type="Texture2D" uid="uid://brajg1t0x2ouo" path="res://UI/Art/Play_Icon.png" id="4_2ixlk"]
+[ext_resource type="Texture2D" uid="uid://coa41p75fdbmr" path="res://UI/Art/Score_Card.png" id="4_h57gp"]
 [ext_resource type="Texture2D" uid="uid://c57h448m0brbc" path="res://UI/Art/Edit_Icon.png" id="5_7l3e5"]
+[ext_resource type="Texture2D" uid="uid://dyldysbhhisrt" path="res://UI/Art/Options_Icon.png" id="6_i6hpw"]
+[ext_resource type="Texture2D" uid="uid://17pd7qj0honl" path="res://UI/Art/Help_Icon.png" id="7_sf71g"]
+[ext_resource type="Texture2D" uid="uid://d27lc6xsnfjnw" path="res://UI/Art/Exit_Icon.png" id="8_k46lc"]
+[ext_resource type="Texture2D" uid="uid://coxyfupfv31p5" path="res://UI/Art/Return_Arrow.png" id="11_bthaf"]
+[ext_resource type="Texture2D" uid="uid://qkp4ujlp6tw" path="res://UI/Art/Confirm_Icon.png" id="12_i30ep"]
+[ext_resource type="StyleBox" uid="uid://c442afhe7tqtj" path="res://UI/Style/Button_Style_Confirm.tres" id="12_wc4kh"]
+[ext_resource type="PackedScene" uid="uid://cqxrcyiqso6wa" path="res://UI/help.tscn" id="14_kunq6"]
+
+[sub_resource type="Animation" id="Animation_ga81o"]
+resource_name = "Edit_Open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DarkFade:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Main:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Edit:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Edit:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2.08165e-12, 1920), Vector2(2.08165e-12, 2.08165e-12)]
+}
+
+[sub_resource type="Animation" id="Animation_r2dja"]
+resource_name = "Intro"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Main:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Main:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Edit:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Options:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Help:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("DarkFade:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_otwit"]
+resource_name = "Edit_Close"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DarkFade:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Main:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Edit:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Edit:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, 1920)]
+}
+
+[sub_resource type="Animation" id="Animation_ssqpc"]
+resource_name = "Options_Open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DarkFade:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Main:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Options:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Options:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2.08165e-12, 1920), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2umxj"]
+resource_name = "Options_Close"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DarkFade:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Main:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Options:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Options:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(2.08165e-12, 1920)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lyqgt"]
+_data = {
+"Edit_Close": SubResource("Animation_otwit"),
+"Edit_Open": SubResource("Animation_ga81o"),
+"Intro": SubResource("Animation_r2dja"),
+"Options_Close": SubResource("Animation_2umxj"),
+"Options_Open": SubResource("Animation_ssqpc")
+}
+
+[sub_resource type="SystemFont" id="SystemFont_wral1"]
+font_names = PackedStringArray("Arial")
+font_italic = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_3c1ab"]
+font = SubResource("SystemFont_wral1")
+font_size = 56
+outline_size = 4
+outline_color = Color(0.180392, 0.180392, 0, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.819608)
+shadow_offset = Vector2(4, 4)
 
 [node name="MainMenu" type="Control" groups=["Menu"]]
 layout_mode = 3
@@ -17,129 +325,230 @@ grow_vertical = 2
 theme = ExtResource("1_g7eow")
 script = ExtResource("2_jrubw")
 
-[node name="Title" type="Label" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Intro"
+libraries = {
+"": SubResource("AnimationLibrary_lyqgt")
+}
+
+[node name="Main" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Main"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.226
-offset_bottom = 0.0799789
+offset_bottom = 0.079977
 text = "Flicky Bee"
 label_settings = ExtResource("2_bh8d8")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ScoreCard" type="Panel" parent="."]
+[node name="ScoreCard" type="TextureRect" parent="Main"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0981481
-anchor_top = 0.270833
-anchor_right = 0.917593
-anchor_bottom = 0.522917
-offset_top = -1.90735e-05
-offset_bottom = -1.52588e-05
+anchor_left = 0.5
+anchor_top = 0.384
+anchor_right = 0.5
+anchor_bottom = 0.384
+offset_left = -538.0
+offset_top = -269.28
+offset_right = 538.0
+offset_bottom = 268.72
+grow_vertical = 2
+texture = ExtResource("4_h57gp")
+expand_mode = 3
 metadata/_edit_use_anchors_ = true
 
-[node name="Play" type="Button" parent="ScoreCard"]
+[node name="Label" type="Label" parent="Main/ScoreCard"]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.672
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 0.151979
+anchor_left = 0.353
+anchor_top = 0.024
+anchor_right = 0.652
+anchor_bottom = 0.345
+offset_left = -0.475016
+offset_top = 0.112001
+offset_right = 0.0999892
+offset_bottom = -0.264994
+text = "BEST"
+label_settings = SubResource("LabelSettings_3c1ab")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Play" type="TextureButton" parent="Main/ScoreCard"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.688
+anchor_top = 0.521
+anchor_right = 0.936
+anchor_bottom = 0.942
+offset_left = 0.399975
+offset_top = 0.223017
+offset_right = -0.200053
+offset_bottom = 0.146041
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 6
-text = "Play"
-icon = ExtResource("4_2ixlk")
-expand_icon = true
+texture_normal = ExtResource("4_2ixlk")
+ignore_texture_size = true
+stretch_mode = 5
 
-[node name="Box" type="VBoxContainer" parent="ScoreCard"]
+[node name="Box" type="VBoxContainer" parent="Main/ScoreCard"]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.663
-offset_bottom = -0.167019
+anchor_left = 0.15
+anchor_top = 0.197
+anchor_right = 0.671
+anchor_bottom = 0.808
+offset_left = 8.60003
+offset_top = 0.0140177
+offset_right = 0.00415971
+offset_bottom = 0.296084
 alignment = 1
 
-[node name="ScoreContainer" type="HBoxContainer" parent="ScoreCard/Box"]
+[node name="ScoreContainer" type="HBoxContainer" parent="Main/ScoreCard/Box"]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Label" type="Label" parent="ScoreCard/Box/ScoreContainer"]
+[node name="Label" type="Label" parent="Main/ScoreCard/Box/ScoreContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-text = "Highest Score : "
+text = "Score : "
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Score" type="Label" parent="Main/ScoreCard/Box/ScoreContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "0"
+vertical_alignment = 2
+clip_text = true
+text_overrun_behavior = 1
+
+[node name="DistContainer" type="HBoxContainer" parent="Main/ScoreCard/Box"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="Main/ScoreCard/Box/DistContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Distance : "
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Score" type="Label" parent="ScoreCard/Box/ScoreContainer"]
+[node name="Distance" type="Label" parent="Main/ScoreCard/Box/DistContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 text = "0"
 vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
 
-[node name="DistContainer" type="HBoxContainer" parent="ScoreCard/Box"]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Label" type="Label" parent="ScoreCard/Box/DistContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-text = "Farthest Journey : "
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="Distance" type="Label" parent="ScoreCard/Box/DistContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-text = "0"
-vertical_alignment = 1
-
-[node name="ButtonBox" type="HBoxContainer" parent="."]
+[node name="ButtonBox" type="HBoxContainer" parent="Main"]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.866
+anchor_top = 0.825
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -0.720108
+anchor_bottom = 0.968
+offset_top = -9.15527e-05
+offset_bottom = 0.439896
 grow_horizontal = 2
-grow_vertical = 2
 alignment = 1
 
-[node name="Edit" type="TextureButton" parent="ButtonBox"]
+[node name="Edit" type="TextureButton" parent="Main/ButtonBox"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
 texture_normal = ExtResource("5_7l3e5")
 ignore_texture_size = true
-stretch_mode = 6
+stretch_mode = 5
 
-[node name="Options" type="TextureButton" parent="ButtonBox"]
+[node name="Label" type="Label" parent="Main/ButtonBox/Edit"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -107.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Edit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Options" type="TextureButton" parent="Main/ButtonBox"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
-stretch_mode = 6
+texture_normal = ExtResource("6_i6hpw")
+ignore_texture_size = true
+stretch_mode = 5
 
-[node name="Help" type="TextureButton" parent="ButtonBox"]
+[node name="Label" type="Label" parent="Main/ButtonBox/Options"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -107.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Help" type="TextureButton" parent="Main/ButtonBox"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
-stretch_mode = 6
+texture_normal = ExtResource("7_sf71g")
+ignore_texture_size = true
+stretch_mode = 5
 
-[node name="Quit" type="TextureButton" parent="ButtonBox"]
+[node name="Label" type="Label" parent="Main/ButtonBox/Help"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -107.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Help"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quit" type="TextureButton" parent="Main/ButtonBox"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
-stretch_mode = 6
+texture_normal = ExtResource("8_k46lc")
+ignore_texture_size = true
+stretch_mode = 5
 
-[node name="Persist" parent="." instance=ExtResource("1_lnv0w")]
+[node name="Label" type="Label" parent="Main/ButtonBox/Quit"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -107.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Edit" type="Panel" parent="."]
 visible = false
@@ -150,15 +559,74 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Done_Edit" type="Button" parent="Edit"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.85
+anchor_right = 1.0
+anchor_bottom = 0.956
+offset_top = -4.57764e-05
+offset_bottom = -0.520058
+grow_horizontal = 2
+grow_vertical = 0
+text = "Done"
+
 [node name="Options" type="Panel" parent="."]
 visible = false
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.1
-anchor_top = 0.05
-anchor_right = 0.9
-anchor_bottom = 0.95
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -0.00012207
 grow_horizontal = 2
 grow_vertical = 2
 
-[connection signal="pressed" from="ScoreCard/Play" to="." method="_on_play_pressed"]
+[node name="HBox" type="HBoxContainer" parent="Options"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.851
+anchor_right = 1.0
+anchor_bottom = 0.957
+offset_top = -2.92002
+offset_bottom = -0.440033
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Cancel" type="Button" parent="Options/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cancel"
+icon = ExtResource("11_bthaf")
+expand_icon = true
+
+[node name="Confirm" type="Button" parent="Options/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = ExtResource("12_wc4kh")
+text = "Confirm"
+icon = ExtResource("12_i30ep")
+expand_icon = true
+
+[node name="Help" parent="." instance=ExtResource("14_kunq6")]
+visible = false
+layout_mode = 1
+
+[node name="DarkFade" type="ColorRect" parent="."]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="pressed" from="Main/ScoreCard/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Main/ButtonBox/Edit" to="." method="_on_edit_pressed"]
+[connection signal="pressed" from="Main/ButtonBox/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Main/ButtonBox/Help" to="." method="_on_help_pressed"]
+[connection signal="pressed" from="Main/ButtonBox/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Edit/Done_Edit" to="." method="_on_done_edit_pressed"]
+[connection signal="pressed" from="Options/HBox/Cancel" to="." method="_on_done_options_pressed" binds= [false]]
+[connection signal="pressed" from="Options/HBox/Confirm" to="." method="_on_done_options_pressed" binds= [true]]

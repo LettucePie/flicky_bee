@@ -3,7 +3,7 @@
 [ext_resource type="StyleBox" uid="uid://cvcn82igh6iyj" path="res://UI/Style/Button_Style_Normal.tres" id="1_21sri"]
 [ext_resource type="StyleBox" path="res://UI/Style/Button_Style_Focus.tres" id="1_picxi"]
 [ext_resource type="StyleBox" uid="uid://yrle83fsm8ff" path="res://UI/Style/Panel_Style.tres" id="2_51d7p"]
-[ext_resource type="FontFile" uid="uid://d05v52etrd8gb" path="res://UI/Fonts/Gloria_Hallelujah/GloriaHallelujah-Regular.ttf" id="4_owa64"]
+[ext_resource type="FontFile" uid="uid://cn2jeh3i0gd5v" path="res://UI/Fonts/Gloria_Hallelujah/GloriaHallelujah-Regular.ttf" id="4_owa64"]
 
 [resource]
 default_font = ExtResource("4_owa64")

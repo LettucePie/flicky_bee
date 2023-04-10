@@ -42,3 +42,11 @@ func _on_animation_player_animation_finished(anim_name):
 
 func _on_done_pressed():
 	self.hide()
+
+
+func _on_visibility_changed():
+	if visible:
+		page = 0
+		_on_prev_pressed()
+		$AnimationPlayer.play(pages[page])
+		$Navigation/Container/Prev.hide()
