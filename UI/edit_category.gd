@@ -4,6 +4,7 @@ enum CATEGORY_TYPE {HATS, TRAILS, FLOWERS}
 
 @export var category : CATEGORY_TYPE
 @export var inventory : Array[PriceTag] = []
+@export var accOption : PackedScene
 
 @onready var current_icon = $Vbox/Current/CurrentIcon
 @onready var current_label = $Vbox/Current/CurrentLabel

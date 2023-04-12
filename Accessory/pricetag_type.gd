@@ -4,6 +4,7 @@ class_name PriceTag
 enum ACC_TYPE {HAT, TRAIL, FLOWER}
 
 @export var acc_name := "Name"
+@export var acc_icon : Texture2D
 @export var acc_type : ACC_TYPE
 @export var accessory : Resource
 @export var purchase_honey := true

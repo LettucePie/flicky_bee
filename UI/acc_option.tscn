@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://u2la6l6mpb2v"]
+
+[ext_resource type="Texture2D" uid="uid://8qybfiret8ja" path="res://icon.svg" id="1_dpgun"]
+[ext_resource type="Script" path="res://UI/AccOption.gd" id="1_vr7ud"]
+
+[node name="AccOption" type="VBoxContainer"]
+size_flags_horizontal = 3
+alignment = 1
+script = ExtResource("1_vr7ud")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_vertical = 10
+texture = ExtResource("1_dpgun")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Status" type="TextureRect" parent="Icon"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Label"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Price" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 2
+text = "500 Points"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
