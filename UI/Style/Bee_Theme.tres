@@ -1,9 +1,14 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cwteexwb3vbyi"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://cwteexwb3vbyi"]
 
 [ext_resource type="StyleBox" uid="uid://cvcn82igh6iyj" path="res://UI/Style/Button_Style_Normal.tres" id="1_21sri"]
 [ext_resource type="StyleBox" path="res://UI/Style/Button_Style_Focus.tres" id="1_picxi"]
 [ext_resource type="StyleBox" uid="uid://yrle83fsm8ff" path="res://UI/Style/Panel_Style.tres" id="2_51d7p"]
+[ext_resource type="Texture2D" uid="uid://bqihm8hpvdisc" path="res://UI/Art/Grabber_Handle_Normal.png" id="3_v636i"]
+[ext_resource type="Texture2D" uid="uid://cpkfv6e5mt6i0" path="res://UI/Art/Grabber_Handle_Disabled.png" id="4_822cg"]
 [ext_resource type="FontFile" uid="uid://cn2jeh3i0gd5v" path="res://UI/Fonts/Gloria_Hallelujah/GloriaHallelujah-Regular.ttf" id="4_owa64"]
+[ext_resource type="Texture2D" uid="uid://2psjw2m5dapr" path="res://UI/Art/Grabber_Handle_Highlight.png" id="5_vggml"]
+[ext_resource type="StyleBox" uid="uid://cm5u404ife8yc" path="res://UI/Style/Slider_Yes.tres" id="6_k1so6"]
+[ext_resource type="StyleBox" uid="uid://yxous6lnd8cr" path="res://UI/Style/Slider_No.tres" id="7_3s7pu"]
 
 [resource]
 default_font = ExtResource("4_owa64")
@@ -18,6 +23,13 @@ Button/styles/normal = ExtResource("1_21sri")
 CheckButton/colors/font_color = Color(0.875, 0.875, 0.875, 1)
 CheckButton/colors/font_outline_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
 CheckButton/constants/outline_size = 10
+HSlider/constants/grabber_offset = -35
+HSlider/icons/grabber = ExtResource("3_v636i")
+HSlider/icons/grabber_disabled = ExtResource("4_822cg")
+HSlider/icons/grabber_highlight = ExtResource("5_vggml")
+HSlider/styles/grabber_area = ExtResource("6_k1so6")
+HSlider/styles/grabber_area_highlight = ExtResource("6_k1so6")
+HSlider/styles/slider = ExtResource("7_3s7pu")
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_outline_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
 Label/constants/line_spacing = 2

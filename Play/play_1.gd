@@ -15,6 +15,8 @@ var player = null
 var camera_target := Vector3.ZERO
 var traveling := false
 var platform_score := 0
+var comb_count := 0
+var jar_count := 0
 var current_platform : Area3D
 var current_flower : Node3D
 var furthest_distance := 0.0
@@ -317,10 +319,12 @@ func _on_player_collect(obj) -> void:
 	if obj == "Honey":
 		time = clamp(time + 0.5, 0.0, life_time)
 		$Life_Timer.start(time)
+		comb_count += 1
 	if obj == "Jar":
 		difference = 3
 		time = clamp(time + 2.5, 0.0, life_time)
 		$Life_Timer.start(time)
+		jar_count += 1
 	if obj == "Wing":
 		difference = 3
 		flight = clamp(flight + 2.0, 0.0, flight_reserve)

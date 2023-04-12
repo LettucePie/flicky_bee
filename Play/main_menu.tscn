@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://cvdqntuuvw1sn"]
+[gd_scene load_steps=28 format=3 uid="uid://cvdqntuuvw1sn"]
 
 [ext_resource type="Theme" uid="uid://cwteexwb3vbyi" path="res://UI/Style/Bee_Theme.tres" id="1_g7eow"]
 [ext_resource type="LabelSettings" uid="uid://ban0wox1lr7ix" path="res://UI/Label_Setting_Big.tres" id="2_bh8d8"]
 [ext_resource type="Script" path="res://Play/main_menu.gd" id="2_jrubw"]
+[ext_resource type="Texture2D" uid="uid://bo111rfrk4yq1" path="res://UI/Art/Menu_BG.png" id="3_7ws6a"]
 [ext_resource type="Texture2D" uid="uid://brajg1t0x2ouo" path="res://UI/Art/Play_Icon.png" id="4_2ixlk"]
 [ext_resource type="Texture2D" uid="uid://coa41p75fdbmr" path="res://UI/Art/Score_Card.png" id="4_h57gp"]
 [ext_resource type="Texture2D" uid="uid://c57h448m0brbc" path="res://UI/Art/Edit_Icon.png" id="5_7l3e5"]
@@ -12,7 +13,61 @@
 [ext_resource type="Texture2D" uid="uid://coxyfupfv31p5" path="res://UI/Art/Return_Arrow.png" id="11_bthaf"]
 [ext_resource type="Texture2D" uid="uid://qkp4ujlp6tw" path="res://UI/Art/Confirm_Icon.png" id="12_i30ep"]
 [ext_resource type="StyleBox" uid="uid://c442afhe7tqtj" path="res://UI/Style/Button_Style_Confirm.tres" id="12_wc4kh"]
+[ext_resource type="Texture2D" uid="uid://bfumwgj1lgw21" path="res://UI/Art/Volume_Min_Icon.png" id="14_a423u"]
 [ext_resource type="PackedScene" uid="uid://cqxrcyiqso6wa" path="res://UI/help.tscn" id="14_kunq6"]
+[ext_resource type="Texture2D" uid="uid://dwhjm8yvhqonf" path="res://UI/Art/Volume_Max_Icon.png" id="15_kl8dl"]
+[ext_resource type="AudioStream" uid="uid://cwdbia44da4p8" path="res://kenney/Flowing Rocks.ogg" id="17_n0hyg"]
+
+[sub_resource type="Animation" id="Animation_otwit"]
+resource_name = "Edit_Close"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DarkFade:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Main:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Edit:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Edit:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, 1920)]
+}
 
 [sub_resource type="Animation" id="Animation_ga81o"]
 resource_name = "Edit_Open"
@@ -140,8 +195,8 @@ tracks/5/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_otwit"]
-resource_name = "Edit_Close"
+[sub_resource type="Animation" id="Animation_2umxj"]
+resource_name = "Options_Close"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -169,7 +224,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Edit:visible")
+tracks/2/path = NodePath("Options:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -181,14 +236,14 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Edit:position")
+tracks/3/path = NodePath("Options:position")
 tracks/3/interp = 2
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, 1920)]
+"values": [Vector2(0, 0), Vector2(2.08165e-12, 1920)]
 }
 
 [sub_resource type="Animation" id="Animation_ssqpc"]
@@ -242,57 +297,6 @@ tracks/3/keys = {
 "values": [Vector2(2.08165e-12, 1920), Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_2umxj"]
-resource_name = "Options_Close"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("DarkFade:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Main:modulate")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.5, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Options:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Options:position")
-tracks/3/interp = 2
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(2.08165e-12, 1920)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lyqgt"]
 _data = {
 "Edit_Close": SubResource("Animation_otwit"),
@@ -315,6 +319,13 @@ shadow_size = 4
 shadow_color = Color(0, 0, 0, 0.819608)
 shadow_offset = Vector2(4, 4)
 
+[sub_resource type="Gradient" id="Gradient_ylvs1"]
+colors = PackedColorArray(0, 0, 0, 0.619608, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5r6wv"]
+gradient = SubResource("Gradient_ylvs1")
+fill_from = Vector2(1, 1)
+
 [node name="MainMenu" type="Control" groups=["Menu"]]
 layout_mode = 3
 anchors_preset = 15
@@ -325,6 +336,16 @@ grow_vertical = 2
 theme = ExtResource("1_g7eow")
 script = ExtResource("2_jrubw")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_7ws6a")
+stretch_mode = 6
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Intro"
 libraries = {
@@ -332,7 +353,6 @@ libraries = {
 }
 
 [node name="Main" type="Control" parent="."]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -458,6 +478,16 @@ text = "0"
 vertical_alignment = 1
 clip_text = true
 text_overrun_behavior = 1
+
+[node name="Shade" type="TextureRect" parent="Main"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.825
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+grow_horizontal = 2
+texture = SubResource("GradientTexture2D_5r6wv")
 
 [node name="ButtonBox" type="HBoxContainer" parent="Main"]
 layout_mode = 1
@@ -607,6 +637,105 @@ text = "Confirm"
 icon = ExtResource("12_i30ep")
 expand_icon = true
 
+[node name="VBox" type="VBoxContainer" parent="Options"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.797
+offset_bottom = 0.76
+
+[node name="Label" type="Label" parent="Options/VBox"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Settings"
+label_settings = ExtResource("2_bh8d8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Music" type="HBoxContainer" parent="Options/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="Options/VBox/Music"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 1.5
+text = "Music :"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Music_Min" type="TextureButton" parent="Options/VBox/Music"]
+custom_minimum_size = Vector2(2.08165e-12, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+texture_normal = ExtResource("14_a423u")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Music_Slide" type="HSlider" parent="Options/VBox/Music"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 3.5
+theme = ExtResource("1_g7eow")
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="Music_Max" type="TextureButton" parent="Options/VBox/Music"]
+custom_minimum_size = Vector2(2.08165e-12, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+texture_normal = ExtResource("15_kl8dl")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="SFX" type="HBoxContainer" parent="Options/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="Options/VBox/SFX"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 1.5
+text = "SFX :"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SFX_Min" type="TextureButton" parent="Options/VBox/SFX"]
+custom_minimum_size = Vector2(2.08165e-12, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+texture_normal = ExtResource("14_a423u")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="SFX_Slide" type="HSlider" parent="Options/VBox/SFX"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 3.5
+theme = ExtResource("1_g7eow")
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="SFX_Max" type="TextureButton" parent="Options/VBox/SFX"]
+custom_minimum_size = Vector2(2.08165e-12, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+texture_normal = ExtResource("15_kl8dl")
+ignore_texture_size = true
+stretch_mode = 5
+
 [node name="Help" parent="." instance=ExtResource("14_kunq6")]
 visible = false
 layout_mode = 1
@@ -622,6 +751,11 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_n0hyg")
+autoplay = true
+bus = &"Music"
+
 [connection signal="pressed" from="Main/ScoreCard/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Main/ButtonBox/Edit" to="." method="_on_edit_pressed"]
 [connection signal="pressed" from="Main/ButtonBox/Options" to="." method="_on_options_pressed"]
@@ -630,3 +764,9 @@ color = Color(0, 0, 0, 1)
 [connection signal="pressed" from="Edit/Done_Edit" to="." method="_on_done_edit_pressed"]
 [connection signal="pressed" from="Options/HBox/Cancel" to="." method="_on_done_options_pressed" binds= [false]]
 [connection signal="pressed" from="Options/HBox/Confirm" to="." method="_on_done_options_pressed" binds= [true]]
+[connection signal="pressed" from="Options/VBox/Music/Music_Min" to="." method="_on_music_slide_value_changed" binds= [0.0]]
+[connection signal="value_changed" from="Options/VBox/Music/Music_Slide" to="." method="_on_music_slide_value_changed"]
+[connection signal="pressed" from="Options/VBox/Music/Music_Max" to="." method="_on_music_slide_value_changed" binds= [1.0]]
+[connection signal="pressed" from="Options/VBox/SFX/SFX_Min" to="." method="_on_sfx_slide_value_changed" binds= [0.0]]
+[connection signal="value_changed" from="Options/VBox/SFX/SFX_Slide" to="." method="_on_sfx_slide_value_changed"]
+[connection signal="pressed" from="Options/VBox/SFX/SFX_Max" to="." method="_on_sfx_slide_value_changed" binds= [1.0]]

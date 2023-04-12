@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbcurcqhirjgx"]
+
+[ext_resource type="Material" uid="uid://cdw8l0u4g4guq" path="res://Accessory/Trails/Particle_Materials/DotTrail_PartMat.tres" id="1_s1efg"]
+[ext_resource type="SphereMesh" uid="uid://bkt86dqw7w88n" path="res://Accessory/Trails/Particle_Meshes/Dot_Basic_Mesh.tres" id="2_jkuvd"]
+
+[node name="DotTrail" type="GPUParticles3D"]
+process_material = ExtResource("1_s1efg")
+draw_pass_1 = ExtResource("2_jkuvd")
+metadata/name = "Dot"

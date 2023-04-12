@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://eah86kwsu1ky"]
+
+[ext_resource type="Script" path="res://Accessory/Trails/trail.gd" id="1_5n4uu"]
+[ext_resource type="Script" path="res://Accessory/Trails/trail_type.gd" id="2_c7abi"]
+[ext_resource type="PackedScene" uid="uid://bbcurcqhirjgx" path="res://Accessory/Trails/dot_trail.tscn" id="2_ljb7q"]
+
+[sub_resource type="Resource" id="Resource_g6ava"]
+script = ExtResource("2_c7abi")
+trail_name = "Dot"
+scene = ExtResource("2_ljb7q")
+
+[node name="Trail" type="Node3D"]
+script = ExtResource("1_5n4uu")
+trails = Array[Resource]([SubResource("Resource_g6ava")])
+
+[node name="DotTrail" parent="." instance=ExtResource("2_ljb7q")]

@@ -3,6 +3,9 @@ extends Control
 @onready var persist_scene = preload("res://Play/persist.tscn")
 @onready var play_scene = preload("res://Play/play_1.tscn")
 
+@onready var music_slide = $Options/VBox/Music/Music_Slide
+@onready var sfx_slide = $Options/VBox/SFX/SFX_Slide
+
 var persist_node : Persist
 var play_node : Node
 
@@ -13,8 +16,17 @@ func _ready():
 	if OS.has_feature("ios") \
 	or OS.has_feature("web"):
 		$ButtonBox/Quit.queue_free()
+	_reflect_settings()
 	_hide_submenus()
 	_update_score()
+
+
+func _reflect_settings() -> void:
+	if persist_node != null:
+		music_slide.value = persist_node.music_vol
+		sfx_slide.value = persist_node.sfx_vol
+		AudioServer.set_bus_volume_db(1, linear_to_db(persist_node.music_vol))
+		AudioServer.set_bus_volume_db(2, linear_to_db(persist_node.sfx_vol))
 
 
 func _update_score() -> void:
@@ -68,6 +80,25 @@ func _on_done_edit_pressed():
 	$AnimationPlayer.play("Edit_Close")
 
 
+func _on_music_slide_value_changed(value):
+	music_slide.value = value
+
+
+func _on_sfx_slide_value_changed(value):
+	sfx_slide.value = value
+
+
 func _on_done_options_pressed(save : bool) -> void:
 	print("Finished with Options, Applying changes : ", save)
+	if persist_node != null and save:
+		persist_node.music_vol = music_slide.value
+		persist_node.sfx_vol = sfx_slide.value
+		persist_node._save_game()
+		_reflect_settings()
+	elif !save:
+		_reflect_settings()
 	$AnimationPlayer.play("Options_Close")
+
+
+
+
