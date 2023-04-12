@@ -1,13 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://c72ybf2ueh1ls"]
+[gd_scene load_steps=5 format=3 uid="uid://b2wonbiskwb7q"]
 
-[ext_resource type="PackedScene" uid="uid://4x82boxugw4q" path="res://Accessory/Hats/TopHat.glb" id="1_cc4nw"]
 [ext_resource type="Script" path="res://Accessory/Hats/hat.gd" id="1_d6xww"]
+[ext_resource type="PackedScene" uid="uid://4x82boxugw4q" path="res://Accessory/Hats/Models/TopHat.glb" id="2_o2mbp"]
 [ext_resource type="Script" path="res://Accessory/Hats/hat_type.gd" id="3_4idt3"]
 
 [sub_resource type="Resource" id="Resource_myrrq"]
 script = ExtResource("3_4idt3")
 hat_name = "Top Hat"
-scene = ExtResource("1_cc4nw")
+scene = ExtResource("2_o2mbp")
 
 [node name="Hat" type="Node3D"]
 script = ExtResource("1_d6xww")

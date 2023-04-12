@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://be1u13i3321dd"]
+[gd_scene load_steps=19 format=3 uid="uid://be1u13i3321dd"]
 
 [ext_resource type="Theme" uid="uid://cwteexwb3vbyi" path="res://UI/Style/Bee_Theme.tres" id="1_lh646"]
 [ext_resource type="Script" path="res://UI/hud.gd" id="1_w0mb1"]
@@ -14,6 +14,8 @@
 [ext_resource type="LabelSettings" uid="uid://ban0wox1lr7ix" path="res://UI/Label_Setting_Big.tres" id="11_j2abc"]
 [ext_resource type="PackedScene" uid="uid://cy60dhgo0wcen" path="res://UI/score_pop.tscn" id="13_yn6dh"]
 [ext_resource type="Texture2D" uid="uid://cpgxsb0sa2if0" path="res://UI/Art/Pause_Icon.png" id="14_u02pd"]
+[ext_resource type="Texture2D" uid="uid://brajg1t0x2ouo" path="res://UI/Art/Play_Icon.png" id="15_d6fn0"]
+[ext_resource type="Texture2D" uid="uid://coxyfupfv31p5" path="res://UI/Art/Return_Arrow.png" id="16_fuy5r"]
 
 [sub_resource type="SystemFont" id="SystemFont_uigy6"]
 subpixel_positioning = 0
@@ -55,7 +57,6 @@ offset_right = 140.0
 offset_bottom = 140.0
 
 [node name="Pause" type="Button" parent="Ratio"]
-visible = false
 layout_mode = 2
 icon = ExtResource("14_u02pd")
 icon_alignment = 1
@@ -319,13 +320,65 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Play Again?"
 
-[node name="Pause" type="Panel" parent="."]
+[node name="Pause" type="ColorRect" parent="."]
+process_mode = 3
 visible = false
+z_index = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0.0509804, 0.0509804, 0.0509804, 0.827451)
 
+[node name="Panel" type="Panel" parent="Pause"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.07
+anchor_top = 0.13
+anchor_right = 0.93
+anchor_bottom = 0.87
+offset_bottom = -0.800133
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Vbox" type="VBoxContainer" parent="Pause/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.033
+anchor_right = 1.0
+anchor_bottom = 0.968
+offset_top = 0.140004
+offset_right = 0.199951
+offset_bottom = -0.559959
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Pause/Panel/Vbox"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Paused"
+label_settings = ExtResource("11_j2abc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Continue" type="Button" parent="Pause/Panel/Vbox"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Continue"
+icon = ExtResource("15_d6fn0")
+expand_icon = true
+
+[node name="Return" type="Button" parent="Pause/Panel/Vbox"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Return to the Hive"
+icon = ExtResource("16_fuy5r")
+expand_icon = true
+
+[connection signal="pressed" from="Ratio/Pause" to="." method="_on_pause_pressed"]
 [connection signal="pressed" from="TryAgain/VBoxContainer/PlayAgain" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="Pause/Panel/Vbox/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="Pause/Panel/Vbox/Return" to="." method="_on_return_pressed"]

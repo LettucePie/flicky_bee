@@ -5,6 +5,9 @@ extends Node
 @export var flight_reserve := 5.0
 @export var rest_time := 2.0
 @export var flight_bound := 90.0
+@export var flower_value : int = 2
+@export var comb_value : int = 1
+@export var jar_value : int = 2
 
 var persist : Persist
 var menu = null
@@ -17,9 +20,12 @@ var traveling := false
 var platform_score := 0
 var comb_count := 0
 var jar_count := 0
+var flower_count := 0
 var current_platform : Area3D
 var current_flower : Node3D
 var furthest_distance := 0.0
+var pause_score := 0
+var pause_distance := 0.0
 var game_started := false
 var time := 10.0
 var flight := 5.0
@@ -55,7 +61,7 @@ func _setup(menu_node : Control, persist_node : Persist):
 	menu = menu_node
 	persist = persist_node
 	$Generator._clear_platforms()
-	$Generator._generate(20, 0.0)
+	$Generator._generate(20, 0.0, persist.flower)
 	camera_target = Vector3.ZERO
 	_spawn_player()
 	_establish_bounds()
@@ -64,7 +70,12 @@ func _setup(menu_node : Control, persist_node : Persist):
 	$Life_Timer.stop()
 	$Rest_Timer.stop()
 	platform_score = 0
+	jar_count = 0
+	comb_count = 0
+	flower_count = 0
 	furthest_distance = 0
+	pause_score = 0
+	pause_distance = 0.0
 	touching = false
 	flying = false
 	flick_valid = false
@@ -75,6 +86,7 @@ func _setup(menu_node : Control, persist_node : Persist):
 	$HUD._update_health_bar(time, life_time)
 	$HUD._update_fly_bar(flight, flight_reserve)
 	$HUD._setup()
+	$Results.hide()
 	grass_patches = [$Grass_Patch1, $Grass_Patch2, $Grass_Patch3]
 	var grass_point = 60
 	for g in grass_patches:
@@ -87,7 +99,8 @@ func _notification(what):
 	or what == NOTIFICATION_APPLICATION_PAUSED:
 		print("Device Leaving Focus at ", Time.get_unix_time_from_system())
 		if persist != null:
-			persist._add_progress(platform_score, furthest_distance)
+			_register_progress()
+		$HUD._on_pause_pressed()
 
 
 func _spawn_player() -> void:
@@ -290,7 +303,7 @@ func _on_player_finished_travel(platform):
 			$Generator.platforms.pop_front().queue_free()
 		var last_platform = $Generator.platforms.back()
 		$Generator._clear_gaps(last_platform.get_position().z)
-		$Generator._generate(4, last_platform.get_position().z)
+		$Generator._generate(4, last_platform.get_position().z, persist.flower)
 	current_platform = platform
 	current_flower = current_platform._return_flower()
 	traveling = false
@@ -304,7 +317,9 @@ func _on_player_finished_travel(platform):
 	$Rest_Timer.start(rest_time)
 	time = clamp(time + 1.0, 0.0, life_time)
 	flight = clamp(flight + 2.0, 0.0, flight_reserve)
-	platform_score += 2
+	flower_count += 1
+	if persist != null:
+		platform_score += _register_point(flower_value)
 	$HUD._update_score(2, platform_score)
 
 
@@ -315,35 +330,44 @@ func _on_player_flick_depleted() -> void:
 
 func _on_player_collect(obj) -> void:
 	print("Player Collected ", obj)
-	var difference = 1
+	var difference = 0
 	if obj == "Honey":
 		time = clamp(time + 0.5, 0.0, life_time)
 		$Life_Timer.start(time)
 		comb_count += 1
+		if persist != null:
+			difference = _register_point(comb_value)
 	if obj == "Jar":
-		difference = 3
 		time = clamp(time + 2.5, 0.0, life_time)
 		$Life_Timer.start(time)
 		jar_count += 1
+		if persist != null:
+			difference = _register_point(jar_value)
 	if obj == "Wing":
-		difference = 3
 		flight = clamp(flight + 2.0, 0.0, flight_reserve)
 	platform_score += difference
 	$HUD._update_score(difference, platform_score)
 
 
 func _on_player_hit():
-	print("Player Hit")
 	time = clamp(time - 2.5, 0.0, life_time)
 	$Life_Timer.start(time)
 
 
 func _on_life_timer_timeout():
+	print("Time Out")
 	$Life_Timer.stop()
-	print("Player Ran out of Time")
+	$Rest_Timer.stop()
 	if persist != null:
-		persist._add_progress(platform_score, furthest_distance)
-	$HUD._player_death()
+		_register_progress()
+	$Results._set_results(
+		platform_score,
+		furthest_distance,
+		comb_count,
+		jar_count,
+		flower_count,
+		persist
+	)
 
 
 func _on_rest_timer_timeout():
@@ -353,8 +377,6 @@ func _on_rest_timer_timeout():
 
 func _on_bottom_detect_area_entered(area):
 	pass
-#	if area.is_in_group("Player"):
-#		_update_camera_target(-4.0)
 
 
 func _on_top_detect_area_entered(area):
@@ -362,8 +384,39 @@ func _on_top_detect_area_entered(area):
 		_update_camera_target(4.0)
 
 
-func _on_hud_play_again():
-	print("replace with Results Menu that returns to Main Menu")
-	get_tree().reload_current_scene()
-	_setup(null, null)
+func _on_results_play_again():
+#	get_tree().reload_current_scene()
+	_setup(menu, persist)
 
+
+func _register_progress() -> void:
+	persist._register_scores(platform_score, furthest_distance)
+	if pause_score > 0:
+		persist._add_scores(
+			platform_score - pause_score,
+			furthest_distance - pause_distance
+		)
+	else:
+		persist._add_scores(
+			platform_score,
+			furthest_distance
+		)
+	pause_score = platform_score
+	pause_distance = furthest_distance
+
+
+func _register_point(val : int) -> int:
+	var multiplier = clamp(
+		floor(furthest_distance / 1000),
+		1,
+		5
+	)
+	persist._add_points(multiplier * val)
+	return multiplier * val
+
+
+func _on_results_quit_out():
+	if menu != null:
+		get_window().add_child(menu)
+		get_tree().set_current_scene(menu)
+		self.queue_free()

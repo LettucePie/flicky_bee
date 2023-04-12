@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ciyfxnas78mwn"]
+
+[ext_resource type="PackedScene" uid="uid://2aghnor46fu6" path="res://Core/Art/Flower_Top.glb" id="1_0m481"]
+[ext_resource type="Script" path="res://Accessory/Flowers/flower_head.gd" id="1_jih17"]
+
+[node name="Flower_Head" type="Node3D"]
+script = ExtResource("1_jih17")
+default = NodePath("Flower_Top")
+
+[node name="Flower_Top" parent="." instance=ExtResource("1_0m481")]
+
+[node name="Trace" type="Node3D" parent="Flower_Top"]
+transform = Transform3D(1.62, 0, 0, 0, 1.62, 0, 0, 0, 1.62, -0.00216563, 0.37069, 0.00463634)
+
+[editable path="Flower_Top"]

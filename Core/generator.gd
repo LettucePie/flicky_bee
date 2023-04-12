@@ -12,6 +12,7 @@ class_name Generator
 
 var platforms : Array
 var starting_platform : Node3D
+var flower := "default"
 #var grass_patches : Array
 var gaps : Array
 
@@ -55,7 +56,7 @@ func _clear_gaps(point) -> void:
 	stray_gaps.clear()
 
 
-func _generate(num : int, z_start : float) -> void:
+func _generate(num : int, z_start : float, flower : String) -> void:
 	if platform_scene != null:
 		var z_point = z_start
 		var z_previous = z_start
@@ -64,6 +65,7 @@ func _generate(num : int, z_start : float) -> void:
 			starting_platform.set_position(Vector3(0, 0, z_point))
 			platforms.append(starting_platform)
 			add_child(starting_platform)
+			starting_platform._return_flower()._assign_flower(flower)
 		randomize()
 		var difficulty_progress = difficulty_curve.sample(
 			inverse_lerp(0, 1000, abs(z_point))
@@ -86,6 +88,7 @@ func _generate(num : int, z_start : float) -> void:
 			)
 			platforms.append(new_plat)
 			add_child(new_plat)
+			new_plat._return_flower()._assign_flower(flower)
 			##
 			if abs(z_point) - abs(z_previous) >= 8.5:
 				var new_gap = null

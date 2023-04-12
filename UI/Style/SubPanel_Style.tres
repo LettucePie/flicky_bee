@@ -1,0 +1,12 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://bcxyibr4h4e10"]
+
+[ext_resource type="Texture2D" uid="uid://b5c41raqk11bk" path="res://UI/Art/SubPanel_Style.png" id="1_14k2w"]
+
+[resource]
+texture = ExtResource("1_14k2w")
+texture_margin_left = 64.0
+texture_margin_top = 64.0
+texture_margin_right = 64.0
+texture_margin_bottom = 64.0
+axis_stretch_vertical = 1
+region_rect = Rect2(0, 0, 640, 640)

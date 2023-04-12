@@ -11,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://c0wrsek7p180i" path="res://Core/Sound/Hit.wav" id="7_m1bdf"]
 [ext_resource type="PackedScene" uid="uid://ctfd8d5pv7p3t" path="res://Core/Art/Bee.glb" id="9_hom12"]
 [ext_resource type="PackedScene" uid="uid://eah86kwsu1ky" path="res://Accessory/Trails/trail.tscn" id="10_f4457"]
-[ext_resource type="PackedScene" path="res://Accessory/Hats/hat.tscn" id="10_k4ydw"]
+[ext_resource type="PackedScene" uid="uid://c72ybf2ueh1ls" path="res://Accessory/Hats/hat.tscn" id="10_k4ydw"]
 [ext_resource type="Texture2D" uid="uid://c3f4c4g4lsp6l" path="res://Core/Art/Textures/Hit_FX1.png" id="11_cb7ww"]
 [ext_resource type="Script" path="res://Core/hurt_blink.gd" id="12_5hnsk"]
 
@@ -44,9 +44,9 @@ transform = Transform3D(-1.67852e-08, -1.33934e-16, -0.384, 1.33934e-16, 0.384, 
 [node name="Hat" parent="Turn/Bee/Body/Head" index="0" instance=ExtResource("10_k4ydw")]
 transform = Transform3D(-1.13832e-07, 9.08299e-16, 2.60417, 9.083e-16, 2.60417, -9.083e-16, -2.60417, 9.08301e-16, -1.13832e-07, 0.133833, 0.436288, 3.1428e-09)
 
-[node name="Trail" parent="Turn/Bee" instance=ExtResource("10_f4457")]
-transform = Transform3D(1, 1.21214e-24, -5.78813e-14, 1.72835e-22, 1, -1.47565e-23, 8.39783e-16, 1.40338e-23, 1, -2.24516, 0.0351857, -6.72292e-14)
-trails = {}
+[node name="Trail" parent="Turn" instance=ExtResource("10_f4457")]
+transform = Transform3D(-1.67852e-08, -1.33934e-16, -0.384, 1.33934e-16, 0.384, -1.33934e-16, 0.384, -1.33934e-16, -1.67852e-08, 3.76855e-08, 0.0135113, -0.862141)
+trails = Array[Resource("res://Accessory/Trails/trail_type.gd")]([])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_uaofe")

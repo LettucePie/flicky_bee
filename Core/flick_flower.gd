@@ -1,14 +1,25 @@
 extends Node3D
 
 @onready var anim = $AnimationTree
-@onready var head = $Head
-@onready var flower_top = $Head/Flower_Top
+@onready var head = $Flower_Head
+#@onready var flower_top = $Head/Flower_Top
 @onready var skeleton = $Flower_Stem/Flower_Arm/Skeleton3D
+var flower_top = null
 var head_boneid : int
 
 
-# Called when the node enters the scene tree for the first time.
+func _assign_flower(flower : String) -> void:
+#	print("Assigning Flower: ", flower)
+	if head != null:
+#		print("Flower Head wasn't null")
+		head._set_flower(flower)
+	else:
+#		print("Flower Head was null")
+		$Flower_Head._set_flower(flower)
+
+
 func _ready():
+	flower_top = head._return_flower()
 	head_boneid = skeleton.find_bone("Head")
 
 
@@ -19,7 +30,7 @@ func _process(delta):
 	head.set_position(head_tran.origin)
 
 
-func _bend_flower(angle, tension_percent):
+func _bend_flower(angle, tension_percent) -> void:
 	anim.set("parameters/Bend_Blend/blend_amount", tension_percent)
 	rotation = Vector3(0, -angle + (PI / 2), 0)
 	flower_top.rotation = Vector3(0, angle, 0)
@@ -38,5 +49,4 @@ func _return_top_pos_rot() -> Array:
 
 
 func _return_trace() -> Node3D:
-	var result = $Head/Flower_Top/Trace
-	return result
+	return head._return_trace()

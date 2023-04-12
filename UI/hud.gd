@@ -1,6 +1,6 @@
 extends Control
 
-signal play_again()
+signal end_game()
 
 @export var score_pop_scene : PackedScene
 
@@ -25,11 +25,14 @@ func _ready():
 
 
 func _setup() -> void:
+	self.show()
 	$Health_Meter.show()
 	$Flight_Meter.show()
 	_update_score(0, 0)
 	_update_distance(0)
 	$TryAgain.hide()
+	$Ratio/Pause.show()
+	$Pause.hide()
 
 
 func _update_health_bar(new_health : float, total : float) -> void:
@@ -67,7 +70,7 @@ func _update_distance(dist : float) -> void:
 func _player_death() -> void:
 	$Health_Meter.hide()
 	$Flight_Meter.hide()
-	$TryAgain.show()
+#	$TryAgain.show()
 
 
 func _on_play_again_pressed():
@@ -75,15 +78,22 @@ func _on_play_again_pressed():
 	$TryAgain.hide()
 
 
-#func _on_music_toggled(button_pressed):
-#	var value = linear_to_db(0.0)
-#	if button_pressed:
-#		value = linear_to_db(1.0)
-#	AudioServer.set_bus_volume_db(1, value)
-#
-#
-#func _on_sfx_toggled(button_pressed):
-#	var value = linear_to_db(0.0)
-#	if button_pressed:
-#		value = linear_to_db(1.0)
-#	AudioServer.set_bus_volume_db(2, value)
+func _on_pause_pressed():
+	print("Pause Pressed, show Pause Screen")
+	$Ratio/Pause.hide()
+	$Pause.show()
+	get_tree().paused = true
+
+
+func _on_continue_pressed():
+	print("Continue Pressed, Unpause")
+	$Ratio/Pause.show()
+	$Pause.hide()
+	get_tree().paused = false
+
+
+func _on_return_pressed():
+	print("Return Pressed, go to Results")
+	get_tree().paused = false
+	emit_signal("end_game")
+	self.hide()

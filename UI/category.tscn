@@ -1,0 +1,128 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfrwshx4712hu"]
+
+[ext_resource type="Theme" uid="uid://cwteexwb3vbyi" path="res://UI/Style/Bee_Theme.tres" id="1_600yi"]
+[ext_resource type="Script" path="res://UI/edit_category.gd" id="2_xmie2"]
+[ext_resource type="LabelSettings" uid="uid://ban0wox1lr7ix" path="res://UI/Label_Setting_Big.tres" id="3_mopc7"]
+[ext_resource type="Texture2D" uid="uid://8qybfiret8ja" path="res://icon.svg" id="4_xdbup"]
+
+[node name="Category" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme = ExtResource("1_600yi")
+script = ExtResource("2_xmie2")
+
+[node name="Vbox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Vbox"]
+layout_mode = 2
+text = "Hats"
+label_settings = ExtResource("3_mopc7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Vbox"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Equipped Hat:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Current" type="HBoxContainer" parent="Vbox"]
+layout_mode = 2
+size_flags_vertical = 2
+alignment = 1
+
+[node name="CurrentIcon" type="TextureRect" parent="Vbox/Current"]
+layout_mode = 2
+size_flags_horizontal = 10
+texture = ExtResource("4_xdbup")
+
+[node name="CurrentLabel" type="Label" parent="Vbox/Current"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Default"
+vertical_alignment = 1
+
+[node name="ScrollGallery" type="ScrollContainer" parent="Vbox"]
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+horizontal_scroll_mode = 2
+vertical_scroll_mode = 0
+
+[node name="Gallery" type="HBoxContainer" parent="Vbox/ScrollGallery"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="TextureRect" type="TextureRect" parent="Vbox/ScrollGallery/Gallery"]
+layout_mode = 2
+texture = ExtResource("4_xdbup")
+
+[node name="TextureRect2" type="TextureRect" parent="Vbox/ScrollGallery/Gallery"]
+layout_mode = 2
+texture = ExtResource("4_xdbup")
+
+[node name="TextureRect3" type="TextureRect" parent="Vbox/ScrollGallery/Gallery"]
+layout_mode = 2
+texture = ExtResource("4_xdbup")
+
+[node name="TextureRect4" type="TextureRect" parent="Vbox/ScrollGallery/Gallery"]
+layout_mode = 2
+texture = ExtResource("4_xdbup")
+
+[node name="TextureRect5" type="TextureRect" parent="Vbox/ScrollGallery/Gallery"]
+layout_mode = 2
+texture = ExtResource("4_xdbup")
+
+[node name="TextureRect6" type="TextureRect" parent="Vbox/ScrollGallery/Gallery"]
+layout_mode = 2
+texture = ExtResource("4_xdbup")
+
+[node name="TextureRect7" type="TextureRect" parent="Vbox/ScrollGallery/Gallery"]
+layout_mode = 2
+texture = ExtResource("4_xdbup")
+
+[node name="TextureRect8" type="TextureRect" parent="Vbox/ScrollGallery/Gallery"]
+layout_mode = 2
+texture = ExtResource("4_xdbup")
+
+[node name="TextureRect9" type="TextureRect" parent="Vbox/ScrollGallery/Gallery"]
+layout_mode = 2
+texture = ExtResource("4_xdbup")
+
+[node name="TextureRect10" type="TextureRect" parent="Vbox/ScrollGallery/Gallery"]
+layout_mode = 2
+texture = ExtResource("4_xdbup")
+
+[node name="TextureRect11" type="TextureRect" parent="Vbox/ScrollGallery/Gallery"]
+layout_mode = 2
+texture = ExtResource("4_xdbup")
+
+[node name="TextureRect12" type="TextureRect" parent="Vbox/ScrollGallery/Gallery"]
+layout_mode = 2
+texture = ExtResource("4_xdbup")
+
+[node name="TextureRect13" type="TextureRect" parent="Vbox/ScrollGallery/Gallery"]
+layout_mode = 2
+texture = ExtResource("4_xdbup")
+
+[node name="TextureRect14" type="TextureRect" parent="Vbox/ScrollGallery/Gallery"]
+layout_mode = 2
+texture = ExtResource("4_xdbup")
+
+[node name="TextureRect15" type="TextureRect" parent="Vbox/ScrollGallery/Gallery"]
+layout_mode = 2
+texture = ExtResource("4_xdbup")
+
+[connection signal="gui_input" from="Vbox/ScrollGallery" to="." method="_on_scroll_gallery_gui_input"]

@@ -8,9 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://coa41p75fdbmr" path="res://UI/Art/Score_Card.png" id="4_h57gp"]
 [ext_resource type="Texture2D" uid="uid://c57h448m0brbc" path="res://UI/Art/Edit_Icon.png" id="5_7l3e5"]
 [ext_resource type="Texture2D" uid="uid://dyldysbhhisrt" path="res://UI/Art/Options_Icon.png" id="6_i6hpw"]
+[ext_resource type="LabelSettings" uid="uid://dsiocwpk52rya" path="res://UI/Label_BEST.tres" id="6_mh70q"]
 [ext_resource type="Texture2D" uid="uid://17pd7qj0honl" path="res://UI/Art/Help_Icon.png" id="7_sf71g"]
 [ext_resource type="Texture2D" uid="uid://d27lc6xsnfjnw" path="res://UI/Art/Exit_Icon.png" id="8_k46lc"]
 [ext_resource type="Texture2D" uid="uid://coxyfupfv31p5" path="res://UI/Art/Return_Arrow.png" id="11_bthaf"]
+[ext_resource type="PackedScene" uid="uid://dq6owtm6gii5x" path="res://UI/edit.tscn" id="12_g11w1"]
 [ext_resource type="Texture2D" uid="uid://qkp4ujlp6tw" path="res://UI/Art/Confirm_Icon.png" id="12_i30ep"]
 [ext_resource type="StyleBox" uid="uid://c442afhe7tqtj" path="res://UI/Style/Button_Style_Confirm.tres" id="12_wc4kh"]
 [ext_resource type="Texture2D" uid="uid://bfumwgj1lgw21" path="res://UI/Art/Volume_Min_Icon.png" id="14_a423u"]
@@ -306,19 +308,6 @@ _data = {
 "Options_Open": SubResource("Animation_ssqpc")
 }
 
-[sub_resource type="SystemFont" id="SystemFont_wral1"]
-font_names = PackedStringArray("Arial")
-font_italic = true
-
-[sub_resource type="LabelSettings" id="LabelSettings_3c1ab"]
-font = SubResource("SystemFont_wral1")
-font_size = 56
-outline_size = 4
-outline_color = Color(0.180392, 0.180392, 0, 1)
-shadow_size = 4
-shadow_color = Color(0, 0, 0, 0.819608)
-shadow_offset = Vector2(4, 4)
-
 [sub_resource type="Gradient" id="Gradient_ylvs1"]
 colors = PackedColorArray(0, 0, 0, 0.619608, 0, 0, 0, 0)
 
@@ -336,7 +325,7 @@ grow_vertical = 2
 theme = ExtResource("1_g7eow")
 script = ExtResource("2_jrubw")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -353,6 +342,7 @@ libraries = {
 }
 
 [node name="Main" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -399,7 +389,7 @@ offset_top = 0.112001
 offset_right = 0.0999892
 offset_bottom = -0.264994
 text = "BEST"
-label_settings = SubResource("LabelSettings_3c1ab")
+label_settings = ExtResource("6_mh70q")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -580,29 +570,10 @@ text = "Quit"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Edit" type="Panel" parent="."]
-visible = false
+[node name="Edit" parent="." instance=ExtResource("12_g11w1")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Done_Edit" type="Button" parent="Edit"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.85
-anchor_right = 1.0
-anchor_bottom = 0.956
-offset_top = -4.57764e-05
-offset_bottom = -0.520058
-grow_horizontal = 2
-grow_vertical = 0
-text = "Done"
 
 [node name="Options" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -770,3 +741,5 @@ bus = &"Music"
 [connection signal="pressed" from="Options/VBox/SFX/SFX_Min" to="." method="_on_sfx_slide_value_changed" binds= [0.0]]
 [connection signal="value_changed" from="Options/VBox/SFX/SFX_Slide" to="." method="_on_sfx_slide_value_changed"]
 [connection signal="pressed" from="Options/VBox/SFX/SFX_Max" to="." method="_on_sfx_slide_value_changed" binds= [1.0]]
+
+[editable path="Edit"]

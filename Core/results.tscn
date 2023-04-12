@@ -1,4 +1,73 @@
-[gd_scene format=3 uid="uid://baf8lb2g4u6ge"]
+[gd_scene load_steps=11 format=3 uid="uid://baf8lb2g4u6ge"]
+
+[ext_resource type="Theme" uid="uid://cwteexwb3vbyi" path="res://UI/Style/Bee_Theme.tres" id="1_nh6jh"]
+[ext_resource type="Script" path="res://Core/results.gd" id="1_x1mpp"]
+[ext_resource type="LabelSettings" uid="uid://ban0wox1lr7ix" path="res://UI/Label_Setting_Big.tres" id="3_jw6jr"]
+[ext_resource type="Texture2D" uid="uid://coxyfupfv31p5" path="res://UI/Art/Return_Arrow.png" id="4_610dg"]
+[ext_resource type="Texture2D" uid="uid://8qybfiret8ja" path="res://icon.svg" id="4_o1onq"]
+[ext_resource type="Texture2D" uid="uid://brajg1t0x2ouo" path="res://UI/Art/Play_Icon.png" id="5_3j0oq"]
+[ext_resource type="LabelSettings" uid="uid://dsiocwpk52rya" path="res://UI/Label_BEST.tres" id="5_bnca1"]
+
+[sub_resource type="Animation" id="Animation_tquka"]
+resource_name = "Start"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2.08165e-12, 1920), Vector2(2.08165e-12, 1920), Vector2(2.08165e-12, 2.08165e-12)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Shade:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vdgw2"]
+resource_name = "Quit"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0m38w"]
+_data = {
+"Quit": SubResource("Animation_vdgw2"),
+"Start": SubResource("Animation_tquka")
+}
 
 [node name="Results" type="Control"]
 layout_mode = 3
@@ -7,3 +76,247 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_nh6jh")
+script = ExtResource("1_x1mpp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0m38w")
+}
+
+[node name="Shade" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1920.0
+offset_bottom = 1920.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Vbox" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.033
+anchor_right = 0.5
+anchor_bottom = 0.959
+offset_left = -540.0
+offset_top = 0.640057
+offset_right = 540.0
+offset_bottom = -0.278459
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel/Vbox"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Results"
+label_settings = ExtResource("3_jw6jr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Combs" type="HBoxContainer" parent="Panel/Vbox"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Panel/Vbox/Combs"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+texture = ExtResource("4_o1onq")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Panel/Vbox/Combs"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Honey Combs : "
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Comb_Score" type="Label" parent="Panel/Vbox/Combs"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Jars" type="HBoxContainer" parent="Panel/Vbox"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Panel/Vbox/Jars"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+texture = ExtResource("4_o1onq")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Panel/Vbox/Jars"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Honey Jars : "
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Jar_Score" type="Label" parent="Panel/Vbox/Jars"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Flowers" type="HBoxContainer" parent="Panel/Vbox"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Panel/Vbox/Flowers"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+texture = ExtResource("4_o1onq")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Panel/Vbox/Flowers"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Flowers : "
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Flower_Score" type="Label" parent="Panel/Vbox/Flowers"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RunScore" type="HBoxContainer" parent="Panel/Vbox"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/Vbox/RunScore"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Score : "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RunScore" type="Label" parent="Panel/Vbox/RunScore"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RecordScore" type="HBoxContainer" parent="Panel/Vbox"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/Vbox/RecordScore"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Best Score : "
+label_settings = ExtResource("5_bnca1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RecordScore" type="Label" parent="Panel/Vbox/RecordScore"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "0"
+label_settings = ExtResource("5_bnca1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RunDist" type="HBoxContainer" parent="Panel/Vbox"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/Vbox/RunDist"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Distance : "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RunDist" type="Label" parent="Panel/Vbox/RunDist"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RecordDist" type="HBoxContainer" parent="Panel/Vbox"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/Vbox/RecordDist"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Best Distance : "
+label_settings = ExtResource("5_bnca1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RecordDist" type="Label" parent="Panel/Vbox/RecordDist"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "0"
+label_settings = ExtResource("5_bnca1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="Panel/Vbox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Return" type="Button" parent="Panel/Vbox/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Return to Menu"
+icon = ExtResource("4_610dg")
+expand_icon = true
+
+[node name="Retry" type="Button" parent="Panel/Vbox/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Try Again"
+icon = ExtResource("5_3j0oq")
+expand_icon = true
+
+[connection signal="pressed" from="Panel/Vbox/Buttons/Return" to="." method="_play_again" binds= [false]]
+[connection signal="pressed" from="Panel/Vbox/Buttons/Retry" to="." method="_play_again" binds= [true]]

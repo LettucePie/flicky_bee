@@ -17,8 +17,9 @@ func _ready():
 	or OS.has_feature("web"):
 		$ButtonBox/Quit.queue_free()
 	_reflect_settings()
-	_hide_submenus()
 	_update_score()
+	_update_current_accessories()
+	_hide_submenus()
 
 
 func _reflect_settings() -> void:
@@ -31,8 +32,22 @@ func _reflect_settings() -> void:
 
 func _update_score() -> void:
 	if persist_node != null:
-		$Main/ScoreCard/Box/ScoreContainer/Score.text = str(persist_node.highest_score)
-		$Main/ScoreCard/Box/DistContainer/Distance.text = str(persist_node.furthest_distance)
+		$Main/ScoreCard/Box/ScoreContainer/Score.text = str(
+			persist_node.highest_score
+		)
+		$Main/ScoreCard/Box/DistContainer/Distance.text = str(
+			snapped(persist_node.furthest_distance, 0.1)
+		) + " m"
+
+
+
+func _update_current_accessories() -> void:
+	$Edit._set_current_accessories(
+		persist_node.hat,
+		persist_node.trail,
+		persist_node.flower
+	)
+
 
 
 func _hide_submenus() -> void:
@@ -58,6 +73,7 @@ func _on_play_pressed():
 func _on_edit_pressed():
 	print("Edit Pressed")
 	$AnimationPlayer.play("Edit_Open")
+	$Edit/Header/Vbox/Hbox/HoneyPoints.text = str(persist_node.honey_points)
 
 
 func _on_options_pressed():

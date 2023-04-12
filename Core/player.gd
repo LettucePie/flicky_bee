@@ -18,6 +18,9 @@ signal hit()
 @export var anim_lib : AnimationLibrary
 @onready var anim = $Turn/Bee/AnimationPlayer
 
+@onready var hat = $Turn/Bee/Body/Head/Hat
+@onready var trail = $Turn/Trail
+
 var first_parent = null
 var bee_object : Node3D
 var flick_target : Vector3
@@ -45,7 +48,7 @@ var speed := 0.0
 ##
 var magnet_col : Array
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	$Hurt.hide()
 	first_parent = get_parent()
@@ -55,7 +58,11 @@ func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _assign_accessories(hat_name : String, trail_name : String) -> void:
+	hat._set_active(hat_name)
+	trail._set_active(trail_name)
+
+
 func _physics_process(delta):
 	if flicked:
 		if flown:
@@ -141,6 +148,7 @@ func _flick_to(target : Vector3) -> void:
 	fly_force = 1.0
 	flicked = true
 	_point_forward(fly_dir)
+	trail._activate_trail(true)
 
 
 func _fly_to(direction : Vector3, flight : float, tension : float) -> void:
@@ -203,6 +211,7 @@ func _landed(area) -> void:
 	$Buzz.stop()
 	$Pickup.stream = flower_sound
 	$Pickup.play()
+	trail._activate_trail(false)
 	current_platform = area
 	current_flower = current_platform._return_flower()
 	$Turn.remove_child(bee_object)

@@ -30,3 +30,6 @@ func _set_active(hat : String) -> void:
 func _set_big_mode(tf : bool) -> void:
 	print("Setting Hat Big_Mode: ", tf)
 	big_mode = tf
+	set_scale(Vector3.ONE)
+	if big_mode:
+		set_scale(Vector3.ONE * 2)

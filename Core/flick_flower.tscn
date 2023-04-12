@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://xx8vpt1dc2ub"]
 
 [ext_resource type="Script" path="res://Core/flick_flower.gd" id="1_lqgyg"]
-[ext_resource type="PackedScene" uid="uid://2aghnor46fu6" path="res://Core/Art/Flower_Top.glb" id="2_opuic"]
+[ext_resource type="PackedScene" uid="uid://ciyfxnas78mwn" path="res://Accessory/Flowers/flower_head.tscn" id="2_mcy4w"]
 [ext_resource type="PackedScene" uid="uid://13hn5t2w6i2" path="res://Core/Art/Flower_Stem.glb" id="3_v4chg"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wocv6"]
@@ -47,14 +47,8 @@ parameters/OneShot/active = false
 parameters/OneShot/request = 0
 parameters/TimeScale/scale = 2.0
 
-[node name="Head" type="Node3D" parent="."]
-
-[node name="Flower_Top" parent="Head" instance=ExtResource("2_opuic")]
-
-[node name="Trace" type="Node3D" parent="Head/Flower_Top"]
-transform = Transform3D(1.62, 0, 0, 0, 1.62, 0, 0, 0, 1.62, -0.00216563, 0.37069, 0.00463634)
+[node name="Flower_Head" parent="." instance=ExtResource("2_mcy4w")]
 
 [node name="Flower_Stem" parent="." instance=ExtResource("3_v4chg")]
 
-[editable path="Head/Flower_Top"]
 [editable path="Flower_Stem"]

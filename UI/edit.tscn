@@ -1,0 +1,119 @@
+[gd_scene load_steps=7 format=3 uid="uid://dq6owtm6gii5x"]
+
+[ext_resource type="Theme" uid="uid://gf806tdomj80" path="res://UI/Style/SubBee_Theme.tres" id="1_3ipnt"]
+[ext_resource type="Theme" uid="uid://cwteexwb3vbyi" path="res://UI/Style/Bee_Theme.tres" id="1_i3uci"]
+[ext_resource type="LabelSettings" uid="uid://ban0wox1lr7ix" path="res://UI/Label_Setting_Big.tres" id="2_d7fmh"]
+[ext_resource type="Script" path="res://UI/edit.gd" id="2_te6p3"]
+[ext_resource type="Texture2D" uid="uid://8qybfiret8ja" path="res://icon.svg" id="3_jsyu4"]
+[ext_resource type="PackedScene" uid="uid://bfrwshx4712hu" path="res://UI/category.tscn" id="6_j53hv"]
+
+[node name="Edit" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_i3uci")
+script = ExtResource("2_te6p3")
+
+[node name="Done_Edit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.85
+anchor_right = 1.0
+anchor_bottom = 0.956
+offset_top = -4.57764e-05
+offset_bottom = -0.520058
+grow_horizontal = 2
+grow_vertical = 0
+text = "Done"
+
+[node name="Header" type="Panel" parent="."]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 0.174
+offset_bottom = -0.080019
+theme = ExtResource("1_3ipnt")
+
+[node name="Vbox" type="VBoxContainer" parent="Header"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.949
+offset_bottom = 0.0249833
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Header/Vbox"]
+layout_mode = 2
+size_flags_vertical = 10
+text = "Customizations"
+label_settings = ExtResource("2_d7fmh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Hbox" type="HBoxContainer" parent="Header/Vbox"]
+layout_mode = 2
+size_flags_vertical = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Header/Vbox/Hbox"]
+layout_mode = 2
+texture = ExtResource("3_jsyu4")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Header/Vbox/Hbox"]
+layout_mode = 2
+text = "Honey Points : "
+
+[node name="HoneyPoints" type="Label" parent="Header/Vbox/Hbox"]
+layout_mode = 2
+text = "0"
+
+[node name="Vbox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.175
+anchor_right = 1.0
+anchor_bottom = 0.827
+offset_top = -2.28882e-05
+offset_bottom = 0.159958
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Category" type="HBoxContainer" parent="Vbox"]
+layout_mode = 2
+alignment = 1
+
+[node name="Hats" type="TextureButton" parent="Vbox/Category"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("3_jsyu4")
+stretch_mode = 0
+
+[node name="Trails" type="TextureButton" parent="Vbox/Category"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("3_jsyu4")
+stretch_mode = 0
+
+[node name="Flowers" type="TextureButton" parent="Vbox/Category"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("3_jsyu4")
+stretch_mode = 0
+
+[node name="Hats" parent="Vbox" instance=ExtResource("6_j53hv")]
+layout_mode = 2
+
+[node name="Trails" parent="Vbox" instance=ExtResource("6_j53hv")]
+visible = false
+layout_mode = 2
+category = 1
+
+[node name="Flowers" parent="Vbox" instance=ExtResource("6_j53hv")]
+visible = false
+layout_mode = 2
+category = 2

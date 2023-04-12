@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="TrailType" load_steps=3 format=3 uid="uid://b1ga1q8mnbv5q"]
+
+[ext_resource type="PackedScene" uid="uid://bbcurcqhirjgx" path="res://Accessory/Trails/Scenes/dot_trail.tscn" id="1_v1qi0"]
+[ext_resource type="Script" path="res://Accessory/Trails/trail_type.gd" id="2_xyuor"]
+
+[resource]
+script = ExtResource("2_xyuor")
+trail_name = "Dot"
+scene = ExtResource("1_v1qi0")

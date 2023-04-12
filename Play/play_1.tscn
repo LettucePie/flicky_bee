@@ -1,12 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://divwo3i3xqtwj"]
+[gd_scene load_steps=15 format=3 uid="uid://divwo3i3xqtwj"]
 
 [ext_resource type="Script" path="res://Play/play_1.gd" id="1_x43xo"]
-[ext_resource type="PackedScene" uid="uid://c8sfs4vj8uoo3" path="res://Core/player.tscn" id="2_75ge2"]
+[ext_resource type="PackedScene" uid="uid://pbe74ba2ywah" path="res://Core/player.tscn" id="2_75ge2"]
 [ext_resource type="PackedScene" uid="uid://2gkm2rsvmoiy" path="res://Core/generator.tscn" id="2_yeg2j"]
 [ext_resource type="PackedScene" uid="uid://jgdg1uwq2rq6" path="res://UI/arc_visual.tscn" id="4_weoh5"]
 [ext_resource type="PackedScene" uid="uid://yxtju6v5sytc" path="res://UI/knob_visual.tscn" id="5_3g4qb"]
 [ext_resource type="PackedScene" uid="uid://be1u13i3321dd" path="res://UI/hud.tscn" id="5_rm8qy"]
 [ext_resource type="AudioStream" uid="uid://4c0mv63s5v8u" path="res://Core/Sound/Song_2.mp3" id="7_cn5s7"]
+[ext_resource type="PackedScene" uid="uid://baf8lb2g4u6ge" path="res://Core/results.tscn" id="7_jdqey"]
 [ext_resource type="PackedScene" path="res://Core/grass_patch.tscn" id="8_r0s2t"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_e8o1s"]
@@ -77,6 +78,8 @@ visible = false
 
 [node name="HUD" parent="." instance=ExtResource("5_rm8qy")]
 
+[node name="Results" parent="." instance=ExtResource("7_jdqey")]
+
 [node name="Life_Timer" type="Timer" parent="."]
 
 [node name="Rest_Timer" type="Timer" parent="."]
@@ -99,7 +102,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -5, -60)
 [connection signal="body_entered" from="Camera3D/Bottom_Detect" to="." method="_on_bottom_detect_area_entered"]
 [connection signal="area_entered" from="Camera3D/Top_Detect" to="." method="_on_top_detect_area_entered"]
 [connection signal="body_entered" from="Camera3D/Top_Detect" to="." method="_on_top_detect_area_entered"]
-[connection signal="play_again" from="HUD" to="." method="_on_hud_play_again"]
+[connection signal="end_game" from="HUD" to="." method="_on_life_timer_timeout"]
 [connection signal="resized" from="HUD" to="." method="_on_hud_resized"]
+[connection signal="play_again" from="Results" to="." method="_on_results_play_again"]
+[connection signal="quit_out" from="Results" to="." method="_on_results_quit_out"]
 [connection signal="timeout" from="Life_Timer" to="." method="_on_life_timer_timeout"]
 [connection signal="timeout" from="Rest_Timer" to="." method="_on_rest_timer_timeout"]
