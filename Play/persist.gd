@@ -152,3 +152,9 @@ func _spend_points(points : int) -> void:
 	honey_points = clamp(
 		honey_points - points, 0, honey_points
 	)
+
+
+func _add_accessory(acc : String) -> void:
+	if !accessories.has(acc):
+		accessories.append(acc)
+		_save_game()

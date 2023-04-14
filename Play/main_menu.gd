@@ -40,14 +40,8 @@ func _update_score() -> void:
 		) + " m"
 
 
-
 func _update_current_accessories() -> void:
-	$Edit._set_current_accessories(
-		persist_node.hat,
-		persist_node.trail,
-		persist_node.flower
-	)
-
+	$Edit._stock_shelves(persist_node)
 
 
 func _hide_submenus() -> void:
@@ -73,7 +67,8 @@ func _on_play_pressed():
 func _on_edit_pressed():
 	print("Edit Pressed")
 	$AnimationPlayer.play("Edit_Open")
-	$Edit/Header/Vbox/Hbox/HoneyPoints.text = str(persist_node.honey_points)
+	$Edit._set_active_category(0)
+	$Edit._set_budget(persist_node.honey_points)
 
 
 func _on_options_pressed():

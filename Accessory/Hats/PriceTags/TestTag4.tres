@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="PriceTag" load_steps=4 format=3 uid="uid://cilliaqwks7ns"]
+
+[ext_resource type="Texture2D" uid="uid://8qybfiret8ja" path="res://icon.svg" id="1_tqrel"]
+[ext_resource type="Resource" uid="uid://bvxv8h1r67s0h" path="res://Accessory/Hats/HatTypes/TopHat_Type.tres" id="2_0ytl0"]
+[ext_resource type="Script" path="res://Accessory/pricetag_type.gd" id="3_ctui6"]
+
+[resource]
+script = ExtResource("3_ctui6")
+acc_name = "Test 4"
+acc_icon = ExtResource("1_tqrel")
+acc_type = 0
+accessory = ExtResource("2_0ytl0")
+purchase_honey = false
+honey_amount = 50.0
+purchase_usd = true
+usd_amount = 0.99
+achievable = false

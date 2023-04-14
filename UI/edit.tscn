@@ -1,11 +1,224 @@
-[gd_scene load_steps=7 format=3 uid="uid://dq6owtm6gii5x"]
+[gd_scene load_steps=35 format=3 uid="uid://dq6owtm6gii5x"]
 
 [ext_resource type="Theme" uid="uid://gf806tdomj80" path="res://UI/Style/SubBee_Theme.tres" id="1_3ipnt"]
 [ext_resource type="Theme" uid="uid://cwteexwb3vbyi" path="res://UI/Style/Bee_Theme.tres" id="1_i3uci"]
 [ext_resource type="LabelSettings" uid="uid://ban0wox1lr7ix" path="res://UI/Label_Setting_Big.tres" id="2_d7fmh"]
 [ext_resource type="Script" path="res://UI/edit.gd" id="2_te6p3"]
 [ext_resource type="Texture2D" uid="uid://8qybfiret8ja" path="res://icon.svg" id="3_jsyu4"]
+[ext_resource type="Texture2D" uid="uid://coxyfupfv31p5" path="res://UI/Art/Return_Arrow.png" id="3_ky6n1"]
+[ext_resource type="StyleBox" uid="uid://8ffj1rptfvg4" path="res://UI/Style/Button_Style2_Normal.tres" id="6_hm46p"]
 [ext_resource type="PackedScene" uid="uid://bfrwshx4712hu" path="res://UI/category.tscn" id="6_j53hv"]
+[ext_resource type="StyleBox" uid="uid://cpxrqoxv5s68p" path="res://UI/Style/Button_Style_Disabled.tres" id="7_608ja"]
+[ext_resource type="Texture2D" uid="uid://dpoaw7awi7e5q" path="res://UI/Art/Hat_Icon.png" id="7_durdv"]
+[ext_resource type="StyleBox" uid="uid://ddqpukuyr4j3j" path="res://UI/Style/Button_Style3_Normal.tres" id="8_fstnw"]
+[ext_resource type="Texture2D" uid="uid://cqhnnf5pmqblb" path="res://UI/Art/Trail_Icon.png" id="9_wn45k"]
+[ext_resource type="Texture2D" uid="uid://b2o4xo01cmirk" path="res://UI/Art/Flower_Icon.png" id="11_35kbs"]
+[ext_resource type="Resource" uid="uid://n7inm04q3qeg" path="res://Accessory/Hats/PriceTags/TopHat_Tag.tres" id="13_ph1gx"]
+[ext_resource type="Resource" uid="uid://d4ipxcd04o1rr" path="res://Accessory/Hats/PriceTags/TestTag1.tres" id="14_iq2sb"]
+[ext_resource type="Resource" uid="uid://bvh16napy0jiq" path="res://Accessory/Hats/PriceTags/TestTag2.tres" id="15_1p4j2"]
+[ext_resource type="Resource" uid="uid://cilliaqwks7ns" path="res://Accessory/Hats/PriceTags/TestTag4.tres" id="17_4h5f7"]
+[ext_resource type="Resource" uid="uid://0hk0li0tc7b7" path="res://Accessory/Hats/PriceTags/TestTag5.tres" id="18_q5mgr"]
+[ext_resource type="Resource" uid="uid://hdsa53vs837k" path="res://Accessory/Hats/PriceTags/TestTag6.tres" id="19_81wt2"]
+[ext_resource type="Script" path="res://UI/Reward.gd" id="20_u6j73"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ackvc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w8008"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xfa8o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ppfq8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k4edm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sorsc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gqjkc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jfdx1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2vn5o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_md4im"]
+bg_color = Color(0, 0.72549, 0.203922, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.8, 0.0784314, 0.0784314, 1)
+
+[sub_resource type="Animation" id="Animation_bklqv"]
+resource_name = "Reward"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.815686), Color(0, 0, 0, 0.815686)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CenterIcon:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0, -2, 2),
+"update": 0,
+"values": [Vector2(317, 1952), Vector2(317, 1952), Vector2(317, 737)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Top:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = false
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -425), Vector2(0, -425), Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Equip:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = false
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(340, 1937), Vector2(340, 1937), Vector2(340, 1349)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Continue:position")
+tracks/5/interp = 2
+tracks/5/loop_wrap = false
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(340, 1936), Vector2(340, 1936), Vector2(340, 1620)]
+}
+
+[sub_resource type="Animation" id="Animation_scc7q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.815686)]
+}
+
+[sub_resource type="Animation" id="Animation_7mbdp"]
+resource_name = "Vanish"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.815686), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CenterIcon:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, -2),
+"update": 0,
+"values": [Vector2(317, 737), Vector2(317, 1952)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Top:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = false
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -425)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Equip:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = false
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(340, 1349), Vector2(340, 1937)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Continue:position")
+tracks/5/interp = 2
+tracks/5/loop_wrap = false
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(340, 1620), Vector2(340, 1936)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iy4vl"]
+_data = {
+"RESET": SubResource("Animation_scc7q"),
+"Reward": SubResource("Animation_bklqv"),
+"Vanish": SubResource("Animation_7mbdp")
+}
 
 [node name="Edit" type="Panel"]
 anchors_preset = 15
@@ -19,14 +232,17 @@ script = ExtResource("2_te6p3")
 [node name="Done_Edit" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.85
-anchor_right = 1.0
-anchor_bottom = 0.956
-offset_top = -4.57764e-05
-offset_bottom = -0.520058
+anchor_top = 0.872
+anchor_right = 1.002
+anchor_bottom = 0.999
+offset_top = 0.759926
+offset_right = -2.1601
+offset_bottom = 0.919861
 grow_horizontal = 2
 grow_vertical = 0
 text = "Done"
+icon = ExtResource("3_ky6n1")
+expand_icon = true
 
 [node name="Header" type="Panel" parent="."]
 layout_mode = 2
@@ -66,7 +282,7 @@ stretch_mode = 5
 
 [node name="Label" type="Label" parent="Header/Vbox/Hbox"]
 layout_mode = 2
-text = "Honey Points : "
+text = "Honey Points (HP) : "
 
 [node name="HoneyPoints" type="Label" parent="Header/Vbox/Hbox"]
 layout_mode = 2
@@ -77,9 +293,8 @@ layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.175
 anchor_right = 1.0
-anchor_bottom = 0.827
-offset_top = -2.28882e-05
-offset_bottom = 0.159958
+anchor_bottom = 0.717
+offset_bottom = 0.359985
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -87,26 +302,46 @@ grow_vertical = 2
 layout_mode = 2
 alignment = 1
 
-[node name="Hats" type="TextureButton" parent="Vbox/Category"]
+[node name="Hats" type="Button" parent="Vbox/Category"]
+custom_minimum_size = Vector2(2.08165e-12, 200)
 layout_mode = 2
 size_flags_horizontal = 3
-texture_normal = ExtResource("3_jsyu4")
-stretch_mode = 0
+focus_mode = 0
+theme_override_styles/normal = ExtResource("6_hm46p")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ackvc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_w8008")
+theme_override_styles/disabled = ExtResource("7_608ja")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xfa8o")
+icon = ExtResource("7_durdv")
+icon_alignment = 1
+expand_icon = true
 
-[node name="Trails" type="TextureButton" parent="Vbox/Category"]
+[node name="Trails" type="Button" parent="Vbox/Category"]
 layout_mode = 2
 size_flags_horizontal = 3
-texture_normal = ExtResource("3_jsyu4")
-stretch_mode = 0
+focus_mode = 0
+theme_override_styles/normal = ExtResource("8_fstnw")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ppfq8")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_k4edm")
+theme_override_styles/disabled = ExtResource("7_608ja")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_sorsc")
+icon = ExtResource("9_wn45k")
+icon_alignment = 1
+expand_icon = true
 
-[node name="Flowers" type="TextureButton" parent="Vbox/Category"]
+[node name="Flowers" type="Button" parent="Vbox/Category"]
 layout_mode = 2
 size_flags_horizontal = 3
-texture_normal = ExtResource("3_jsyu4")
-stretch_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxEmpty_gqjkc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_jfdx1")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2vn5o")
+icon = ExtResource("11_35kbs")
+icon_alignment = 1
+expand_icon = true
 
 [node name="Hats" parent="Vbox" instance=ExtResource("6_j53hv")]
 layout_mode = 2
+inventory = Array[Resource("res://Accessory/pricetag_type.gd")]([ExtResource("13_ph1gx"), ExtResource("14_iq2sb"), ExtResource("15_1p4j2"), ExtResource("17_4h5f7"), ExtResource("19_81wt2"), ExtResource("18_q5mgr")])
 
 [node name="Trails" parent="Vbox" instance=ExtResource("6_j53hv")]
 visible = false
@@ -117,3 +352,150 @@ category = 1
 visible = false
 layout_mode = 2
 category = 2
+
+[node name="Selected" type="Label" parent="."]
+layout_mode = 0
+anchor_top = 0.727083
+anchor_right = 0.99537
+anchor_bottom = 0.781771
+offset_top = 1.52588e-05
+offset_right = -1.90735e-05
+offset_bottom = 1.52588e-05
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ActionContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.783854
+anchor_right = 0.999074
+anchor_bottom = 0.867188
+offset_right = -2.95639e-05
+metadata/_edit_use_anchors_ = true
+
+[node name="Message" type="Label" parent="ActionContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "You cannot afford this"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+clip_text = true
+
+[node name="Equip" type="Button" parent="ActionContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Equip"
+icon = ExtResource("3_jsyu4")
+
+[node name="Buy_Points" type="Button" parent="ActionContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Redeem"
+icon = ExtResource("3_jsyu4")
+
+[node name="Buy_USD" type="Button" parent="ActionContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_md4im")
+text = "Buy"
+icon = ExtResource("3_jsyu4")
+
+[node name="Reward" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.815686)
+script = ExtResource("20_u6j73")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Reward"]
+libraries = {
+"": SubResource("AnimationLibrary_iy4vl")
+}
+
+[node name="CenterIcon" type="TextureRect" parent="Reward"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.293519
+anchor_top = 1.01667
+anchor_right = 0.706481
+anchor_bottom = 1.24896
+offset_top = 3.05176e-05
+offset_right = 2.67029e-05
+offset_bottom = -0.0141907
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_jsyu4")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Top" type="Panel" parent="Reward"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.199
+offset_top = -425.0
+offset_bottom = -424.08
+theme = ExtResource("1_3ipnt")
+
+[node name="Label" type="Label" parent="Reward/Top"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Nice!"
+label_settings = ExtResource("2_d7fmh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Equip" type="Button" parent="Reward"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.315
+anchor_top = 0.703
+anchor_right = 0.685
+anchor_bottom = 0.799
+offset_left = -0.20003
+offset_top = 587.24
+offset_right = 0.199933
+offset_bottom = 587.921
+grow_horizontal = 2
+grow_vertical = 0
+text = "Equip Now?"
+
+[node name="Continue" type="Button" parent="Reward"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.315
+anchor_top = 0.844
+anchor_right = 0.685
+anchor_bottom = 0.94
+offset_left = -0.20003
+offset_top = 315.52
+offset_right = 0.199933
+offset_bottom = 315.2
+grow_horizontal = 2
+grow_vertical = 0
+text = "Continue..."
+
+[connection signal="pressed" from="Vbox/Category/Hats" to="." method="_set_active_category" binds= [0]]
+[connection signal="pressed" from="Vbox/Category/Trails" to="." method="_set_active_category" binds= [1]]
+[connection signal="pressed" from="Vbox/Category/Flowers" to="." method="_set_active_category" binds= [2]]
+[connection signal="pressed" from="ActionContainer/Equip" to="." method="_on_equip_pressed"]
+[connection signal="pressed" from="ActionContainer/Buy_Points" to="." method="_on_buy_points_pressed"]
+[connection signal="pressed" from="ActionContainer/Buy_USD" to="." method="_on_buy_usd_pressed"]
+[connection signal="animation_finished" from="Reward/AnimationPlayer" to="Reward" method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="Reward/Equip" to="." method="_on_equip_pressed"]
+[connection signal="pressed" from="Reward/Equip" to="Reward" method="_vanish"]
+[connection signal="pressed" from="Reward/Continue" to="Reward" method="_vanish"]

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://o8tnue50coc5"]
+
+[ext_resource type="PackedScene" uid="uid://4x82boxugw4q" path="res://Accessory/Hats/Models/TopHat.glb" id="1_l5l7s"]
+
+[node name="TopHat" type="Node3D"]
+
+[node name="TopHat" parent="." instance=ExtResource("1_l5l7s")]

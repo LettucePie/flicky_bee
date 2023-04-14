@@ -28,27 +28,32 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="Vbox"]
 layout_mode = 2
+size_flags_vertical = 0
 text = "Hats"
 label_settings = ExtResource("3_mopc7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="Vbox"]
+visible = false
 layout_mode = 2
-size_flags_vertical = 0
+size_flags_vertical = 3
 text = "Equipped Hat:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Current" type="HBoxContainer" parent="Vbox"]
+visible = false
 layout_mode = 2
-size_flags_vertical = 2
+size_flags_vertical = 3
 alignment = 1
 
 [node name="CurrentIcon" type="TextureRect" parent="Vbox/Current"]
 layout_mode = 2
 size_flags_horizontal = 10
+size_flags_vertical = 4
 texture = ExtResource("4_xdbup")
+stretch_mode = 4
 
 [node name="CurrentLabel" type="Label" parent="Vbox/Current"]
 layout_mode = 2
@@ -66,6 +71,6 @@ vertical_scroll_mode = 0
 [node name="Gallery" type="HBoxContainer" parent="Vbox/ScrollGallery"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/separation = 5
+theme_override_constants/separation = 20
 
 [connection signal="gui_input" from="Vbox/ScrollGallery" to="." method="_on_scroll_gallery_gui_input"]

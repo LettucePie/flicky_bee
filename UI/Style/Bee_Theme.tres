@@ -1,6 +1,7 @@
-[gd_resource type="Theme" load_steps=10 format=3 uid="uid://cwteexwb3vbyi"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://cwteexwb3vbyi"]
 
 [ext_resource type="StyleBox" uid="uid://cvcn82igh6iyj" path="res://UI/Style/Button_Style_Normal.tres" id="1_21sri"]
+[ext_resource type="StyleBox" uid="uid://cpxrqoxv5s68p" path="res://UI/Style/Button_Style_Disabled.tres" id="1_oses5"]
 [ext_resource type="StyleBox" path="res://UI/Style/Button_Style_Focus.tres" id="1_picxi"]
 [ext_resource type="StyleBox" uid="uid://yrle83fsm8ff" path="res://UI/Style/Panel_Style.tres" id="2_51d7p"]
 [ext_resource type="Texture2D" uid="uid://bqihm8hpvdisc" path="res://UI/Art/Grabber_Handle_Normal.png" id="3_v636i"]
@@ -17,6 +18,7 @@ Button/colors/font_color = Color(0.0470588, 0.0470588, 0.0470588, 1)
 Button/colors/font_focus_color = Color(0.227451, 0.227451, 0.227451, 1)
 Button/colors/font_hover_color = Color(0.227451, 0.227451, 0.227451, 1)
 Button/colors/font_hover_pressed_color = Color(0.298039, 0.298039, 0.298039, 1)
+Button/styles/disabled = ExtResource("1_oses5")
 Button/styles/focus = ExtResource("1_picxi")
 Button/styles/hover = ExtResource("1_picxi")
 Button/styles/normal = ExtResource("1_21sri")

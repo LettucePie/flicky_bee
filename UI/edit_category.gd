@@ -10,6 +10,8 @@ enum CATEGORY_TYPE {HATS, TRAILS, FLOWERS}
 @onready var current_label = $Vbox/Current/CurrentLabel
 @onready var gallery_container = $Vbox/ScrollGallery/Gallery
 
+var current_item : String
+var gallery_stock : Array
 var gallery_held := false
 
 # Called when the node enters the scene tree for the first time.
@@ -24,16 +26,31 @@ func _ready():
 		label2 = "Equipped Flower: "
 	$Vbox/Label.text = label1
 	$Vbox/Label2.text = label2
-	if inventory.size() > 0:
-		_stock_gallery()
-
-
-func _stock_gallery():
-	pass
 
 
 func _set_current(current : String) -> void:
 	print("Category: ", category, " setting current of : ", current)
+	current_item = current
+
+
+func _stock_gallery(persist : Persist, panel : Control) -> void:
+	if gallery_stock.size() > 0:
+		for g in gallery_stock:
+			if is_instance_valid(g):
+				g.queue_free()
+	gallery_stock.clear()
+	for i in inventory:
+		print("Creating Stock of : ", i.acc_name)
+		var new_button = accOption.instantiate()
+		new_button._assign_tag(
+			i,
+			persist.accessories.has(i.acc_name),
+			i.acc_name == current_item
+		)
+		gallery_container.add_child(new_button)
+		gallery_stock.append(new_button)
+		new_button.tag_selected.connect(panel._tag_selected)
+		new_button.gui_input.connect(_on_scroll_gallery_gui_input)
 
 
 func _on_scroll_gallery_gui_input(event):
@@ -42,3 +59,12 @@ func _on_scroll_gallery_gui_input(event):
 	if event is InputEventMouseMotion:
 		if gallery_held:
 			$Vbox/ScrollGallery.scroll_horizontal += (event.relative.x * -1)
+
+
+func _update_stock_status(persist : Persist) -> void:
+	if gallery_stock.size() > 0:
+		for s in gallery_stock:
+			s._change_status(
+				persist.accessories.has(s.tag.acc_name),
+				s.tag.acc_name == current_item
+			)
