@@ -1,0 +1,96 @@
+[gd_scene load_steps=13 format=3 uid="uid://c4ap702pmxyr0"]
+
+[ext_resource type="PackedScene" path="res://Core/grass_patch.tscn" id="1_fmdt3"]
+[ext_resource type="Script" path="res://Core/flick_flower.gd" id="2_uyhg2"]
+[ext_resource type="PackedScene" uid="uid://ciyfxnas78mwn" path="res://Accessory/Flowers/flower_head.tscn" id="3_ce6mi"]
+[ext_resource type="PackedScene" uid="uid://13hn5t2w6i2" path="res://Core/Art/Flower_Stem.glb" id="4_00s1i"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_d402m"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wocv6"]
+animation = &"Bend"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_xuuk7"]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_jof6o"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gvpd6"]
+animation = &"Ripple"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fk1wg"]
+animation = &"Base"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_mhs7u"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ne50l"]
+nodes/Bend/node = SubResource("AnimationNodeAnimation_wocv6")
+nodes/Bend/position = Vector2(0, 190)
+nodes/Bend_Blend/node = SubResource("AnimationNodeBlend2_xuuk7")
+nodes/Bend_Blend/position = Vector2(200, 90)
+nodes/OneShot/node = SubResource("AnimationNodeOneShot_jof6o")
+nodes/OneShot/position = Vector2(410, 120)
+nodes/Ripple/node = SubResource("AnimationNodeAnimation_gvpd6")
+nodes/Ripple/position = Vector2(210, 290)
+nodes/Still/node = SubResource("AnimationNodeAnimation_fk1wg")
+nodes/Still/position = Vector2(0, 90)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_mhs7u")
+nodes/TimeScale/position = Vector2(570, 110)
+nodes/output/position = Vector2(730, 130)
+node_connections = [&"output", 0, &"TimeScale", &"Bend_Blend", 0, &"Still", &"Bend_Blend", 1, &"Bend", &"OneShot", 0, &"Bend_Blend", &"OneShot", 1, &"Ripple", &"TimeScale", 0, &"OneShot"]
+
+[node name="PhotoStudio" type="Node3D"]
+
+[node name="Camera_Spin" type="Node3D" parent="."]
+transform = Transform3D(0.796287, 0, 0.604919, 0, 1, 0, -0.604919, 0, 0.796287, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Camera_Spin"]
+transform = Transform3D(0.946311, 0.162492, -0.279448, 8.5671e-09, 0.864477, 0.502673, 0.323257, -0.475685, 0.818064, -2.44803, 4.82054, 7.09775)
+
+[node name="Grass" type="Node3D" parent="."]
+
+[node name="Grass_Patch" parent="Grass" instance=ExtResource("1_fmdt3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.17744, 0)
+
+[node name="GrassMulti_Straight" parent="Grass/Grass_Patch" index="1"]
+visible = false
+
+[node name="GrassMulti_Curve" parent="Grass/Grass_Patch" index="2"]
+visible = false
+
+[node name="Grass_Patch2" parent="Grass" instance=ExtResource("1_fmdt3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -3.28575, 0)
+
+[node name="GrassMulti_Straight" parent="Grass/Grass_Patch2" index="1"]
+visible = false
+
+[node name="GrassMulti_Curve" parent="Grass/Grass_Patch2" index="2"]
+visible = false
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.933013, 0.258819, -0.25, 0.258819, -4.60787e-08, 0.965926, 0.25, -0.965926, -0.0669874, 0, 0, 0)
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("CapsuleMesh_d402m")
+
+[node name="Flick_Flower" type="Node3D" parent="."]
+transform = Transform3D(0.526111, 0, 0, 0, 0.526111, 0, 0, 0, 0.526111, 0, 0.659178, 0)
+script = ExtResource("2_uyhg2")
+
+[node name="AnimationTree" type="AnimationTree" parent="Flick_Flower"]
+tree_root = SubResource("AnimationNodeBlendTree_ne50l")
+anim_player = NodePath("../Flower_Stem/AnimationPlayer")
+active = true
+parameters/Bend_Blend/blend_amount = 0.0
+parameters/OneShot/active = false
+parameters/OneShot/request = 0
+parameters/TimeScale/scale = 2.0
+
+[node name="Flower_Head" parent="Flick_Flower" instance=ExtResource("3_ce6mi")]
+
+[node name="Flower_Stem" parent="Flick_Flower" instance=ExtResource("4_00s1i")]
+
+[editable path="Grass/Grass_Patch"]
+[editable path="Grass/Grass_Patch2"]
+[editable path="Flick_Flower/Flower_Stem"]

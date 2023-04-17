@@ -111,7 +111,6 @@ func _on_buy_points_pressed():
 	if !persist_node.accessories.has(current_tag.acc_name):
 		persist_node._spend_points(current_tag.honey_amount)
 		persist_node._add_accessory(current_tag.acc_name)
-		persist_node._save_game()
 		_set_current_accessories(
 			persist_node.hat,
 			persist_node.trail,
