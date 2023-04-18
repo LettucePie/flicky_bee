@@ -1,14 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2wonbiskwb7q"]
+[gd_scene load_steps=4 format=3 uid="uid://b2wonbiskwb7q"]
 
 [ext_resource type="Script" path="res://Accessory/Hats/hat.gd" id="1_d6xww"]
-[ext_resource type="PackedScene" uid="uid://4x82boxugw4q" path="res://Accessory/Hats/Models/TopHat.glb" id="2_o2mbp"]
-[ext_resource type="Script" path="res://Accessory/Hats/hat_type.gd" id="3_4idt3"]
-
-[sub_resource type="Resource" id="Resource_myrrq"]
-script = ExtResource("3_4idt3")
-hat_name = "Top Hat"
-scene = ExtResource("2_o2mbp")
+[ext_resource type="Resource" uid="uid://bvxv8h1r67s0h" path="res://Accessory/Hats/HatTypes/TopHat_Type.tres" id="2_wr28x"]
+[ext_resource type="Resource" uid="uid://b7cwn4yoych76" path="res://Accessory/Hats/HatTypes/PartyHat_Type.tres" id="3_ie2i0"]
 
 [node name="Hat" type="Node3D"]
 script = ExtResource("1_d6xww")
-hats = Array[ExtResource("3_4idt3")]([SubResource("Resource_myrrq")])
+hats = Array[Resource("res://Accessory/Hats/hat_type.gd")]([ExtResource("2_wr28x"), ExtResource("3_ie2i0")])

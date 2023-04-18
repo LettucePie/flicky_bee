@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="HatType" load_steps=2 format=3 uid="uid://ce6ytrn7epavu"]
+
+[ext_resource type="Script" path="res://Accessory/Hats/hat_type.gd" id="1_dvg2s"]
+
+[resource]
+script = ExtResource("1_dvg2s")
+hat_name = "Cap"

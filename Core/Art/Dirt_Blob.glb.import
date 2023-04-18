@@ -36,7 +36,7 @@ _subresources={
 }
 },
 "meshes": {
-"Dirt_Blob_Mono_Icosphere": {
+"Dirt_Blob_Icosphere": {
 "generate/lightmap_uv": 0,
 "generate/lods": 0,
 "generate/shadow_meshes": 0,

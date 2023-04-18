@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="PriceTag" load_steps=3 format=3 uid="uid://0e4d2ffwkc23"]
+
+[ext_resource type="Script" path="res://Accessory/pricetag_type.gd" id="1_3wsqc"]
+[ext_resource type="Resource" uid="uid://b7cwn4yoych76" path="res://Accessory/Hats/HatTypes/PartyHat_Type.tres" id="1_ewe0m"]
+
+[resource]
+script = ExtResource("1_3wsqc")
+acc_name = "Party Hat"
+acc_type = 0
+accessory = ExtResource("1_ewe0m")
+purchase_honey = true
+honey_amount = 150.0
+purchase_usd = false
+usd_amount = 0.99
+achievable = false

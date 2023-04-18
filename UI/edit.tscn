@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dq6owtm6gii5x"]
+[gd_scene load_steps=32 format=3 uid="uid://dq6owtm6gii5x"]
 
 [ext_resource type="Theme" uid="uid://gf806tdomj80" path="res://UI/Style/SubBee_Theme.tres" id="1_3ipnt"]
 [ext_resource type="Theme" uid="uid://cwteexwb3vbyi" path="res://UI/Style/Bee_Theme.tres" id="1_i3uci"]
@@ -14,11 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://cqhnnf5pmqblb" path="res://UI/Art/Trail_Icon.png" id="9_wn45k"]
 [ext_resource type="Texture2D" uid="uid://b2o4xo01cmirk" path="res://UI/Art/Flower_Icon.png" id="11_35kbs"]
 [ext_resource type="Resource" uid="uid://n7inm04q3qeg" path="res://Accessory/Hats/PriceTags/TopHat_Tag.tres" id="13_ph1gx"]
-[ext_resource type="Resource" uid="uid://d4ipxcd04o1rr" path="res://Accessory/Hats/PriceTags/TestTag1.tres" id="14_iq2sb"]
-[ext_resource type="Resource" uid="uid://bvh16napy0jiq" path="res://Accessory/Hats/PriceTags/TestTag2.tres" id="15_1p4j2"]
-[ext_resource type="Resource" uid="uid://cilliaqwks7ns" path="res://Accessory/Hats/PriceTags/TestTag4.tres" id="17_4h5f7"]
-[ext_resource type="Resource" uid="uid://0hk0li0tc7b7" path="res://Accessory/Hats/PriceTags/TestTag5.tres" id="18_q5mgr"]
-[ext_resource type="Resource" uid="uid://hdsa53vs837k" path="res://Accessory/Hats/PriceTags/TestTag6.tres" id="19_81wt2"]
+[ext_resource type="Resource" uid="uid://0e4d2ffwkc23" path="res://Accessory/Hats/PriceTags/PartyHat_Tag.tres" id="15_i5exi"]
+[ext_resource type="Resource" uid="uid://btf1fx35mbsyy" path="res://Accessory/Flowers/PriceTags/Blue_Lily_Tag.tres" id="20_5l4yj"]
 [ext_resource type="Script" path="res://UI/Reward.gd" id="20_u6j73"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ackvc"]
@@ -341,7 +338,7 @@ expand_icon = true
 
 [node name="Hats" parent="Vbox" instance=ExtResource("6_j53hv")]
 layout_mode = 2
-inventory = Array[Resource("res://Accessory/pricetag_type.gd")]([ExtResource("13_ph1gx"), ExtResource("14_iq2sb"), ExtResource("15_1p4j2"), ExtResource("17_4h5f7"), ExtResource("19_81wt2"), ExtResource("18_q5mgr")])
+inventory = Array[Resource("res://Accessory/pricetag_type.gd")]([ExtResource("13_ph1gx"), ExtResource("15_i5exi")])
 
 [node name="Trails" parent="Vbox" instance=ExtResource("6_j53hv")]
 visible = false
@@ -352,6 +349,7 @@ category = 1
 visible = false
 layout_mode = 2
 category = 2
+inventory = Array[Resource("res://Accessory/pricetag_type.gd")]([ExtResource("20_5l4yj")])
 
 [node name="Selected" type="Label" parent="."]
 layout_mode = 0

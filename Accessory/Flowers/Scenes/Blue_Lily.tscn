@@ -1,48 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://3soel35aj6nu"]
+[gd_scene load_steps=2 format=3 uid="uid://3soel35aj6nu"]
 
 [ext_resource type="PackedScene" uid="uid://ga5x7gqbex1s" path="res://Accessory/Flowers/Models/Flower_B.glb" id="1_i7353"]
-[ext_resource type="Material" uid="uid://bqqtdlxpcxc8" path="res://Core/Art/Mono_Material/BaseMaterial_V2.tres" id="2_h6hki"]
 
 [node name="Blue_Lily" instance=ExtResource("1_i7353")]
-
-[node name="Petal_blue" parent="Center" index="0"]
-surface_material_override/0 = ExtResource("2_h6hki")
-
-[node name="Petal_blue001" parent="Center" index="1"]
-surface_material_override/0 = ExtResource("2_h6hki")
-
-[node name="Petal_blue002" parent="Center" index="2"]
-surface_material_override/0 = ExtResource("2_h6hki")
-
-[node name="Petal_blue003" parent="Center" index="3"]
-surface_material_override/0 = ExtResource("2_h6hki")
-
-[node name="Petal_blue004" parent="Center" index="4"]
-surface_material_override/0 = ExtResource("2_h6hki")
-
-[node name="Petal_blue005" parent="Center" index="5"]
-surface_material_override/0 = ExtResource("2_h6hki")
-
-[node name="Petal_blue006" parent="Center" index="6"]
-surface_material_override/0 = ExtResource("2_h6hki")
-
-[node name="Petal_blue007" parent="Center" index="7"]
-surface_material_override/0 = ExtResource("2_h6hki")
-
-[node name="Petal_blue008" parent="Center" index="8"]
-surface_material_override/0 = ExtResource("2_h6hki")
-
-[node name="Petal_blue009" parent="Center" index="9"]
-surface_material_override/0 = ExtResource("2_h6hki")
-
-[node name="Petal_blue010" parent="Center" index="10"]
-surface_material_override/0 = ExtResource("2_h6hki")
-
-[node name="Petal_blue011" parent="Center" index="11"]
-surface_material_override/0 = ExtResource("2_h6hki")
-
-[node name="Sphere" parent="." index="1"]
-surface_material_override/0 = ExtResource("2_h6hki")
 
 [node name="Trace" type="Node3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46504, 0)

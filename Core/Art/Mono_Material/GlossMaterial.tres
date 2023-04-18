@@ -1,11 +1,11 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cp668a6ut4ukq"]
 
-[ext_resource type="Texture2D" uid="uid://b7gar11ok7m30" path="res://Core/Art/Textures/ColorSheet.png" id="1_ar63g"]
+[ext_resource type="Texture2D" uid="uid://6w3hqw2rckbv" path="res://Core/Art/Textures/ColorSheet_V2.png" id="1_yuds3"]
 
 [resource]
 resource_name = "GlossMaterial"
 shading_mode = 2
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_ar63g")
+albedo_texture = ExtResource("1_yuds3")
 metallic = 0.5
 roughness = 0.2

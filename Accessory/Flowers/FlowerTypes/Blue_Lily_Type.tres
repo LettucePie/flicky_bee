@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="FlowerType" load_steps=3 format=3 uid="uid://d2meuwp8bo0cg"]
+
+[ext_resource type="PackedScene" uid="uid://3soel35aj6nu" path="res://Accessory/Flowers/Scenes/Blue_Lily.tscn" id="1_wxm7u"]
+[ext_resource type="Script" path="res://Accessory/Flowers/flower_type.gd" id="2_wlt5d"]
+
+[resource]
+script = ExtResource("2_wlt5d")
+flower_name = "Blue Lily"
+scene = ExtResource("1_wxm7u")

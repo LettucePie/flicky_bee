@@ -44,7 +44,7 @@ _subresources={
 "lods/normal_split_angle": 25.0,
 "save_to_file/enabled": true,
 "save_to_file/make_streamable": "",
-"save_to_file/path": "res://Core/Art/Mono_Material/Grass_Curve_Mono_Mesh.res"
+"save_to_file/path": "res://Core/Art/Meshes/Grass_Curve_Mesh.res"
 }
 }
 }

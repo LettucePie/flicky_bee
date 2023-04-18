@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://de1h0vpr7hybu"]
+
+[ext_resource type="PackedScene" uid="uid://das1qhfhftj3c" path="res://Accessory/Hats/Models/PartyHat.glb" id="1_f27oo"]
+
+[node name="PartyHat" type="Node3D"]
+
+[node name="PartyHat" parent="." instance=ExtResource("1_f27oo")]
