@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://u2la6l6mpb2v"]
+[gd_scene load_steps=7 format=3 uid="uid://u2la6l6mpb2v"]
 
 [ext_resource type="Theme" uid="uid://gf806tdomj80" path="res://UI/Style/SubBee_Theme.tres" id="1_8rgr6"]
 [ext_resource type="Texture2D" uid="uid://8qybfiret8ja" path="res://icon.svg" id="1_dpgun"]
 [ext_resource type="Script" path="res://UI/AccOption.gd" id="1_vr7ud"]
 [ext_resource type="Texture2D" uid="uid://b6165esfj1fca" path="res://UI/Art/Locked_Overlay.png" id="2_32fui"]
 [ext_resource type="Texture2D" uid="uid://dua2xg5rmn4qn" path="res://UI/Art/Equipped_Overlay.png" id="3_qshie"]
+[ext_resource type="Texture2D" uid="uid://cb18uwx0skinq" path="res://UI/Art/OverlayMask.png" id="6_06npc"]
 
 [node name="AccOption" type="Panel"]
 custom_minimum_size = Vector2(450, 450)
@@ -27,6 +28,8 @@ lock_overlay = ExtResource("2_32fui")
 equipped_overlay = ExtResource("3_qshie")
 
 [node name="Icon" type="TextureRect" parent="."]
+light_mask = 2
+visibility_layer = 2
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 1
 anchors_preset = -1
@@ -42,12 +45,28 @@ expand_mode = 2
 stretch_mode = 5
 
 [node name="Status" type="TextureRect" parent="Icon"]
+light_mask = 2
+visibility_layer = 2
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Mask" type="TextureRect" parent="Icon"]
+clip_children = 1
+light_mask = 2
+visibility_layer = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_06npc")
 expand_mode = 2
 stretch_mode = 5
 

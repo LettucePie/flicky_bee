@@ -5,5 +5,6 @@
 [node name="TopHat" type="Node3D"]
 
 [node name="TopHat" parent="." instance=ExtResource("1_l5l7s")]
+transform = Transform3D(0.482474, 0.131221, 0, -0.131221, 0.482474, 0, 0, 0, 0.5, 0.101875, 0.374575, 0)
 
 [editable path="TopHat"]

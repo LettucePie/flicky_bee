@@ -1,9 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2wonbiskwb7q"]
+[gd_scene load_steps=6 format=3 uid="uid://b2wonbiskwb7q"]
 
 [ext_resource type="Script" path="res://Accessory/Hats/hat.gd" id="1_d6xww"]
 [ext_resource type="Resource" uid="uid://bvxv8h1r67s0h" path="res://Accessory/Hats/HatTypes/TopHat_Type.tres" id="2_wr28x"]
 [ext_resource type="Resource" uid="uid://b7cwn4yoych76" path="res://Accessory/Hats/HatTypes/PartyHat_Type.tres" id="3_ie2i0"]
+[ext_resource type="Resource" uid="uid://ce6ytrn7epavu" path="res://Accessory/Hats/HatTypes/CapHat_Type.tres" id="4_ba6lv"]
+[ext_resource type="Resource" uid="uid://diwwsprgm011p" path="res://Accessory/Hats/HatTypes/WizardHat_Type.tres" id="5_krfn1"]
 
 [node name="Hat" type="Node3D"]
 script = ExtResource("1_d6xww")
-hats = Array[Resource("res://Accessory/Hats/hat_type.gd")]([ExtResource("2_wr28x"), ExtResource("3_ie2i0")])
+hats = Array[Resource("res://Accessory/Hats/hat_type.gd")]([ExtResource("2_wr28x"), ExtResource("3_ie2i0"), ExtResource("4_ba6lv"), ExtResource("5_krfn1")])

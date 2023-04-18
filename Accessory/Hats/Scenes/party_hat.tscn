@@ -5,3 +5,4 @@
 [node name="PartyHat" type="Node3D"]
 
 [node name="PartyHat" parent="." instance=ExtResource("1_f27oo")]
+transform = Transform3D(0.441705, 0.0860028, 0, -0.0860028, 0.441705, 0, 0, 0, 0.45, 0, 0.308234, 0)

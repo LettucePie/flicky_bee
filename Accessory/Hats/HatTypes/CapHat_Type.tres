@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="HatType" load_steps=2 format=3 uid="uid://ce6ytrn7epavu"]
+[gd_resource type="Resource" script_class="HatType" load_steps=3 format=3 uid="uid://ce6ytrn7epavu"]
 
 [ext_resource type="Script" path="res://Accessory/Hats/hat_type.gd" id="1_dvg2s"]
+[ext_resource type="PackedScene" uid="uid://c3gbd4va534cq" path="res://Accessory/Hats/Scenes/cap_hat.tscn" id="1_ri2rk"]
 
 [resource]
 script = ExtResource("1_dvg2s")
 hat_name = "Cap"
+scene = ExtResource("1_ri2rk")

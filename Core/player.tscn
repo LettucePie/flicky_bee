@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://pbe74ba2ywah"]
+[gd_scene load_steps=22 format=3 uid="uid://pbe74ba2ywah"]
 
 [ext_resource type="Script" path="res://Core/player.gd" id="1_igtm3"]
 [ext_resource type="AudioStream" uid="uid://dvi65b4n35yoj" path="res://Core/Sound/Pickup_Honey.wav" id="2_4u6o7"]
@@ -13,7 +13,11 @@
 [ext_resource type="PackedScene" uid="uid://lyfyke17ra2i" path="res://Accessory/Trails/trail.tscn" id="10_f4457"]
 [ext_resource type="PackedScene" uid="uid://b2wonbiskwb7q" path="res://Accessory/Hats/hat.tscn" id="10_k4ydw"]
 [ext_resource type="Texture2D" uid="uid://c3f4c4g4lsp6l" path="res://Core/Art/Textures/Hit_FX1.png" id="11_cb7ww"]
+[ext_resource type="PackedScene" uid="uid://c3gbd4va534cq" path="res://Accessory/Hats/Scenes/cap_hat.tscn" id="11_jbg7l"]
 [ext_resource type="Script" path="res://Core/hurt_blink.gd" id="12_5hnsk"]
+[ext_resource type="PackedScene" uid="uid://o8tnue50coc5" path="res://Accessory/Hats/Scenes/top_hat.tscn" id="12_lkb12"]
+[ext_resource type="PackedScene" uid="uid://dn17qq7kyauxa" path="res://Accessory/Hats/Scenes/wizard_hat.tscn" id="13_nb16f"]
+[ext_resource type="PackedScene" uid="uid://de1h0vpr7hybu" path="res://Accessory/Hats/Scenes/party_hat.tscn" id="14_my4ai"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_uaofe"]
 
@@ -42,6 +46,18 @@ anim_lib = ExtResource("6_8bfam")
 transform = Transform3D(-1.67852e-08, -1.33934e-16, -0.384, 1.33934e-16, 0.384, -1.33934e-16, 0.384, -1.33934e-16, -1.67852e-08, 0, 0, 0)
 
 [node name="Hat" parent="Turn/Bee/Body/Head" index="0" instance=ExtResource("10_k4ydw")]
+
+[node name="Cap" parent="Turn/Bee/Body/Head/Hat" instance=ExtResource("11_jbg7l")]
+visible = false
+
+[node name="TopHat" parent="Turn/Bee/Body/Head/Hat" instance=ExtResource("12_lkb12")]
+visible = false
+
+[node name="PartyHat" parent="Turn/Bee/Body/Head/Hat" instance=ExtResource("14_my4ai")]
+visible = false
+
+[node name="WizardHat" parent="Turn/Bee/Body/Head/Hat" instance=ExtResource("13_nb16f")]
+visible = false
 
 [node name="Trail" parent="Turn" instance=ExtResource("10_f4457")]
 transform = Transform3D(-1.67852e-08, -1.33934e-16, -0.384, 1.33934e-16, 0.384, -1.33934e-16, 0.384, -1.33934e-16, -1.67852e-08, 3.76855e-08, 0.0135113, -0.862141)

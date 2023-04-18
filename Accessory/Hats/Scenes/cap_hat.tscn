@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3gbd4va534cq"]
+
+[ext_resource type="PackedScene" uid="uid://beh4hijt3cjpw" path="res://Accessory/Hats/Models/Cap.glb" id="2_o21mb"]
+
+[node name="Cap" type="Node3D"]
+
+[node name="Cap" parent="." instance=ExtResource("2_o21mb")]
+transform = Transform3D(0.697855, 0.054763, 0, -0.054763, 0.697855, 0, 0, 0, 0.7, 0, 0.0296285, 0)
