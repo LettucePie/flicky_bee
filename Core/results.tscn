@@ -1,12 +1,17 @@
-[gd_scene load_steps=11 format=3 uid="uid://baf8lb2g4u6ge"]
+[gd_scene load_steps=13 format=3 uid="uid://baf8lb2g4u6ge"]
 
 [ext_resource type="Theme" uid="uid://cwteexwb3vbyi" path="res://UI/Style/Bee_Theme.tres" id="1_nh6jh"]
 [ext_resource type="Script" path="res://Core/results.gd" id="1_x1mpp"]
 [ext_resource type="LabelSettings" uid="uid://ban0wox1lr7ix" path="res://UI/Label_Setting_Big.tres" id="3_jw6jr"]
 [ext_resource type="Texture2D" uid="uid://coxyfupfv31p5" path="res://UI/Art/Return_Arrow.png" id="4_610dg"]
-[ext_resource type="Texture2D" uid="uid://8qybfiret8ja" path="res://icon.svg" id="4_o1onq"]
+[ext_resource type="Texture2D" uid="uid://5062kegelyuk" path="res://UI/Art/HoneyCount_Icon.png" id="4_ipv8g"]
 [ext_resource type="Texture2D" uid="uid://brajg1t0x2ouo" path="res://UI/Art/Play_Icon.png" id="5_3j0oq"]
 [ext_resource type="LabelSettings" uid="uid://dsiocwpk52rya" path="res://UI/Label_BEST.tres" id="5_bnca1"]
+[ext_resource type="Texture2D" uid="uid://dwdnx3wjpj3v8" path="res://UI/Art/JarCount_Icon.png" id="5_eufi8"]
+[ext_resource type="Texture2D" uid="uid://1lv6vfkw8h7n" path="res://UI/Art/FlowerCount_Icon.png" id="5_iqfsh"]
+
+[sub_resource type="Animation" id="Animation_vdgw2"]
+resource_name = "Quit"
 
 [sub_resource type="Animation" id="Animation_tquka"]
 resource_name = "Start"
@@ -59,9 +64,6 @@ tracks/3/keys = {
 "update": 0,
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
 }
-
-[sub_resource type="Animation" id="Animation_vdgw2"]
-resource_name = "Quit"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0m38w"]
 _data = {
@@ -134,7 +136,7 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
-texture = ExtResource("4_o1onq")
+texture = ExtResource("4_ipv8g")
 expand_mode = 1
 stretch_mode = 5
 
@@ -163,7 +165,7 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
-texture = ExtResource("4_o1onq")
+texture = ExtResource("5_eufi8")
 expand_mode = 1
 stretch_mode = 5
 
@@ -192,7 +194,7 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
-texture = ExtResource("4_o1onq")
+texture = ExtResource("5_iqfsh")
 expand_mode = 1
 stretch_mode = 5
 
