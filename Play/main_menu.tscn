@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cvdqntuuvw1sn"]
+[gd_scene load_steps=29 format=3 uid="uid://cvdqntuuvw1sn"]
 
 [ext_resource type="Theme" uid="uid://cwteexwb3vbyi" path="res://UI/Style/Bee_Theme.tres" id="1_g7eow"]
 [ext_resource type="LabelSettings" uid="uid://ban0wox1lr7ix" path="res://UI/Label_Setting_Big.tres" id="2_bh8d8"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://brajg1t0x2ouo" path="res://UI/Art/Play_Icon.png" id="4_2ixlk"]
 [ext_resource type="Texture2D" uid="uid://coa41p75fdbmr" path="res://UI/Art/Score_Card.png" id="4_h57gp"]
 [ext_resource type="Texture2D" uid="uid://c57h448m0brbc" path="res://UI/Art/Edit_Icon.png" id="5_7l3e5"]
+[ext_resource type="Texture2D" uid="uid://d34vj3tgnln6r" path="res://UI/Art/Title.png" id="5_fsanp"]
 [ext_resource type="Texture2D" uid="uid://dyldysbhhisrt" path="res://UI/Art/Options_Icon.png" id="6_i6hpw"]
 [ext_resource type="LabelSettings" uid="uid://dsiocwpk52rya" path="res://UI/Label_BEST.tres" id="6_mh70q"]
 [ext_resource type="Texture2D" uid="uid://17pd7qj0honl" path="res://UI/Art/Help_Icon.png" id="7_sf71g"]
@@ -342,7 +343,6 @@ libraries = {
 }
 
 [node name="Main" type="Control" parent="."]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -350,24 +350,28 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Title" type="Label" parent="Main"]
+[node name="Title" type="TextureRect" parent="Main"]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.226
-offset_bottom = 0.079977
-text = "Flicky Bee"
-label_settings = ExtResource("2_bh8d8")
-horizontal_alignment = 1
-vertical_alignment = 1
+anchor_left = 0.5
+anchor_top = 0.21
+anchor_right = 0.5
+anchor_bottom = 0.21
+offset_left = -540.0
+offset_top = -403.2
+offset_right = 540.0
+offset_bottom = 403.8
+texture = ExtResource("5_fsanp")
+expand_mode = 3
+stretch_mode = 5
 
 [node name="ScoreCard" type="TextureRect" parent="Main"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.384
+anchor_top = 0.473583
 anchor_right = 0.5
-anchor_bottom = 0.384
+anchor_bottom = 0.473583
 offset_left = -538.0
 offset_top = -269.28
 offset_right = 538.0
@@ -571,9 +575,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Edit" parent="." instance=ExtResource("12_g11w1")]
+visible = false
 layout_mode = 1
 
 [node name="Options" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
