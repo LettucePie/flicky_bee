@@ -1,0 +1,19 @@
+[gd_resource type="PlaneMesh" load_steps=3 format=3 uid="uid://ugstmkfvysr1"]
+
+[ext_resource type="Texture2D" uid="uid://vbrt7giwhcvd" path="res://Accessory/Trails/Art/Sparkle_Particle.png" id="1_yh8p8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3aeid"]
+transparency = 1
+cull_mode = 2
+shading_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_yh8p8")
+metallic_specular = 0.3
+roughness = 0.0
+emission_enabled = true
+emission = Color(0.960784, 0.305882, 0.615686, 1)
+emission_energy_multiplier = 0.93
+
+[resource]
+material = SubResource("StandardMaterial3D_3aeid")
+size = Vector2(1, 1)

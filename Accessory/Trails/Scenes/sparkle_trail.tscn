@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmuu2kkvy6n4p"]
+
+[ext_resource type="Material" uid="uid://dbp2ssyhwyu8r" path="res://Accessory/Trails/Particle_Materials/SparkleTrail_PartMat.tres" id="1_sqscv"]
+[ext_resource type="PlaneMesh" uid="uid://ugstmkfvysr1" path="res://Accessory/Trails/Particle_Meshes/SparkleTrail_Mesh.tres" id="2_40sqs"]
+
+[node name="SparkleTrail" type="GPUParticles3D"]
+amount = 20
+process_material = ExtResource("1_sqscv")
+draw_pass_1 = ExtResource("2_40sqs")
+metadata/name = "Dot"

@@ -1,5 +1,8 @@
-[gd_resource type="SphereMesh" format=3 uid="uid://bkt86dqw7w88n"]
+[gd_resource type="SphereMesh" load_steps=2 format=3 uid="uid://bkt86dqw7w88n"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e687y"]
 
 [resource]
+material = SubResource("StandardMaterial3D_e687y")
 radial_segments = 10
 rings = 6

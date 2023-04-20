@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="PriceTag" load_steps=3 format=3 uid="uid://bss751a6g6add"]
+
+[ext_resource type="Script" path="res://Accessory/pricetag_type.gd" id="1_4lay4"]
+[ext_resource type="PackedScene" uid="uid://bbcurcqhirjgx" path="res://Accessory/Trails/Scenes/dot_trail.tscn" id="1_llyf5"]
+
+[resource]
+script = ExtResource("1_4lay4")
+acc_name = "Dot"
+acc_type = 1
+accessory = ExtResource("1_llyf5")
+purchase_honey = true
+honey_amount = 20.0
+purchase_usd = false
+usd_amount = 0.99
+achievable = false
