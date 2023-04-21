@@ -78,7 +78,8 @@ func _on_options_pressed():
 
 func _on_help_pressed():
 	print("Help Pressed")
-	$Help.show()
+#	$Help.show()
+	$AnimationPlayer.play("Help_Open")
 
 
 func _on_quit_pressed():
@@ -118,6 +119,11 @@ func _on_tutorial_button_pressed():
 
 func _on_privacy_policy_pressed():
 	print("Privacy Policy Pressed")
+	var web_string = "https://raw.githubusercontent.com/LettucePie/flicky_bee/main/PRIVACY.md"
+	if OS.has_feature("macos"):
+		OS.shell_open(web_string)
+	else:
+		OS.shell_open(web_string.uri_encode())
 
 
 func _on_website_pressed():
@@ -127,3 +133,8 @@ func _on_website_pressed():
 		OS.shell_open(web_string)
 	else:
 		OS.shell_open(web_string.uri_encode())
+
+
+func _on_close_help_pressed():
+#	$Help.hide()
+	$AnimationPlayer.play("Help_Close")

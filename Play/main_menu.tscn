@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cvdqntuuvw1sn"]
+[gd_scene load_steps=37 format=3 uid="uid://cvdqntuuvw1sn"]
 
 [ext_resource type="Theme" uid="uid://cwteexwb3vbyi" path="res://UI/Style/Bee_Theme.tres" id="1_g7eow"]
 [ext_resource type="LabelSettings" uid="uid://ban0wox1lr7ix" path="res://UI/Label_Setting_Big.tres" id="2_bh8d8"]
@@ -20,6 +20,9 @@
 [ext_resource type="PackedScene" uid="uid://cqxrcyiqso6wa" path="res://UI/help.tscn" id="14_kunq6"]
 [ext_resource type="Texture2D" uid="uid://dwhjm8yvhqonf" path="res://UI/Art/Volume_Max_Icon.png" id="15_kl8dl"]
 [ext_resource type="AudioStream" uid="uid://cwdbia44da4p8" path="res://kenney/Flowing Rocks.ogg" id="17_n0hyg"]
+[ext_resource type="Texture2D" uid="uid://rgs80eks5ri2" path="res://UI/Art/Help_Icon_Centered.png" id="19_gswam"]
+[ext_resource type="Texture2D" uid="uid://vl1edjkkpx7a" path="res://UI/Art/Document_Icon.png" id="20_a3rdp"]
+[ext_resource type="Texture2D" uid="uid://qmn4jeltim1n" path="res://UI/Art/Website_Icon.png" id="21_dvjgc"]
 
 [sub_resource type="Animation" id="Animation_otwit"]
 resource_name = "Edit_Close"
@@ -300,13 +303,133 @@ tracks/3/keys = {
 "values": [Vector2(2.08165e-12, 1920), Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_4rgs7"]
+resource_name = "Help_Close"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DarkFade:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Main:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Help:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Help:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, 1920)]
+}
+
+[sub_resource type="Animation" id="Animation_wky1m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Help:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ogjrx"]
+resource_name = "Help_Open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DarkFade:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Main:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Help:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Help:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2.08165e-12, 1920), Vector2(2.08165e-12, 2.08165e-12)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lyqgt"]
 _data = {
 "Edit_Close": SubResource("Animation_otwit"),
 "Edit_Open": SubResource("Animation_ga81o"),
+"Help_Close": SubResource("Animation_4rgs7"),
+"Help_Open": SubResource("Animation_ogjrx"),
 "Intro": SubResource("Animation_r2dja"),
 "Options_Close": SubResource("Animation_2umxj"),
-"Options_Open": SubResource("Animation_ssqpc")
+"Options_Open": SubResource("Animation_ssqpc"),
+"RESET": SubResource("Animation_wky1m")
 }
 
 [sub_resource type="Gradient" id="Gradient_ylvs1"]
@@ -583,8 +706,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Edit" parent="." instance=ExtResource("12_g11w1")]
-visible = false
 layout_mode = 1
+offset_top = 1920.0
+offset_bottom = 1920.0
 
 [node name="Options" type="Panel" parent="."]
 visible = false
@@ -722,6 +846,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="Help" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -760,7 +885,7 @@ custom_minimum_size = Vector2(2.08165e-12, 200)
 layout_mode = 2
 size_flags_vertical = 6
 text = "Tutorial"
-icon = ExtResource("7_sf71g")
+icon = ExtResource("19_gswam")
 expand_icon = true
 
 [node name="PrivacyPolicy" type="Button" parent="Help/VBoxContainer"]
@@ -768,6 +893,7 @@ custom_minimum_size = Vector2(2.08165e-12, 200)
 layout_mode = 2
 size_flags_vertical = 6
 text = "Privacy Policy"
+icon = ExtResource("20_a3rdp")
 expand_icon = true
 
 [node name="Website" type="Button" parent="Help/VBoxContainer"]
@@ -775,6 +901,15 @@ custom_minimum_size = Vector2(2.08165e-12, 200)
 layout_mode = 2
 size_flags_vertical = 6
 text = "Website"
+icon = ExtResource("21_dvjgc")
+expand_icon = true
+
+[node name="CloseHelp" type="Button" parent="Help/VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 200)
+layout_mode = 2
+size_flags_vertical = 6
+text = "Close"
+icon = ExtResource("11_bthaf")
 expand_icon = true
 
 [node name="Tutorial" parent="Help" instance=ExtResource("14_kunq6")]
@@ -814,5 +949,6 @@ bus = &"Music"
 [connection signal="pressed" from="Help/VBoxContainer/TutorialButton" to="." method="_on_tutorial_button_pressed"]
 [connection signal="pressed" from="Help/VBoxContainer/PrivacyPolicy" to="." method="_on_privacy_policy_pressed"]
 [connection signal="pressed" from="Help/VBoxContainer/Website" to="." method="_on_website_pressed"]
+[connection signal="pressed" from="Help/VBoxContainer/CloseHelp" to="." method="_on_close_help_pressed"]
 
 [editable path="Edit"]
