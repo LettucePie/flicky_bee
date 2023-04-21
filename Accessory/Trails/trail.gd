@@ -9,6 +9,7 @@ func _set_active(trail : String) -> void:
 	print("Setting Active Trail: ", trail)
 	for t in trails:
 		if t.trail_name == trail:
+			print(trail, " Trail Found")
 			active_trail = t.scene.instantiate()
 			add_child(active_trail)
 

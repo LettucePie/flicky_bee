@@ -23,7 +23,7 @@ func _set_active(hat : String) -> void:
 		for h in hats:
 			if h.hat_name == hat:
 				print("Found Hat")
-				active_hat = h.scene.instance()
+				active_hat = h.scene.instantiate()
 				self.add_child(active_hat)
 
 

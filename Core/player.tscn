@@ -60,8 +60,7 @@ visible = false
 visible = false
 
 [node name="Trail" parent="Turn" instance=ExtResource("10_f4457")]
-transform = Transform3D(-1.67852e-08, -1.33934e-16, -0.384, 1.33934e-16, 0.384, -1.33934e-16, 0.384, -1.33934e-16, -1.67852e-08, 3.76855e-08, 0.0135113, -0.862141)
-trails = Array[Resource("res://Accessory/Trails/trail_type.gd")]([])
+transform = Transform3D(0.24989, 0.291521, 0.00518818, -0.291547, 0.249912, -1.44712e-08, -0.00337655, -0.00393905, 0.383965, 3.76855e-08, 0.0135113, -0.862141)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_uaofe")

@@ -650,7 +650,7 @@ _data = {
 "RESET": SubResource("Animation_fhn4v")
 }
 
-[node name="Help" type="Control"]
+[node name="Tutorial" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

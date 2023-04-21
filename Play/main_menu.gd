@@ -111,5 +111,19 @@ func _on_done_options_pressed(save : bool) -> void:
 	$AnimationPlayer.play("Options_Close")
 
 
+func _on_tutorial_button_pressed():
+	print("Tutorial Pressed")
+	$Help/Tutorial.show()
 
 
+func _on_privacy_policy_pressed():
+	print("Privacy Policy Pressed")
+
+
+func _on_website_pressed():
+	print("Website Pressed")
+	var web_string = "https://lettucepie.itch.io/flicky-bee"
+	if OS.has_feature("macos"):
+		OS.shell_open(web_string)
+	else:
+		OS.shell_open(web_string.uri_encode())

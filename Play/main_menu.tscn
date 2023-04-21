@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cvdqntuuvw1sn"]
+[gd_scene load_steps=31 format=3 uid="uid://cvdqntuuvw1sn"]
 
 [ext_resource type="Theme" uid="uid://cwteexwb3vbyi" path="res://UI/Style/Bee_Theme.tres" id="1_g7eow"]
 [ext_resource type="LabelSettings" uid="uid://ban0wox1lr7ix" path="res://UI/Label_Setting_Big.tres" id="2_bh8d8"]
@@ -176,7 +176,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Help:visible")
+tracks/4/path = NodePath("Help/Tutorial:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -315,6 +315,14 @@ colors = PackedColorArray(0, 0, 0, 0.619608, 0, 0, 0, 0)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_5r6wv"]
 gradient = SubResource("Gradient_ylvs1")
 fill_from = Vector2(1, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_fu0dq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_sy0hj"]
+font = SubResource("SystemFont_fu0dq")
+font_size = 36
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
 
 [node name="MainMenu" type="Control" groups=["Menu"]]
 layout_mode = 3
@@ -713,7 +721,63 @@ texture_normal = ExtResource("15_kl8dl")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Help" parent="." instance=ExtResource("14_kunq6")]
+[node name="Help" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Help"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Help/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Made by Matthew Leemhuis \"LettucePie\"
+
+Menu and Play Songs are built on songs by Kenney.NL
+
+Originally made for a Game Jam using:
+Godot 4
+Krita
+blender
+LMMS + Audacity"
+label_settings = SubResource("LabelSettings_sy0hj")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="TutorialButton" type="Button" parent="Help/VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 200)
+layout_mode = 2
+size_flags_vertical = 6
+text = "Tutorial"
+icon = ExtResource("7_sf71g")
+expand_icon = true
+
+[node name="PrivacyPolicy" type="Button" parent="Help/VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 200)
+layout_mode = 2
+size_flags_vertical = 6
+text = "Privacy Policy"
+expand_icon = true
+
+[node name="Website" type="Button" parent="Help/VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 200)
+layout_mode = 2
+size_flags_vertical = 6
+text = "Website"
+expand_icon = true
+
+[node name="Tutorial" parent="Help" instance=ExtResource("14_kunq6")]
 visible = false
 layout_mode = 1
 
@@ -747,5 +811,8 @@ bus = &"Music"
 [connection signal="pressed" from="Options/VBox/SFX/SFX_Min" to="." method="_on_sfx_slide_value_changed" binds= [0.0]]
 [connection signal="value_changed" from="Options/VBox/SFX/SFX_Slide" to="." method="_on_sfx_slide_value_changed"]
 [connection signal="pressed" from="Options/VBox/SFX/SFX_Max" to="." method="_on_sfx_slide_value_changed" binds= [1.0]]
+[connection signal="pressed" from="Help/VBoxContainer/TutorialButton" to="." method="_on_tutorial_button_pressed"]
+[connection signal="pressed" from="Help/VBoxContainer/PrivacyPolicy" to="." method="_on_privacy_policy_pressed"]
+[connection signal="pressed" from="Help/VBoxContainer/Website" to="." method="_on_website_pressed"]
 
 [editable path="Edit"]

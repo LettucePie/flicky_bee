@@ -117,6 +117,7 @@ func _spawn_player() -> void:
 	current_flower = current_platform._return_flower()
 	player.set_position(current_platform.get_position())
 	add_child(player)
+	player._assign_accessories(persist.hat, persist.trail)
 	_update_camera_target(6.0)
 
 
