@@ -1,15 +1,22 @@
-[gd_scene load_steps=19 format=3 uid="uid://c4ap702pmxyr0"]
+[gd_scene load_steps=22 format=3 uid="uid://c4ap702pmxyr0"]
 
 [ext_resource type="PackedScene" uid="uid://ctoi4c1j3c0ba" path="res://Core/grass_patch.tscn" id="1_fmdt3"]
 [ext_resource type="Script" path="res://Accessory/photo_studio.gd" id="1_sd1ja"]
 [ext_resource type="Environment" uid="uid://bqwftwgkpo7ki" path="res://Core/Enviro_1.tres" id="2_bgj4p"]
 [ext_resource type="Script" path="res://Core/flick_flower.gd" id="2_uyhg2"]
-[ext_resource type="PackedScene" path="res://Accessory/Flowers/flower_head.tscn" id="3_ce6mi"]
+[ext_resource type="PackedScene" uid="uid://bi4np5rns7g3f" path="res://Accessory/Flowers/flower_head.tscn" id="3_ce6mi"]
 [ext_resource type="PackedScene" uid="uid://13hn5t2w6i2" path="res://Core/Art/Flower_Stem.glb" id="4_00s1i"]
 [ext_resource type="PackedScene" uid="uid://3soel35aj6nu" path="res://Accessory/Flowers/Scenes/Blue_Lily.tscn" id="5_wu6ah"]
 [ext_resource type="PackedScene" uid="uid://ctfd8d5pv7p3t" path="res://Core/Art/Bee.glb" id="8_orp8m"]
 [ext_resource type="PackedScene" uid="uid://de1h0vpr7hybu" path="res://Accessory/Hats/Scenes/party_hat.tscn" id="9_14yjo"]
 [ext_resource type="PackedScene" uid="uid://o8tnue50coc5" path="res://Accessory/Hats/Scenes/top_hat.tscn" id="9_c4qnb"]
+[ext_resource type="PackedScene" uid="uid://c3gbd4va534cq" path="res://Accessory/Hats/Scenes/cap_hat.tscn" id="10_qcbco"]
+[ext_resource type="PackedScene" uid="uid://dn17qq7kyauxa" path="res://Accessory/Hats/Scenes/wizard_hat.tscn" id="11_okglv"]
+
+[sub_resource type="Environment" id="Environment_sxpm3"]
+background_mode = 1
+background_color = Color(0.101961, 0.647059, 0, 1)
+ambient_light_source = 1
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_d402m"]
 
@@ -46,7 +53,7 @@ node_connections = [&"output", 0, &"TimeScale", &"Bend_Blend", 0, &"Still", &"Be
 
 [node name="PhotoStudio" type="Node3D"]
 script = ExtResource("1_sd1ja")
-filename = "PartyHat"
+filename = "BlueLily"
 
 [node name="Camera_Spin" type="Node3D" parent="."]
 transform = Transform3D(0.796287, 0, 0.604919, 0, 1, 0, -0.604919, 0, 0.796287, 0, 0, 0)
@@ -56,8 +63,8 @@ transform = Transform3D(0.946311, 0.162492, -0.279448, 8.5671e-09, 0.864477, 0.5
 environment = ExtResource("2_bgj4p")
 
 [node name="CloseCamera" type="Camera3D" parent="Camera_Spin"]
-transform = Transform3D(0.946311, 0.162492, -0.279448, 8.56711e-09, 0.864477, 0.502673, 0.323257, -0.475685, 0.818064, -1.11215, 3.13805, 3.18707)
-environment = ExtResource("2_bgj4p")
+transform = Transform3D(0.946311, 0.162492, -0.279448, 8.56711e-09, 0.864477, 0.502673, 0.323257, -0.475685, 0.818064, -1.2013, 3.29841, 3.44804)
+environment = SubResource("Environment_sxpm3")
 current = true
 
 [node name="Grass" type="Node3D" parent="."]
@@ -99,7 +106,6 @@ mesh = SubResource("CapsuleMesh_d402m")
 
 [node name="Flick_Flower" type="Node3D" parent="."]
 transform = Transform3D(0.526111, 0, 0, 0, 0.526111, 0, 0, 0, 0.526111, 0, 0.940404, 0)
-visible = false
 script = ExtResource("2_uyhg2")
 
 [node name="AnimationTree" type="AnimationTree" parent="Flick_Flower"]
@@ -114,21 +120,31 @@ parameters/TimeScale/scale = 2.0
 [node name="Flower_Head" parent="Flick_Flower" instance=ExtResource("3_ce6mi")]
 visible = false
 
-[node name="Blue_Lily" parent="Flick_Flower" instance=ExtResource("5_wu6ah")]
-
 [node name="Flower_Stem" parent="Flick_Flower" instance=ExtResource("4_00s1i")]
 
+[node name="Blue_Lily" parent="Flick_Flower" instance=ExtResource("5_wu6ah")]
+
 [node name="HatSpot" type="Node3D" parent="."]
-transform = Transform3D(0.714529, -0.068172, 0, 0.068172, 0.714529, 0, 0, 0, 0.717774, 0.189585, 0.985694, 0)
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0, 0)
+visible = false
 
 [node name="TopHat" parent="HatSpot" instance=ExtResource("9_c4qnb")]
 visible = false
 
 [node name="PartyHat" parent="HatSpot" instance=ExtResource("9_14yjo")]
-transform = Transform3D(0.973191, 0.229999, 0, -0.229999, 0.973191, 0, 0, 0, 1, -0.0636237, -0.0730639, 0)
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0, 0)
+visible = false
+
+[node name="Cap" parent="HatSpot" instance=ExtResource("10_qcbco")]
+transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, -0.090355, -1.85234e-16, 0.621434)
+visible = false
+
+[node name="WizardHat" parent="HatSpot" instance=ExtResource("11_okglv")]
+transform = Transform3D(0.854305, -0.519773, 0, 0.519773, 0.854305, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Bee" parent="." instance=ExtResource("8_orp8m")]
 transform = Transform3D(1.60445, -0.457768, 0, 0.457768, 1.60445, 0, 0, 0, 1.66848, -0.645516, 0, 0)
+visible = false
 
 [editable path="Grass/Grass_Patch"]
 [editable path="Grass/Grass_Patch2"]

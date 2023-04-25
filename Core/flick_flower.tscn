@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://xx8vpt1dc2ub"]
 
 [ext_resource type="Script" path="res://Core/flick_flower.gd" id="1_lqgyg"]
-[ext_resource type="PackedScene" uid="uid://ciyfxnas78mwn" path="res://Accessory/Flowers/flower_head.tscn" id="2_mcy4w"]
+[ext_resource type="PackedScene" uid="uid://bi4np5rns7g3f" path="res://Accessory/Flowers/flower_head.tscn" id="2_mcy4w"]
 [ext_resource type="PackedScene" uid="uid://13hn5t2w6i2" path="res://Core/Art/Flower_Stem.glb" id="3_v4chg"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wocv6"]

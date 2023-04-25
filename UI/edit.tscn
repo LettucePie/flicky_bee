@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dq6owtm6gii5x"]
+[gd_scene load_steps=37 format=3 uid="uid://dq6owtm6gii5x"]
 
 [ext_resource type="Theme" uid="uid://gf806tdomj80" path="res://UI/Style/SubBee_Theme.tres" id="1_3ipnt"]
 [ext_resource type="Theme" uid="uid://cwteexwb3vbyi" path="res://UI/Style/Bee_Theme.tres" id="1_i3uci"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://UI/edit.gd" id="2_te6p3"]
 [ext_resource type="Texture2D" uid="uid://8qybfiret8ja" path="res://icon.svg" id="3_jsyu4"]
 [ext_resource type="Texture2D" uid="uid://coxyfupfv31p5" path="res://UI/Art/Return_Arrow.png" id="3_ky6n1"]
+[ext_resource type="Texture2D" uid="uid://5062kegelyuk" path="res://UI/Art/HoneyCount_Icon.png" id="6_b31dh"]
 [ext_resource type="StyleBox" uid="uid://8ffj1rptfvg4" path="res://UI/Style/Button_Style2_Normal.tres" id="6_hm46p"]
 [ext_resource type="PackedScene" uid="uid://bfrwshx4712hu" path="res://UI/category.tscn" id="6_j53hv"]
 [ext_resource type="StyleBox" uid="uid://cpxrqoxv5s68p" path="res://UI/Style/Button_Style_Disabled.tres" id="7_608ja"]
@@ -277,7 +278,7 @@ alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Header/Vbox/Hbox"]
 layout_mode = 2
-texture = ExtResource("3_jsyu4")
+texture = ExtResource("6_b31dh")
 expand_mode = 3
 stretch_mode = 5
 

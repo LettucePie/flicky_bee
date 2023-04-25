@@ -1,8 +1,52 @@
-[gd_scene load_steps=2 format=3 uid="uid://3soel35aj6nu"]
+[gd_scene load_steps=3 format=3 uid="uid://3soel35aj6nu"]
 
-[ext_resource type="PackedScene" uid="uid://ga5x7gqbex1s" path="res://Accessory/Flowers/Models/Flower_B.glb" id="1_i7353"]
+[ext_resource type="PackedScene" uid="uid://b53mhruixmliy" path="res://Accessory/Flowers/Models/BlueLily.glb" id="1_xmjhw"]
+[ext_resource type="Material" uid="uid://bdvfsfad5byji" path="res://Core/Art/Mono_Material/BaseMaterial.tres" id="2_m0hjh"]
 
-[node name="Blue_Lily" instance=ExtResource("1_i7353")]
+[node name="Blue_Lily" type="Node3D"]
 
-[node name="Trace" type="Node3D" parent="." index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46504, 0)
+[node name="BlueLily" parent="." instance=ExtResource("1_xmjhw")]
+
+[node name="Petal_blue" parent="BlueLily/Center" index="0"]
+surface_material_override/0 = ExtResource("2_m0hjh")
+
+[node name="Petal_blue001" parent="BlueLily/Center" index="1"]
+surface_material_override/0 = ExtResource("2_m0hjh")
+
+[node name="Petal_blue002" parent="BlueLily/Center" index="2"]
+surface_material_override/0 = ExtResource("2_m0hjh")
+
+[node name="Petal_blue003" parent="BlueLily/Center" index="3"]
+surface_material_override/0 = ExtResource("2_m0hjh")
+
+[node name="Petal_blue004" parent="BlueLily/Center" index="4"]
+surface_material_override/0 = ExtResource("2_m0hjh")
+
+[node name="Petal_blue005" parent="BlueLily/Center" index="5"]
+surface_material_override/0 = ExtResource("2_m0hjh")
+
+[node name="Petal_blue006" parent="BlueLily/Center" index="6"]
+surface_material_override/0 = ExtResource("2_m0hjh")
+
+[node name="Petal_blue007" parent="BlueLily/Center" index="7"]
+surface_material_override/0 = ExtResource("2_m0hjh")
+
+[node name="Petal_blue008" parent="BlueLily/Center" index="8"]
+surface_material_override/0 = ExtResource("2_m0hjh")
+
+[node name="Petal_blue009" parent="BlueLily/Center" index="9"]
+surface_material_override/0 = ExtResource("2_m0hjh")
+
+[node name="Petal_blue010" parent="BlueLily/Center" index="10"]
+surface_material_override/0 = ExtResource("2_m0hjh")
+
+[node name="Petal_blue011" parent="BlueLily/Center" index="11"]
+surface_material_override/0 = ExtResource("2_m0hjh")
+
+[node name="Sphere" parent="BlueLily" index="1"]
+surface_material_override/0 = ExtResource("2_m0hjh")
+
+[node name="Trace" type="Node3D" parent="."]
+transform = Transform3D(1.62, 0, 0, 0, 1.62, 0, 0, 0, 1.62, -0.00216563, 0.37069, 0.00463634)
+
+[editable path="BlueLily"]

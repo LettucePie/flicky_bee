@@ -98,6 +98,8 @@ func _load_game() -> void:
 	else:
 		print("No File to Load... Creating initial Save")
 		_save_game()
+	if OS.has_feature("ios"):
+		print("Integrated to Plugins : ", $iOS_Plugins._plugin_integrated())
 
 
 func _file_surgery(data) -> void:

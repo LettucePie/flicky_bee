@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b8wr07s7v78e8"]
+
+[ext_resource type="Texture2D" uid="uid://6w3hqw2rckbv" path="res://Core/Art/Textures/ColorSheet_V2.png" id="1_olipg"]
+
+[resource]
+resource_name = "BaseMaterial"
+cull_mode = 2
+shading_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_olipg")
+metallic = 1.0

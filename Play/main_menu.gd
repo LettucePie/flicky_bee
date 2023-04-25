@@ -15,7 +15,7 @@ func _ready():
 	persist_node._load_game()
 	if OS.has_feature("ios") \
 	or OS.has_feature("web"):
-		$ButtonBox/Quit.queue_free()
+		$Main/ButtonBox/Quit.queue_free()
 	_reflect_settings()
 	_update_score()
 	_update_current_accessories()

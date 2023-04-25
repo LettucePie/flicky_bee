@@ -60,7 +60,7 @@ func _find_trace() -> void:
 			if c.name == "Trace":
 				trace_node = c
 	else:
-		print("Cannot find Flower Trace, now FlowerTop is assigned")
+		print("Cannot find Flower Trace, no FlowerTop is assigned")
 
 
 func _set_flower(flower : String):

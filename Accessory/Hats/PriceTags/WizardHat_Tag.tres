@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="PriceTag" load_steps=3 format=3 uid="uid://di843samksbgx"]
+[gd_resource type="Resource" script_class="PriceTag" load_steps=4 format=3 uid="uid://di843samksbgx"]
 
+[ext_resource type="Texture2D" uid="uid://wy5knv0my0e2" path="res://Accessory/Hats/WizardHat_Icon.png" id="1_45wok"]
 [ext_resource type="Script" path="res://Accessory/pricetag_type.gd" id="1_f1n1g"]
 [ext_resource type="Resource" uid="uid://diwwsprgm011p" path="res://Accessory/Hats/HatTypes/WizardHat_Type.tres" id="1_ph3yi"]
 
 [resource]
 script = ExtResource("1_f1n1g")
 acc_name = "Wizard Hat"
+acc_icon = ExtResource("1_45wok")
 acc_type = 0
 accessory = ExtResource("1_ph3yi")
 purchase_honey = true
