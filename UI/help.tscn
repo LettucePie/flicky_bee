@@ -729,8 +729,11 @@ offset_bottom = 811.84
 [node name="Label" type="Label" parent="Stage"]
 layout_mode = 1
 anchors_preset = -1
+anchor_top = 0.025
 anchor_right = 1.0
-anchor_bottom = 0.16
+anchor_bottom = 0.201
+offset_top = 0.399999
+offset_bottom = -0.424008
 text = "Drag in a direction to fly when in the air."
 label_settings = ExtResource("2_6o30g")
 horizontal_alignment = 1

@@ -8,11 +8,13 @@
 [ext_resource type="StyleBox" uid="uid://cm5u404ife8yc" path="res://UI/Style/Slider_Yes.tres" id="6_juljx"]
 [ext_resource type="StyleBox" uid="uid://yxous6lnd8cr" path="res://UI/Style/Slider_No.tres" id="7_u46aw"]
 [ext_resource type="StyleBox" uid="uid://bcxyibr4h4e10" path="res://UI/Style/SubPanel_Style.tres" id="8_8tjli"]
-[ext_resource type="FontFile" uid="uid://cn2jeh3i0gd5v" path="res://UI/Fonts/Gloria_Hallelujah/GloriaHallelujah-Regular.ttf" id="9_3nu5e"]
+
+[sub_resource type="SystemFont" id="SystemFont_p4b0s"]
+font_names = PackedStringArray("Avenir")
 
 [resource]
-default_font = ExtResource("9_3nu5e")
-default_font_size = 52
+default_font = SubResource("SystemFont_p4b0s")
+default_font_size = 48
 Button/colors/font_color = Color(0.0470588, 0.0470588, 0.0470588, 1)
 Button/colors/font_focus_color = Color(0.227451, 0.227451, 0.227451, 1)
 Button/colors/font_hover_color = Color(0.227451, 0.227451, 0.227451, 1)

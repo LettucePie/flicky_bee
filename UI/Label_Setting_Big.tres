@@ -1,6 +1,11 @@
-[gd_resource type="LabelSettings" format=3 uid="uid://ban0wox1lr7ix"]
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://ban0wox1lr7ix"]
+
+[sub_resource type="SystemFont" id="SystemFont_x05fk"]
+font_names = PackedStringArray("Avenir")
+generate_mipmaps = true
 
 [resource]
+font = SubResource("SystemFont_x05fk")
 font_size = 74
 shadow_size = 13
 shadow_color = Color(0, 0, 0, 0.780392)

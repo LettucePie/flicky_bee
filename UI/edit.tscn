@@ -250,16 +250,18 @@ expand_icon = true
 [node name="Header" type="Panel" parent="."]
 layout_mode = 2
 anchor_right = 1.0
-anchor_bottom = 0.174
-offset_bottom = -0.080019
+anchor_bottom = 0.226
+offset_bottom = 0.0799789
 theme = ExtResource("1_3ipnt")
 
 [node name="Vbox" type="VBoxContainer" parent="Header"]
 layout_mode = 1
 anchors_preset = -1
+anchor_top = 0.141
 anchor_right = 1.0
-anchor_bottom = 0.949
-offset_bottom = 0.0249833
+anchor_bottom = 0.984
+offset_top = -0.194001
+offset_bottom = -0.0560118
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -285,6 +287,7 @@ stretch_mode = 5
 
 [node name="Label" type="Label" parent="Header/Vbox/Hbox"]
 layout_mode = 2
+theme = ExtResource("1_i3uci")
 text = "Honey Points (HP) : "
 
 [node name="HoneyPoints" type="Label" parent="Header/Vbox/Hbox"]
@@ -294,9 +297,10 @@ text = "0"
 [node name="Vbox" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.175
+anchor_top = 0.23
 anchor_right = 1.0
 anchor_bottom = 0.717
+offset_top = -0.600008
 offset_bottom = 0.359985
 grow_horizontal = 2
 grow_vertical = 2
@@ -401,7 +405,8 @@ icon = ExtResource("3_jsyu4")
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Redeem"
-icon = ExtResource("3_jsyu4")
+icon = ExtResource("6_b31dh")
+expand_icon = true
 
 [node name="Buy_USD" type="Button" parent="ActionContainer"]
 layout_mode = 2

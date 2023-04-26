@@ -6,14 +6,17 @@
 [ext_resource type="StyleBox" uid="uid://yrle83fsm8ff" path="res://UI/Style/Panel_Style.tres" id="2_51d7p"]
 [ext_resource type="Texture2D" uid="uid://bqihm8hpvdisc" path="res://UI/Art/Grabber_Handle_Normal.png" id="3_v636i"]
 [ext_resource type="Texture2D" uid="uid://cpkfv6e5mt6i0" path="res://UI/Art/Grabber_Handle_Disabled.png" id="4_822cg"]
-[ext_resource type="FontFile" uid="uid://cn2jeh3i0gd5v" path="res://UI/Fonts/Gloria_Hallelujah/GloriaHallelujah-Regular.ttf" id="4_owa64"]
 [ext_resource type="Texture2D" uid="uid://2psjw2m5dapr" path="res://UI/Art/Grabber_Handle_Highlight.png" id="5_vggml"]
 [ext_resource type="StyleBox" uid="uid://cm5u404ife8yc" path="res://UI/Style/Slider_Yes.tres" id="6_k1so6"]
 [ext_resource type="StyleBox" uid="uid://yxous6lnd8cr" path="res://UI/Style/Slider_No.tres" id="7_3s7pu"]
 
+[sub_resource type="SystemFont" id="SystemFont_n35c3"]
+font_names = PackedStringArray("Avenir")
+generate_mipmaps = true
+
 [resource]
-default_font = ExtResource("4_owa64")
-default_font_size = 52
+default_font = SubResource("SystemFont_n35c3")
+default_font_size = 48
 Button/colors/font_color = Color(0.0470588, 0.0470588, 0.0470588, 1)
 Button/colors/font_focus_color = Color(0.227451, 0.227451, 0.227451, 1)
 Button/colors/font_hover_color = Color(0.227451, 0.227451, 0.227451, 1)

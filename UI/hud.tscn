@@ -53,8 +53,8 @@ grow_vertical = 0
 [node name="Ratio" type="AspectRatioContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-offset_right = 140.0
-offset_bottom = 140.0
+offset_right = 179.0
+offset_bottom = 179.0
 
 [node name="Pause" type="Button" parent="Ratio"]
 layout_mode = 2
@@ -365,6 +365,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Continue" type="Button" parent="Pause/Panel/Vbox"]
+custom_minimum_size = Vector2(2.08165e-12, 200)
 layout_mode = 2
 size_flags_vertical = 6
 text = "Continue"
@@ -372,6 +373,7 @@ icon = ExtResource("15_d6fn0")
 expand_icon = true
 
 [node name="Return" type="Button" parent="Pause/Panel/Vbox"]
+custom_minimum_size = Vector2(2.08165e-12, 200)
 layout_mode = 2
 size_flags_vertical = 6
 text = "Return to the Hive"

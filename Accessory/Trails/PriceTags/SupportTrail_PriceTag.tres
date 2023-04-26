@@ -15,5 +15,5 @@ honey_amount = 50.0
 purchase_usd = true
 usd_amount = 0.99
 validated = false
-prod_id = "TEST_001"
+prod_id = "FLICKYBEESUP001"
 achievable = false

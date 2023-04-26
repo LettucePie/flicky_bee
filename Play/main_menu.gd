@@ -145,19 +145,13 @@ func _on_tutorial_button_pressed():
 func _on_privacy_policy_pressed():
 	print("Privacy Policy Pressed")
 	var web_string = "https://raw.githubusercontent.com/LettucePie/flicky_bee/main/PRIVACY.md"
-	if OS.has_feature("macos"):
-		OS.shell_open(web_string)
-	else:
-		OS.shell_open(web_string.uri_encode())
+	OS.shell_open(web_string)
 
 
 func _on_website_pressed():
 	print("Website Pressed")
 	var web_string = "https://lettucepie.itch.io/flicky-bee"
-	if OS.has_feature("macos"):
-		OS.shell_open(web_string)
-	else:
-		OS.shell_open(web_string.uri_encode())
+	OS.shell_open(web_string)
 
 
 func _on_close_help_pressed():
