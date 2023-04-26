@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dq6owtm6gii5x"]
+[gd_scene load_steps=38 format=3 uid="uid://dq6owtm6gii5x"]
 
 [ext_resource type="Theme" uid="uid://gf806tdomj80" path="res://UI/Style/SubBee_Theme.tres" id="1_3ipnt"]
 [ext_resource type="Theme" uid="uid://cwteexwb3vbyi" path="res://UI/Style/Bee_Theme.tres" id="1_i3uci"]
@@ -21,6 +21,7 @@
 [ext_resource type="Resource" uid="uid://bss751a6g6add" path="res://Accessory/Trails/PriceTags/DotTrail_PriceTag.tres" id="18_487ts"]
 [ext_resource type="Resource" uid="uid://cnl2x30tsw7vp" path="res://Accessory/Trails/PriceTags/SparkleTrail_PriceTag.tres" id="19_kjkkv"]
 [ext_resource type="Resource" uid="uid://btf1fx35mbsyy" path="res://Accessory/Flowers/PriceTags/Blue_Lily_Tag.tres" id="20_5l4yj"]
+[ext_resource type="Resource" uid="uid://by7b7xlpi6dxw" path="res://Accessory/Trails/PriceTags/SupportTrail_PriceTag.tres" id="20_rcqpj"]
 [ext_resource type="Script" path="res://UI/Reward.gd" id="20_u6j73"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ackvc"]
@@ -349,7 +350,7 @@ inventory = Array[Resource("res://Accessory/pricetag_type.gd")]([ExtResource("15
 visible = false
 layout_mode = 2
 category = 1
-inventory = Array[Resource("res://Accessory/pricetag_type.gd")]([ExtResource("18_487ts"), ExtResource("19_kjkkv")])
+inventory = Array[Resource("res://Accessory/pricetag_type.gd")]([ExtResource("18_487ts"), ExtResource("19_kjkkv"), ExtResource("20_rcqpj")])
 
 [node name="Flowers" parent="Vbox" instance=ExtResource("6_j53hv")]
 visible = false

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="TrailType" load_steps=3 format=3 uid="uid://dmyntt6cmeuvs"]
+
+[ext_resource type="PackedScene" uid="uid://bfemdrbpvb5mh" path="res://Accessory/Trails/Scenes/supporter_trail.tscn" id="1_eicvv"]
+[ext_resource type="Script" path="res://Accessory/Trails/trail_type.gd" id="1_rfj4v"]
+
+[resource]
+script = ExtResource("1_rfj4v")
+trail_name = "Supporter"
+scene = ExtResource("1_eicvv")

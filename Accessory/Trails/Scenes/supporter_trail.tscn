@@ -1,0 +1,64 @@
+[gd_scene load_steps=11 format=3 uid="uid://bfemdrbpvb5mh"]
+
+[ext_resource type="Material" uid="uid://sjx1gyr1xf1g" path="res://Accessory/Trails/Particle_Materials/SupTrail1_PartMat.tres" id="1_kavpv"]
+[ext_resource type="ArrayMesh" uid="uid://btol3v16wom1k" path="res://Accessory/Trails/Particle_Meshes/Supporter_Bills_Cube002.res" id="1_rrj3g"]
+[ext_resource type="ArrayMesh" uid="uid://bcle061fh6b7k" path="res://Accessory/Trails/Particle_Meshes/Supporter_Bills_Cylinder002.res" id="5_ywmhj"]
+
+[sub_resource type="Gradient" id="Gradient_76ui3"]
+offsets = PackedFloat32Array(0.0056338, 1)
+colors = PackedColorArray(0.649105, 0.466582, 1, 1, 1, 0.400757, 0.489706, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_j4vip"]
+gradient = SubResource("Gradient_76ui3")
+
+[sub_resource type="Curve" id="Curve_ewsx6"]
+_data = [Vector2(0, 0.806081), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.6999, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_fgphd"]
+curve = SubResource("Curve_ewsx6")
+
+[sub_resource type="Curve" id="Curve_lbsl8"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_dep16"]
+curve = SubResource("Curve_lbsl8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_utvxr"]
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+particle_flag_align_y = true
+spread = 180.0
+gravity = Vector3(2.08165e-12, -3, 2.08165e-12)
+initial_velocity_min = 0.5
+initial_velocity_max = 0.5
+angular_velocity_min = 37.24
+angular_velocity_max = 37.24
+angle_min = -404.8
+angle_max = 720.0
+scale_min = 0.1
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_fgphd")
+color_ramp = SubResource("GradientTexture1D_j4vip")
+hue_variation_min = -1.0
+hue_variation_max = 0.44
+turbulence_noise_strength = 1.6
+turbulence_noise_speed_random = 4.31
+turbulence_influence_min = 0.33
+turbulence_influence_max = 0.69
+turbulence_initial_displacement_min = -1.0
+turbulence_initial_displacement_max = 1.0
+turbulence_influence_over_life = SubResource("CurveTexture_dep16")
+
+[node name="SupporterTrail" type="GPUParticles3D"]
+amount = 4
+process_material = ExtResource("1_kavpv")
+draw_pass_1 = ExtResource("1_rrj3g")
+metadata/name = "Dot"
+
+[node name="Coins" type="GPUParticles3D" parent="."]
+amount = 20
+preprocess = 4.0
+process_material = SubResource("ParticleProcessMaterial_utvxr")
+draw_pass_1 = ExtResource("5_ywmhj")

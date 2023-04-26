@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="PriceTag" load_steps=4 format=3 uid="uid://by7b7xlpi6dxw"]
+
+[ext_resource type="Resource" uid="uid://dmyntt6cmeuvs" path="res://Accessory/Trails/TrailTypes/SupporterTrail_Type.tres" id="1_rmpbw"]
+[ext_resource type="Texture2D" uid="uid://sno6nfo57ipp" path="res://Accessory/Trails/SupporterTrail_Icon.png" id="1_vx38k"]
+[ext_resource type="Script" path="res://Accessory/pricetag_type.gd" id="2_ucn5b"]
+
+[resource]
+script = ExtResource("2_ucn5b")
+acc_name = "Supporter"
+acc_icon = ExtResource("1_vx38k")
+acc_type = 1
+accessory = ExtResource("1_rmpbw")
+purchase_honey = false
+honey_amount = 50.0
+purchase_usd = true
+usd_amount = 0.99
+validated = false
+prod_id = "TEST_001"
+achievable = false

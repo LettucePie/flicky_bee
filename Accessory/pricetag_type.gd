@@ -11,6 +11,8 @@ enum ACC_TYPE {HAT, TRAIL, FLOWER}
 @export var honey_amount := 50.0
 @export var purchase_usd := false
 @export var usd_amount := 0.99
+@export var validated := false
+@export var prod_id := "PRODUCT_ID"
 ## Conceptual
 @export var achievable := false
 @export var achievement : Resource

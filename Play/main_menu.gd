@@ -9,17 +9,18 @@ extends Control
 var persist_node : Persist
 var play_node : Node
 
+var ios_failure := false
+
 func _ready():
 	persist_node = persist_scene.instantiate()
 	get_window().add_child.call_deferred(persist_node)
 	persist_node._load_game()
+	_reflect_settings()
+	_update_score()
+	_hide_submenus()
 	if OS.has_feature("ios") \
 	or OS.has_feature("web"):
 		$Main/ButtonBox/Quit.queue_free()
-	_reflect_settings()
-	_update_score()
-	_update_current_accessories()
-	_hide_submenus()
 
 
 func _reflect_settings() -> void:
@@ -66,6 +67,30 @@ func _on_play_pressed():
 
 func _on_edit_pressed():
 	print("Edit Pressed")
+	## or OS.has_feature androidRelease
+	if OS.has_feature("ios") and persist_node.ios_plugs != null:
+		var plugin = persist_node.ios_plugs
+		if plugin.store_info_state == plugin.STATE.EMPTY:
+			plugin.store_info_complete.connect(_finish_queue)
+			plugin._request_store_info()
+			_spawn_queue()
+		elif plugin.store_info_state == plugin.STATE.COMPLETE:
+			_finish_queue()
+	else:
+		_update_current_accessories()
+		$AnimationPlayer.play("Edit_Open")
+		$Edit._set_active_category(0)
+		$Edit._set_budget(persist_node.honey_points)
+
+
+func _spawn_queue() -> void:
+	print("Create queue")
+	print("Create Fail Timout that runs FinishQueue")
+
+
+func _finish_queue() -> void:
+	print("Kill queue")
+	_update_current_accessories()
 	$AnimationPlayer.play("Edit_Open")
 	$Edit._set_active_category(0)
 	$Edit._set_budget(persist_node.honey_points)
@@ -138,3 +163,4 @@ func _on_website_pressed():
 func _on_close_help_pressed():
 #	$Help.hide()
 	$AnimationPlayer.play("Help_Close")
+

@@ -1,10 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://dwgh0l2dpnpsf"]
+[gd_scene load_steps=4 format=3 uid="uid://dwgh0l2dpnpsf"]
 
 [ext_resource type="Script" path="res://Play/persist.gd" id="1_x2eam"]
 [ext_resource type="Script" path="res://Play/ios_plugins.gd" id="2_x5bnn"]
+[ext_resource type="Resource" uid="uid://by7b7xlpi6dxw" path="res://Accessory/Trails/PriceTags/SupportTrail_PriceTag.tres" id="3_i4n2t"]
 
 [node name="Persist" type="Node" groups=["Persist"]]
 script = ExtResource("1_x2eam")
 
 [node name="iOS_Plugins" type="Node" parent="."]
 script = ExtResource("2_x5bnn")
+products = Array[Resource("res://Accessory/pricetag_type.gd")]([ExtResource("3_i4n2t")])
+
+[node name="Timer" type="Timer" parent="iOS_Plugins"]
+
+[node name="Restore_Buffer" type="Timer" parent="iOS_Plugins"]
+wait_time = 10.0
+
+[connection signal="update_purchases" from="iOS_Plugins" to="." method="_on_ios_update_purchases"]
+[connection signal="timeout" from="iOS_Plugins/Timer" to="iOS_Plugins" method="_check_events"]
+[connection signal="timeout" from="iOS_Plugins/Restore_Buffer" to="iOS_Plugins" method="_on_restore_buffer_timeout"]

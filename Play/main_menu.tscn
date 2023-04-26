@@ -474,6 +474,7 @@ libraries = {
 }
 
 [node name="Main" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -707,8 +708,6 @@ vertical_alignment = 1
 
 [node name="Edit" parent="." instance=ExtResource("12_g11w1")]
 layout_mode = 1
-offset_top = 1920.0
-offset_bottom = 1920.0
 
 [node name="Options" type="Panel" parent="."]
 visible = false

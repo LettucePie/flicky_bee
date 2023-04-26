@@ -40,17 +40,20 @@ func _stock_gallery(persist : Persist, panel : Control) -> void:
 				g.queue_free()
 	gallery_stock.clear()
 	for i in inventory:
-		print("Creating Stock of : ", i.acc_name)
-		var new_button = accOption.instantiate()
-		new_button._assign_tag(
-			i,
-			persist.accessories.has(i.acc_name),
-			i.acc_name == current_item
-		)
-		gallery_container.add_child(new_button)
-		gallery_stock.append(new_button)
-		new_button.tag_selected.connect(panel._tag_selected)
-		new_button.gui_input.connect(_on_scroll_gallery_gui_input)
+		if (i.purchase_usd and i.validated) or !i.purchase_usd:
+			print("Creating Stock of : ", i.acc_name)
+			var new_button = accOption.instantiate()
+			new_button._assign_tag(
+				i,
+				persist.accessories.has(i.acc_name),
+				i.acc_name == current_item
+			)
+			gallery_container.add_child(new_button)
+			gallery_stock.append(new_button)
+			new_button.tag_selected.connect(panel._tag_selected)
+			new_button.gui_input.connect(_on_scroll_gallery_gui_input)
+		else:
+			print("Cannot Create stock of : ", i.acc_name, " because it isn't validated.")
 
 
 func _on_scroll_gallery_gui_input(event):

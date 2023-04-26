@@ -34,6 +34,8 @@ var hat := "default"
 var trail := "default"
 var flower := "default"
 
+var ios_plugs : IOSPlugin
+
 
 func _save_game() -> void:
 	print("Saving ...")
@@ -99,7 +101,12 @@ func _load_game() -> void:
 		print("No File to Load... Creating initial Save")
 		_save_game()
 	if OS.has_feature("ios"):
-		print("Integrated to Plugins : ", $iOS_Plugins._plugin_integrated())
+		ios_plugs = null
+		if $iOS_Plugins._plugin_integrated():
+			print("Integrated to iOS Plugins")
+			ios_plugs = $iOS_Plugins
+	else:
+		$iOS_Plugins.queue_free()
 
 
 func _file_surgery(data) -> void:
@@ -160,3 +167,10 @@ func _add_accessory(acc : String) -> void:
 	if !accessories.has(acc):
 		accessories.append(acc)
 		_save_game()
+
+
+func _on_ios_update_purchases():
+	if ios_plugs.purchases.size() > 0:
+		for p in ios_plugs.purchases:
+			if !accessories.has(p.acc_name):
+				_add_accessory(p.acc_name)

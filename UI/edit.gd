@@ -126,3 +126,10 @@ func _on_buy_points_pressed():
 
 func _on_buy_usd_pressed():
 	print("Panic")
+
+
+### This is for the Restored Purchases
+func _update_all_stock_status():
+	if persist_node != null:
+		for c in categories:
+			c._update_stock_status(persist_node)

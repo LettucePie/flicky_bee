@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c4ap702pmxyr0"]
+[gd_scene load_steps=25 format=3 uid="uid://c4ap702pmxyr0"]
 
 [ext_resource type="PackedScene" uid="uid://ctoi4c1j3c0ba" path="res://Core/grass_patch.tscn" id="1_fmdt3"]
 [ext_resource type="Script" path="res://Accessory/photo_studio.gd" id="1_sd1ja"]
@@ -12,6 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://o8tnue50coc5" path="res://Accessory/Hats/Scenes/top_hat.tscn" id="9_c4qnb"]
 [ext_resource type="PackedScene" uid="uid://c3gbd4va534cq" path="res://Accessory/Hats/Scenes/cap_hat.tscn" id="10_qcbco"]
 [ext_resource type="PackedScene" uid="uid://dn17qq7kyauxa" path="res://Accessory/Hats/Scenes/wizard_hat.tscn" id="11_okglv"]
+[ext_resource type="PackedScene" uid="uid://bfemdrbpvb5mh" path="res://Accessory/Trails/Scenes/supporter_trail.tscn" id="12_l20hu"]
+[ext_resource type="PackedScene" uid="uid://cmuu2kkvy6n4p" path="res://Accessory/Trails/Scenes/sparkle_trail.tscn" id="13_k1mj0"]
+[ext_resource type="PackedScene" uid="uid://bbcurcqhirjgx" path="res://Accessory/Trails/Scenes/dot_trail.tscn" id="14_837ph"]
 
 [sub_resource type="Environment" id="Environment_sxpm3"]
 background_mode = 1
@@ -53,7 +56,9 @@ node_connections = [&"output", 0, &"TimeScale", &"Bend_Blend", 0, &"Still", &"Be
 
 [node name="PhotoStudio" type="Node3D"]
 script = ExtResource("1_sd1ja")
-filename = "BlueLily"
+filename = "SupporterTrail"
+travel = true
+travel_speed = 4.0
 
 [node name="Camera_Spin" type="Node3D" parent="."]
 transform = Transform3D(0.796287, 0, 0.604919, 0, 1, 0, -0.604919, 0, 0.796287, 0, 0, 0)
@@ -106,6 +111,7 @@ mesh = SubResource("CapsuleMesh_d402m")
 
 [node name="Flick_Flower" type="Node3D" parent="."]
 transform = Transform3D(0.526111, 0, 0, 0, 0.526111, 0, 0, 0, 0.526111, 0, 0.940404, 0)
+visible = false
 script = ExtResource("2_uyhg2")
 
 [node name="AnimationTree" type="AnimationTree" parent="Flick_Flower"]
@@ -141,6 +147,17 @@ visible = false
 
 [node name="WizardHat" parent="HatSpot" instance=ExtResource("11_okglv")]
 transform = Transform3D(0.854305, -0.519773, 0, 0.519773, 0.854305, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="TrailSpot" type="Node3D" parent="."]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0.857735, 0)
+
+[node name="SupporterTrail" parent="TrailSpot" instance=ExtResource("12_l20hu")]
+
+[node name="SparkleTrail" parent="TrailSpot" instance=ExtResource("13_k1mj0")]
+visible = false
+
+[node name="DotTrail" parent="TrailSpot" instance=ExtResource("14_837ph")]
+visible = false
 
 [node name="Bee" parent="." instance=ExtResource("8_orp8m")]
 transform = Transform3D(1.60445, -0.457768, 0, 0.457768, 1.60445, 0, 0, 0, 1.66848, -0.645516, 0, 0)

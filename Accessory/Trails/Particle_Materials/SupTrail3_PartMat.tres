@@ -1,0 +1,48 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=7 format=3 uid="uid://c18knfac2w47a"]
+
+[sub_resource type="Gradient" id="Gradient_76ui3"]
+offsets = PackedFloat32Array(0.0056338, 1)
+colors = PackedColorArray(0.649105, 0.466582, 1, 1, 1, 0.400757, 0.489706, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_j4vip"]
+gradient = SubResource("Gradient_76ui3")
+
+[sub_resource type="Curve" id="Curve_ewsx6"]
+_data = [Vector2(0, 0.806081), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.6999, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_fgphd"]
+curve = SubResource("Curve_ewsx6")
+
+[sub_resource type="Curve" id="Curve_lbsl8"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_dep16"]
+curve = SubResource("Curve_lbsl8")
+
+[resource]
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+particle_flag_align_y = true
+spread = 180.0
+gravity = Vector3(2.08165e-12, -3, 2.08165e-12)
+initial_velocity_min = 0.5
+initial_velocity_max = 0.5
+angular_velocity_min = 37.24
+angular_velocity_max = 37.24
+angle_min = -404.8
+angle_max = 720.0
+scale_min = 0.1
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_fgphd")
+color_ramp = SubResource("GradientTexture1D_j4vip")
+hue_variation_min = -1.0
+hue_variation_max = 0.44
+turbulence_noise_strength = 1.6
+turbulence_noise_speed_random = 4.31
+turbulence_influence_min = 0.33
+turbulence_influence_max = 0.69
+turbulence_initial_displacement_min = -1.0
+turbulence_initial_displacement_max = 1.0
+turbulence_influence_over_life = SubResource("CurveTexture_dep16")
