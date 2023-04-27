@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dq6owtm6gii5x"]
+[gd_scene load_steps=33 format=3 uid="uid://dq6owtm6gii5x"]
 
 [ext_resource type="Theme" uid="uid://gf806tdomj80" path="res://UI/Style/SubBee_Theme.tres" id="1_3ipnt"]
 [ext_resource type="Theme" uid="uid://cwteexwb3vbyi" path="res://UI/Style/Bee_Theme.tres" id="1_i3uci"]
@@ -14,6 +14,7 @@
 [ext_resource type="StyleBox" uid="uid://ddqpukuyr4j3j" path="res://UI/Style/Button_Style3_Normal.tres" id="8_fstnw"]
 [ext_resource type="Texture2D" uid="uid://cqhnnf5pmqblb" path="res://UI/Art/Trail_Icon.png" id="9_wn45k"]
 [ext_resource type="Texture2D" uid="uid://b2o4xo01cmirk" path="res://UI/Art/Flower_Icon.png" id="11_35kbs"]
+[ext_resource type="StyleBox" uid="uid://cvcn82igh6iyj" path="res://UI/Style/Button_Style_Normal.tres" id="12_nwrfb"]
 [ext_resource type="Resource" uid="uid://n7inm04q3qeg" path="res://Accessory/Hats/PriceTags/TopHat_Tag.tres" id="13_ph1gx"]
 [ext_resource type="Resource" uid="uid://0e4d2ffwkc23" path="res://Accessory/Hats/PriceTags/PartyHat_Tag.tres" id="15_i5exi"]
 [ext_resource type="Resource" uid="uid://cijvtfhgxgqjt" path="res://Accessory/Hats/PriceTags/CapHat_Tag.tres" id="16_2ba6v"]
@@ -24,21 +25,9 @@
 [ext_resource type="Resource" uid="uid://by7b7xlpi6dxw" path="res://Accessory/Trails/PriceTags/SupportTrail_PriceTag.tres" id="20_rcqpj"]
 [ext_resource type="Script" path="res://UI/Reward.gd" id="20_u6j73"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ackvc"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w8008"]
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xfa8o"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ppfq8"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k4edm"]
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sorsc"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gqjkc"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jfdx1"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2vn5o"]
 
@@ -315,8 +304,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
 theme_override_styles/normal = ExtResource("6_hm46p")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_ackvc")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_w8008")
+theme_override_styles/hover = ExtResource("6_hm46p")
+theme_override_styles/pressed = ExtResource("6_hm46p")
 theme_override_styles/disabled = ExtResource("7_608ja")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_xfa8o")
 icon = ExtResource("7_durdv")
@@ -328,8 +317,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
 theme_override_styles/normal = ExtResource("8_fstnw")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_ppfq8")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_k4edm")
+theme_override_styles/hover = ExtResource("8_fstnw")
+theme_override_styles/pressed = ExtResource("8_fstnw")
 theme_override_styles/disabled = ExtResource("7_608ja")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_sorsc")
 icon = ExtResource("9_wn45k")
@@ -339,8 +328,9 @@ expand_icon = true
 [node name="Flowers" type="Button" parent="Vbox/Category"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/hover = SubResource("StyleBoxEmpty_gqjkc")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_jfdx1")
+theme_override_styles/normal = ExtResource("12_nwrfb")
+theme_override_styles/hover = ExtResource("12_nwrfb")
+theme_override_styles/pressed = ExtResource("12_nwrfb")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_2vn5o")
 icon = ExtResource("11_35kbs")
 icon_alignment = 1
