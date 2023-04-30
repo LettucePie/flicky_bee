@@ -12,10 +12,7 @@ func _assign_tag(t : PriceTag, owned : bool, equipped : bool):
 	tag = t
 	$Icon.texture = tag.acc_icon
 	$Icon/Status.texture = null
-	if !owned:
-		$Icon/Status.texture = lock_overlay
-	elif equipped:
-		$Icon/Status.texture = equipped_overlay
+	$Price.text = ""
 	$Label.text = tag.acc_name
 	var price_string = ""
 	if tag.purchase_honey:
@@ -26,7 +23,11 @@ func _assign_tag(t : PriceTag, owned : bool, equipped : bool):
 		price_string += "$" + str(tag.usd_amount)
 	if tag.achievable:
 		price_string = "Challenge"
-	$Price.text = price_string
+	if !owned:
+		$Icon/Status.texture = lock_overlay
+		$Price.text = price_string
+	elif equipped:
+		$Icon/Status.texture = equipped_overlay
 
 
 func _on_gui_input(event):
@@ -38,8 +39,12 @@ func _on_gui_input(event):
 
 
 func _change_status(owned : bool, equipped : bool) -> void:
-	$Icon/Status.texture = null
-	if !owned:
+	print(tag.acc_name, " Button Updated")
+	if owned:
+		if equipped:
+			$Icon/Status.texture = equipped_overlay
+		else:
+			$Price.text = ""
+			$Icon/Status.texture = null
+	else:
 		$Icon/Status.texture = lock_overlay
-	elif equipped:
-		$Icon/Status.texture = equipped_overlay

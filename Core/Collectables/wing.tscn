@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=7 format=3 uid="uid://c0nqvm20gdc4u"]
 
 [ext_resource type="Script" path="res://Core/Collectables/Collectable.gd" id="1_sltnp"]
 [ext_resource type="PackedScene" uid="uid://bw3odwy56ayw0" path="res://Core/Art/Wings.glb" id="2_ojkw1"]

@@ -1,5 +1,7 @@
 extends Control
 
+@export var skip_store := false
+
 @onready var persist_scene = preload("res://Play/persist.tscn")
 @onready var play_scene = preload("res://Play/play_1.tscn")
 
@@ -67,8 +69,15 @@ func _on_play_pressed():
 
 func _on_edit_pressed():
 	print("Edit Pressed")
-	## or OS.has_feature androidRelease
-	if OS.has_feature("ios") and persist_node.ios_plugs != null:
+	var queue = false
+	if OS.is_debug_build():
+		if skip_store:
+			queue = false
+		else:
+			if (OS.has_feature("ios") and persist_node.ios_plugs != null) \
+			or OS.has_feature("android"):
+				queue = true
+	if queue and OS.has_feature("ios"):
 		var plugin = persist_node.ios_plugs
 		if plugin.store_info_state == plugin.STATE.EMPTY:
 			plugin.store_info_complete.connect(_finish_queue)
@@ -76,6 +85,7 @@ func _on_edit_pressed():
 			_spawn_queue()
 		elif plugin.store_info_state == plugin.STATE.COMPLETE:
 			_finish_queue()
+#	elif queue and OS.has_feature("android"):
 	else:
 		_update_current_accessories()
 		$AnimationPlayer.play("Edit_Open")

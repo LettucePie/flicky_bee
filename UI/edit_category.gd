@@ -65,6 +65,7 @@ func _on_scroll_gallery_gui_input(event):
 
 
 func _update_stock_status(persist : Persist) -> void:
+	print("Updating Stock Status")
 	if gallery_stock.size() > 0:
 		for s in gallery_stock:
 			s._change_status(

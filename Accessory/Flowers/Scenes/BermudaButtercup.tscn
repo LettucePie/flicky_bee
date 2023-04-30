@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ibvecjjoft47"]
+
+[ext_resource type="PackedScene" uid="uid://mb6y88f5yk2c" path="res://Accessory/Flowers/Models/BermudaButtercup.glb" id="1_7hg65"]
+
+[node name="BermudaButtercup" type="Node3D"]
+
+[node name="BermudaButtercup" parent="." instance=ExtResource("1_7hg65")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.93095, 0)
+
+[node name="Trace" type="Node3D" parent="."]
+transform = Transform3D(1.62, 0, 0, 0, 1.62, 0, 0, 0, 1.62, -0.00216563, 0.711412, 0.00463634)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://clcg6uqm7ta1x"]
 
-[ext_resource type="PackedScene" uid="uid://vkxuc0yyweyw" path="res://Core/Art/Dragonfly.glb" id="1_85p06"]
+[ext_resource type="PackedScene" uid="uid://chwqi3xxmndst" path="res://Core/Art/Dragonfly.glb" id="1_85p06"]
 [ext_resource type="Script" path="res://Core/Obstacles/dragonfly.gd" id="1_i2i06"]
 [ext_resource type="Material" uid="uid://bdvfsfad5byji" path="res://Core/Art/Mono_Material/BaseMaterial.tres" id="3_42ptg"]
 
@@ -10,6 +10,33 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
+
+[sub_resource type="Animation" id="Animation_75ksc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WingsR:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WingsL:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_ixyic"]
 resource_name = "Wings"
@@ -39,33 +66,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(4.61799e-09, 2.31808e-08, 0.523599), Vector3(0, 0, 0), Vector3(4.61799e-09, 2.31808e-08, 0.523599)]
-}
-
-[sub_resource type="Animation" id="Animation_75ksc"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("WingsR:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("WingsL:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_awlyp"]

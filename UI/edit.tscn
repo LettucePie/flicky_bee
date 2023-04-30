@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dq6owtm6gii5x"]
+[gd_scene load_steps=35 format=3 uid="uid://dq6owtm6gii5x"]
 
 [ext_resource type="Theme" uid="uid://gf806tdomj80" path="res://UI/Style/SubBee_Theme.tres" id="1_3ipnt"]
 [ext_resource type="Theme" uid="uid://cwteexwb3vbyi" path="res://UI/Style/Bee_Theme.tres" id="1_i3uci"]
@@ -24,6 +24,12 @@
 [ext_resource type="Resource" uid="uid://btf1fx35mbsyy" path="res://Accessory/Flowers/PriceTags/Blue_Lily_Tag.tres" id="20_5l4yj"]
 [ext_resource type="Resource" uid="uid://by7b7xlpi6dxw" path="res://Accessory/Trails/PriceTags/SupportTrail_PriceTag.tres" id="20_rcqpj"]
 [ext_resource type="Script" path="res://UI/Reward.gd" id="20_u6j73"]
+[ext_resource type="Resource" uid="uid://dui8o0lp780au" path="res://Accessory/Flowers/PriceTags/Bermuda_Buttercup_Tag.tres" id="23_fvjf7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5hik7"]
+font_size = 76
+shadow_color = Color(0, 0, 0, 0.666667)
+shadow_offset = Vector2(3, 3)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xfa8o"]
 
@@ -259,7 +265,7 @@ alignment = 1
 layout_mode = 2
 size_flags_vertical = 10
 text = "Customizations"
-label_settings = ExtResource("2_d7fmh")
+label_settings = SubResource("LabelSettings_5hik7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -350,7 +356,7 @@ inventory = Array[Resource("res://Accessory/pricetag_type.gd")]([ExtResource("18
 visible = false
 layout_mode = 2
 category = 2
-inventory = Array[Resource("res://Accessory/pricetag_type.gd")]([ExtResource("20_5l4yj")])
+inventory = Array[Resource("res://Accessory/pricetag_type.gd")]([ExtResource("20_5l4yj"), ExtResource("23_fvjf7")])
 
 [node name="Selected" type="Label" parent="."]
 layout_mode = 0

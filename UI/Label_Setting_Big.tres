@@ -7,5 +7,3 @@ generate_mipmaps = true
 [resource]
 font = SubResource("SystemFont_x05fk")
 font_size = 74
-shadow_size = 13
-shadow_color = Color(0, 0, 0, 0.780392)

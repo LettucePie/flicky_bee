@@ -73,17 +73,22 @@ stretch_mode = 5
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
+anchor_left = 0.082
 anchor_top = 0.504
-anchor_right = 1.0
+anchor_right = 0.916
 anchor_bottom = 0.699
+offset_left = -0.148001
 offset_top = -0.0320041
+offset_right = 0.175965
 offset_bottom = -0.0920308
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 8
-text = "Label"
+text = "Label
+"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="Price" type="Label" parent="."]
 layout_mode = 1

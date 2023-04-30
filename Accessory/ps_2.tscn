@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcneb6pcqi8g0"]
+
+[ext_resource type="Script" path="res://Accessory/photo_studio.gd" id="1_3unxs"]
+
+[node name="PS2" type="Node3D"]
+script = ExtResource("1_3unxs")
+
+[node name="Camera_Spin" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Camera_Spin"]
+current = true

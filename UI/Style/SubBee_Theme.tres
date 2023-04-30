@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=10 format=3 uid="uid://gf806tdomj80"]
 
-[ext_resource type="StyleBox" path="res://UI/Style/Button_Style_Focus.tres" id="1_37y30"]
+[ext_resource type="StyleBox" uid="uid://ccnj6kal4gqrr" path="res://UI/Style/Button_Style_Focus.tres" id="1_37y30"]
 [ext_resource type="StyleBox" uid="uid://cvcn82igh6iyj" path="res://UI/Style/Button_Style_Normal.tres" id="2_ckyx5"]
 [ext_resource type="Texture2D" uid="uid://bqihm8hpvdisc" path="res://UI/Art/Grabber_Handle_Normal.png" id="3_iucxm"]
 [ext_resource type="Texture2D" uid="uid://cpkfv6e5mt6i0" path="res://UI/Art/Grabber_Handle_Disabled.png" id="4_emu13"]
@@ -8,13 +8,11 @@
 [ext_resource type="StyleBox" uid="uid://cm5u404ife8yc" path="res://UI/Style/Slider_Yes.tres" id="6_juljx"]
 [ext_resource type="StyleBox" uid="uid://yxous6lnd8cr" path="res://UI/Style/Slider_No.tres" id="7_u46aw"]
 [ext_resource type="StyleBox" uid="uid://bcxyibr4h4e10" path="res://UI/Style/SubPanel_Style.tres" id="8_8tjli"]
-
-[sub_resource type="SystemFont" id="SystemFont_p4b0s"]
-font_names = PackedStringArray("Avenir")
+[ext_resource type="SystemFont" uid="uid://dolyccjp7guf1" path="res://UI/Fonts/Avenir_Settings.tres" id="9_icex7"]
 
 [resource]
-default_font = SubResource("SystemFont_p4b0s")
-default_font_size = 48
+default_font = ExtResource("9_icex7")
+default_font_size = 58
 Button/colors/font_color = Color(0.0470588, 0.0470588, 0.0470588, 1)
 Button/colors/font_focus_color = Color(0.227451, 0.227451, 0.227451, 1)
 Button/colors/font_hover_color = Color(0.227451, 0.227451, 0.227451, 1)
@@ -33,7 +31,8 @@ HSlider/styles/grabber_area = ExtResource("6_juljx")
 HSlider/styles/grabber_area_highlight = ExtResource("6_juljx")
 HSlider/styles/slider = ExtResource("7_u46aw")
 Label/colors/font_color = Color(1, 1, 1, 1)
-Label/colors/font_outline_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.729412)
 Label/constants/line_spacing = 2
-Label/constants/outline_size = 10
+Label/constants/shadow_offset_x = 3
+Label/constants/shadow_offset_y = 3
 Panel/styles/panel = ExtResource("8_8tjli")

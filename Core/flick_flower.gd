@@ -13,6 +13,7 @@ func _assign_flower(flower : String) -> void:
 	if head != null:
 #		print("Flower Head wasn't null")
 		head._set_flower(flower)
+		flower_top = head._return_flower()
 	else:
 #		print("Flower Head was null")
 		$Flower_Head._set_flower(flower)
@@ -31,6 +32,7 @@ func _process(delta):
 
 
 func _bend_flower(angle, tension_percent) -> void:
+	print("Bend Flowetop: ", flower_top)
 	anim.set("parameters/Bend_Blend/blend_amount", tension_percent)
 	rotation = Vector3(0, -angle + (PI / 2), 0)
 	flower_top.rotation = Vector3(0, angle, 0)

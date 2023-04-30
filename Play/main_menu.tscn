@@ -5,9 +5,9 @@
 [ext_resource type="Script" path="res://Play/main_menu.gd" id="2_jrubw"]
 [ext_resource type="Texture2D" uid="uid://bo111rfrk4yq1" path="res://UI/Art/Menu_BG.png" id="3_7ws6a"]
 [ext_resource type="Texture2D" uid="uid://brajg1t0x2ouo" path="res://UI/Art/Play_Icon.png" id="4_2ixlk"]
-[ext_resource type="Texture2D" uid="uid://coa41p75fdbmr" path="res://UI/Art/Score_Card.png" id="4_h57gp"]
+[ext_resource type="Texture2D" uid="uid://cen2djv1ye74" path="res://UI/Art/Title_Cropped.png" id="4_nq71u"]
 [ext_resource type="Texture2D" uid="uid://c57h448m0brbc" path="res://UI/Art/Edit_Icon.png" id="5_7l3e5"]
-[ext_resource type="Texture2D" uid="uid://d34vj3tgnln6r" path="res://UI/Art/Title.png" id="5_fsanp"]
+[ext_resource type="Texture2D" uid="uid://5jbf8g3xmcwr" path="res://UI/Art/ScoreCardFrames/ScoreCard_AnimTex.tres" id="5_yy4oa"]
 [ext_resource type="Texture2D" uid="uid://dyldysbhhisrt" path="res://UI/Art/Options_Icon.png" id="6_i6hpw"]
 [ext_resource type="LabelSettings" uid="uid://dsiocwpk52rya" path="res://UI/Label_BEST.tres" id="6_mh70q"]
 [ext_resource type="Texture2D" uid="uid://d27lc6xsnfjnw" path="res://UI/Art/Exit_Icon.png" id="8_k46lc"]
@@ -516,8 +516,8 @@ offset_left = -540.0
 offset_top = -403.2
 offset_right = 540.0
 offset_bottom = 403.8
-texture = ExtResource("5_fsanp")
-expand_mode = 3
+texture = ExtResource("4_nq71u")
+expand_mode = 5
 stretch_mode = 5
 
 [node name="ScoreCard" type="TextureRect" parent="Main"]
@@ -532,7 +532,7 @@ offset_top = -269.28
 offset_right = 538.0
 offset_bottom = 268.72
 grow_vertical = 2
-texture = ExtResource("4_h57gp")
+texture = ExtResource("5_yy4oa")
 expand_mode = 3
 metadata/_edit_use_anchors_ = true
 
@@ -730,12 +730,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Edit" parent="." instance=ExtResource("12_g11w1")]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 offset_top = 680.0
 offset_bottom = 680.0
 
 [node name="Options" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

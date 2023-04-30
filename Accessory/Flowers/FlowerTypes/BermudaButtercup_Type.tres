@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="FlowerType" load_steps=3 format=3 uid="uid://dfd0t02ob8oh8"]
+
+[ext_resource type="Script" path="res://Accessory/Flowers/flower_type.gd" id="1_nyapa"]
+[ext_resource type="PackedScene" uid="uid://ibvecjjoft47" path="res://Accessory/Flowers/Scenes/BermudaButtercup.tscn" id="1_w4dod"]
+
+[resource]
+script = ExtResource("1_nyapa")
+flower_name = "Bermuda Buttercup"
+scene = ExtResource("1_w4dod")

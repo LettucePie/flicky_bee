@@ -2,12 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://ctoi4c1j3c0ba" path="res://Core/grass_patch.tscn" id="1_fmdt3"]
 [ext_resource type="Script" path="res://Accessory/photo_studio.gd" id="1_sd1ja"]
-[ext_resource type="Environment" uid="uid://bqwftwgkpo7ki" path="res://Core/Enviro_1.tres" id="2_bgj4p"]
 [ext_resource type="Script" path="res://Core/flick_flower.gd" id="2_uyhg2"]
 [ext_resource type="PackedScene" uid="uid://bi4np5rns7g3f" path="res://Accessory/Flowers/flower_head.tscn" id="3_ce6mi"]
 [ext_resource type="PackedScene" uid="uid://13hn5t2w6i2" path="res://Core/Art/Flower_Stem.glb" id="4_00s1i"]
 [ext_resource type="PackedScene" uid="uid://3soel35aj6nu" path="res://Accessory/Flowers/Scenes/Blue_Lily.tscn" id="5_wu6ah"]
 [ext_resource type="PackedScene" uid="uid://ctfd8d5pv7p3t" path="res://Core/Art/Bee.glb" id="8_orp8m"]
+[ext_resource type="PackedScene" uid="uid://ibvecjjoft47" path="res://Accessory/Flowers/Scenes/BermudaButtercup.tscn" id="8_pfg2v"]
 [ext_resource type="PackedScene" uid="uid://de1h0vpr7hybu" path="res://Accessory/Hats/Scenes/party_hat.tscn" id="9_14yjo"]
 [ext_resource type="PackedScene" uid="uid://o8tnue50coc5" path="res://Accessory/Hats/Scenes/top_hat.tscn" id="9_c4qnb"]
 [ext_resource type="PackedScene" uid="uid://c3gbd4va534cq" path="res://Accessory/Hats/Scenes/cap_hat.tscn" id="10_qcbco"]
@@ -56,16 +56,10 @@ node_connections = [&"output", 0, &"TimeScale", &"Bend_Blend", 0, &"Still", &"Be
 
 [node name="PhotoStudio" type="Node3D"]
 script = ExtResource("1_sd1ja")
-filename = "SupporterTrail"
-travel = true
-travel_speed = 4.0
+filename = "BermudaButtercup"
 
 [node name="Camera_Spin" type="Node3D" parent="."]
 transform = Transform3D(0.796287, 0, 0.604919, 0, 1, 0, -0.604919, 0, 0.796287, 0, 0, 0)
-
-[node name="FarCamera" type="Camera3D" parent="Camera_Spin"]
-transform = Transform3D(0.946311, 0.162492, -0.279448, 8.5671e-09, 0.864477, 0.502673, 0.323257, -0.475685, 0.818064, -2.44803, 4.82054, 7.09775)
-environment = ExtResource("2_bgj4p")
 
 [node name="CloseCamera" type="Camera3D" parent="Camera_Spin"]
 transform = Transform3D(0.946311, 0.162492, -0.279448, 8.56711e-09, 0.864477, 0.502673, 0.323257, -0.475685, 0.818064, -1.2013, 3.29841, 3.44804)
@@ -95,10 +89,12 @@ visible = false
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.933013, 0.258819, -0.25, 0.295739, -0.155731, 0.942489, 0.205001, -0.953289, -0.221842, 0, 0, 0)
+visible = false
 shadow_enabled = true
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.14488, 0.644946, 2.58942)
+visible = false
 light_color = Color(0, 0.94902, 0, 1)
 light_energy = 0.385
 light_indirect_energy = 1.727
@@ -129,6 +125,9 @@ visible = false
 [node name="Flower_Stem" parent="Flick_Flower" instance=ExtResource("4_00s1i")]
 
 [node name="Blue_Lily" parent="Flick_Flower" instance=ExtResource("5_wu6ah")]
+visible = false
+
+[node name="BermudaButtercup" parent="Flick_Flower" instance=ExtResource("8_pfg2v")]
 
 [node name="HatSpot" type="Node3D" parent="."]
 transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0, 0)
@@ -150,6 +149,7 @@ transform = Transform3D(0.854305, -0.519773, 0, 0.519773, 0.854305, 0, 0, 0, 1, 
 
 [node name="TrailSpot" type="Node3D" parent="."]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0.857735, 0)
+visible = false
 
 [node name="SupporterTrail" parent="TrailSpot" instance=ExtResource("12_l20hu")]
 

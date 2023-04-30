@@ -39,6 +39,7 @@ func _check_events() -> void:
 	print("Check Events")
 	while in_app_store.get_pending_event_count() > 0:
 		var event = in_app_store.pop_pending_event()
+		print("Recieved Event: ", event)
 		if event.result == "ok":
 			if event.type == "product_info":
 				_align_store_info(event)
@@ -50,6 +51,7 @@ func _check_events() -> void:
 				store_info_state = STATE.EMPTY
 				store_info.clear()
 	if in_app_store.get_pending_event_count() <= 0:
+		print("Events has nothing pending")
 		$Timer.stop()
 
 
@@ -86,15 +88,13 @@ func _align_store_info(event) -> void:
 		)
 		index += 1
 	if store_info.size() > 0:
-		print("LocalPriceType ? ", store_info[0].local_price)
-		print("LocalPriceType ENUMID: ", typeof(store_info[0].local_price))
-		print("UnComment validation checking once type is determined.")
-#		for s in store_info:
-#			for p in products:
-#				if s.prod_id == p.prod_id:
-#					print("Setting ", p.prod_id, " to VALID with local price: ", s.local_price)
-#					p.validated = true
-#					p.usd_amount = s.local_price
+		print("LocalPriceType is a String")
+		for s in store_info:
+			for p in products:
+				if s.prod_id == p.prod_id:
+					print("Setting ", p.prod_id, " to VALID with local price: ", s.local_price)
+					p.validated = true
+					p.usd_amount = s.local_price
 	store_info_state = STATE.COMPLETE
 	print("Store Info State is Complete!")
 	emit_signal("store_info_complete")

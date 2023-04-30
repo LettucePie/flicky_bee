@@ -1,0 +1,41 @@
+[gd_resource type="AnimatedTexture" load_steps=13 format=3 uid="uid://5jbf8g3xmcwr"]
+
+[ext_resource type="Texture2D" uid="uid://bwjn1s51s0ysp" path="res://UI/Art/ScoreCardFrames/ScoreCard_frame_0000.png" id="1_nw14t"]
+[ext_resource type="Texture2D" uid="uid://csptptolqthv0" path="res://UI/Art/ScoreCardFrames/ScoreCard_frame_0001.png" id="2_sil52"]
+[ext_resource type="Texture2D" uid="uid://cp0x518088460" path="res://UI/Art/ScoreCardFrames/ScoreCard_frame_0010.png" id="3_2ogmm"]
+[ext_resource type="Texture2D" uid="uid://hk755qbf50di" path="res://UI/Art/ScoreCardFrames/ScoreCard_frame_0011.png" id="4_kpejh"]
+[ext_resource type="Texture2D" uid="uid://wnbil8wepij8" path="res://UI/Art/ScoreCardFrames/ScoreCard_frame_0002.png" id="5_e0653"]
+[ext_resource type="Texture2D" uid="uid://dfhxixlmu2n6q" path="res://UI/Art/ScoreCardFrames/ScoreCard_frame_0003.png" id="6_sb71t"]
+[ext_resource type="Texture2D" uid="uid://bokop2vq00po0" path="res://UI/Art/ScoreCardFrames/ScoreCard_frame_0004.png" id="7_0mbsa"]
+[ext_resource type="Texture2D" uid="uid://conwyptauxnxq" path="res://UI/Art/ScoreCardFrames/ScoreCard_frame_0005.png" id="8_set7f"]
+[ext_resource type="Texture2D" uid="uid://bqgok2cijqywg" path="res://UI/Art/ScoreCardFrames/ScoreCard_frame_0006.png" id="9_7mytx"]
+[ext_resource type="Texture2D" uid="uid://bvk1xrd73s4e2" path="res://UI/Art/ScoreCardFrames/ScoreCard_frame_0007.png" id="10_erd2g"]
+[ext_resource type="Texture2D" uid="uid://njn510e5qlwt" path="res://UI/Art/ScoreCardFrames/ScoreCard_frame_0008.png" id="11_2nual"]
+[ext_resource type="Texture2D" uid="uid://66qocelfjorj" path="res://UI/Art/ScoreCardFrames/ScoreCard_frame_0009.png" id="12_ln5eg"]
+
+[resource]
+frames = 12
+speed_scale = 20.0
+frame_0/texture = ExtResource("1_nw14t")
+frame_1/texture = ExtResource("2_sil52")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("5_e0653")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("6_sb71t")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("7_0mbsa")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("8_set7f")
+frame_5/duration = 1.0
+frame_6/texture = ExtResource("9_7mytx")
+frame_6/duration = 1.0
+frame_7/texture = ExtResource("10_erd2g")
+frame_7/duration = 1.0
+frame_8/texture = ExtResource("11_2nual")
+frame_8/duration = 1.0
+frame_9/texture = ExtResource("12_ln5eg")
+frame_9/duration = 1.0
+frame_10/texture = ExtResource("3_2ogmm")
+frame_10/duration = 1.0
+frame_11/texture = ExtResource("4_kpejh")
+frame_11/duration = 1.0
