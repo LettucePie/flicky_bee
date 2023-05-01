@@ -1,14 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://baf8lb2g4u6ge"]
+[gd_scene load_steps=13 format=3 uid="uid://bnideixfjpsgc"]
 
-[ext_resource type="Theme" uid="uid://cwteexwb3vbyi" path="res://UI/Style/Bee_Theme.tres" id="1_nh6jh"]
+[ext_resource type="Theme" uid="uid://cwjsb0qlm86r5" path="res://UI/Style/Bee_Theme.tres" id="1_nh6jh"]
 [ext_resource type="Script" path="res://Core/results.gd" id="1_x1mpp"]
 [ext_resource type="LabelSettings" uid="uid://ban0wox1lr7ix" path="res://UI/Label_Setting_Big.tres" id="3_jw6jr"]
+[ext_resource type="Texture2D" uid="uid://5062kegelyuk" path="res://UI/Art/Icons/HoneyCount_Icon.png" id="4_8mbaw"]
 [ext_resource type="Texture2D" uid="uid://coxyfupfv31p5" path="res://UI/Art/Return_Arrow.png" id="4_610dg"]
-[ext_resource type="Texture2D" uid="uid://5062kegelyuk" path="res://UI/Art/HoneyCount_Icon.png" id="4_ipv8g"]
-[ext_resource type="Texture2D" uid="uid://brajg1t0x2ouo" path="res://UI/Art/Play_Icon.png" id="5_3j0oq"]
 [ext_resource type="LabelSettings" uid="uid://dsiocwpk52rya" path="res://UI/Label_BEST.tres" id="5_bnca1"]
-[ext_resource type="Texture2D" uid="uid://dwdnx3wjpj3v8" path="res://UI/Art/JarCount_Icon.png" id="5_eufi8"]
-[ext_resource type="Texture2D" uid="uid://1lv6vfkw8h7n" path="res://UI/Art/FlowerCount_Icon.png" id="5_iqfsh"]
+[ext_resource type="Texture2D" uid="uid://dwdnx3wjpj3v8" path="res://UI/Art/Icons/JarCount_Icon.png" id="5_i0614"]
+[ext_resource type="Texture2D" uid="uid://1lv6vfkw8h7n" path="res://UI/Art/Icons/FlowerCount_Icon.png" id="6_5e17p"]
+[ext_resource type="Texture2D" uid="uid://brajg1t0x2ouo" path="res://UI/Art/Icons/Play_Icon.png" id="9_tiygn"]
 
 [sub_resource type="Animation" id="Animation_vdgw2"]
 resource_name = "Quit"
@@ -136,7 +136,7 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
-texture = ExtResource("4_ipv8g")
+texture = ExtResource("4_8mbaw")
 expand_mode = 1
 stretch_mode = 5
 
@@ -165,7 +165,7 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
-texture = ExtResource("5_eufi8")
+texture = ExtResource("5_i0614")
 expand_mode = 1
 stretch_mode = 5
 
@@ -194,7 +194,7 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
-texture = ExtResource("5_iqfsh")
+texture = ExtResource("6_5e17p")
 expand_mode = 1
 stretch_mode = 5
 
@@ -309,7 +309,7 @@ size_flags_vertical = 3
 [node name="Return" type="Button" parent="Panel/Vbox/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Return to Menu"
+text = "Return"
 icon = ExtResource("4_610dg")
 expand_icon = true
 
@@ -317,7 +317,7 @@ expand_icon = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Try Again"
-icon = ExtResource("5_3j0oq")
+icon = ExtResource("9_tiygn")
 expand_icon = true
 
 [connection signal="pressed" from="Panel/Vbox/Buttons/Return" to="." method="_play_again" binds= [false]]

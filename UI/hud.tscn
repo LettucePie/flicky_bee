@@ -1,20 +1,21 @@
-[gd_scene load_steps=19 format=3 uid="uid://be1u13i3321dd"]
+[gd_scene load_steps=20 format=3 uid="uid://ej68kxh031vn"]
 
-[ext_resource type="Theme" uid="uid://cwteexwb3vbyi" path="res://UI/Style/Bee_Theme.tres" id="1_lh646"]
+[ext_resource type="Theme" uid="uid://cwjsb0qlm86r5" path="res://UI/Style/Bee_Theme.tres" id="1_lh646"]
 [ext_resource type="Script" path="res://UI/hud.gd" id="1_w0mb1"]
 [ext_resource type="Texture2D" uid="uid://bdcf73hhgoh4j" path="res://UI/Art/Right_Meter_Crop_Overlay.png" id="3_hvlpn"]
 [ext_resource type="Texture2D" uid="uid://clxkmmfr23b0f" path="res://UI/Art/Right_Meter_Fill.png" id="3_rko4g"]
 [ext_resource type="Texture2D" uid="uid://doku0qpvqhxs5" path="res://UI/Art/Center_Dock.png" id="4_4x2ru"]
+[ext_resource type="Theme" uid="uid://bd87acx3a4l4n" path="res://UI/Style/SubBee_Theme.tres" id="4_7tbs7"]
 [ext_resource type="Texture2D" uid="uid://6u1f1d80ph0y" path="res://UI/Art/Right_Meter_Bar.png" id="4_k0lhi"]
 [ext_resource type="Texture2D" uid="uid://dy6u46yboy53x" path="res://UI/Art/Left_Meter_Bar.png" id="4_m5gb1"]
 [ext_resource type="Texture2D" uid="uid://ckr6oq13yw13j" path="res://UI/Art/Health_Jar.png" id="4_xo1nj"]
+[ext_resource type="Texture2D" uid="uid://cpgxsb0sa2if0" path="res://UI/Art/Icons/Pause_Icon.png" id="5_a1frm"]
 [ext_resource type="Texture2D" uid="uid://d2c6t17xfaleb" path="res://UI/Art/Left_Meter_Overlay.png" id="5_gfkuu"]
 [ext_resource type="Texture2D" uid="uid://dsgpuvqv8e812" path="res://UI/Art/Left_Meter_Fill.png" id="7_haw5s"]
 [ext_resource type="Texture2D" uid="uid://v7ojar4c3ctt" path="res://UI/Art/Wings.png" id="7_pajgt"]
 [ext_resource type="LabelSettings" uid="uid://ban0wox1lr7ix" path="res://UI/Label_Setting_Big.tres" id="11_j2abc"]
 [ext_resource type="PackedScene" uid="uid://cy60dhgo0wcen" path="res://UI/score_pop.tscn" id="13_yn6dh"]
-[ext_resource type="Texture2D" uid="uid://cpgxsb0sa2if0" path="res://UI/Art/Pause_Icon.png" id="14_u02pd"]
-[ext_resource type="Texture2D" uid="uid://brajg1t0x2ouo" path="res://UI/Art/Play_Icon.png" id="15_d6fn0"]
+[ext_resource type="Texture2D" uid="uid://brajg1t0x2ouo" path="res://UI/Art/Icons/Play_Icon.png" id="16_1p7ni"]
 [ext_resource type="Texture2D" uid="uid://coxyfupfv31p5" path="res://UI/Art/Return_Arrow.png" id="16_fuy5r"]
 
 [sub_resource type="SystemFont" id="SystemFont_uigy6"]
@@ -50,17 +51,14 @@ anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="Ratio" type="AspectRatioContainer" parent="."]
-layout_mode = 1
-anchors_preset = -1
-offset_right = 179.0
-offset_bottom = 179.0
-
-[node name="Pause" type="Button" parent="Ratio"]
+[node name="PauseButton" type="TextureButton" parent="."]
 layout_mode = 2
-icon = ExtResource("14_u02pd")
-icon_alignment = 1
-expand_icon = true
+offset_right = 219.0
+offset_bottom = 219.0
+theme = ExtResource("4_7tbs7")
+texture_normal = ExtResource("5_a1frm")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="Health_Meter" type="Control" parent="."]
 self_modulate = Color(0.341176, 0.180392, 0.113725, 1)
@@ -227,7 +225,6 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Score: "
-label_settings = ExtResource("11_j2abc")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -235,7 +232,6 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 text = "0"
-label_settings = ExtResource("11_j2abc")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -254,7 +250,6 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Distance:"
-label_settings = ExtResource("11_j2abc")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -263,7 +258,6 @@ custom_minimum_size = Vector2(300, 2.08165e-12)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "0"
-label_settings = ExtResource("11_j2abc")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -369,7 +363,7 @@ custom_minimum_size = Vector2(2.08165e-12, 200)
 layout_mode = 2
 size_flags_vertical = 6
 text = "Continue"
-icon = ExtResource("15_d6fn0")
+icon = ExtResource("16_1p7ni")
 expand_icon = true
 
 [node name="Return" type="Button" parent="Pause/Panel/Vbox"]
@@ -380,7 +374,7 @@ text = "Return to the Hive"
 icon = ExtResource("16_fuy5r")
 expand_icon = true
 
-[connection signal="pressed" from="Ratio/Pause" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="PauseButton" to="." method="_on_pause_pressed"]
 [connection signal="pressed" from="TryAgain/VBoxContainer/PlayAgain" to="." method="_on_play_again_pressed"]
 [connection signal="pressed" from="Pause/Panel/Vbox/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="Pause/Panel/Vbox/Return" to="." method="_on_return_pressed"]

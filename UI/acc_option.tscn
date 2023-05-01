@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://u2la6l6mpb2v"]
 
-[ext_resource type="Theme" uid="uid://gf806tdomj80" path="res://UI/Style/SubBee_Theme.tres" id="1_8rgr6"]
+[ext_resource type="Theme" uid="uid://bd87acx3a4l4n" path="res://UI/Style/SubBee_Theme.tres" id="1_8rgr6"]
 [ext_resource type="Texture2D" uid="uid://8qybfiret8ja" path="res://icon.svg" id="1_dpgun"]
 [ext_resource type="Script" path="res://UI/AccOption.gd" id="1_vr7ud"]
 [ext_resource type="Texture2D" uid="uid://b6165esfj1fca" path="res://UI/Art/Locked_Overlay.png" id="2_32fui"]
@@ -33,11 +33,11 @@ visibility_layer = 2
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.161
+anchor_top = 0.077
 anchor_right = 1.0
-anchor_bottom = 0.502
-offset_top = 0.211993
-offset_bottom = -0.0159869
+anchor_bottom = 0.421
+offset_top = -0.116004
+offset_bottom = 0.131983
 grow_horizontal = 2
 size_flags_vertical = 3
 texture = ExtResource("1_dpgun")
@@ -74,11 +74,11 @@ stretch_mode = 5
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.082
-anchor_top = 0.504
+anchor_top = 0.445
 anchor_right = 0.916
 anchor_bottom = 0.699
 offset_left = -0.148001
-offset_top = -0.0320041
+offset_top = -0.0600115
 offset_right = 0.175965
 offset_bottom = -0.0920308
 grow_horizontal = 2

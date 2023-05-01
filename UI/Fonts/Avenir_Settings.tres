@@ -1,8 +1,8 @@
 [gd_resource type="SystemFont" format=3 uid="uid://dolyccjp7guf1"]
 
 [resource]
-font_names = PackedStringArray("Avenir")
-font_weight = 700
+font_names = PackedStringArray("Avenir Next")
+font_weight = 550
 font_stretch = 75
 generate_mipmaps = true
 hinting = 2

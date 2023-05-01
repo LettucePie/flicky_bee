@@ -43,9 +43,7 @@ func _set_active_category(index : int) -> void:
 		categories[index].visible = true
 		current_category = index
 		var buttons = $Vbox/Category.get_children()
-		for b in buttons:
-			b.disabled = false
-		buttons[index].disabled = true
+		buttons[index].grab_focus()
 	_update_actions(false, false, false, "")
 	$Reward.hide()
 

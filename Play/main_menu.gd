@@ -44,6 +44,7 @@ func _update_score() -> void:
 
 
 func _update_current_accessories() -> void:
+	print($Edit)
 	$Edit._stock_shelves(persist_node)
 
 
@@ -87,10 +88,7 @@ func _on_edit_pressed():
 			_finish_queue()
 #	elif queue and OS.has_feature("android"):
 	else:
-		_update_current_accessories()
-		$AnimationPlayer.play("Edit_Open")
-		$Edit._set_active_category(0)
-		$Edit._set_budget(persist_node.honey_points)
+		_finish_queue()
 
 
 func _spawn_queue() -> void:

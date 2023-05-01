@@ -1,0 +1,13 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://b1cpi6q8g74yn"]
+
+[ext_resource type="Texture2D" uid="uid://cenjh658h5370" path="res://UI/Art/ButtonStyles/ButtonStyle_Hover_Round.png" id="1_l84t6"]
+
+[resource]
+content_margin_top = 20.0
+content_margin_bottom = 20.0
+texture = ExtResource("1_l84t6")
+texture_margin_left = 72.0
+texture_margin_top = 72.0
+texture_margin_right = 72.0
+texture_margin_bottom = 72.0
+region_rect = Rect2(-7, -7, 272, 144)

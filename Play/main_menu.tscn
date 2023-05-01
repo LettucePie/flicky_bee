@@ -1,28 +1,24 @@
-[gd_scene load_steps=37 format=3 uid="uid://cvdqntuuvw1sn"]
+[gd_scene load_steps=33 format=3 uid="uid://b1aibpbthxdp7"]
 
-[ext_resource type="Theme" uid="uid://cwteexwb3vbyi" path="res://UI/Style/Bee_Theme.tres" id="1_g7eow"]
-[ext_resource type="LabelSettings" uid="uid://ban0wox1lr7ix" path="res://UI/Label_Setting_Big.tres" id="2_bh8d8"]
+[ext_resource type="Theme" uid="uid://cwjsb0qlm86r5" path="res://UI/Style/Bee_Theme.tres" id="1_g7eow"]
 [ext_resource type="Script" path="res://Play/main_menu.gd" id="2_jrubw"]
 [ext_resource type="Texture2D" uid="uid://bo111rfrk4yq1" path="res://UI/Art/Menu_BG.png" id="3_7ws6a"]
-[ext_resource type="Texture2D" uid="uid://brajg1t0x2ouo" path="res://UI/Art/Play_Icon.png" id="4_2ixlk"]
 [ext_resource type="Texture2D" uid="uid://cen2djv1ye74" path="res://UI/Art/Title_Cropped.png" id="4_nq71u"]
-[ext_resource type="Texture2D" uid="uid://c57h448m0brbc" path="res://UI/Art/Edit_Icon.png" id="5_7l3e5"]
-[ext_resource type="Texture2D" uid="uid://5jbf8g3xmcwr" path="res://UI/Art/ScoreCardFrames/ScoreCard_AnimTex.tres" id="5_yy4oa"]
-[ext_resource type="Texture2D" uid="uid://dyldysbhhisrt" path="res://UI/Art/Options_Icon.png" id="6_i6hpw"]
-[ext_resource type="LabelSettings" uid="uid://dsiocwpk52rya" path="res://UI/Label_BEST.tres" id="6_mh70q"]
-[ext_resource type="Texture2D" uid="uid://d27lc6xsnfjnw" path="res://UI/Art/Exit_Icon.png" id="8_k46lc"]
-[ext_resource type="Texture2D" uid="uid://17pd7qj0honl" path="res://UI/Art/Help_Icon.png" id="10_7a7k1"]
+[ext_resource type="Texture2D" uid="uid://coa41p75fdbmr" path="res://UI/Art/Score_Card.png" id="5_2laek"]
+[ext_resource type="Texture2D" uid="uid://brajg1t0x2ouo" path="res://UI/Art/Icons/Play_Icon.png" id="6_j0m36"]
+[ext_resource type="Texture2D" uid="uid://cil71yy8sdpan" path="res://UI/Art/Icons/Edit_Icon.png" id="7_w5kti"]
+[ext_resource type="Texture2D" uid="uid://idox1wtl32os" path="res://UI/Art/Icons/Options_Icon.png" id="8_cikw8"]
+[ext_resource type="Texture2D" uid="uid://covjh63dfrfr3" path="res://UI/Art/Icons/Help_Icon.png" id="9_poiqa"]
+[ext_resource type="Texture2D" uid="uid://4tiw8k6ksjxy" path="res://UI/Art/Icons/Exit_Icon.png" id="10_sr5eo"]
 [ext_resource type="Texture2D" uid="uid://coxyfupfv31p5" path="res://UI/Art/Return_Arrow.png" id="11_bthaf"]
-[ext_resource type="PackedScene" uid="uid://dq6owtm6gii5x" path="res://UI/edit.tscn" id="12_g11w1"]
-[ext_resource type="Texture2D" uid="uid://qkp4ujlp6tw" path="res://UI/Art/Confirm_Icon.png" id="12_i30ep"]
-[ext_resource type="StyleBox" uid="uid://c442afhe7tqtj" path="res://UI/Style/Button_Style_Confirm.tres" id="12_wc4kh"]
-[ext_resource type="Texture2D" uid="uid://bfumwgj1lgw21" path="res://UI/Art/Volume_Min_Icon.png" id="14_a423u"]
+[ext_resource type="PackedScene" uid="uid://drlmndybhl8t4" path="res://UI/edit.tscn" id="12_g11w1"]
+[ext_resource type="Texture2D" uid="uid://qkp4ujlp6tw" path="res://UI/Art/Icons/Confirm_Icon.png" id="14_06i8i"]
 [ext_resource type="PackedScene" uid="uid://cqxrcyiqso6wa" path="res://UI/help.tscn" id="14_kunq6"]
-[ext_resource type="Texture2D" uid="uid://dwhjm8yvhqonf" path="res://UI/Art/Volume_Max_Icon.png" id="15_kl8dl"]
+[ext_resource type="Texture2D" uid="uid://cqfaao75q3ij7" path="res://UI/Art/Icons/VolMin_Icon.png" id="16_2poo4"]
+[ext_resource type="Texture2D" uid="uid://b6tf3462iykd" path="res://UI/Art/Icons/VolMax_Icon.png" id="17_b62g6"]
 [ext_resource type="AudioStream" uid="uid://cwdbia44da4p8" path="res://kenney/Flowing Rocks.ogg" id="17_n0hyg"]
-[ext_resource type="Texture2D" uid="uid://rgs80eks5ri2" path="res://UI/Art/Help_Icon_Centered.png" id="19_gswam"]
-[ext_resource type="Texture2D" uid="uid://vl1edjkkpx7a" path="res://UI/Art/Document_Icon.png" id="20_a3rdp"]
-[ext_resource type="Texture2D" uid="uid://qmn4jeltim1n" path="res://UI/Art/Website_Icon.png" id="21_dvjgc"]
+[ext_resource type="Texture2D" uid="uid://vl1edjkkpx7a" path="res://UI/Art/Icons/Document_Icon.png" id="18_sr7a0"]
+[ext_resource type="Texture2D" uid="uid://qmn4jeltim1n" path="res://UI/Art/Icons/Website_Icon.png" id="19_iat23"]
 
 [sub_resource type="Animation" id="Animation_otwit"]
 resource_name = "Edit_Close"
@@ -532,7 +528,7 @@ offset_top = -269.28
 offset_right = 538.0
 offset_bottom = 268.72
 grow_vertical = 2
-texture = ExtResource("5_yy4oa")
+texture = ExtResource("5_2laek")
 expand_mode = 3
 metadata/_edit_use_anchors_ = true
 
@@ -548,28 +544,8 @@ offset_top = 0.112001
 offset_right = 0.0999892
 offset_bottom = -0.264994
 text = "BEST"
-label_settings = ExtResource("6_mh70q")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Play" type="TextureButton" parent="Main/ScoreCard"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.688
-anchor_top = 0.521
-anchor_right = 0.936
-anchor_bottom = 0.942
-offset_left = 0.399975
-offset_top = 0.223017
-offset_right = -0.200053
-offset_bottom = 0.146041
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_horizontal = 4
-size_flags_vertical = 6
-texture_normal = ExtResource("4_2ixlk")
-ignore_texture_size = true
-stretch_mode = 5
 
 [node name="Box" type="VBoxContainer" parent="Main/ScoreCard"]
 layout_mode = 1
@@ -578,10 +554,10 @@ anchor_left = 0.15
 anchor_top = 0.197
 anchor_right = 0.671
 anchor_bottom = 0.808
-offset_left = 8.60003
-offset_top = 0.0140177
-offset_right = 0.00415971
-offset_bottom = 0.296084
+offset_left = 8.59999
+offset_top = 0.0140017
+offset_right = 180.004
+offset_bottom = 0.295985
 alignment = 1
 
 [node name="ScoreContainer" type="HBoxContainer" parent="Main/ScoreCard/Box"]
@@ -593,7 +569,8 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-text = "Score : "
+theme_override_colors/font_color = Color(0.192157, 0.192157, 0.192157, 1)
+text = "Score :"
 horizontal_alignment = 2
 vertical_alignment = 2
 
@@ -601,6 +578,7 @@ vertical_alignment = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.192157, 0.192157, 0.192157, 1)
 text = "0"
 vertical_alignment = 2
 clip_text = true
@@ -615,7 +593,8 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-text = "Distance : "
+theme_override_colors/font_color = Color(0.192157, 0.192157, 0.192157, 1)
+text = "Distance :"
 horizontal_alignment = 2
 vertical_alignment = 1
 
@@ -623,10 +602,30 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.192157, 0.192157, 0.192157, 1)
 text = "0"
 vertical_alignment = 1
 clip_text = true
 text_overrun_behavior = 1
+
+[node name="Play" type="Button" parent="Main"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.252
+anchor_top = 0.566
+anchor_right = 0.751
+anchor_bottom = 0.643
+offset_left = -100.16
+offset_top = 0.280281
+offset_right = 100.919
+offset_bottom = -0.560745
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "Play"
+icon = ExtResource("6_j0m36")
+expand_icon = true
 
 [node name="Shade" type="TextureRect" parent="Main"]
 layout_mode = 1
@@ -641,18 +640,19 @@ texture = SubResource("GradientTexture2D_5r6wv")
 [node name="ButtonBox" type="HBoxContainer" parent="Main"]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.825
+anchor_top = 0.76
 anchor_right = 1.0
-anchor_bottom = 0.968
-offset_top = -9.15527e-05
-offset_bottom = 0.439896
+anchor_bottom = 0.994
+offset_top = -42.2001
+offset_bottom = 4.51997
 grow_horizontal = 2
 alignment = 1
 
 [node name="Edit" type="TextureButton" parent="Main/ButtonBox"]
+custom_minimum_size = Vector2(220, 2.08165e-12)
 layout_mode = 2
-size_flags_horizontal = 3
-texture_normal = ExtResource("5_7l3e5")
+size_flags_horizontal = 6
+texture_normal = ExtResource("7_w5kti")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -670,9 +670,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Options" type="TextureButton" parent="Main/ButtonBox"]
+custom_minimum_size = Vector2(220, 2.08165e-12)
 layout_mode = 2
-size_flags_horizontal = 3
-texture_normal = ExtResource("6_i6hpw")
+size_flags_horizontal = 6
+texture_normal = ExtResource("8_cikw8")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -690,9 +691,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Help" type="TextureButton" parent="Main/ButtonBox"]
+custom_minimum_size = Vector2(220, 2.08165e-12)
 layout_mode = 2
-size_flags_horizontal = 3
-texture_normal = ExtResource("10_7a7k1")
+size_flags_horizontal = 6
+texture_normal = ExtResource("9_poiqa")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -710,9 +712,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Quit" type="TextureButton" parent="Main/ButtonBox"]
+custom_minimum_size = Vector2(220, 2.08165e-12)
 layout_mode = 2
-size_flags_horizontal = 3
-texture_normal = ExtResource("8_k46lc")
+size_flags_horizontal = 6
+texture_normal = ExtResource("10_sr5eo")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -733,8 +736,8 @@ vertical_alignment = 1
 visible = false
 layout_mode = 1
 anchors_preset = -1
-offset_top = 680.0
-offset_bottom = 680.0
+offset_top = 2600.0
+offset_bottom = 2600.0
 
 [node name="Options" type="Panel" parent="."]
 visible = false
@@ -768,9 +771,8 @@ expand_icon = true
 [node name="Confirm" type="Button" parent="Options/HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/normal = ExtResource("12_wc4kh")
 text = "Confirm"
-icon = ExtResource("12_i30ep")
+icon = ExtResource("14_06i8i")
 expand_icon = true
 
 [node name="VBox" type="VBoxContainer" parent="Options"]
@@ -783,8 +785,17 @@ offset_bottom = 0.76
 [node name="Label" type="Label" parent="Options/VBox"]
 layout_mode = 2
 size_flags_vertical = 6
+theme_override_font_sizes/font_size = 70
 text = "Settings"
-label_settings = ExtResource("2_bh8d8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicLabel" type="Label" parent="Options/VBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 1.5
+text = "Music"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -793,21 +804,12 @@ layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Label" type="Label" parent="Options/VBox/Music"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-size_flags_stretch_ratio = 1.5
-text = "Music :"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Music_Min" type="TextureButton" parent="Options/VBox/Music"]
 custom_minimum_size = Vector2(2.08165e-12, 150)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-texture_normal = ExtResource("14_a423u")
+texture_normal = ExtResource("16_2poo4")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -826,30 +828,30 @@ custom_minimum_size = Vector2(2.08165e-12, 150)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-texture_normal = ExtResource("15_kl8dl")
+texture_normal = ExtResource("17_b62g6")
 ignore_texture_size = true
 stretch_mode = 5
+
+[node name="SFXLabel" type="Label" parent="Options/VBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 1.5
+text = "SFX"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="SFX" type="HBoxContainer" parent="Options/VBox"]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Label" type="Label" parent="Options/VBox/SFX"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-size_flags_stretch_ratio = 1.5
-text = "SFX :"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="SFX_Min" type="TextureButton" parent="Options/VBox/SFX"]
 custom_minimum_size = Vector2(2.08165e-12, 150)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-texture_normal = ExtResource("14_a423u")
+texture_normal = ExtResource("16_2poo4")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -868,7 +870,7 @@ custom_minimum_size = Vector2(2.08165e-12, 150)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-texture_normal = ExtResource("15_kl8dl")
+texture_normal = ExtResource("17_b62g6")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -878,8 +880,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 1920.0
-offset_bottom = 1920.0
+offset_top = 2600.0
+offset_bottom = 2600.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -916,7 +918,7 @@ custom_minimum_size = Vector2(2.08165e-12, 200)
 layout_mode = 2
 size_flags_vertical = 6
 text = "Tutorial"
-icon = ExtResource("19_gswam")
+icon = ExtResource("9_poiqa")
 expand_icon = true
 
 [node name="PrivacyPolicy" type="Button" parent="Help/VBoxContainer"]
@@ -924,7 +926,7 @@ custom_minimum_size = Vector2(2.08165e-12, 200)
 layout_mode = 2
 size_flags_vertical = 6
 text = "Privacy Policy"
-icon = ExtResource("20_a3rdp")
+icon = ExtResource("18_sr7a0")
 expand_icon = true
 
 [node name="Website" type="Button" parent="Help/VBoxContainer"]
@@ -932,7 +934,7 @@ custom_minimum_size = Vector2(2.08165e-12, 200)
 layout_mode = 2
 size_flags_vertical = 6
 text = "Website"
-icon = ExtResource("21_dvjgc")
+icon = ExtResource("19_iat23")
 expand_icon = true
 
 [node name="CloseHelp" type="Button" parent="Help/VBoxContainer"]
@@ -963,7 +965,7 @@ stream = ExtResource("17_n0hyg")
 autoplay = true
 bus = &"Music"
 
-[connection signal="pressed" from="Main/ScoreCard/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Main/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Main/ButtonBox/Edit" to="." method="_on_edit_pressed"]
 [connection signal="pressed" from="Main/ButtonBox/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="Main/ButtonBox/Help" to="." method="_on_help_pressed"]

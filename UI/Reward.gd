@@ -5,7 +5,7 @@ var tag : PriceTag
 func _set_tag(t : PriceTag) -> void:
 	tag = t
 	$Top/Label.text = "Nice!\nYou unlocked " + t.acc_name
-	$CenterIcon.texture = t.acc_icon
+	$Ribbon/Icon.texture = t.acc_icon
 	$AnimationPlayer.play("Reward")
 
 

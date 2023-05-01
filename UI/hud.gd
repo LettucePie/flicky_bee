@@ -31,7 +31,7 @@ func _setup() -> void:
 	_update_score(0, 0)
 	_update_distance(0)
 	$TryAgain.hide()
-	$Ratio/Pause.show()
+	$PauseButton.show()
 	$Pause.hide()
 
 
@@ -80,14 +80,14 @@ func _on_play_again_pressed():
 
 func _on_pause_pressed():
 	print("Pause Pressed, show Pause Screen")
-	$Ratio/Pause.hide()
+	$PauseButton.hide()
 	$Pause.show()
 	get_tree().paused = true
 
 
 func _on_continue_pressed():
 	print("Continue Pressed, Unpause")
-	$Ratio/Pause.show()
+	$PauseButton.show()
 	$Pause.hide()
 	get_tree().paused = false
 

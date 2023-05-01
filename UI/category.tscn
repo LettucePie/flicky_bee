@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfrwshx4712hu"]
+[gd_scene load_steps=5 format=3 uid="uid://bfrwshx4712hu"]
 
-[ext_resource type="Theme" uid="uid://cwteexwb3vbyi" path="res://UI/Style/Bee_Theme.tres" id="1_600yi"]
+[ext_resource type="Theme" uid="uid://cwjsb0qlm86r5" path="res://UI/Style/Bee_Theme.tres" id="1_600yi"]
 [ext_resource type="Script" path="res://UI/edit_category.gd" id="2_xmie2"]
-[ext_resource type="LabelSettings" uid="uid://ban0wox1lr7ix" path="res://UI/Label_Setting_Big.tres" id="3_mopc7"]
 [ext_resource type="Texture2D" uid="uid://8qybfiret8ja" path="res://icon.svg" id="4_xdbup"]
 [ext_resource type="PackedScene" uid="uid://u2la6l6mpb2v" path="res://UI/acc_option.tscn" id="5_fguow"]
 
@@ -29,8 +28,8 @@ grow_vertical = 2
 [node name="Label" type="Label" parent="Vbox"]
 layout_mode = 2
 size_flags_vertical = 0
+theme_override_font_sizes/font_size = 70
 text = "Hats"
-label_settings = ExtResource("3_mopc7")
 horizontal_alignment = 1
 vertical_alignment = 1
 

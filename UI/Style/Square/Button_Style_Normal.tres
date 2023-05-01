@@ -1,0 +1,13 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3]
+
+[ext_resource type="Texture2D" uid="uid://bvx58y6c1b2a6" path="res://UI/Art/ButtonStyles/ButtonStyle_Normal_Round.png" id="1_sdhhi"]
+
+[resource]
+content_margin_top = 20.0
+content_margin_bottom = 20.0
+texture = ExtResource("1_sdhhi")
+texture_margin_left = 72.0
+texture_margin_top = 72.0
+texture_margin_right = 72.0
+texture_margin_bottom = 72.0
+region_rect = Rect2(-7, -7, 272, 144)

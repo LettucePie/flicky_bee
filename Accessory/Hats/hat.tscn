@@ -7,5 +7,6 @@
 [ext_resource type="Resource" uid="uid://diwwsprgm011p" path="res://Accessory/Hats/HatTypes/WizardHat_Type.tres" id="5_krfn1"]
 
 [node name="Hat" type="Node3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 script = ExtResource("1_d6xww")
 hats = Array[Resource("res://Accessory/Hats/hat_type.gd")]([ExtResource("2_wr28x"), ExtResource("3_ie2i0"), ExtResource("4_ba6lv"), ExtResource("5_krfn1")])

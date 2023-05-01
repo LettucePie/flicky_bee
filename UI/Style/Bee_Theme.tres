@@ -1,27 +1,39 @@
-[gd_resource type="Theme" load_steps=11 format=3 uid="uid://cwteexwb3vbyi"]
+[gd_resource type="Theme" load_steps=13 format=3 uid="uid://cwjsb0qlm86r5"]
 
-[ext_resource type="StyleBox" uid="uid://cvcn82igh6iyj" path="res://UI/Style/Button_Style_Normal.tres" id="1_21sri"]
-[ext_resource type="StyleBox" uid="uid://cpxrqoxv5s68p" path="res://UI/Style/Button_Style_Disabled.tres" id="1_oses5"]
-[ext_resource type="StyleBox" uid="uid://ccnj6kal4gqrr" path="res://UI/Style/Button_Style_Focus.tres" id="1_picxi"]
-[ext_resource type="StyleBox" uid="uid://yrle83fsm8ff" path="res://UI/Style/Panel_Style.tres" id="2_51d7p"]
+[ext_resource type="StyleBox" uid="uid://dtri2fhtgsi1b" path="res://UI/Style/Round/Button_Style_DisableRound.tres" id="1_wua48"]
+[ext_resource type="StyleBox" uid="uid://d33iqf0rd8pru" path="res://UI/Style/Round/Button_Style_SelectRound.tres" id="2_thef8"]
+[ext_resource type="Texture2D" uid="uid://bvx58y6c1b2a6" path="res://UI/Art/ButtonStyles/ButtonStyle_Normal_Round.png" id="3_0eh2k"]
+[ext_resource type="StyleBox" uid="uid://b1cpi6q8g74yn" path="res://UI/Style/Round/Button_Style_HoverRound.tres" id="3_3il3p"]
 [ext_resource type="Texture2D" uid="uid://bqihm8hpvdisc" path="res://UI/Art/Grabber_Handle_Normal.png" id="3_v636i"]
 [ext_resource type="Texture2D" uid="uid://cpkfv6e5mt6i0" path="res://UI/Art/Grabber_Handle_Disabled.png" id="4_822cg"]
 [ext_resource type="Texture2D" uid="uid://2psjw2m5dapr" path="res://UI/Art/Grabber_Handle_Highlight.png" id="5_vggml"]
 [ext_resource type="StyleBox" uid="uid://cm5u404ife8yc" path="res://UI/Style/Slider_Yes.tres" id="6_k1so6"]
 [ext_resource type="StyleBox" uid="uid://yxous6lnd8cr" path="res://UI/Style/Slider_No.tres" id="7_3s7pu"]
+[ext_resource type="StyleBox" uid="uid://yrle83fsm8ff" path="res://UI/Style/Square/Panel_Style.tres" id="10_hpgqq"]
 [ext_resource type="SystemFont" uid="uid://dolyccjp7guf1" path="res://UI/Fonts/Avenir_Settings.tres" id="10_tjqru"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8n0eg"]
+content_margin_top = 20.0
+content_margin_bottom = 20.0
+texture = ExtResource("3_0eh2k")
+texture_margin_left = 72.0
+texture_margin_top = 72.0
+texture_margin_right = 72.0
+texture_margin_bottom = 72.0
+region_rect = Rect2(-7, -7, 272, 144)
 
 [resource]
 default_font = ExtResource("10_tjqru")
 default_font_size = 58
-Button/colors/font_color = Color(0.0470588, 0.0470588, 0.0470588, 1)
+Button/colors/font_color = Color(0.192157, 0.192157, 0.192157, 1)
 Button/colors/font_focus_color = Color(0.227451, 0.227451, 0.227451, 1)
 Button/colors/font_hover_color = Color(0.227451, 0.227451, 0.227451, 1)
 Button/colors/font_hover_pressed_color = Color(0.298039, 0.298039, 0.298039, 1)
-Button/styles/disabled = ExtResource("1_oses5")
-Button/styles/focus = ExtResource("1_picxi")
-Button/styles/hover = ExtResource("1_picxi")
-Button/styles/normal = ExtResource("1_21sri")
+Button/styles/disabled = ExtResource("1_wua48")
+Button/styles/focus = ExtResource("2_thef8")
+Button/styles/hover = ExtResource("3_3il3p")
+Button/styles/normal = SubResource("StyleBoxTexture_8n0eg")
+Button/styles/pressed = ExtResource("2_thef8")
 CheckButton/colors/font_color = Color(0.875, 0.875, 0.875, 1)
 CheckButton/colors/font_outline_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
 CheckButton/constants/outline_size = 10
@@ -36,9 +48,9 @@ HSlider/icons/grabber_highlight = ExtResource("5_vggml")
 HSlider/styles/grabber_area = ExtResource("6_k1so6")
 HSlider/styles/grabber_area_highlight = ExtResource("6_k1so6")
 HSlider/styles/slider = ExtResource("7_3s7pu")
-Label/colors/font_color = Color(1, 1, 1, 1)
-Label/colors/font_shadow_color = Color(0, 0, 0, 0.698039)
+Label/colors/font_color = Color(0.972549, 0.92549, 0.964706, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
 Label/constants/line_spacing = 2
 Label/constants/shadow_offset_x = 3
 Label/constants/shadow_offset_y = 3
-Panel/styles/panel = ExtResource("2_51d7p")
+Panel/styles/panel = ExtResource("10_hpgqq")

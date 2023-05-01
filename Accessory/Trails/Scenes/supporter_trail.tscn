@@ -59,6 +59,5 @@ metadata/name = "Dot"
 
 [node name="Coins" type="GPUParticles3D" parent="."]
 amount = 20
-preprocess = 4.0
 process_material = SubResource("ParticleProcessMaterial_utvxr")
 draw_pass_1 = ExtResource("5_ywmhj")
