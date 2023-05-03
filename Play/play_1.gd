@@ -381,12 +381,14 @@ func _on_life_timer_timeout():
 	$Rest_Timer.stop()
 	if persist != null:
 		_register_progress()
+	score_card.sort_custom(_sort_card)
 	$Results._set_results(
 		score_card,
 		platform_score,
 		furthest_distance,
 		persist
 	)
+	get_tree().paused = true
 
 
 func _sort_card(a, b):

@@ -1,9 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://bnideixfjpsgc"]
+[gd_scene load_steps=23 format=3 uid="uid://bnideixfjpsgc"]
 
 [ext_resource type="Theme" uid="uid://cwjsb0qlm86r5" path="res://UI/Style/Bee_Theme.tres" id="1_nh6jh"]
 [ext_resource type="Script" path="res://Core/results.gd" id="1_x1mpp"]
 [ext_resource type="Texture2D" uid="uid://cip5i0q38s8om" path="res://UI/Art/BarStyle_BG.png" id="4_1sahg"]
-[ext_resource type="Script" path="res://Core/result_slot.gd" id="4_4ovy2"]
 [ext_resource type="Texture2D" uid="uid://5062kegelyuk" path="res://UI/Art/Icons/HoneyCount_Icon.png" id="4_8mbaw"]
 [ext_resource type="Texture2D" uid="uid://coxyfupfv31p5" path="res://UI/Art/Return_Arrow.png" id="4_610dg"]
 [ext_resource type="Texture2D" uid="uid://bn2hn86t2joux" path="res://UI/Art/BarStyle_Fill.png" id="5_051m2"]
@@ -235,6 +234,7 @@ fill_from = Vector2(0.846154, 0.106838)
 fill_to = Vector2(0.200855, 1)
 
 [node name="Results" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -361,8 +361,6 @@ anchor_top = 0.17201
 anchor_right = 1.0
 anchor_bottom = 0.270037
 size_flags_vertical = 3
-script = ExtResource("4_4ovy2")
-label_path = NodePath("Comb_Score")
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="Panel/Content/Combs"]
@@ -411,7 +409,6 @@ anchor_top = 0.272503
 anchor_right = 1.0
 anchor_bottom = 0.369914
 size_flags_vertical = 3
-script = ExtResource("4_4ovy2")
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="Panel/Content/Jars"]
@@ -460,7 +457,6 @@ anchor_right = 1.0
 anchor_bottom = 0.470407
 offset_top = 2.07424e-05
 size_flags_vertical = 3
-script = ExtResource("4_4ovy2")
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="Panel/Content/Flowers"]

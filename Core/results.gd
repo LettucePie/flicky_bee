@@ -19,7 +19,7 @@ var new_dist := false
 
 ## Working off the enum values assigned as "type_id"
 ## [Combs, Jars, Flowers, Enemies]
-var counts = [0, 0, 0, 0]
+var counts : Array
 @onready var labels = [
 	$Panel/Content/Combs/Comb_Score,
 	$Panel/Content/Jars/Jar_Score,
@@ -38,13 +38,18 @@ func _set_results(sc, score, furthest, persist) -> void:
 	score_card = sc
 	furthest_distance = furthest
 	checked_scores.clear()
-	for i in counts:
-		i = 0
+	counts.clear()
+	counts = [0, 0, 0, 0]
+	for l in labels:
+		l.text = "0"
 	score_tally = 0
+	$Panel/Content/RunScore/RunScore.text = str(score_tally)
 	record_score.text = str(persist.highest_score)
 	record_dist.text = str(
 		snapped(persist.furthest_distance, 0.1)
 	)
+	new_score = false
+	new_dist = false
 	if score >= persist.highest_score:
 		new_score = true
 	if furthest >= persist.furthest_distance:
@@ -55,6 +60,7 @@ func _set_results(sc, score, furthest, persist) -> void:
 
 func _play_again(extra_arg_0):
 	print("Play Again pressed with : ", extra_arg_0)
+	get_tree().paused = false
 	if extra_arg_0:
 		emit_signal("play_again")
 	else:
@@ -105,11 +111,11 @@ func _process(delta):
 			)
 		$Panel/Content/RunDist/RunDist.text = str(timeline)
 		$Panel/Content/Bar.value = percent
-		if score_card.front() != null:
+		if score_card.size() > 0:
 			while score_card.front()["distance"] <= timeline:
 				print(score_card.size())
 				var score = score_card.pop_front()
-				counts[score["type_id"]] += score["start_value"]
+				counts[score["type_id"]] += 1
 				labels[score["type_id"]].text = str(counts[score["type_id"]])
 				score_tally += score["fixed_value"]
 				$Panel/Content/RunScore/RunScore.text = str(score_tally)
