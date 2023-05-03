@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=13 format=3 uid="uid://cwjsb0qlm86r5"]
+[gd_resource type="Theme" load_steps=15 format=3 uid="uid://cwjsb0qlm86r5"]
 
 [ext_resource type="StyleBox" uid="uid://dtri2fhtgsi1b" path="res://UI/Style/Round/Button_Style_DisableRound.tres" id="1_wua48"]
 [ext_resource type="StyleBox" uid="uid://d33iqf0rd8pru" path="res://UI/Style/Round/Button_Style_SelectRound.tres" id="2_thef8"]
@@ -11,6 +11,8 @@
 [ext_resource type="StyleBox" uid="uid://yxous6lnd8cr" path="res://UI/Style/Slider_No.tres" id="7_3s7pu"]
 [ext_resource type="StyleBox" uid="uid://yrle83fsm8ff" path="res://UI/Style/Square/Panel_Style.tres" id="10_hpgqq"]
 [ext_resource type="SystemFont" uid="uid://dolyccjp7guf1" path="res://UI/Fonts/Avenir_Settings.tres" id="10_tjqru"]
+[ext_resource type="StyleBox" uid="uid://c5oow5mfs6vaf" path="res://UI/Style/Round/Bar_Style_BG.tres" id="11_xwu8d"]
+[ext_resource type="StyleBox" path="res://UI/Style/Round/Bar_Style_Fill.tres" id="12_rckht"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8n0eg"]
 content_margin_top = 20.0
@@ -54,3 +56,5 @@ Label/constants/line_spacing = 2
 Label/constants/shadow_offset_x = 3
 Label/constants/shadow_offset_y = 3
 Panel/styles/panel = ExtResource("10_hpgqq")
+ProgressBar/styles/background = ExtResource("11_xwu8d")
+ProgressBar/styles/fill = ExtResource("12_rckht")

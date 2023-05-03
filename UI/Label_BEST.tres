@@ -1,14 +1,5 @@
-[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dsiocwpk52rya"]
-
-[sub_resource type="SystemFont" id="SystemFont_wral1"]
-font_names = PackedStringArray("Arial")
-font_italic = true
+[gd_resource type="LabelSettings" format=3 uid="uid://dsiocwpk52rya"]
 
 [resource]
-font = SubResource("SystemFont_wral1")
-font_size = 56
-outline_size = 4
-outline_color = Color(0.180392, 0.180392, 0, 1)
-shadow_size = 4
-shadow_color = Color(0, 0, 0, 0.819608)
-shadow_offset = Vector2(4, 4)
+font_size = 48
+font_color = Color(0.831373, 0.831373, 0.831373, 1)

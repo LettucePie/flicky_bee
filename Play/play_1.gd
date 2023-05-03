@@ -5,9 +5,13 @@ extends Node
 @export var flight_reserve := 5.0
 @export var rest_time := 2.0
 @export var flight_bound := 90.0
-@export var flower_value : int = 2
 @export var comb_value : int = 1
 @export var jar_value : int = 2
+@export var flower_value : int = 2
+
+enum Collect {Comb, Jar, Flower}
+@onready var collect_values = [comb_value, jar_value, flower_value]
+@onready var collect_names = ["Comb", "Jar", "Flower"]
 
 var persist : Persist
 var menu = null
@@ -17,6 +21,7 @@ var menu = null
 var player = null
 var camera_target := Vector3.ZERO
 var traveling := false
+var score_card := []
 var platform_score := 0
 var comb_count := 0
 var jar_count := 0
@@ -70,6 +75,7 @@ func _setup(menu_node : Control, persist_node : Persist):
 	$Life_Timer.stop()
 	$Rest_Timer.stop()
 	platform_score = 0
+	score_card.clear()
 	jar_count = 0
 	comb_count = 0
 	flower_count = 0
@@ -171,6 +177,20 @@ func _input(event):
 	if event is InputEventMouseMotion and time > 0.0:
 		if touching:
 			_process_drag(event)
+##
+## Testing score card sort
+##
+#	if event is InputEventKey:
+#		if event.pressed and event.keycode == KEY_SPACE:
+#			print("Testing Sort")
+#			var printout = "First 5\n"
+#			for i in 5:
+#				printout += score_card[i]["type"] + " " + str(score_card[i]["distance"]) + "\n"
+#			score_card.sort_custom(_sort_card)
+#			printout += "--Post Sort--\n"
+#			for i in 5:
+#				printout += score_card[i]["type"] + " " + str(score_card[i]["distance"]) + "\n"
+#			print(printout)
 
 ###
 ### The Logic for establishing whether the player is flicking or flying
@@ -320,7 +340,7 @@ func _on_player_finished_travel(platform):
 	flight = clamp(flight + 2.0, 0.0, flight_reserve)
 	flower_count += 1
 	if persist != null:
-		platform_score += _register_point(flower_value)
+		platform_score += _register_point(Collect.Flower)
 	$HUD._update_score(2, platform_score)
 
 
@@ -337,13 +357,13 @@ func _on_player_collect(obj) -> void:
 		$Life_Timer.start(time)
 		comb_count += 1
 		if persist != null:
-			difference = _register_point(comb_value)
+			difference = _register_point(Collect.Comb)
 	if obj == "Jar":
 		time = clamp(time + 2.5, 0.0, life_time)
 		$Life_Timer.start(time)
 		jar_count += 1
 		if persist != null:
-			difference = _register_point(jar_value)
+			difference = _register_point(Collect.Jar)
 	if obj == "Wing":
 		flight = clamp(flight + 2.0, 0.0, flight_reserve)
 	platform_score += difference
@@ -362,13 +382,17 @@ func _on_life_timer_timeout():
 	if persist != null:
 		_register_progress()
 	$Results._set_results(
+		score_card,
 		platform_score,
 		furthest_distance,
-		comb_count,
-		jar_count,
-		flower_count,
 		persist
 	)
+
+
+func _sort_card(a, b):
+	if a["distance"] < b["distance"]:
+		return true
+	return false
 
 
 func _on_rest_timer_timeout():
@@ -406,14 +430,24 @@ func _register_progress() -> void:
 	pause_distance = furthest_distance
 
 
-func _register_point(val : int) -> int:
+func _register_point(collect : Collect) -> int:
 	var multiplier = clamp(
 		floor(furthest_distance / 1000),
 		1,
 		5
 	)
-	persist._add_points(multiplier * val)
-	return multiplier * val
+	persist._add_points(multiplier * collect_values[collect])
+	score_card.append(
+		{
+			"type" : collect_names[collect],
+			"type_id" : collect,
+			"start_value" : collect_values[collect],
+			"distance" : snapped(abs(player.get_position().z), 0.1),
+			"multiplier" : multiplier,
+			"fixed_value" : multiplier * collect_values[collect]
+		}
+	)
+	return multiplier * collect_values[collect]
 
 
 func _on_results_quit_out():
