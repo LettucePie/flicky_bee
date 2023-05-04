@@ -5,6 +5,8 @@ extends Panel
 	$Vbox/Trails,
 	$Vbox/Flowers
 ]
+@export var equip_icon : Texture2D
+@export var remove_icon : Texture2D
 
 var current_category := 0
 var persist_node : Persist
@@ -62,6 +64,7 @@ func _tag_selected(t : PriceTag) -> void:
 			redeem = false
 			message = "Not Enough Honey Points"
 		buy = t.purchase_usd
+	$ActionContainer/Equip.icon = equip_icon
 	$ActionContainer/Equip.text = "Equip"
 	$ActionContainer/Equip/ButtonSound._set_sound(4)
 	$ActionContainer/Buy_Points.text = str(t.honey_amount) + " HP"
@@ -69,6 +72,7 @@ func _tag_selected(t : PriceTag) -> void:
 	if t.acc_name == persist_node.hat \
 	or t.acc_name == persist_node.trail \
 	or t.acc_name == persist_node.flower:
+		$ActionContainer/Equip.icon = remove_icon
 		$ActionContainer/Equip.text = "Remove"
 		$ActionContainer/Equip/ButtonSound._set_sound(5)
 	_update_actions(equip, redeem, buy, message)

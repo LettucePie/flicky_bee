@@ -1,10 +1,12 @@
-[gd_scene load_steps=30 format=3 uid="uid://drlmndybhl8t4"]
+[gd_scene load_steps=32 format=3 uid="uid://drlmndybhl8t4"]
 
 [ext_resource type="Theme" uid="uid://bd87acx3a4l4n" path="res://UI/Style/SubBee_Theme.tres" id="1_3ipnt"]
 [ext_resource type="Theme" uid="uid://cwjsb0qlm86r5" path="res://UI/Style/Bee_Theme.tres" id="1_i3uci"]
 [ext_resource type="Script" path="res://UI/edit.gd" id="2_te6p3"]
+[ext_resource type="Texture2D" uid="uid://c8qdbdn5rdmng" path="res://UI/Art/Icons/Equip_Icon.png" id="3_1ikvn"]
 [ext_resource type="Texture2D" uid="uid://8qybfiret8ja" path="res://icon.svg" id="3_jsyu4"]
 [ext_resource type="Texture2D" uid="uid://coxyfupfv31p5" path="res://UI/Art/Return_Arrow.png" id="3_ky6n1"]
+[ext_resource type="Texture2D" uid="uid://kvr5wc5pvtpy" path="res://UI/Art/Icons/Remove_Icon.png" id="4_ywidr"]
 [ext_resource type="AudioStream" uid="uid://lg63eic6usgi" path="res://UI/Sounds/Select_02.wav" id="5_g6nxs"]
 [ext_resource type="Texture2D" uid="uid://5062kegelyuk" path="res://UI/Art/Icons/HoneyCount_Icon.png" id="5_hpmsv"]
 [ext_resource type="PackedScene" uid="uid://bfrwshx4712hu" path="res://UI/category.tscn" id="6_j53hv"]
@@ -459,6 +461,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_i3uci")
 script = ExtResource("2_te6p3")
+equip_icon = ExtResource("3_1ikvn")
+remove_icon = ExtResource("4_ywidr")
 
 [node name="Done_Edit" type="Button" parent="."]
 layout_mode = 1
@@ -626,6 +630,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Equip"
 icon = ExtResource("3_jsyu4")
+expand_icon = true
 
 [node name="ButtonSound" parent="ActionContainer/Equip" instance=ExtResource("7_imp5k")]
 stream = ExtResource("22_shnoe")
