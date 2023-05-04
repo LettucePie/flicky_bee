@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bnideixfjpsgc"]
+[gd_scene load_steps=25 format=3 uid="uid://bnideixfjpsgc"]
 
 [ext_resource type="Theme" uid="uid://cwjsb0qlm86r5" path="res://UI/Style/Bee_Theme.tres" id="1_nh6jh"]
 [ext_resource type="Script" path="res://Core/results.gd" id="1_x1mpp"]
@@ -14,6 +14,8 @@
 [ext_resource type="SystemFont" uid="uid://bnfcbcpp4s67w" path="res://UI/Fonts/Avenir_Italic_Settings.tres" id="9_1et0j"]
 [ext_resource type="Texture2D" uid="uid://brajg1t0x2ouo" path="res://UI/Art/Icons/Play_Icon.png" id="9_tiygn"]
 [ext_resource type="Theme" uid="uid://bd87acx3a4l4n" path="res://UI/Style/SubBee_Theme.tres" id="12_6qbs5"]
+[ext_resource type="PackedScene" uid="uid://ottesxy2rk1h" path="res://UI/button_sound.tscn" id="14_aano1"]
+[ext_resource type="AudioStream" uid="uid://lg63eic6usgi" path="res://UI/Sounds/Select_02.wav" id="15_nubtb"]
 [ext_resource type="AudioStream" uid="uid://dvi65b4n35yoj" path="res://Core/Sound/Pickup_Honey.wav" id="16_fa0pt"]
 [ext_resource type="AudioStream" uid="uid://ctvqlmm8i7sq5" path="res://Core/Sound/Pickup_Jar.wav" id="17_x8k3h"]
 [ext_resource type="AudioStream" uid="uid://tg07otgu681n" path="res://Core/Sound/Flower_Land.wav" id="18_p8ytc"]
@@ -632,12 +634,17 @@ text = "Return"
 icon = ExtResource("4_610dg")
 expand_icon = true
 
+[node name="ButtonSound" parent="Panel/Buttons/Return" instance=ExtResource("14_aano1")]
+stream = ExtResource("15_nubtb")
+
 [node name="Retry" type="Button" parent="Panel/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Try Again"
 icon = ExtResource("9_tiygn")
 expand_icon = true
+
+[node name="ButtonSound" parent="Panel/Buttons/Retry" instance=ExtResource("14_aano1")]
 
 [node name="CombDing" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_fa0pt")

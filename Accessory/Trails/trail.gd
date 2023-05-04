@@ -23,12 +23,13 @@ func _remove_active() -> void:
 
 
 func _activate_trail(tf : bool) -> void:
-	print("Trail Active : ", tf)
-	if active_trail is GPUParticles3D \
-	or active_trail is GPUParticles2D:
-		active_trail.emitting = tf
-	if active_trail.get_child_count() > 0:
-		for c in active_trail.get_children():
-			if c is GPUParticles3D \
-			or c is GPUParticles2D:
-				c.emitting = tf
+	if active_trail != null:
+		print("Trail Active : ", tf)
+		if active_trail is GPUParticles3D \
+		or active_trail is GPUParticles2D:
+			active_trail.emitting = tf
+		if active_trail.get_child_count() > 0:
+			for c in active_trail.get_children():
+				if c is GPUParticles3D \
+				or c is GPUParticles2D:
+					c.emitting = tf

@@ -20,6 +20,7 @@ func _ready():
 	_reflect_settings()
 	_update_score()
 	_hide_submenus()
+	$MenuMusic.play()
 	if OS.has_feature("ios") \
 	or OS.has_feature("web"):
 		$Main/ButtonBox/Quit.queue_free()

@@ -1,15 +1,18 @@
-[gd_scene load_steps=26 format=3 uid="uid://drlmndybhl8t4"]
+[gd_scene load_steps=30 format=3 uid="uid://drlmndybhl8t4"]
 
 [ext_resource type="Theme" uid="uid://bd87acx3a4l4n" path="res://UI/Style/SubBee_Theme.tres" id="1_3ipnt"]
 [ext_resource type="Theme" uid="uid://cwjsb0qlm86r5" path="res://UI/Style/Bee_Theme.tres" id="1_i3uci"]
 [ext_resource type="Script" path="res://UI/edit.gd" id="2_te6p3"]
 [ext_resource type="Texture2D" uid="uid://8qybfiret8ja" path="res://icon.svg" id="3_jsyu4"]
 [ext_resource type="Texture2D" uid="uid://coxyfupfv31p5" path="res://UI/Art/Return_Arrow.png" id="3_ky6n1"]
+[ext_resource type="AudioStream" uid="uid://lg63eic6usgi" path="res://UI/Sounds/Select_02.wav" id="5_g6nxs"]
 [ext_resource type="Texture2D" uid="uid://5062kegelyuk" path="res://UI/Art/Icons/HoneyCount_Icon.png" id="5_hpmsv"]
 [ext_resource type="PackedScene" uid="uid://bfrwshx4712hu" path="res://UI/category.tscn" id="6_j53hv"]
 [ext_resource type="Texture2D" uid="uid://dpoaw7awi7e5q" path="res://UI/Art/Icons/Hat_Icon.png" id="6_mff8t"]
 [ext_resource type="Texture2D" uid="uid://cqhnnf5pmqblb" path="res://UI/Art/Icons/Trail_Icon.png" id="7_fkpyq"]
+[ext_resource type="PackedScene" uid="uid://ottesxy2rk1h" path="res://UI/button_sound.tscn" id="7_imp5k"]
 [ext_resource type="Texture2D" uid="uid://b2o4xo01cmirk" path="res://UI/Art/Icons/Flower_Icon.png" id="8_ko2rl"]
+[ext_resource type="AudioStream" uid="uid://bds6tsouoxwlm" path="res://UI/Sounds/Select_03.wav" id="8_nohib"]
 [ext_resource type="Resource" uid="uid://n7inm04q3qeg" path="res://Accessory/Hats/PriceTags/TopHat_Tag.tres" id="13_ph1gx"]
 [ext_resource type="Resource" uid="uid://0e4d2ffwkc23" path="res://Accessory/Hats/PriceTags/PartyHat_Tag.tres" id="15_i5exi"]
 [ext_resource type="Resource" uid="uid://cijvtfhgxgqjt" path="res://Accessory/Hats/PriceTags/CapHat_Tag.tres" id="16_2ba6v"]
@@ -20,6 +23,7 @@
 [ext_resource type="Resource" uid="uid://by7b7xlpi6dxw" path="res://Accessory/Trails/PriceTags/SupportTrail_PriceTag.tres" id="20_rcqpj"]
 [ext_resource type="Script" path="res://UI/Reward.gd" id="20_u6j73"]
 [ext_resource type="Texture2D" uid="uid://dh2noracum3yl" path="res://UI/Art/Ribbon_Frame.png" id="21_eyhlc"]
+[ext_resource type="AudioStream" uid="uid://7wrgdg6loq7a" path="res://UI/Sounds/Select_05.wav" id="22_shnoe"]
 [ext_resource type="Resource" uid="uid://dui8o0lp780au" path="res://Accessory/Flowers/PriceTags/Bermuda_Buttercup_Tag.tres" id="23_fvjf7"]
 
 [sub_resource type="Animation" id="Animation_scc7q"]
@@ -471,6 +475,9 @@ text = "Done"
 icon = ExtResource("3_ky6n1")
 expand_icon = true
 
+[node name="ButtonSound" parent="Done_Edit" instance=ExtResource("7_imp5k")]
+stream = ExtResource("5_g6nxs")
+
 [node name="Header" type="Panel" parent="."]
 layout_mode = 2
 anchor_right = 1.0
@@ -541,6 +548,9 @@ icon = ExtResource("6_mff8t")
 icon_alignment = 1
 expand_icon = true
 
+[node name="ButtonSound" parent="Vbox/Category/Hats" instance=ExtResource("7_imp5k")]
+stream = ExtResource("8_nohib")
+
 [node name="Trails" type="Button" parent="Vbox/Category"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -549,6 +559,9 @@ icon = ExtResource("7_fkpyq")
 icon_alignment = 1
 expand_icon = true
 
+[node name="ButtonSound" parent="Vbox/Category/Trails" instance=ExtResource("7_imp5k")]
+stream = ExtResource("8_nohib")
+
 [node name="Flowers" type="Button" parent="Vbox/Category"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -556,6 +569,9 @@ focus_mode = 1
 icon = ExtResource("8_ko2rl")
 icon_alignment = 1
 expand_icon = true
+
+[node name="ButtonSound" parent="Vbox/Category/Flowers" instance=ExtResource("7_imp5k")]
+stream = ExtResource("8_nohib")
 
 [node name="Hats" parent="Vbox" instance=ExtResource("6_j53hv")]
 layout_mode = 2
@@ -611,6 +627,9 @@ size_flags_horizontal = 3
 text = "Equip"
 icon = ExtResource("3_jsyu4")
 
+[node name="ButtonSound" parent="ActionContainer/Equip" instance=ExtResource("7_imp5k")]
+stream = ExtResource("22_shnoe")
+
 [node name="Buy_Points" type="Button" parent="ActionContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -618,12 +637,16 @@ text = "Redeem"
 icon = ExtResource("5_hpmsv")
 expand_icon = true
 
+[node name="ButtonSound" parent="ActionContainer/Buy_Points" instance=ExtResource("7_imp5k")]
+
 [node name="Buy_USD" type="Button" parent="ActionContainer"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Buy"
 icon = ExtResource("3_jsyu4")
+
+[node name="ButtonSound" parent="ActionContainer/Buy_USD" instance=ExtResource("7_imp5k")]
 
 [node name="Reward" type="ColorRect" parent="."]
 layout_mode = 1
@@ -702,6 +725,9 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Equip"
 
+[node name="ButtonSound" parent="Reward/Equip" instance=ExtResource("7_imp5k")]
+stream = ExtResource("22_shnoe")
+
 [node name="Continue" type="Button" parent="Reward"]
 layout_mode = 1
 anchors_preset = -1
@@ -716,6 +742,8 @@ offset_bottom = 579.2
 grow_horizontal = 2
 grow_vertical = 0
 text = "Continue"
+
+[node name="ButtonSound" parent="Reward/Continue" instance=ExtResource("7_imp5k")]
 
 [connection signal="pressed" from="Vbox/Category/Hats" to="." method="_set_active_category" binds= [0]]
 [connection signal="pressed" from="Vbox/Category/Trails" to="." method="_set_active_category" binds= [1]]

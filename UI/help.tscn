@@ -1,14 +1,16 @@
-[gd_scene load_steps=20 format=3 uid="uid://cqxrcyiqso6wa"]
+[gd_scene load_steps=22 format=3 uid="uid://cqxrcyiqso6wa"]
 
 [ext_resource type="Texture2D" uid="uid://cbivyi5bcexf4" path="res://UI/Art/NextButton.png" id="1_2mjth"]
 [ext_resource type="Script" path="res://UI/help.gd" id="1_8ge03"]
 [ext_resource type="LabelSettings" uid="uid://d1bmfb6payqdt" path="res://UI/Label_Setting_Small.tres" id="2_6o30g"]
 [ext_resource type="Texture2D" uid="uid://b6iao5qviytav" path="res://UI/Art/Bee_Bare.png" id="2_sh7hp"]
+[ext_resource type="PackedScene" uid="uid://ottesxy2rk1h" path="res://UI/button_sound.tscn" id="3_7m18s"]
 [ext_resource type="Texture2D" uid="uid://b0qrhp6fv7t4p" path="res://UI/Art/Flower_Up.png" id="3_iu2x4"]
 [ext_resource type="Texture2D" uid="uid://k03187wlai8k" path="res://UI/Art/Complete_Button.png" id="3_kt7n8"]
 [ext_resource type="Texture2D" uid="uid://dct8el8r5vk0u" path="res://UI/Art/Bee_WingsDown.png" id="3_wig8w"]
 [ext_resource type="Texture2D" uid="uid://gl5djc5egdua" path="res://UI/Art/Flower_Bent.png" id="4_b44q4"]
 [ext_resource type="Texture2D" uid="uid://bhc21f01u6gn7" path="res://UI/Art/Bee_WingsUp.png" id="4_q5wwr"]
+[ext_resource type="AudioStream" uid="uid://lg63eic6usgi" path="res://UI/Sounds/Select_02.wav" id="4_q7qv4"]
 [ext_resource type="Texture2D" uid="uid://2xwops3h5d2w" path="res://UI/Art/Bee_Face1.png" id="5_7skah"]
 [ext_resource type="Texture2D" uid="uid://cl27f1b8akiff" path="res://UI/Art/Bee_Face2.png" id="6_6mjk0"]
 [ext_resource type="Texture2D" uid="uid://bshanm53atq63" path="res://UI/Art/Bee_Face3.png" id="7_bws6n"]
@@ -695,12 +697,17 @@ ignore_texture_size = true
 stretch_mode = 5
 flip_h = true
 
+[node name="ButtonSound" parent="Navigation/Container/Prev" instance=ExtResource("3_7m18s")]
+stream = ExtResource("4_q7qv4")
+
 [node name="Next" type="TextureButton" parent="Navigation/Container"]
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = ExtResource("1_2mjth")
 ignore_texture_size = true
 stretch_mode = 5
+
+[node name="ButtonSound" parent="Navigation/Container/Next" instance=ExtResource("3_7m18s")]
 
 [node name="Done" type="TextureButton" parent="Navigation/Container"]
 visible = false
@@ -709,6 +716,8 @@ size_flags_horizontal = 3
 texture_normal = ExtResource("3_kt7n8")
 ignore_texture_size = true
 stretch_mode = 5
+
+[node name="ButtonSound" parent="Navigation/Container/Done" instance=ExtResource("3_7m18s")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

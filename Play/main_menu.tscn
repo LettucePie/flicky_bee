@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://b1aibpbthxdp7"]
+[gd_scene load_steps=35 format=3 uid="uid://b1aibpbthxdp7"]
 
 [ext_resource type="Theme" uid="uid://cwjsb0qlm86r5" path="res://UI/Style/Bee_Theme.tres" id="1_g7eow"]
 [ext_resource type="Script" path="res://Play/main_menu.gd" id="2_jrubw"]
@@ -8,10 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://brajg1t0x2ouo" path="res://UI/Art/Icons/Play_Icon.png" id="6_j0m36"]
 [ext_resource type="Texture2D" uid="uid://cil71yy8sdpan" path="res://UI/Art/Icons/Edit_Icon.png" id="7_w5kti"]
 [ext_resource type="Texture2D" uid="uid://idox1wtl32os" path="res://UI/Art/Icons/Options_Icon.png" id="8_cikw8"]
+[ext_resource type="PackedScene" uid="uid://ottesxy2rk1h" path="res://UI/button_sound.tscn" id="9_nh65q"]
 [ext_resource type="Texture2D" uid="uid://covjh63dfrfr3" path="res://UI/Art/Icons/Help_Icon.png" id="9_poiqa"]
 [ext_resource type="Texture2D" uid="uid://4tiw8k6ksjxy" path="res://UI/Art/Icons/Exit_Icon.png" id="10_sr5eo"]
 [ext_resource type="Texture2D" uid="uid://coxyfupfv31p5" path="res://UI/Art/Return_Arrow.png" id="11_bthaf"]
 [ext_resource type="PackedScene" uid="uid://drlmndybhl8t4" path="res://UI/edit.tscn" id="12_g11w1"]
+[ext_resource type="AudioStream" uid="uid://lg63eic6usgi" path="res://UI/Sounds/Select_02.wav" id="12_yxq8t"]
 [ext_resource type="Texture2D" uid="uid://qkp4ujlp6tw" path="res://UI/Art/Icons/Confirm_Icon.png" id="14_06i8i"]
 [ext_resource type="PackedScene" uid="uid://cqxrcyiqso6wa" path="res://UI/help.tscn" id="14_kunq6"]
 [ext_resource type="Texture2D" uid="uid://cqfaao75q3ij7" path="res://UI/Art/Icons/VolMin_Icon.png" id="16_2poo4"]
@@ -627,6 +629,8 @@ text = "Play"
 icon = ExtResource("6_j0m36")
 expand_icon = true
 
+[node name="ButtonSound" parent="Main/Play" instance=ExtResource("9_nh65q")]
+
 [node name="Shade" type="TextureRect" parent="Main"]
 layout_mode = 1
 anchors_preset = -1
@@ -669,6 +673,8 @@ text = "Edit"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ButtonSound" parent="Main/ButtonBox/Edit" instance=ExtResource("9_nh65q")]
+
 [node name="Options" type="TextureButton" parent="Main/ButtonBox"]
 custom_minimum_size = Vector2(220, 2.08165e-12)
 layout_mode = 2
@@ -689,6 +695,8 @@ grow_vertical = 0
 text = "Options"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ButtonSound" parent="Main/ButtonBox/Options" instance=ExtResource("9_nh65q")]
 
 [node name="Help" type="TextureButton" parent="Main/ButtonBox"]
 custom_minimum_size = Vector2(220, 2.08165e-12)
@@ -711,6 +719,8 @@ text = "Help"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ButtonSound" parent="Main/ButtonBox/Help" instance=ExtResource("9_nh65q")]
+
 [node name="Quit" type="TextureButton" parent="Main/ButtonBox"]
 custom_minimum_size = Vector2(220, 2.08165e-12)
 layout_mode = 2
@@ -731,6 +741,9 @@ grow_vertical = 0
 text = "Quit"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ButtonSound" parent="Main/ButtonBox/Quit" instance=ExtResource("9_nh65q")]
+stream = ExtResource("12_yxq8t")
 
 [node name="Edit" parent="." instance=ExtResource("12_g11w1")]
 visible = false
@@ -768,12 +781,17 @@ text = "Cancel"
 icon = ExtResource("11_bthaf")
 expand_icon = true
 
+[node name="ButtonSound" parent="Options/HBox/Cancel" instance=ExtResource("9_nh65q")]
+stream = ExtResource("12_yxq8t")
+
 [node name="Confirm" type="Button" parent="Options/HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Confirm"
 icon = ExtResource("14_06i8i")
 expand_icon = true
+
+[node name="ButtonSound" parent="Options/HBox/Confirm" instance=ExtResource("9_nh65q")]
 
 [node name="VBox" type="VBoxContainer" parent="Options"]
 layout_mode = 1
@@ -813,6 +831,9 @@ texture_normal = ExtResource("16_2poo4")
 ignore_texture_size = true
 stretch_mode = 5
 
+[node name="ButtonSound" parent="Options/VBox/Music/Music_Min" instance=ExtResource("9_nh65q")]
+stream = ExtResource("12_yxq8t")
+
 [node name="Music_Slide" type="HSlider" parent="Options/VBox/Music"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -831,6 +852,8 @@ size_flags_vertical = 4
 texture_normal = ExtResource("17_b62g6")
 ignore_texture_size = true
 stretch_mode = 5
+
+[node name="ButtonSound" parent="Options/VBox/Music/Music_Max" instance=ExtResource("9_nh65q")]
 
 [node name="SFXLabel" type="Label" parent="Options/VBox"]
 layout_mode = 2
@@ -855,6 +878,9 @@ texture_normal = ExtResource("16_2poo4")
 ignore_texture_size = true
 stretch_mode = 5
 
+[node name="ButtonSound" parent="Options/VBox/SFX/SFX_Min" instance=ExtResource("9_nh65q")]
+stream = ExtResource("12_yxq8t")
+
 [node name="SFX_Slide" type="HSlider" parent="Options/VBox/SFX"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -873,6 +899,8 @@ size_flags_vertical = 4
 texture_normal = ExtResource("17_b62g6")
 ignore_texture_size = true
 stretch_mode = 5
+
+[node name="ButtonSound" parent="Options/VBox/SFX/SFX_Max" instance=ExtResource("9_nh65q")]
 
 [node name="Help" type="Panel" parent="."]
 visible = false
@@ -921,6 +949,8 @@ text = "Tutorial"
 icon = ExtResource("9_poiqa")
 expand_icon = true
 
+[node name="ButtonSound" parent="Help/VBoxContainer/TutorialButton" instance=ExtResource("9_nh65q")]
+
 [node name="PrivacyPolicy" type="Button" parent="Help/VBoxContainer"]
 custom_minimum_size = Vector2(2.08165e-12, 200)
 layout_mode = 2
@@ -928,6 +958,8 @@ size_flags_vertical = 6
 text = "Privacy Policy"
 icon = ExtResource("18_sr7a0")
 expand_icon = true
+
+[node name="ButtonSound" parent="Help/VBoxContainer/PrivacyPolicy" instance=ExtResource("9_nh65q")]
 
 [node name="Website" type="Button" parent="Help/VBoxContainer"]
 custom_minimum_size = Vector2(2.08165e-12, 200)
@@ -937,6 +969,8 @@ text = "Website"
 icon = ExtResource("19_iat23")
 expand_icon = true
 
+[node name="ButtonSound" parent="Help/VBoxContainer/Website" instance=ExtResource("9_nh65q")]
+
 [node name="CloseHelp" type="Button" parent="Help/VBoxContainer"]
 custom_minimum_size = Vector2(2.08165e-12, 200)
 layout_mode = 2
@@ -944,6 +978,9 @@ size_flags_vertical = 6
 text = "Close"
 icon = ExtResource("11_bthaf")
 expand_icon = true
+
+[node name="ButtonSound" parent="Help/VBoxContainer/CloseHelp" instance=ExtResource("9_nh65q")]
+stream = ExtResource("12_yxq8t")
 
 [node name="Tutorial" parent="Help" instance=ExtResource("14_kunq6")]
 visible = false
@@ -962,7 +999,6 @@ color = Color(0, 0, 0, 1)
 
 [node name="MenuMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_n0hyg")
-autoplay = true
 bus = &"Music"
 
 [connection signal="pressed" from="Main/Play" to="." method="_on_play_pressed"]

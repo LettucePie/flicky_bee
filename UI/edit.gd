@@ -63,12 +63,14 @@ func _tag_selected(t : PriceTag) -> void:
 			message = "Not Enough Honey Points"
 		buy = t.purchase_usd
 	$ActionContainer/Equip.text = "Equip"
+	$ActionContainer/Equip/ButtonSound._set_sound(4)
 	$ActionContainer/Buy_Points.text = str(t.honey_amount) + " HP"
 	$ActionContainer/Buy_USD.text = "$" + str(t.usd_amount)
 	if t.acc_name == persist_node.hat \
 	or t.acc_name == persist_node.trail \
 	or t.acc_name == persist_node.flower:
 		$ActionContainer/Equip.text = "Remove"
+		$ActionContainer/Equip/ButtonSound._set_sound(5)
 	_update_actions(equip, redeem, buy, message)
 
 

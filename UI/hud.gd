@@ -30,7 +30,6 @@ func _setup() -> void:
 	$Flight_Meter.show()
 	_update_score(0, 0)
 	_update_distance(0)
-	$TryAgain.hide()
 	$PauseButton.show()
 	$Pause.hide()
 
@@ -70,12 +69,10 @@ func _update_distance(dist : float) -> void:
 func _player_death() -> void:
 	$Health_Meter.hide()
 	$Flight_Meter.hide()
-#	$TryAgain.show()
 
 
 func _on_play_again_pressed():
 	emit_signal("play_again")
-	$TryAgain.hide()
 
 
 func _on_pause_pressed():

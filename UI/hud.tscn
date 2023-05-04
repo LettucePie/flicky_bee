@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ej68kxh031vn"]
+[gd_scene load_steps=21 format=3 uid="uid://ej68kxh031vn"]
 
 [ext_resource type="Theme" uid="uid://cwjsb0qlm86r5" path="res://UI/Style/Bee_Theme.tres" id="1_lh646"]
 [ext_resource type="Script" path="res://UI/hud.gd" id="1_w0mb1"]
@@ -11,23 +11,15 @@
 [ext_resource type="Texture2D" uid="uid://ckr6oq13yw13j" path="res://UI/Art/Health_Jar.png" id="4_xo1nj"]
 [ext_resource type="Texture2D" uid="uid://cpgxsb0sa2if0" path="res://UI/Art/Icons/Pause_Icon.png" id="5_a1frm"]
 [ext_resource type="Texture2D" uid="uid://d2c6t17xfaleb" path="res://UI/Art/Left_Meter_Overlay.png" id="5_gfkuu"]
+[ext_resource type="PackedScene" uid="uid://ottesxy2rk1h" path="res://UI/button_sound.tscn" id="6_ttbs4"]
 [ext_resource type="Texture2D" uid="uid://dsgpuvqv8e812" path="res://UI/Art/Left_Meter_Fill.png" id="7_haw5s"]
+[ext_resource type="AudioStream" uid="uid://lg63eic6usgi" path="res://UI/Sounds/Select_02.wav" id="7_ilu2f"]
 [ext_resource type="Texture2D" uid="uid://v7ojar4c3ctt" path="res://UI/Art/Wings.png" id="7_pajgt"]
 [ext_resource type="LabelSettings" uid="uid://ban0wox1lr7ix" path="res://UI/Label_Setting_Big.tres" id="11_j2abc"]
 [ext_resource type="PackedScene" uid="uid://cy60dhgo0wcen" path="res://UI/score_pop.tscn" id="13_yn6dh"]
 [ext_resource type="Texture2D" uid="uid://brajg1t0x2ouo" path="res://UI/Art/Icons/Play_Icon.png" id="16_1p7ni"]
 [ext_resource type="Texture2D" uid="uid://coxyfupfv31p5" path="res://UI/Art/Return_Arrow.png" id="16_fuy5r"]
-
-[sub_resource type="SystemFont" id="SystemFont_uigy6"]
-subpixel_positioning = 0
-
-[sub_resource type="LabelSettings" id="LabelSettings_fhcay"]
-font = SubResource("SystemFont_uigy6")
-font_size = 24
-outline_size = 10
-outline_color = Color(0.227451, 0.223529, 0, 1)
-shadow_size = 13
-shadow_color = Color(0, 0, 0, 0.780392)
+[ext_resource type="AudioStream" uid="uid://bpvse77nqsyr0" path="res://UI/Sounds/Select_06.wav" id="20_5qsnx"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -59,6 +51,9 @@ theme = ExtResource("4_7tbs7")
 texture_normal = ExtResource("5_a1frm")
 ignore_texture_size = true
 stretch_mode = 5
+
+[node name="ButtonSound" parent="PauseButton" instance=ExtResource("6_ttbs4")]
+stream = ExtResource("7_ilu2f")
 
 [node name="Health_Meter" type="Control" parent="."]
 self_modulate = Color(0.341176, 0.180392, 0.113725, 1)
@@ -261,59 +256,6 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TryAgain" type="Panel" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.127778
-anchor_top = 0.202083
-anchor_right = 0.873148
-anchor_bottom = 0.746875
-offset_bottom = 2.28882e-05
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TryAgain"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="Label" type="Label" parent="TryAgain/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-text = "The Bee is weary, and returns home."
-label_settings = ExtResource("11_j2abc")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="Label2" type="Label" parent="TryAgain/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-text = "Thanks for playing!
-
-Made using Godot 4.0.1
-Krita 4.0.6
-blender 3.2.0
-LMMS + Audacity
-
-Made by LettucePie
-Twitter @PieLettuce Email thelettucepie@gmail.com"
-label_settings = SubResource("LabelSettings_fhcay")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="PlayAgain" type="Button" parent="TryAgain/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "Play Again?"
-
 [node name="Pause" type="ColorRect" parent="."]
 process_mode = 3
 visible = false
@@ -366,6 +308,8 @@ text = "Continue"
 icon = ExtResource("16_1p7ni")
 expand_icon = true
 
+[node name="ButtonSound" parent="Pause/Panel/Vbox/Continue" instance=ExtResource("6_ttbs4")]
+
 [node name="Return" type="Button" parent="Pause/Panel/Vbox"]
 custom_minimum_size = Vector2(2.08165e-12, 200)
 layout_mode = 2
@@ -374,7 +318,9 @@ text = "Return to the Hive"
 icon = ExtResource("16_fuy5r")
 expand_icon = true
 
+[node name="ButtonSound" parent="Pause/Panel/Vbox/Return" instance=ExtResource("6_ttbs4")]
+stream = ExtResource("20_5qsnx")
+
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_pressed"]
-[connection signal="pressed" from="TryAgain/VBoxContainer/PlayAgain" to="." method="_on_play_again_pressed"]
 [connection signal="pressed" from="Pause/Panel/Vbox/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="Pause/Panel/Vbox/Return" to="." method="_on_return_pressed"]
