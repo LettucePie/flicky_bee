@@ -7,9 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://jgdg1uwq2rq6" path="res://UI/arc_visual.tscn" id="4_weoh5"]
 [ext_resource type="PackedScene" uid="uid://yxtju6v5sytc" path="res://UI/knob_visual.tscn" id="5_3g4qb"]
 [ext_resource type="PackedScene" uid="uid://ej68kxh031vn" path="res://UI/hud.tscn" id="5_rm8qy"]
-[ext_resource type="AudioStream" uid="uid://4c0mv63s5v8u" path="res://Core/Sound/Song_2.mp3" id="7_cn5s7"]
 [ext_resource type="PackedScene" uid="uid://bnideixfjpsgc" path="res://Core/results.tscn" id="7_jdqey"]
 [ext_resource type="PackedScene" uid="uid://ctoi4c1j3c0ba" path="res://Core/grass_patch.tscn" id="8_r0s2t"]
+[ext_resource type="AudioStream" uid="uid://c1mfsmdk7d3bu" path="res://kenney/Farm Frolics.ogg" id="9_cbbfq"]
 [ext_resource type="Script" path="res://Play/music_fade.gd" id="10_da10t"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i3iu5"]
@@ -72,7 +72,7 @@ visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
-stream = ExtResource("7_cn5s7")
+stream = ExtResource("9_cbbfq")
 autoplay = true
 bus = &"Music"
 script = ExtResource("10_da10t")
