@@ -29,13 +29,6 @@ theme/default_font_antialiasing=2
 theme/default_font_hinting=2
 theme/default_font_generate_mipmaps=true
 
-[importer_defaults]
-
-texture={
-"compress/mode": 1,
-"mipmaps/limit": 0
-}
-
 [layer_names]
 
 3d_physics/layer_1="Base"
@@ -46,7 +39,6 @@ texture={
 
 textures/canvas_textures/default_texture_filter=2
 renderer/rendering_method="mobile"
-textures/vram_compression/import_s3tc_bptc=true
 textures/default_filters/use_nearest_mipmap_filter=true
 textures/decals/filter=5
 textures/light_projectors/filter=5

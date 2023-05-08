@@ -1,7 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://2gkm2rsvmoiy"]
+[gd_scene load_steps=18 format=3 uid="uid://2gkm2rsvmoiy"]
 
 [ext_resource type="Script" path="res://Core/generator.gd" id="1_govy5"]
 [ext_resource type="PackedScene" uid="uid://binixehfbq4hi" path="res://Core/platform.tscn" id="2_47aoa"]
+[ext_resource type="PackedScene" uid="uid://j2m3vclhv7mb" path="res://Testing/gen_start.tscn" id="2_qjg4w"]
+[ext_resource type="PackedScene" uid="uid://6quo45qa5ifd" path="res://Testing/gen_end.tscn" id="3_560oa"]
 [ext_resource type="PackedScene" uid="uid://gb2yeb77jx7e" path="res://Core/windhook.tscn" id="3_fknxc"]
 [ext_resource type="PackedScene" uid="uid://drha4kqvmn55e" path="res://Core/Obstacles/brick_pattern_1.tscn" id="3_wpdg5"]
 [ext_resource type="PackedScene" uid="uid://dva61vhl13qsd" path="res://Core/Obstacles/brick_pattern_2.tscn" id="4_ilki3"]
@@ -16,11 +18,13 @@
 [ext_resource type="PackedScene" uid="uid://bei5i40hikwu6" path="res://Core/Collectables/collection_patch_wing_1.tscn" id="12_1ycrh"]
 
 [sub_resource type="Curve" id="Curve_c8t26"]
-_data = [Vector2(0, 0), 0.0, 0.192868, 0, 0, Vector2(0.385578, 0.102552), 0.595004, 0.595004, 0, 0, Vector2(1, 1), 0.0997758, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.192868, 0, 0, Vector2(0.195876, 0.0818182), 0.595004, 0.595004, 0, 0, Vector2(1, 1), 0.0997758, 0.0, 0, 0]
 point_count = 3
 
 [node name="Generator" type="Node3D"]
 script = ExtResource("1_govy5")
+gen_start = ExtResource("2_qjg4w")
+gen_end = ExtResource("3_560oa")
 difficulty_curve = SubResource("Curve_c8t26")
 platform_scene = ExtResource("2_47aoa")
 windhook_scene = ExtResource("3_fknxc")

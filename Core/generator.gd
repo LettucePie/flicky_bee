@@ -2,6 +2,12 @@ extends Node3D
 
 class_name Generator
 
+##
+## Testing
+##
+@export var gen_start : PackedScene
+@export var gen_end : PackedScene
+##
 @export var difficulty_curve : Curve
 @export var max_difficulty := 16.0
 @export var platform_scene : PackedScene
@@ -77,12 +83,11 @@ func _generate(num : int, z_start : float, flower : String) -> void:
 			max_difficulty
 		)
 		z_point -= randf_range(6.5, 6.5 + difficulty_skew)
+		var start = gen_start.instantiate()
+		start.position.z = z_point
+		add_child(start)
 		for i in num:
-			var new_plat = MeshInstance3D.new()
-			if randf() < 0.8:
-				new_plat = platform_scene.instantiate()
-			else:
-				new_plat = windhook_scene.instantiate()
+			var new_plat = platform_scene.instantiate()
 			new_plat.set_position(
 				Vector3(
 					randf_range(-5.5, 5.5),
@@ -90,8 +95,8 @@ func _generate(num : int, z_start : float, flower : String) -> void:
 					z_point
 				)
 			)
-			platforms.append(new_plat)
 			add_child(new_plat)
+			platforms.append(new_plat)
 			new_plat._return_flower()._assign_flower(flower)
 			##
 			if abs(z_point) - abs(z_previous) >= 8.5:
@@ -142,6 +147,9 @@ func _generate(num : int, z_start : float, flower : String) -> void:
 						add_child(bonus_gap)
 			##
 			z_previous = z_point
-			z_point -= randf_range(6.5, 15.5)
-		
+			if i < (num - 1):
+				z_point -= randf_range(6.5, 6.5 + difficulty_skew)
+		var end = gen_end.instantiate()
+		end.position.z = z_point
+		add_child(end)
 		z_point = z_start

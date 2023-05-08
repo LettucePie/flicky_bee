@@ -1,6 +1,6 @@
 [gd_resource type="PlaneMesh" load_steps=3 format=3 uid="uid://ugstmkfvysr1"]
 
-[ext_resource type="Texture2D" uid="uid://vbrt7giwhcvd" path="res://Accessory/Trails/Art/Sparkle_Particle.png" id="1_yh8p8"]
+[ext_resource type="Texture2D" uid="uid://grwce6p0nkp4" path="res://Accessory/Trails/Art/Sparkle_Particle.png" id="1_yh8p8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3aeid"]
 transparency = 1
