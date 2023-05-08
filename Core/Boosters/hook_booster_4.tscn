@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://dq16gf651uk3t"]
+
+[ext_resource type="Script" path="res://Core/Boosters/hook_booster.gd" id="1_cf66u"]
+[ext_resource type="PackedScene" uid="uid://gb2yeb77jx7e" path="res://Core/windhook.tscn" id="2_f7fj8"]
+[ext_resource type="PackedScene" uid="uid://csgnx6hw84lqs" path="res://Core/Collectables/collection_patch_4.tscn" id="3_h80iu"]
+
+[node name="HookBooster_4" type="Node3D"]
+script = ExtResource("1_cf66u")
+
+[node name="Windhook" parent="." instance=ExtResource("2_f7fj8")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 4, 0, 2.5)
+
+[node name="CollectionPatch_4" parent="Windhook" instance=ExtResource("3_h80iu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.19993)

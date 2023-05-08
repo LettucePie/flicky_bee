@@ -9,7 +9,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	var offset = noise.offset
 	offset.y += delta * stream_speed
 	if offset.y > 2000:

@@ -45,7 +45,7 @@ var final_acc := 2.0
 var speed := 0.0
 var bursting := false
 var burst_duration = 100
-var burst_acc = 14.0
+var burst_acc = 12.0
 ##
 ##
 ##
@@ -70,11 +70,13 @@ func _physics_process(delta):
 	if flicked:
 		if bursting:
 #			fly_dir = fly_dir.lerp(Vector3.FORWARD, 0.3)
-			speed = lerp(speed, burst_acc * 0.66, delta)
+			speed = lerp(speed, burst_acc * 0.66, delta * 0.5)
 			burst_duration -= 1
 			if burst_duration <= 0:
 				print("Burst Finished")
 				bursting = false
+				fly_force = 1.0
+				fly_target_force = 0.4
 		elif flown:
 			fly_force = lerp(fly_force, fly_target_force, delta * 3)
 			speed = fly_acc * fly_force
@@ -110,7 +112,7 @@ func _physics_process(delta):
 		for m in magnet_col:
 			var m_pos = m.get_global_position()
 			var dir = m_pos.direction_to(self.get_position())
-			m.global_translate(dir * 4 * delta)
+			m.global_translate(dir * 5 * delta)
 	var pos = self.get_position()
 	pos.x = clamp(pos.x, -6.25, 6.25)
 	self.set_position(pos)
@@ -161,7 +163,7 @@ func _flick_to(target : Vector3) -> void:
 
 func _fly_to(direction : Vector3, flight : float, tension : float) -> void:
 	flown = true
-	fly_target_force = 0.2
+	fly_target_force = 0.4
 	if flight > 0.0:
 		fly_target_force = 1.0
 	previous_dir = fly_dir
@@ -201,11 +203,19 @@ func _on_area_entered(area):
 	if area.is_in_group("Windhook"):
 		print("Player Touched Windhook")
 		_switch_to_flight()
-		_point_forward(Vector3.FORWARD)
-		fly_dir = Vector3.FORWARD
-		burst_duration = 100
+		var hook_dir = Vector3.FORWARD
+		if area.rotation.y != 0:
+			print("Tilted WindHook true... Rotation: ", area.rotation)
+		hook_dir = hook_dir.rotated(
+			Vector3.UP, area.rotation.y
+		)
+		print("Hook Direction: ", hook_dir)
+		_point_forward(hook_dir)
+		fly_dir = hook_dir
+		burst_duration = 45
 		bursting = true
 		speed = burst_acc
+		emit_signal("collected", "Wing")
 	if area.is_in_group("Collectable"):
 		var c_type = area.get_meta("Type")
 		if c_type != null:
@@ -251,7 +261,6 @@ func _landed(area) -> void:
 
 func _on_magnet_area_entered(area):
 	if area.is_in_group("Collectable"):
-		
 		if !magnet_col.has(area.get_parent()):
 			magnet_col.append(area.get_parent())
 

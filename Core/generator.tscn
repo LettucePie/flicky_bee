@@ -1,16 +1,19 @@
-[gd_scene load_steps=18 format=3 uid="uid://2gkm2rsvmoiy"]
+[gd_scene load_steps=21 format=3 uid="uid://2gkm2rsvmoiy"]
 
 [ext_resource type="Script" path="res://Core/generator.gd" id="1_govy5"]
 [ext_resource type="PackedScene" uid="uid://binixehfbq4hi" path="res://Core/platform.tscn" id="2_47aoa"]
 [ext_resource type="PackedScene" uid="uid://j2m3vclhv7mb" path="res://Testing/gen_start.tscn" id="2_qjg4w"]
 [ext_resource type="PackedScene" uid="uid://6quo45qa5ifd" path="res://Testing/gen_end.tscn" id="3_560oa"]
-[ext_resource type="PackedScene" uid="uid://gb2yeb77jx7e" path="res://Core/windhook.tscn" id="3_fknxc"]
 [ext_resource type="PackedScene" uid="uid://drha4kqvmn55e" path="res://Core/Obstacles/brick_pattern_1.tscn" id="3_wpdg5"]
 [ext_resource type="PackedScene" uid="uid://dva61vhl13qsd" path="res://Core/Obstacles/brick_pattern_2.tscn" id="4_ilki3"]
 [ext_resource type="PackedScene" uid="uid://q8mgam6ej550" path="res://Core/Obstacles/brick_pattern_3.tscn" id="5_bxuv1"]
+[ext_resource type="PackedScene" uid="uid://jt273xikpqmo" path="res://Core/Boosters/hook_booster_1.tscn" id="5_j55rj"]
 [ext_resource type="PackedScene" uid="uid://1q4maiuuyl5w" path="res://Core/Obstacles/frog.tscn" id="6_0ilmg"]
+[ext_resource type="PackedScene" uid="uid://db2regjpndaey" path="res://Core/Boosters/hook_booster_2.tscn" id="6_370gm"]
 [ext_resource type="PackedScene" uid="uid://cw7y83phl2tb3" path="res://Core/Collectables/collection_patch_1.tscn" id="7_v1ynf"]
+[ext_resource type="PackedScene" uid="uid://dbpn85sq8mxtw" path="res://Core/Boosters/hook_booster_3.tscn" id="7_vhfo7"]
 [ext_resource type="PackedScene" uid="uid://clcg6uqm7ta1x" path="res://Core/Obstacles/dragonfly.tscn" id="7_x15y0"]
+[ext_resource type="PackedScene" uid="uid://dq16gf651uk3t" path="res://Core/Boosters/hook_booster_4.tscn" id="8_bpket"]
 [ext_resource type="PackedScene" uid="uid://w01qs4s6aouq" path="res://Core/Collectables/collection_patch_2.tscn" id="8_l56k5"]
 [ext_resource type="PackedScene" uid="uid://b854y86ayr4a4" path="res://Core/Collectables/collection_patch_3.tscn" id="9_5cfgi"]
 [ext_resource type="PackedScene" uid="uid://csgnx6hw84lqs" path="res://Core/Collectables/collection_patch_4.tscn" id="10_movi4"]
@@ -18,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://bei5i40hikwu6" path="res://Core/Collectables/collection_patch_wing_1.tscn" id="12_1ycrh"]
 
 [sub_resource type="Curve" id="Curve_c8t26"]
-_data = [Vector2(0, 0), 0.0, 0.192868, 0, 0, Vector2(0.195876, 0.0818182), 0.595004, 0.595004, 0, 0, Vector2(1, 1), 0.0997758, 0.0, 0, 0]
+_data = [Vector2(0, 0.12), 0.0, 0.192868, 0, 0, Vector2(0.278, 0.14), 0.104672, 0.104672, 0, 0, Vector2(1, 1), 0.0997758, 0.0, 0, 0]
 point_count = 3
 
 [node name="Generator" type="Node3D"]
@@ -27,7 +30,7 @@ gen_start = ExtResource("2_qjg4w")
 gen_end = ExtResource("3_560oa")
 difficulty_curve = SubResource("Curve_c8t26")
 platform_scene = ExtResource("2_47aoa")
-windhook_scene = ExtResource("3_fknxc")
+booster_scenes = Array[PackedScene]([ExtResource("5_j55rj"), ExtResource("6_370gm"), ExtResource("7_vhfo7"), ExtResource("8_bpket")])
 obstacle_scenes = Array[PackedScene]([ExtResource("3_wpdg5"), ExtResource("4_ilki3"), ExtResource("5_bxuv1")])
 danger_scenes = Array[PackedScene]([ExtResource("6_0ilmg"), ExtResource("7_x15y0")])
 collection_patches = Array[PackedScene]([ExtResource("7_v1ynf"), ExtResource("8_l56k5"), ExtResource("9_5cfgi"), ExtResource("10_movi4"), ExtResource("7_v1ynf"), ExtResource("8_l56k5"), ExtResource("9_5cfgi"), ExtResource("10_movi4"), ExtResource("11_w2wr3"), ExtResource("12_1ycrh")])
