@@ -35,7 +35,6 @@ func _on_next_pressed():
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == pages.back():
-		print("Help Ended")
 		$Navigation/Container/Done.show()
 		$Navigation/Container/Next.hide()
 

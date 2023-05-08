@@ -29,35 +29,35 @@ func _plugin_integrated() -> bool:
 	if Engine.has_singleton("InAppStore"):
 		in_app_store = Engine.get_singleton("InAppStore")
 		integrated = true
-		print(in_app_store)
+		print("**ios** ", in_app_store)
 	else:
 		print("iOS IAP plugin is not available on this platform.")
 	return integrated
 
 
 func _check_events() -> void:
-	print("Check Events")
+	print("**ios** Check Events")
 	while in_app_store.get_pending_event_count() > 0:
 		var event = in_app_store.pop_pending_event()
-		print("Recieved Event: ", event)
+		print("**ios** Recieved Event: ", event)
 		if event.result == "ok":
 			if event.type == "product_info":
 				_align_store_info(event)
 			if event.type == "restore":
 				_process_previous_purchase(event.product_id)
 		elif event.result == "error":
-			print("INAPPSTORE_ERROR: ", event.type, " ", event.product_id)
+			print("**ios** INAPPSTORE_ERROR: ", event.type, " ", event.product_id)
 			if event.type == "product_info":
 				store_info_state = STATE.EMPTY
 				store_info.clear()
 	if in_app_store.get_pending_event_count() <= 0:
-		print("Events has nothing pending")
+		print("**ios** Events has nothing pending")
 		$Timer.stop()
 
 
 func _request_store_info() -> void:
 	if store_info_state == STATE.EMPTY:
-		print("Requesting Store Info")
+		print("**ios** Requesting Store Info")
 		for p in products:
 			p.validated = false
 		var prod_ids = []
@@ -68,13 +68,13 @@ func _request_store_info() -> void:
 				"product_ids" : prod_ids
 			}
 		)
-		print("Requesting: ", request)
+		print("**ios** Requesting: ", request)
 		store_info_state = STATE.PENDING
 		$Timer.start(1.0)
 
 
 func _align_store_info(event) -> void:
-	print("Alinging Store Info on data: ", event)
+	print("**ios** Alinging Store Info on data: ", event)
 	store_info.clear()
 	var index = 0
 	for id in event.ids:
@@ -88,7 +88,7 @@ func _align_store_info(event) -> void:
 		)
 		index += 1
 	if store_info.size() > 0:
-		print("LocalPriceType is a String")
+		print("**ios** LocalPriceType is a String")
 		for s in store_info:
 			for p in products:
 				if s.prod_id == p.prod_id:
@@ -96,7 +96,7 @@ func _align_store_info(event) -> void:
 					p.validated = true
 					p.usd_amount = s.local_price
 	store_info_state = STATE.COMPLETE
-	print("Store Info State is Complete!")
+	print("**ios** Store Info State is Complete!")
 	emit_signal("store_info_complete")
 
 

@@ -1,0 +1,59 @@
+[gd_resource type="VisualShader" load_steps=6 format=3 uid="uid://b16abyqwp87h3"]
+
+[ext_resource type="FastNoiseLite" uid="uid://bimvii2jfgfwc" path="res://Core/WindStream_Noise.tres" id="1_tddum"]
+
+[sub_resource type="Gradient" id="Gradient_6okvo"]
+offsets = PackedFloat32Array(0.572985, 0.714597, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_h4bjl"]
+width = 1000
+height = 20
+generate_mipmaps = false
+normalize = false
+color_ramp = SubResource("Gradient_6okvo")
+noise = ExtResource("1_tddum")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_jdf08"]
+texture = SubResource("NoiseTexture2D_h4bjl")
+
+[sub_resource type="VisualShaderNodeUVPolarCoord" id="VisualShaderNodeUVPolarCoord_iwut7"]
+output_port_for_preview = 0
+
+[resource]
+code = "shader_type spatial;
+uniform sampler2D tex_frg_2;
+
+
+
+void fragment() {
+	vec2 n_out3p0;
+// UVPolarCoord:3
+	vec2 n_in3p1 = vec2(0.50000, 0.50000);
+	float n_in3p2 = 1.00000;
+	float n_in3p3 = 1.00000;
+	{
+		vec2 __dir = UV - n_in3p1;
+		float __radius = length(__dir) * 2.0;
+		float __angle = atan(__dir.y, __dir.x) * 1.0 / (PI * 2.0);
+		n_out3p0 = vec2(__radius * n_in3p2, __angle * n_in3p3);
+	}
+
+
+// Texture2D:2
+	vec4 n_out2p0 = texture(tex_frg_2, n_out3p0);
+
+
+// Output:0
+	ALBEDO = vec3(n_out2p0.xyz);
+	ALPHA = n_out2p0.x;
+
+
+}
+"
+graph_offset = Vector2(-435.675, 19.2724)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_jdf08")
+nodes/fragment/2/position = Vector2(-200, 160)
+nodes/fragment/3/node = SubResource("VisualShaderNodeUVPolarCoord_iwut7")
+nodes/fragment/3/position = Vector2(-760, 140)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 2, 0, 0, 1, 3, 0, 2, 0)

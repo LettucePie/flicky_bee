@@ -51,7 +51,6 @@ func _set_active_category(index : int) -> void:
 
 
 func _tag_selected(t : PriceTag) -> void:
-	print("EditPanel: Tag Selected: ", t.acc_name)
 	current_tag = t
 	$Selected.text = t.acc_name
 	var equip = (persist_node.accessories.has(t.acc_name))

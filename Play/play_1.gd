@@ -177,20 +177,6 @@ func _input(event):
 	if event is InputEventMouseMotion and time > 0.0:
 		if touching:
 			_process_drag(event)
-##
-## Testing score card sort
-##
-#	if event is InputEventKey:
-#		if event.pressed and event.keycode == KEY_SPACE:
-#			print("Testing Sort")
-#			var printout = "First 5\n"
-#			for i in 5:
-#				printout += score_card[i]["type"] + " " + str(score_card[i]["distance"]) + "\n"
-#			score_card.sort_custom(_sort_card)
-#			printout += "--Post Sort--\n"
-#			for i in 5:
-#				printout += score_card[i]["type"] + " " + str(score_card[i]["distance"]) + "\n"
-#			print(printout)
 
 ###
 ### The Logic for establishing whether the player is flicking or flying
@@ -214,7 +200,6 @@ func _process_click(event : InputEventMouseButton) -> void:
 		if traveling:
 			if player != null:
 				player._release_flight()
-				print("Release Flight")
 				flying = false
 			$Knob_Visual._release()
 
@@ -267,7 +252,7 @@ func _process_drag(event : InputEventMouseMotion) -> void:
 
 
 func _physics_process(delta):
-	if flying and touching:
+	if flying and touching and !player.bursting:
 		flight = clamp(
 			flight - (delta * 2),
 			0.0,
@@ -296,7 +281,6 @@ func _establish_bounds() -> void:
 #	var max = DisplayServer.window_get_size()
 	max_dimension = $HUD/Max.get_position()
 	var center = max_dimension * 0.5
-	print("Max ", max_dimension, " Center ", center)
 	left_2d_bound = Vector2(
 		clamp(center.x - 540, 0, max_dimension.x), 
 			0
@@ -305,8 +289,6 @@ func _establish_bounds() -> void:
 		clamp(max_dimension.x - left_2d_bound.x, 0, max_dimension.x), 
 			max_dimension.y
 		)
-	print("LeftBound: ", left_2d_bound, " RightBound: ", right_2d_bound)
-	print("Ratio : ", max_dimension.x / max_dimension.y, " : 1")
 	var ratio = max_dimension.x / max_dimension.y
 	var fov_percent = clamp(
 		inverse_lerp(0.55, 0.45, ratio),
@@ -318,7 +300,6 @@ func _establish_bounds() -> void:
 
 
 func _on_player_finished_travel(platform):
-	print("Player Finished Travel")
 	if $Generator.platforms.find(platform) >= 5:
 		for i in 4:
 			$Generator.platforms.pop_front().queue_free()
@@ -345,12 +326,10 @@ func _on_player_finished_travel(platform):
 
 
 func _on_player_flick_depleted() -> void:
-	print("Player Flick ran out of force, switching to Wings")
 	flying = true
 
 
 func _on_player_collect(obj) -> void:
-	print("Player Collected ", obj)
 	var difference = 0
 	if obj == "Honey":
 		time = clamp(time + 0.5, 0.0, life_time)
@@ -376,7 +355,6 @@ func _on_player_hit():
 
 
 func _on_life_timer_timeout():
-	print("Time Out")
 	$Life_Timer.stop()
 	$Rest_Timer.stop()
 	if persist != null:
@@ -412,7 +390,6 @@ func _on_top_detect_area_entered(area):
 
 
 func _on_results_play_again():
-#	get_tree().reload_current_scene()
 	_setup(menu, persist)
 
 

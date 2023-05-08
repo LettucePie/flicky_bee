@@ -24,7 +24,6 @@ func _generate_curve() -> void:
 	var index = 0
 	for i in point_number + 1:
 		if index >= point_number and points.size() > 0:
-#			print("Looping End")
 			points.append(points[0])
 			break
 		else:
@@ -40,7 +39,6 @@ func _generate_curve() -> void:
 		index = 0
 		for p in points:
 			if index == 0:
-#				print("Out Only")
 				var next_point = points[index + 1]
 				var next_normal = p.direction_to(next_point)
 				var prev_normal = p.direction_to(last_point)
@@ -53,7 +51,6 @@ func _generate_curve() -> void:
 				var offset_distance = p.distance_to(next_point) * 0.15
 				curve.add_point(p, Vector3.ZERO, offset_normal * offset_distance)
 			elif index == points.size() - 1:
-#				print("In Only")
 				var next_point = points[1]
 				var next_normal = p.direction_to(next_point)
 				var prev_normal = p.direction_to(last_point)
@@ -92,7 +89,6 @@ func _physics_process(delta):
 
 func _on_area_3d_body_entered(body):
 	if body.is_in_group("Player"):
-		print("Dragonfly encountered Player")
 		if body.has_method("_hit"):
 			body._hit()
 

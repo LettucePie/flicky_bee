@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cq8xwb87ki5cy"]
+
+[ext_resource type="Shader" uid="uid://cnxwn6rglkh8w" path="res://Core/Art/Materials/WindStreamShader.tres" id="1_sf4gb"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_sf4gb")

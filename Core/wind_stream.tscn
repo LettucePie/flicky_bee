@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://btmi58cvg0pcy"]
+
+[ext_resource type="Material" uid="uid://cq8xwb87ki5cy" path="res://Core/Art/Materials/WindStreamMaterial.tres" id="1_xfxb1"]
+[ext_resource type="Script" path="res://Core/wind_stream.gd" id="2_ygc1t"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_d18me"]
+material = ExtResource("1_xfxb1")
+top_radius = 1.0
+bottom_radius = 1.0
+cap_top = false
+cap_bottom = false
+
+[node name="WindStream" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_d18me")
+script = ExtResource("2_ygc1t")
+stream_speed = 100.0

@@ -5,6 +5,7 @@ class_name Generator
 @export var difficulty_curve : Curve
 @export var max_difficulty := 16.0
 @export var platform_scene : PackedScene
+@export var windhook_scene : PackedScene
 @export var obstacle_scenes : Array[PackedScene]
 @export var danger_scenes : Array[PackedScene]
 #@export var grass_patch_scene : PackedScene
@@ -75,10 +76,13 @@ func _generate(num : int, z_start : float, flower : String) -> void:
 			0.0,
 			max_difficulty
 		)
-		print(difficulty_skew)
 		z_point -= randf_range(6.5, 6.5 + difficulty_skew)
 		for i in num:
-			var new_plat = platform_scene.instantiate()
+			var new_plat = MeshInstance3D.new()
+			if randf() < 0.8:
+				new_plat = platform_scene.instantiate()
+			else:
+				new_plat = windhook_scene.instantiate()
 			new_plat.set_position(
 				Vector3(
 					randf_range(-5.5, 5.5),

@@ -18,17 +18,14 @@ func _remove_hat() -> void:
 
 
 func _set_active(hat : String) -> void:
-	print("Setting Active Hat: ", hat)
 	if hats.size() > 0:
 		for h in hats:
 			if h.hat_name == hat:
-				print("Found Hat")
 				active_hat = h.scene.instantiate()
 				self.add_child(active_hat)
 
 
 func _set_big_mode(tf : bool) -> void:
-	print("Setting Hat Big_Mode: ", tf)
 	big_mode = tf
 	set_scale(Vector3.ONE)
 	if big_mode:

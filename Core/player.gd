@@ -43,6 +43,9 @@ var initial_acc := 12.0
 var fly_acc = 8.0
 var final_acc := 2.0
 var speed := 0.0
+var bursting := false
+var burst_duration = 100
+var burst_acc = 14.0
 ##
 ##
 ##
@@ -65,7 +68,14 @@ func _assign_accessories(hat_name : String, trail_name : String) -> void:
 
 func _physics_process(delta):
 	if flicked:
-		if flown:
+		if bursting:
+#			fly_dir = fly_dir.lerp(Vector3.FORWARD, 0.3)
+			speed = lerp(speed, burst_acc * 0.66, delta)
+			burst_duration -= 1
+			if burst_duration <= 0:
+				print("Burst Finished")
+				bursting = false
+		elif flown:
 			fly_force = lerp(fly_force, fly_target_force, delta * 3)
 			speed = fly_acc * fly_force
 			$Buzz.pitch_scale = 0.9 + fly_force
@@ -95,19 +105,7 @@ func _physics_process(delta):
 		if move_and_slide():
 			if !flown:
 				emit_signal("flick_depleted")
-				flown = true
-				fly_force = 0.5
-				fly_target_force = 0.2
-				if anim.current_animation != "Base/Fly":
-					anim.play("Base/Fly")
-					bee_object.set_rotation(Vector3(0, PI * -0.5, 0))
-				if !$Buzz.playing:
-					$Buzz.playing = true
-#	else:
-#		if current_flower != null:
-#			var trace = current_flower._return_trace()
-#			var trace_global = to_global(trace.get_position())
-#			self.set_position(trace_global)
+				_switch_to_flight()
 	if magnet_col.size() > 0:
 		for m in magnet_col:
 			var m_pos = m.get_global_position()
@@ -118,6 +116,17 @@ func _physics_process(delta):
 	self.set_position(pos)
 
 
+func _switch_to_flight() -> void:
+	flown = true
+	fly_force = 0.5
+	fly_target_force = 0.2
+	if anim.current_animation != "Base/Fly":
+		anim.play("Base/Fly")
+		bee_object.set_rotation(Vector3(0, PI * -0.5, 0))
+	if !$Buzz.playing:
+		$Buzz.playing = true
+
+
 func _hit() -> void:
 	$Pickup.set_stream(hit_sound)
 	$Pickup.play()
@@ -126,12 +135,10 @@ func _hit() -> void:
 
 
 func _die() -> void:
-	print("Player Dying")
 	self.queue_free()
 
 
 func _flick_to(target : Vector3) -> void:
-	print("Player Flicking to ", target)
 	bee_object.get_parent().remove_child(bee_object)
 	$Turn.add_child(bee_object)
 	bee_object.set_rotation(Vector3(0, PI * -0.5, 0))
@@ -143,6 +150,7 @@ func _flick_to(target : Vector3) -> void:
 	total_distance = start_point.distance_to(flick_target)
 	speed = initial_acc
 	flown = false
+	bursting = false
 	previous_dir = fly_dir
 	fly_dir = start_point.direction_to(flick_target)
 	fly_force = 1.0
@@ -157,7 +165,10 @@ func _fly_to(direction : Vector3, flight : float, tension : float) -> void:
 	if flight > 0.0:
 		fly_target_force = 1.0
 	previous_dir = fly_dir
-	fly_dir = direction
+	if bursting:
+		fly_dir = fly_dir.lerp(direction, 0.05)
+	else:
+		fly_dir = direction
 #	$Turn.set_rotation(Vector3.ZERO)
 #	self.set_rotation(Vector3.ZERO)
 #	$Turn/Bee.set_position(Vector3.ZERO)
@@ -174,9 +185,7 @@ func _release_flight() -> void:
 
 
 func _point_forward(direction) -> void:
-#	var angle = previous_dir.angle_to(direction)
 	var angle = Vector3.BACK.signed_angle_to(direction, Vector3.UP)
-#	var turn_rot = $Turn.get_rotation()
 	$Turn.rotation = Vector3(0, angle, 0)
 
 
@@ -189,6 +198,14 @@ func _on_area_entered(area):
 		else:
 			if area != current_platform:
 				_landed(area)
+	if area.is_in_group("Windhook"):
+		print("Player Touched Windhook")
+		_switch_to_flight()
+		_point_forward(Vector3.FORWARD)
+		fly_dir = Vector3.FORWARD
+		burst_duration = 100
+		bursting = true
+		speed = burst_acc
 	if area.is_in_group("Collectable"):
 		var c_type = area.get_meta("Type")
 		if c_type != null:
@@ -221,6 +238,7 @@ func _landed(area) -> void:
 	speed = 0
 	flicked = false
 	flown = false
+	bursting = false
 	previous_dir = fly_dir
 	fly_dir = Vector3.FORWARD
 	var area_pos = area.get_position()

@@ -21,7 +21,6 @@ func _ready():
 	fly_bar = $Flight_Meter/FlyBar
 	_update_score(0, 0)
 	_setup()
-#	print(AudioServer.get_bus_index("Music"), " ", AudioServer.get_bus_index("SFX"))
 
 
 func _setup() -> void:
@@ -76,21 +75,18 @@ func _on_play_again_pressed():
 
 
 func _on_pause_pressed():
-	print("Pause Pressed, show Pause Screen")
 	$PauseButton.hide()
 	$Pause.show()
 	get_tree().paused = true
 
 
 func _on_continue_pressed():
-	print("Continue Pressed, Unpause")
 	$PauseButton.show()
 	$Pause.hide()
 	get_tree().paused = false
 
 
 func _on_return_pressed():
-	print("Return Pressed, go to Results")
 	get_tree().paused = false
 	emit_signal("end_game")
 	self.hide()

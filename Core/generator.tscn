@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://2gkm2rsvmoiy"]
+[gd_scene load_steps=16 format=3 uid="uid://2gkm2rsvmoiy"]
 
 [ext_resource type="Script" path="res://Core/generator.gd" id="1_govy5"]
 [ext_resource type="PackedScene" uid="uid://binixehfbq4hi" path="res://Core/platform.tscn" id="2_47aoa"]
+[ext_resource type="PackedScene" uid="uid://gb2yeb77jx7e" path="res://Core/windhook.tscn" id="3_fknxc"]
 [ext_resource type="PackedScene" uid="uid://drha4kqvmn55e" path="res://Core/Obstacles/brick_pattern_1.tscn" id="3_wpdg5"]
 [ext_resource type="PackedScene" uid="uid://dva61vhl13qsd" path="res://Core/Obstacles/brick_pattern_2.tscn" id="4_ilki3"]
 [ext_resource type="PackedScene" uid="uid://q8mgam6ej550" path="res://Core/Obstacles/brick_pattern_3.tscn" id="5_bxuv1"]
@@ -22,6 +23,7 @@ point_count = 3
 script = ExtResource("1_govy5")
 difficulty_curve = SubResource("Curve_c8t26")
 platform_scene = ExtResource("2_47aoa")
+windhook_scene = ExtResource("3_fknxc")
 obstacle_scenes = Array[PackedScene]([ExtResource("3_wpdg5"), ExtResource("4_ilki3"), ExtResource("5_bxuv1")])
 danger_scenes = Array[PackedScene]([ExtResource("6_0ilmg"), ExtResource("7_x15y0")])
 collection_patches = Array[PackedScene]([ExtResource("7_v1ynf"), ExtResource("8_l56k5"), ExtResource("9_5cfgi"), ExtResource("10_movi4"), ExtResource("7_v1ynf"), ExtResource("8_l56k5"), ExtResource("9_5cfgi"), ExtResource("10_movi4"), ExtResource("11_w2wr3"), ExtResource("12_1ycrh")])

@@ -31,11 +31,8 @@ func _assign_tag(t : PriceTag, owned : bool, equipped : bool):
 
 
 func _on_gui_input(event):
-#	print("Accessory Option Recieved Input Event: ", event)
 	if event is InputEventMouseButton:
 		emit_signal("tag_selected", tag)
-#	if event is InputEventMouseMotion:
-#		emit_signal("scrolling", event)
 
 
 func _change_status(owned : bool, equipped : bool) -> void:

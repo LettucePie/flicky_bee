@@ -59,7 +59,6 @@ func _set_results(sc, score, furthest, persist) -> void:
 
 
 func _play_again(extra_arg_0):
-	print("Play Again pressed with : ", extra_arg_0)
 	get_tree().paused = false
 	if extra_arg_0:
 		emit_signal("play_again")
@@ -113,7 +112,6 @@ func _process(delta):
 		$Panel/Content/Bar.value = percent
 		if score_card.size() > 0:
 			while score_card.front()["distance"] <= timeline:
-				print(score_card.size())
 				var score = score_card.pop_front()
 				counts[score["type_id"]] += 1
 				labels[score["type_id"]].text = str(counts[score["type_id"]])
@@ -122,7 +120,6 @@ func _process(delta):
 				dings[score["type_id"]].play()
 				checked_scores.append(score)
 				if score_card.size() <= 0:
-					print("Break TimeLine Loop")
 					break
 	if suspense:
 		var current = Time.get_ticks_msec()

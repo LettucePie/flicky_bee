@@ -98,6 +98,8 @@ axis = 1
 texture = ExtResource("11_cb7ww")
 script = ExtResource("12_5hnsk")
 
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="area_entered" from="Magnet" to="." method="_on_magnet_area_entered"]
 [connection signal="area_exited" from="Magnet" to="." method="_on_magnet_area_exited"]
 [connection signal="area_entered" from="Area" to="." method="_on_area_entered"]

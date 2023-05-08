@@ -29,7 +29,6 @@ func _ready():
 
 
 func _set_current(current : String) -> void:
-	print("Category: ", category, " setting current of : ", current)
 	current_item = current
 
 

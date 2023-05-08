@@ -24,7 +24,6 @@ func _snap_tongue() -> void:
 		var self_z = self.get_position().z
 		var player_z = player_body.get_position().z
 		if abs(self_z - player_z) < 3.0:
-			print("Player Hit by Frog")
 			if player_body.has_method("_hit"):
 				player_body._hit()
 
