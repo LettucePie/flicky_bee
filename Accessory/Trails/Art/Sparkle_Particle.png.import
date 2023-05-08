@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://grwce6p0nkp4"
 path.s3tc="res://.godot/imported/Sparkle_Particle.png-99ab048c32426be5a43d91cc5d111047.s3tc.ctex"
+path.etc2="res://.godot/imported/Sparkle_Particle.png-99ab048c32426be5a43d91cc5d111047.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Accessory/Trails/Art/Sparkle_Particle.png"
-dest_files=["res://.godot/imported/Sparkle_Particle.png-99ab048c32426be5a43d91cc5d111047.s3tc.ctex"]
+dest_files=["res://.godot/imported/Sparkle_Particle.png-99ab048c32426be5a43d91cc5d111047.s3tc.ctex", "res://.godot/imported/Sparkle_Particle.png-99ab048c32426be5a43d91cc5d111047.etc2.ctex"]
 
 [params]
 

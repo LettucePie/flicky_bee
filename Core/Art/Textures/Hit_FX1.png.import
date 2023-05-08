@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c3f4c4g4lsp6l"
 path.s3tc="res://.godot/imported/Hit_FX1.png-77b061879a5118cfb5a566e5e31daf53.s3tc.ctex"
+path.etc2="res://.godot/imported/Hit_FX1.png-77b061879a5118cfb5a566e5e31daf53.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Core/Art/Textures/Hit_FX1.png"
-dest_files=["res://.godot/imported/Hit_FX1.png-77b061879a5118cfb5a566e5e31daf53.s3tc.ctex"]
+dest_files=["res://.godot/imported/Hit_FX1.png-77b061879a5118cfb5a566e5e31daf53.s3tc.ctex", "res://.godot/imported/Hit_FX1.png-77b061879a5118cfb5a566e5e31daf53.etc2.ctex"]
 
 [params]
 
