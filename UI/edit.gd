@@ -128,6 +128,7 @@ func _on_buy_points_pressed():
 
 
 func _on_buy_usd_pressed():
+	$PurchaseQueue.show()
 	print("Panic")
 
 

@@ -21,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://bei5i40hikwu6" path="res://Core/Collectables/collection_patch_wing_1.tscn" id="12_1ycrh"]
 
 [sub_resource type="Curve" id="Curve_c8t26"]
-_data = [Vector2(0, 0.12), 0.0, 0.192868, 0, 0, Vector2(0.278, 0.14), 0.104672, 0.104672, 0, 0, Vector2(1, 1), 0.0997758, 0.0, 0, 0]
+_data = [Vector2(2.08165e-12, 0.15), 0.0, 0.192868, 0, 0, Vector2(0.278, 0.16), 0.104672, 0.104672, 0, 0, Vector2(1, 1), 0.0997758, 0.0, 0, 0]
 point_count = 3
 
 [node name="Generator" type="Node3D"]

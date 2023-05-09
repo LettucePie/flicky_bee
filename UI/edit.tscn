@@ -1,20 +1,20 @@
-[gd_scene load_steps=32 format=3 uid="uid://drlmndybhl8t4"]
+[gd_scene load_steps=33 format=3 uid="uid://drlmndybhl8t4"]
 
 [ext_resource type="Theme" uid="uid://bd87acx3a4l4n" path="res://UI/Style/SubBee_Theme.tres" id="1_3ipnt"]
 [ext_resource type="Theme" uid="uid://cwjsb0qlm86r5" path="res://UI/Style/Bee_Theme.tres" id="1_i3uci"]
 [ext_resource type="Script" path="res://UI/edit.gd" id="2_te6p3"]
-[ext_resource type="Texture2D" uid="uid://c8qdbdn5rdmng" path="res://UI/Art/Icons/Equip_Icon.png" id="3_1ikvn"]
+[ext_resource type="Texture2D" uid="uid://d110o0l2j158l" path="res://UI/Art/Icons/Equip_Icon.png" id="3_1ikvn"]
 [ext_resource type="Texture2D" uid="uid://8qybfiret8ja" path="res://icon.svg" id="3_jsyu4"]
-[ext_resource type="Texture2D" uid="uid://coxyfupfv31p5" path="res://UI/Art/Return_Arrow.png" id="3_ky6n1"]
-[ext_resource type="Texture2D" uid="uid://kvr5wc5pvtpy" path="res://UI/Art/Icons/Remove_Icon.png" id="4_ywidr"]
-[ext_resource type="AudioStream" uid="uid://lg63eic6usgi" path="res://UI/Sounds/Select_02.wav" id="5_g6nxs"]
-[ext_resource type="Texture2D" uid="uid://5062kegelyuk" path="res://UI/Art/Icons/HoneyCount_Icon.png" id="5_hpmsv"]
+[ext_resource type="Texture2D" uid="uid://dbhtyv5nc7cd3" path="res://UI/Art/Return_Arrow.png" id="3_ky6n1"]
+[ext_resource type="Texture2D" uid="uid://cqrqgsgw2sjvl" path="res://UI/Art/Icons/Remove_Icon.png" id="4_ywidr"]
+[ext_resource type="AudioStream" uid="uid://4k73umle8tkt" path="res://UI/Sounds/Select_02.wav" id="5_g6nxs"]
+[ext_resource type="Texture2D" uid="uid://d0pcvvleua47v" path="res://UI/Art/Icons/HoneyCount_Icon.png" id="5_hpmsv"]
 [ext_resource type="PackedScene" uid="uid://bfrwshx4712hu" path="res://UI/category.tscn" id="6_j53hv"]
-[ext_resource type="Texture2D" uid="uid://dpoaw7awi7e5q" path="res://UI/Art/Icons/Hat_Icon.png" id="6_mff8t"]
-[ext_resource type="Texture2D" uid="uid://cqhnnf5pmqblb" path="res://UI/Art/Icons/Trail_Icon.png" id="7_fkpyq"]
+[ext_resource type="Texture2D" uid="uid://us6ak1dtcoc2" path="res://UI/Art/Icons/Hat_Icon.png" id="6_mff8t"]
+[ext_resource type="Texture2D" uid="uid://b5cd52inak7eh" path="res://UI/Art/Icons/Trail_Icon.png" id="7_fkpyq"]
 [ext_resource type="PackedScene" uid="uid://ottesxy2rk1h" path="res://UI/button_sound.tscn" id="7_imp5k"]
-[ext_resource type="Texture2D" uid="uid://b2o4xo01cmirk" path="res://UI/Art/Icons/Flower_Icon.png" id="8_ko2rl"]
-[ext_resource type="AudioStream" uid="uid://bds6tsouoxwlm" path="res://UI/Sounds/Select_03.wav" id="8_nohib"]
+[ext_resource type="Texture2D" uid="uid://cw738qroppet6" path="res://UI/Art/Icons/Flower_Icon.png" id="8_ko2rl"]
+[ext_resource type="AudioStream" uid="uid://dajlukh7qxvv7" path="res://UI/Sounds/Select_03.wav" id="8_nohib"]
 [ext_resource type="Resource" uid="uid://n7inm04q3qeg" path="res://Accessory/Hats/PriceTags/TopHat_Tag.tres" id="13_ph1gx"]
 [ext_resource type="Resource" uid="uid://0e4d2ffwkc23" path="res://Accessory/Hats/PriceTags/PartyHat_Tag.tres" id="15_i5exi"]
 [ext_resource type="Resource" uid="uid://cijvtfhgxgqjt" path="res://Accessory/Hats/PriceTags/CapHat_Tag.tres" id="16_2ba6v"]
@@ -24,9 +24,10 @@
 [ext_resource type="Resource" uid="uid://btf1fx35mbsyy" path="res://Accessory/Flowers/PriceTags/Blue_Lily_Tag.tres" id="20_5l4yj"]
 [ext_resource type="Resource" uid="uid://by7b7xlpi6dxw" path="res://Accessory/Trails/PriceTags/SupportTrail_PriceTag.tres" id="20_rcqpj"]
 [ext_resource type="Script" path="res://UI/Reward.gd" id="20_u6j73"]
-[ext_resource type="Texture2D" uid="uid://dh2noracum3yl" path="res://UI/Art/Ribbon_Frame.png" id="21_eyhlc"]
-[ext_resource type="AudioStream" uid="uid://7wrgdg6loq7a" path="res://UI/Sounds/Select_05.wav" id="22_shnoe"]
+[ext_resource type="Texture2D" uid="uid://do5wrjeux4bdh" path="res://UI/Art/Ribbon_Frame.png" id="21_eyhlc"]
+[ext_resource type="AudioStream" uid="uid://dpeo40oq3mlxp" path="res://UI/Sounds/Select_05.wav" id="22_shnoe"]
 [ext_resource type="Resource" uid="uid://dui8o0lp780au" path="res://Accessory/Flowers/PriceTags/Bermuda_Buttercup_Tag.tres" id="23_fvjf7"]
+[ext_resource type="Texture2D" uid="uid://bxfma5m0wafux" path="res://UI/Art/BeeBounceFrames/1024/BeeBounce1024_AnimTex.tres" id="28_4e331"]
 
 [sub_resource type="Animation" id="Animation_scc7q"]
 length = 0.001
@@ -749,6 +750,61 @@ grow_vertical = 0
 text = "Continue"
 
 [node name="ButtonSound" parent="Reward/Continue" instance=ExtResource("7_imp5k")]
+
+[node name="PurchaseQueue" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.109804, 0.109804, 0.109804, 0.807843)
+
+[node name="Panel" type="Panel" parent="PurchaseQueue"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.154
+anchor_top = 0.379
+anchor_right = 0.846
+anchor_bottom = 0.621
+offset_left = -0.320015
+offset_top = 0.319984
+offset_right = 0.319983
+offset_bottom = -0.320099
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_3ipnt")
+
+[node name="Label" type="Label" parent="PurchaseQueue/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.059
+anchor_top = 0.078
+anchor_right = 0.939
+anchor_bottom = 0.369
+offset_left = -0.132003
+offset_top = -0.192001
+offset_right = -0.372052
+offset_bottom = -0.216008
+text = "Processing..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PurchaseQueue/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.064
+anchor_top = 0.341
+anchor_right = 0.939
+anchor_bottom = 0.922
+offset_left = 0.127998
+offset_top = -0.22401
+offset_right = -0.372052
+offset_bottom = 0.191977
+texture = ExtResource("28_4e331")
+expand_mode = 1
+stretch_mode = 5
 
 [connection signal="pressed" from="Vbox/Category/Hats" to="." method="_set_active_category" binds= [0]]
 [connection signal="pressed" from="Vbox/Category/Trails" to="." method="_set_active_category" binds= [1]]

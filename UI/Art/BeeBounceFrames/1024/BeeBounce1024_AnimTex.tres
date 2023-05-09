@@ -1,0 +1,95 @@
+[gd_resource type="AnimatedTexture" load_steps=31 format=3 uid="uid://bxfma5m0wafux"]
+
+[ext_resource type="Texture2D" uid="uid://bxvtr7riy68jl" path="res://UI/Art/BeeBounceFrames/1024/BeeBounceFrame_0000.png" id="1_be81c"]
+[ext_resource type="Texture2D" uid="uid://du285uqpmj4ka" path="res://UI/Art/BeeBounceFrames/1024/BeeBounceFrame_0001.png" id="2_lp0lx"]
+[ext_resource type="Texture2D" uid="uid://d3d4awi3y8bkh" path="res://UI/Art/BeeBounceFrames/1024/BeeBounceFrame_0010.png" id="3_2ro5m"]
+[ext_resource type="Texture2D" uid="uid://c7vhdkkrf87gm" path="res://UI/Art/BeeBounceFrames/1024/BeeBounceFrame_0011.png" id="4_k5ga1"]
+[ext_resource type="Texture2D" uid="uid://dqbyawiyukdb2" path="res://UI/Art/BeeBounceFrames/1024/BeeBounceFrame_0012.png" id="5_e0t2t"]
+[ext_resource type="Texture2D" uid="uid://dpoo6m07p5on6" path="res://UI/Art/BeeBounceFrames/1024/BeeBounceFrame_0013.png" id="6_vgvj1"]
+[ext_resource type="Texture2D" uid="uid://byoa8txj5e6mm" path="res://UI/Art/BeeBounceFrames/1024/BeeBounceFrame_0014.png" id="7_tssus"]
+[ext_resource type="Texture2D" uid="uid://bdp68a8smxf36" path="res://UI/Art/BeeBounceFrames/1024/BeeBounceFrame_0015.png" id="8_v1q00"]
+[ext_resource type="Texture2D" uid="uid://cj2hxgvbfsm7x" path="res://UI/Art/BeeBounceFrames/1024/BeeBounceFrame_0016.png" id="9_q52aa"]
+[ext_resource type="Texture2D" uid="uid://nkpudgs7p7ga" path="res://UI/Art/BeeBounceFrames/1024/BeeBounceFrame_0017.png" id="10_0u0cq"]
+[ext_resource type="Texture2D" uid="uid://bqm07xx3ebmii" path="res://UI/Art/BeeBounceFrames/1024/BeeBounceFrame_0018.png" id="11_oj0px"]
+[ext_resource type="Texture2D" uid="uid://c64ck8j8c6c5l" path="res://UI/Art/BeeBounceFrames/1024/BeeBounceFrame_0019.png" id="12_8ekqh"]
+[ext_resource type="Texture2D" uid="uid://ddd23j7hwyxej" path="res://UI/Art/BeeBounceFrames/1024/BeeBounceFrame_0002.png" id="13_0d7j8"]
+[ext_resource type="Texture2D" uid="uid://c7mcwie05h6ps" path="res://UI/Art/BeeBounceFrames/1024/BeeBounceFrame_0020.png" id="14_5gl8w"]
+[ext_resource type="Texture2D" uid="uid://50wv5mxuprco" path="res://UI/Art/BeeBounceFrames/1024/BeeBounceFrame_0021.png" id="15_ci3wk"]
+[ext_resource type="Texture2D" uid="uid://bgx5kpxk6rqf8" path="res://UI/Art/BeeBounceFrames/1024/BeeBounceFrame_0022.png" id="16_td2oi"]
+[ext_resource type="Texture2D" uid="uid://bg2ama7qj5wvq" path="res://UI/Art/BeeBounceFrames/1024/BeeBounceFrame_0023.png" id="17_rmmu3"]
+[ext_resource type="Texture2D" uid="uid://dbwdl186gou2n" path="res://UI/Art/BeeBounceFrames/1024/BeeBounceFrame_0024.png" id="18_8xjo6"]
+[ext_resource type="Texture2D" uid="uid://c2bfp42uqwo2e" path="res://UI/Art/BeeBounceFrames/1024/BeeBounceFrame_0025.png" id="19_h54bn"]
+[ext_resource type="Texture2D" uid="uid://bsvj71mwkffrs" path="res://UI/Art/BeeBounceFrames/1024/BeeBounceFrame_0026.png" id="20_omkvh"]
+[ext_resource type="Texture2D" uid="uid://buovp0l5b88tb" path="res://UI/Art/BeeBounceFrames/1024/BeeBounceFrame_0027.png" id="21_o5lj2"]
+[ext_resource type="Texture2D" uid="uid://crn704co6dwkk" path="res://UI/Art/BeeBounceFrames/1024/BeeBounceFrame_0028.png" id="22_b372c"]
+[ext_resource type="Texture2D" uid="uid://cxbmnh1x7wur2" path="res://UI/Art/BeeBounceFrames/1024/BeeBounceFrame_0029.png" id="23_h0rai"]
+[ext_resource type="Texture2D" uid="uid://ba4ybco55hiyo" path="res://UI/Art/BeeBounceFrames/1024/BeeBounceFrame_0003.png" id="24_pcb3j"]
+[ext_resource type="Texture2D" uid="uid://c7l2tvr0syy0e" path="res://UI/Art/BeeBounceFrames/1024/BeeBounceFrame_0004.png" id="25_g2djp"]
+[ext_resource type="Texture2D" uid="uid://cw5x1stbpx6uk" path="res://UI/Art/BeeBounceFrames/1024/BeeBounceFrame_0005.png" id="26_n3fu2"]
+[ext_resource type="Texture2D" uid="uid://gjdjnxlc0ug7" path="res://UI/Art/BeeBounceFrames/1024/BeeBounceFrame_0006.png" id="27_r6quf"]
+[ext_resource type="Texture2D" uid="uid://cuprtoyf2n0lo" path="res://UI/Art/BeeBounceFrames/1024/BeeBounceFrame_0007.png" id="28_pv2jv"]
+[ext_resource type="Texture2D" uid="uid://bws1fsud63qgv" path="res://UI/Art/BeeBounceFrames/1024/BeeBounceFrame_0008.png" id="29_qn5c8"]
+[ext_resource type="Texture2D" uid="uid://bx10uexjs3p5s" path="res://UI/Art/BeeBounceFrames/1024/BeeBounceFrame_0009.png" id="30_ycfgi"]
+
+[resource]
+frames = 30
+speed_scale = 24.0
+frame_0/texture = ExtResource("1_be81c")
+frame_1/texture = ExtResource("2_lp0lx")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("13_0d7j8")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("24_pcb3j")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("25_g2djp")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("26_n3fu2")
+frame_5/duration = 1.0
+frame_6/texture = ExtResource("27_r6quf")
+frame_6/duration = 1.0
+frame_7/texture = ExtResource("28_pv2jv")
+frame_7/duration = 1.0
+frame_8/texture = ExtResource("29_qn5c8")
+frame_8/duration = 1.0
+frame_9/texture = ExtResource("30_ycfgi")
+frame_9/duration = 1.0
+frame_10/texture = ExtResource("3_2ro5m")
+frame_10/duration = 1.0
+frame_11/texture = ExtResource("4_k5ga1")
+frame_11/duration = 1.0
+frame_12/texture = ExtResource("5_e0t2t")
+frame_12/duration = 1.0
+frame_13/texture = ExtResource("6_vgvj1")
+frame_13/duration = 1.0
+frame_14/texture = ExtResource("7_tssus")
+frame_14/duration = 1.0
+frame_15/texture = ExtResource("8_v1q00")
+frame_15/duration = 1.0
+frame_16/texture = ExtResource("9_q52aa")
+frame_16/duration = 1.0
+frame_17/texture = ExtResource("10_0u0cq")
+frame_17/duration = 1.0
+frame_18/texture = ExtResource("11_oj0px")
+frame_18/duration = 1.0
+frame_19/texture = ExtResource("12_8ekqh")
+frame_19/duration = 1.0
+frame_20/texture = ExtResource("14_5gl8w")
+frame_20/duration = 1.0
+frame_21/texture = ExtResource("15_ci3wk")
+frame_21/duration = 1.0
+frame_22/texture = ExtResource("16_td2oi")
+frame_22/duration = 1.0
+frame_23/texture = ExtResource("17_rmmu3")
+frame_23/duration = 1.0
+frame_24/texture = ExtResource("18_8xjo6")
+frame_24/duration = 1.0
+frame_25/texture = ExtResource("19_h54bn")
+frame_25/duration = 1.0
+frame_26/texture = ExtResource("20_omkvh")
+frame_26/duration = 1.0
+frame_27/texture = ExtResource("21_o5lj2")
+frame_27/duration = 1.0
+frame_28/texture = ExtResource("22_b372c")
+frame_28/duration = 1.0
+frame_29/texture = ExtResource("23_h0rai")
+frame_29/duration = 1.0
