@@ -20,7 +20,7 @@ func _assign_tag(t : PriceTag, owned : bool, equipped : bool):
 	if tag.purchase_usd:
 		if price_string != "":
 			price_string += "\n"
-		price_string += "$" + str(tag.usd_amount)
+		price_string += str(tag.usd_amount)
 	if tag.achievable:
 		price_string = "Challenge"
 	if !owned:
@@ -45,3 +45,7 @@ func _change_status(owned : bool, equipped : bool) -> void:
 			$Icon/Status.texture = null
 	else:
 		$Icon/Status.texture = lock_overlay
+
+
+func _set_selected(tf : bool) -> void:
+	$Selected.visible = tf

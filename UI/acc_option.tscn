@@ -3,9 +3,9 @@
 [ext_resource type="Theme" uid="uid://bd87acx3a4l4n" path="res://UI/Style/SubBee_Theme.tres" id="1_8rgr6"]
 [ext_resource type="Texture2D" uid="uid://8qybfiret8ja" path="res://icon.svg" id="1_dpgun"]
 [ext_resource type="Script" path="res://UI/AccOption.gd" id="1_vr7ud"]
-[ext_resource type="Texture2D" uid="uid://b6165esfj1fca" path="res://UI/Art/Locked_Overlay.png" id="2_32fui"]
-[ext_resource type="Texture2D" uid="uid://dua2xg5rmn4qn" path="res://UI/Art/Equipped_Overlay.png" id="3_qshie"]
-[ext_resource type="Texture2D" uid="uid://cb18uwx0skinq" path="res://UI/Art/OverlayMask.png" id="6_06npc"]
+[ext_resource type="Texture2D" uid="uid://uyxlf6dl5pg8" path="res://UI/Art/Locked_Overlay.png" id="2_32fui"]
+[ext_resource type="Texture2D" uid="uid://hd1qdi8avdfi" path="res://UI/Art/Equipped_Overlay.png" id="3_qshie"]
+[ext_resource type="Texture2D" uid="uid://ghrohy28ccsc" path="res://UI/Art/OverlayMask.png" id="6_06npc"]
 
 [node name="AccOption" type="Panel"]
 custom_minimum_size = Vector2(450, 450)
@@ -102,6 +102,20 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 8
 text = "500 HP"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Selected" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -79.75
+grow_horizontal = 2
+grow_vertical = 0
+text = "_"
 horizontal_alignment = 1
 vertical_alignment = 2
 

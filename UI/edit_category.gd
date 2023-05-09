@@ -71,3 +71,12 @@ func _update_stock_status(persist : Persist) -> void:
 				persist.accessories.has(s.tag.acc_name),
 				s.tag.acc_name == current_item
 			)
+
+
+func _get_item(tag : PriceTag) -> Control:
+	var result = null
+	if gallery_stock.size() > 0:
+		for g in gallery_stock:
+			if g.tag == tag:
+				result = g
+	return result

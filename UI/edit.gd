@@ -51,7 +51,10 @@ func _set_active_category(index : int) -> void:
 
 
 func _tag_selected(t : PriceTag) -> void:
+	if current_tag != t and current_tag != null:
+		categories[current_category]._get_item(current_tag)._set_selected(false)
 	current_tag = t
+	categories[current_category]._get_item(t)._set_selected(true)
 	$Selected.text = t.acc_name
 	var equip = (persist_node.accessories.has(t.acc_name))
 	var redeem = false
@@ -128,8 +131,30 @@ func _on_buy_points_pressed():
 
 
 func _on_buy_usd_pressed():
-	$PurchaseQueue.show()
 	print("Panic")
+	if persist_node != null:
+		if OS.has_feature("ios") and persist_node.ios_plugs != null:
+			$PurchaseQueue.show()
+			if !persist_node.ios_plugs.purchase_complete.is_connected(_purchase_result):
+				persist_node.ios_plugs.purchase_complete.connect(_purchase_result)
+			persist_node.ios_plugs._request_purchase(current_tag.prod_id)
+
+
+func _purchase_result(result) -> void:
+	print("Attempt to purchase was a totally epic ", result)
+	$PurchaseQueue.hide()
+	if result:
+		persist_node._add_accessory(current_tag.acc_name)
+		_set_current_accessories(
+			persist_node.hat,
+			persist_node.trail,
+			persist_node.flower
+		)
+		categories[current_category]._update_stock_status(persist_node)
+		_tag_selected(current_tag)
+		$Reward._set_tag(current_tag)
+	else:
+		$PurchaseFailure.show()
 
 
 ### This is for the Restored Purchases
@@ -137,3 +162,14 @@ func _update_all_stock_status():
 	if persist_node != null:
 		for c in categories:
 			c._update_stock_status(persist_node)
+
+
+func _on_error_ok_pressed():
+	$PurchaseFailure.hide()
+
+
+func _on_visibility_changed():
+	if visible:
+		$PurchaseQueue.hide()
+		$PurchaseFailure.hide()
+		$Reward.hide()

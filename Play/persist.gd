@@ -105,6 +105,8 @@ func _load_game() -> void:
 		if $iOS_Plugins._plugin_integrated():
 			print("Integrated to iOS Plugins")
 			ios_plugs = $iOS_Plugins
+			print("Loading iOS Reciepts")
+			ios_plugs._request_receipts(true)
 	else:
 		$iOS_Plugins.queue_free()
 
