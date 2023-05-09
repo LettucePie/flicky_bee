@@ -13,6 +13,7 @@ signal hit()
 @export var jar_sound: AudioStreamWAV
 @export var wing_sound : AudioStreamWAV
 @export var flower_sound : AudioStreamWAV
+@export var windhook_sound : AudioStreamWAV
 @export var hit_sound : AudioStreamWAV
 
 @export var anim_lib : AnimationLibrary
@@ -216,6 +217,8 @@ func _on_area_entered(area):
 		bursting = true
 		speed = burst_acc
 		emit_signal("collected", "Wing")
+		$Pickup.stream = windhook_sound
+		$Pickup.play()
 	if area.is_in_group("Collectable"):
 		var c_type = area.get_meta("Type")
 		if c_type != null:
