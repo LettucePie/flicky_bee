@@ -44,6 +44,9 @@ func _set_active_category(index : int) -> void:
 			c.visible = false
 		categories[index].visible = true
 		current_category = index
+		current_tag = null
+		$Selected.text = ""
+		categories[index]._set_all_nonselected()
 		var buttons = $Vbox/Category.get_children()
 		buttons[index].grab_focus()
 	_update_actions(false, false, false, "")

@@ -1001,6 +1001,19 @@ color = Color(0, 0, 0, 1)
 stream = ExtResource("17_n0hyg")
 bus = &"Music"
 
+[node name="ClearData" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.561
+anchor_top = 0.045
+anchor_right = 0.994
+anchor_bottom = 0.131
+offset_left = 0.119947
+offset_top = 0.599997
+offset_right = -0.520019
+offset_bottom = 0.479977
+text = "Clear Data"
+
 [connection signal="pressed" from="Main/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Main/ButtonBox/Edit" to="." method="_on_edit_pressed"]
 [connection signal="pressed" from="Main/ButtonBox/Options" to="." method="_on_options_pressed"]
@@ -1019,5 +1032,6 @@ bus = &"Music"
 [connection signal="pressed" from="Help/VBoxContainer/PrivacyPolicy" to="." method="_on_privacy_policy_pressed"]
 [connection signal="pressed" from="Help/VBoxContainer/Website" to="." method="_on_website_pressed"]
 [connection signal="pressed" from="Help/VBoxContainer/CloseHelp" to="." method="_on_close_help_pressed"]
+[connection signal="pressed" from="ClearData" to="." method="_on_clear_data_pressed"]
 
 [editable path="Edit"]

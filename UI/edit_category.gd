@@ -73,6 +73,12 @@ func _update_stock_status(persist : Persist) -> void:
 			)
 
 
+func _set_all_nonselected() -> void:
+	if gallery_stock.size() > 0:
+		for g in gallery_stock:
+			g._set_selected(false)
+
+
 func _get_item(tag : PriceTag) -> Control:
 	var result = null
 	if gallery_stock.size() > 0:

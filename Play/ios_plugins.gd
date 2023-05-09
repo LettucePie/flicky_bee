@@ -41,13 +41,16 @@ func _check_events() -> void:
 	while in_app_store.get_pending_event_count() > 0:
 		var event = in_app_store.pop_pending_event()
 		print("**ios** Recieved Event: ", event)
+		if event.result == "progress":
+			if event.type == "purchase":
+				_process_purchase(event)
 		if event.result == "ok":
 			if event.type == "product_info":
 				_align_store_info(event)
 			if event.type == "restore":
 				_process_reciept(event.product_id)
 			if event.type == "purchase":
-				_process_purchase(event)
+				emit_signal("purchase_complete", true)
 		elif event.result == "error":
 			print("**ios** INAPPSTORE_ERROR: ", event.type, " ", event.product_id)
 			if event.type == "product_info":
@@ -158,7 +161,6 @@ func _process_purchase(event) -> void:
 	receipts.append(event.product_id)
 	if get_parent().has_method("_add_accessory"):
 		get_parent()._add_accessory(_id_to_name(event.product_id))
-	emit_signal("purchase_complete", true)
 	in_app_store.finish_transation(event.product_id)
 
 

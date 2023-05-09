@@ -176,3 +176,17 @@ func _on_ios_update_purchases():
 		for p in ios_plugs.purchases:
 			if !accessories.has(p.acc_name):
 				_add_accessory(p.acc_name)
+
+
+func _clear_data() -> void:
+	print("CLEARING DATA")
+	furthest_distance = 0.0
+	highest_score = 0
+	total_distance = 0.0
+	total_score = 0
+	honey_points = 0
+	accessories = []
+	hat = "default"
+	trail = "default"
+	flower = "default"
+	_save_game()

@@ -167,3 +167,7 @@ func _on_close_help_pressed():
 #	$Help.hide()
 	$AnimationPlayer.play("Help_Close")
 
+
+
+func _on_clear_data_pressed():
+	persist_node._clear_data()
