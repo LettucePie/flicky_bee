@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c3gbd4va534cq"]
 
-[ext_resource type="PackedScene" uid="uid://beh4hijt3cjpw" path="res://Accessory/Hats/Models/Cap.glb" id="2_o21mb"]
+[ext_resource type="PackedScene" uid="uid://bleojc6d347xl" path="res://Accessory/Hats/Models/Cap.glb" id="2_o21mb"]
 
 [node name="Cap" type="Node3D"]
 

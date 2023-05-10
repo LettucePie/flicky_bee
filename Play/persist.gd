@@ -105,8 +105,6 @@ func _load_game() -> void:
 		if $iOS_Plugins._plugin_integrated():
 			print("Integrated to iOS Plugins")
 			ios_plugs = $iOS_Plugins
-			print("Loading iOS Reciepts")
-			ios_plugs._request_receipts(true)
 	else:
 		$iOS_Plugins.queue_free()
 
@@ -172,8 +170,8 @@ func _add_accessory(acc : String) -> void:
 
 
 func _on_ios_update_purchases():
-	if ios_plugs.purchases.size() > 0:
-		for p in ios_plugs.purchases:
+	if ios_plugs.receipts.size() > 0:
+		for p in ios_plugs.receipts:
 			if !accessories.has(p.acc_name):
 				_add_accessory(p.acc_name)
 

@@ -1,6 +1,6 @@
 [gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://dtri2fhtgsi1b"]
 
-[ext_resource type="Texture2D" uid="uid://b7lubqxudgsir" path="res://UI/Art/ButtonStyles/ButtonStyle_Disabled_Round.png" id="1_pwc1y"]
+[ext_resource type="Texture2D" uid="uid://dsx4r8c62156g" path="res://UI/Art/ButtonStyles/ButtonStyle_Disabled_Round.png" id="1_pwc1y"]
 
 [resource]
 content_margin_top = 20.0

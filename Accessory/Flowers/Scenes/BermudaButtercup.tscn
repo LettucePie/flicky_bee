@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ibvecjjoft47"]
 
-[ext_resource type="PackedScene" uid="uid://mb6y88f5yk2c" path="res://Accessory/Flowers/Models/BermudaButtercup.glb" id="1_7hg65"]
+[ext_resource type="PackedScene" uid="uid://bvr3ubq0gupsq" path="res://Accessory/Flowers/Models/BermudaButtercup.glb" id="1_7hg65"]
 
 [node name="BermudaButtercup" type="Node3D"]
 

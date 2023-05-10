@@ -20,9 +20,17 @@ var store_info_state : STATE
 var receipts : Array
 var restore_buffer := false
 
+var restoring := false
+var purchasing := false
+
+var hold_count := 45
+
 
 func _ready():
 	store_info_state = STATE.EMPTY
+	if OS.has_feature("ios"):
+		print("Loading iOS Receipts")
+		_request_receipts(true)
 
 
 func _plugin_integrated() -> bool:
@@ -40,27 +48,57 @@ func _check_events() -> void:
 	print("**ios** Check Events")
 	while in_app_store.get_pending_event_count() > 0:
 		var event = in_app_store.pop_pending_event()
-		print("**ios** Recieved Event: ", event)
-		if event.result == "progress":
-			if event.type == "purchase":
-				_process_purchase(event)
-		if event.result == "ok":
-			if event.type == "product_info":
+		print("**ios** Received Event: ", event.type, " ", event.result)
+		if event.type == "purchase":
+			if purchasing:
+				if event.result == "progress":
+					print("***ios*** Player configuring payment and sign-in...")
+				if event.result == "ok":
+					_process_purchase(event)
+					emit_signal("purchase_complete", true)
+					purchasing = false
+				if event.result == "error":
+					print("***ios*** Purchase Error")
+					emit_signal("purchase_complete", false)
+					purchasing = false
+			else:
+				print("***ios*** Rogue Purchasing event ... ", event)
+		if event.type == "product_info":
+			if event.result == "ok":
 				_align_store_info(event)
-			if event.type == "restore":
-				_process_reciept(event.product_id)
-			if event.type == "purchase":
-				emit_signal("purchase_complete", true)
-		elif event.result == "error":
-			print("**ios** INAPPSTORE_ERROR: ", event.type, " ", event.product_id)
-			if event.type == "product_info":
+			if event.result == "error":
 				store_info_state = STATE.EMPTY
 				store_info.clear()
-			if event.type == "purchase":
-				emit_signal("purchase_complete", false)
+		if event.type == "restore":
+			if restoring:
+				if event.result == "ok":
+					_process_receipt(event.product_id)
+				if event.result == "completed":
+					restoring = false
+				if event.result == "error":
+					print("***ios*** failed to restore purchases aka receipts...")
+					restoring = false
+			else:
+				print("**ios** Rogue Restoring Event ... ", event)
 	if in_app_store.get_pending_event_count() <= 0:
 		print("**ios** Events has nothing pending")
-		$Timer.stop()
+		if !purchasing or !restoring or store_info_state != STATE.PENDING:
+			print("***ios*** Events on Hold. Purchasing = ", purchasing, " Restoring = ", restoring, " StoreInfo = ", store_info_state)
+			hold_count -= 1
+			if hold_count <= 0:
+				print("***ios*** Timeout. On Hold for too long")
+				$Timer.stop()
+				if purchasing:
+					emit_signal("purchase_complete", false)
+					purchasing = false
+				if restoring:
+					restoring = false
+				if store_info_state == STATE.PENDING:
+					store_info_state = STATE.EMPTY
+					store_info.clear()
+		else:
+			print("***ios*** Nothing on hold, ending Event Checks.")
+			$Timer.stop()
 
 ### Aligning Store information between Local and Apple
 
@@ -79,6 +117,7 @@ func _request_store_info() -> void:
 		)
 		print("**ios** Requesting: ", request)
 		store_info_state = STATE.PENDING
+		hold_count = 45
 		$Timer.start(1.0)
 
 
@@ -115,13 +154,17 @@ func _request_receipts(force : bool) -> void:
 		$Restore_Buffer.start()
 		restore_buffer = true
 		receipts.clear()
+		restoring = true
+		hold_count = 45
+		print("***ios*** Requesting Receipts aka purchases")
 		var request = in_app_store.restore_purchases()
 
 
-func _process_reciept(prod_id) -> void:
+func _process_receipt(prod_id) -> void:
 	for p in products:
 		if p.prod_id == prod_id:
 			receipts.append(p)
+			print("***ios*** Added ", p.prod_id, " to receipts aka purchases")
 			emit_signal("update_purchases")
 
 
@@ -137,6 +180,9 @@ func _request_purchase(prod_id : String) -> void:
 		if p.prod_id == prod_id and !_check_ownership(prod_id):
 			valid = true
 	if valid:
+		print("***ios*** Requesting Purchase: ", prod_id)
+		purchasing = true
+		hold_count = 45
 		var request = in_app_store.purchase(
 			{"product_id" : prod_id}
 		)
@@ -161,7 +207,7 @@ func _process_purchase(event) -> void:
 	receipts.append(event.product_id)
 	if get_parent().has_method("_add_accessory"):
 		get_parent()._add_accessory(_id_to_name(event.product_id))
-	in_app_store.finish_transation(event.product_id)
+	in_app_store.finish_transaction(event.product_id)
 
 
 ### Tools

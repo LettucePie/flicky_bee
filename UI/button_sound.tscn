@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=3 uid="uid://ottesxy2rk1h"]
 
-[ext_resource type="AudioStream" uid="uid://bi72ok76788on" path="res://UI/Sounds/Select_01.wav" id="1_oouc0"]
+[ext_resource type="AudioStream" uid="uid://boy1kby5vmihw" path="res://UI/Sounds/Select_01.wav" id="1_oouc0"]
 [ext_resource type="Script" path="res://UI/button_sound.gd" id="2_bj4ja"]
-[ext_resource type="AudioStream" uid="uid://lg63eic6usgi" path="res://UI/Sounds/Select_02.wav" id="3_8swgq"]
-[ext_resource type="AudioStream" uid="uid://bds6tsouoxwlm" path="res://UI/Sounds/Select_03.wav" id="4_1emvj"]
-[ext_resource type="AudioStream" uid="uid://drub7la2p7c21" path="res://UI/Sounds/Select_04.wav" id="5_ytt57"]
-[ext_resource type="AudioStream" uid="uid://7wrgdg6loq7a" path="res://UI/Sounds/Select_05.wav" id="6_8y77t"]
-[ext_resource type="AudioStream" uid="uid://bpvse77nqsyr0" path="res://UI/Sounds/Select_06.wav" id="7_b5smn"]
+[ext_resource type="AudioStream" uid="uid://4k73umle8tkt" path="res://UI/Sounds/Select_02.wav" id="3_8swgq"]
+[ext_resource type="AudioStream" uid="uid://dajlukh7qxvv7" path="res://UI/Sounds/Select_03.wav" id="4_1emvj"]
+[ext_resource type="AudioStream" uid="uid://dqelelsu7hsbt" path="res://UI/Sounds/Select_04.wav" id="5_ytt57"]
+[ext_resource type="AudioStream" uid="uid://dpeo40oq3mlxp" path="res://UI/Sounds/Select_05.wav" id="6_8y77t"]
+[ext_resource type="AudioStream" uid="uid://dseyc2dk7bfkj" path="res://UI/Sounds/Select_06.wav" id="7_b5smn"]
 
 [node name="ButtonSound" type="AudioStreamPlayer"]
 process_mode = 3

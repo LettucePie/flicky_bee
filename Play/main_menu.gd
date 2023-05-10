@@ -170,4 +170,5 @@ func _on_close_help_pressed():
 
 
 func _on_clear_data_pressed():
-	persist_node._clear_data()
+	pass
+#	persist_node._clear_data()

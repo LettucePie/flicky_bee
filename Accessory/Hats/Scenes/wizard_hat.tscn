@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dn17qq7kyauxa"]
 
-[ext_resource type="PackedScene" uid="uid://dfk7d23wqen04" path="res://Accessory/Hats/Models/WizardHat.glb" id="1_q12hb"]
+[ext_resource type="PackedScene" uid="uid://u8qj506jgh2x" path="res://Accessory/Hats/Models/WizardHat.glb" id="1_q12hb"]
 
 [node name="WizardHat" type="Node3D"]
 

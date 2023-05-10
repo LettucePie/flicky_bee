@@ -1,6 +1,6 @@
 [gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://b1cpi6q8g74yn"]
 
-[ext_resource type="Texture2D" uid="uid://cenjh658h5370" path="res://UI/Art/ButtonStyles/ButtonStyle_Hover_Round.png" id="1_l84t6"]
+[ext_resource type="Texture2D" uid="uid://se1kqw21qowc" path="res://UI/Art/ButtonStyles/ButtonStyle_Hover_Round.png" id="1_l84t6"]
 
 [resource]
 content_margin_top = 20.0

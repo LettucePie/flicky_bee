@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://3soel35aj6nu"]
 
-[ext_resource type="PackedScene" uid="uid://b53mhruixmliy" path="res://Accessory/Flowers/Models/BlueLily.glb" id="1_xmjhw"]
+[ext_resource type="PackedScene" uid="uid://dr2wrweropmal" path="res://Accessory/Flowers/Models/BlueLily.glb" id="1_xmjhw"]
 [ext_resource type="Material" uid="uid://bdvfsfad5byji" path="res://Core/Art/Mono_Material/BaseMaterial.tres" id="2_m0hjh"]
 
 [node name="Blue_Lily" type="Node3D"]
