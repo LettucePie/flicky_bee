@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://dwgh0l2dpnpsf"]
+[gd_scene load_steps=6 format=3 uid="uid://dwgh0l2dpnpsf"]
 
 [ext_resource type="Script" path="res://Play/persist.gd" id="1_x2eam"]
 [ext_resource type="Script" path="res://Play/ios_plugins.gd" id="2_x5bnn"]
 [ext_resource type="Resource" uid="uid://by7b7xlpi6dxw" path="res://Accessory/Trails/PriceTags/SupportTrail_PriceTag.tres" id="3_i4n2t"]
+[ext_resource type="Script" path="res://Play/playstore_plugins.gd" id="4_gydss"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mgxje"]
+font_size = 20
 
 [node name="Persist" type="Node" groups=["Persist"]]
 script = ExtResource("1_x2eam")
@@ -15,6 +19,23 @@ products = Array[Resource("res://Accessory/pricetag_type.gd")]([ExtResource("3_i
 
 [node name="Restore_Buffer" type="Timer" parent="iOS_Plugins"]
 wait_time = 10.0
+
+[node name="PlayStore_Plugins" type="Node" parent="."]
+script = ExtResource("4_gydss")
+
+[node name="Debug" type="Label" parent="PlayStore_Plugins"]
+anchors_preset = -1
+anchor_top = 0.075
+anchor_right = 0.485
+anchor_bottom = 0.925
+offset_top = -5.00001
+offset_right = 0.199985
+offset_bottom = -0.000137329
+grow_horizontal = 2
+grow_vertical = 2
+text = "Debugging PlayStore"
+label_settings = SubResource("LabelSettings_mgxje")
+autowrap_mode = 2
 
 [connection signal="update_purchases" from="iOS_Plugins" to="." method="_on_ios_update_purchases"]
 [connection signal="timeout" from="iOS_Plugins/Timer" to="iOS_Plugins" method="_check_events"]

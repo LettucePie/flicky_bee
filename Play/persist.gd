@@ -35,6 +35,7 @@ var trail := "default"
 var flower := "default"
 
 var ios_plugs : IOSPlugin
+var play_plugs : PlaystorePlugin
 
 
 func _save_game() -> void:
@@ -107,6 +108,14 @@ func _load_game() -> void:
 			ios_plugs = $iOS_Plugins
 	else:
 		$iOS_Plugins.queue_free()
+	if OS.has_feature("playstore"):
+		play_plugs = null
+		if $PlayStore_Plugins._plugin_integrated():
+			print("Integrated to Playstore Plugins")
+			play_plugs = $PlayStore_Plugins
+			play_plugs._establish_connection()
+	else:
+		$PlayStore_Plugins.queue_free()
 
 
 func _file_surgery(data) -> void:
