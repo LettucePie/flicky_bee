@@ -78,7 +78,7 @@ _data = {
 height = 30.0
 radius = 3.0
 
-[node name="Dragonfly" type="Node3D"]
+[node name="Dragonfly" type="Node3D" groups=["Dragonfly", "Enemy"]]
 script = ExtResource("1_i2i06")
 
 [node name="Path3D" type="Path3D" parent="."]

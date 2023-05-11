@@ -49,13 +49,15 @@ func _clear_platforms() -> void:
 
 
 func _clear_gaps(point) -> void:
+	print("Clearing Gaps behind Point: ", point)
 	var stray_gaps : Array
 	if gaps.size() > 0:
 		for g in gaps:
 			var pos = g.get_position()
-			if pos.z < point:
+			if pos.z > point:
 				stray_gaps.append(g)
 	if stray_gaps.size() > 0:
+		print("Total Number of Stray Gaps: ", stray_gaps.size())
 		for sg in stray_gaps:
 			gaps.erase(sg)
 			if is_instance_valid(sg):

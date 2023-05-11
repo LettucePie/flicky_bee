@@ -12,7 +12,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_naj6s"]
 size = Vector3(10.2084, 5.08748, 3.63976)
 
-[node name="Brick_Obstacle" type="StaticBody3D"]
+[node name="Brick_Obstacle" type="StaticBody3D" groups=["Brick", "Obstacle"]]
 collision_mask = 3
 script = ExtResource("1_1hnuq")
 materials = Array[BaseMaterial3D]([ExtResource("2_loqx6"), ExtResource("3_61rxq"), ExtResource("4_rahf8")])
