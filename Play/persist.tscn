@@ -24,6 +24,7 @@ wait_time = 10.0
 script = ExtResource("4_gydss")
 
 [node name="Debug" type="Label" parent="PlayStore_Plugins"]
+top_level = true
 anchors_preset = -1
 anchor_top = 0.075
 anchor_right = 0.485
