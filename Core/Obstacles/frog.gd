@@ -2,6 +2,7 @@ extends Node3D
 
 @export var lunge_interval = 2.5
 @onready var anim = $Frog/AnimationPlayer
+@onready var idles = ["Idle_1", "Idle_2"]
 
 var player_present := false
 var player_body : CharacterBody3D
@@ -11,7 +12,10 @@ var player_body : CharacterBody3D
 func _ready():
 	player_body = null
 	$Lunge.start(lunge_interval)
-	anim.play("Idle")
+	anim.play(idles.pick_random())
+	$Frog/AnimationPlayer.animation_finished.connect(_on_animation_player_animation_finished)
+	if bool(randi() %2):
+		self.rotate_y(PI)
 
 
 func _on_lunge_timeout() -> void:
@@ -30,6 +34,7 @@ func _snap_tongue() -> void:
 
 func _on_animation_player_animation_finished(anim_name):
 	$Tongue/Tongue.hide()
+	anim.play(idles.pick_random())
 
 
 func _on_area_3d_body_entered(body) -> void:

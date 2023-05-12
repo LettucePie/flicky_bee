@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://divwo3i3xqtwj"]
+[gd_scene load_steps=15 format=3 uid="uid://divwo3i3xqtwj"]
 
 [ext_resource type="Script" path="res://Play/play_1.gd" id="1_x43xo"]
 [ext_resource type="PackedScene" uid="uid://pbe74ba2ywah" path="res://Core/player.tscn" id="2_75ge2"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ctoi4c1j3c0ba" path="res://Core/grass_patch.tscn" id="8_r0s2t"]
 [ext_resource type="AudioStream" uid="uid://6vdrcpbcjxks" path="res://kenney/Farm Frolics.ogg" id="9_cbbfq"]
 [ext_resource type="Script" path="res://Play/music_fade.gd" id="10_da10t"]
+[ext_resource type="PackedScene" uid="uid://1q4maiuuyl5w" path="res://Core/Obstacles/frog.tscn" id="12_tgr5s"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i3iu5"]
 size = Vector3(19.9062, 2.4957, 10.0144)
@@ -85,6 +86,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -5, 0)
 
 [node name="Grass_Patch3" parent="." instance=ExtResource("8_r0s2t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -5, -60)
+
+[node name="Frog" parent="." instance=ExtResource("12_tgr5s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.85249)
 
 [connection signal="area_entered" from="Camera3D/Bottom_Detect" to="." method="_on_bottom_detect_area_entered"]
 [connection signal="body_entered" from="Camera3D/Bottom_Detect" to="." method="_on_bottom_detect_area_entered"]
