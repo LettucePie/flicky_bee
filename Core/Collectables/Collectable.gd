@@ -1,12 +1,11 @@
 extends Node3D
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	$AnimationPlayer.play("Idle")
-	$AnimationPlayer.speed_scale = randf_range(0.6, 0.9)
+@onready var turn = $Turn
+
+@onready var modif = randf_range(1.2, 1.4)
+@onready var dir = [-1, 1].pick_random()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _physics_process(delta):
+	turn.rotate_y(PI * ((delta * modif) * dir))
