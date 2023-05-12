@@ -5,6 +5,7 @@
 export.cfg
 export_presets.cfg
 *.kra~
+*.blend1
 ##*.import
 
 # Mono-specific ignores
