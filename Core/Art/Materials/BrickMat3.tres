@@ -4,7 +4,6 @@
 
 [resource]
 resource_name = "Brick_Mat_3"
-cull_mode = 2
 shading_mode = 2
 vertex_color_use_as_albedo = true
 albedo_color = Color(0.498039, 0.305882, 0.12549, 1)

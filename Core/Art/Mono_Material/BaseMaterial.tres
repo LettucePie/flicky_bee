@@ -4,7 +4,6 @@
 
 [resource]
 resource_name = "BaseMaterial"
-cull_mode = 2
 shading_mode = 2
 albedo_texture = ExtResource("1_cdku3")
 metallic_specular = 0.0
