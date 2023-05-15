@@ -1,4 +1,6 @@
-[gd_resource type="SystemFont" format=3 uid="uid://dolyccjp7guf1"]
+[gd_resource type="SystemFont" load_steps=2 format=3 uid="uid://dolyccjp7guf1"]
+
+[ext_resource type="FontFile" uid="uid://idpivutva4p1" path="res://UI/Fonts/Metropolis/Metropolis-Regular.otf" id="1_0yidl"]
 
 [resource]
 font_names = PackedStringArray("Avenir Next")
@@ -7,3 +9,4 @@ font_stretch = 75
 generate_mipmaps = true
 hinting = 2
 multichannel_signed_distance_field = true
+fallbacks = Array[Font]([ExtResource("1_0yidl")])

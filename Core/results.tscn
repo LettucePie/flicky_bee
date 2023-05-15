@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bnideixfjpsgc"]
+[gd_scene load_steps=24 format=3 uid="uid://bnideixfjpsgc"]
 
 [ext_resource type="Theme" uid="uid://cwjsb0qlm86r5" path="res://UI/Style/Bee_Theme.tres" id="1_nh6jh"]
 [ext_resource type="Script" path="res://Core/results.gd" id="1_x1mpp"]
@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://7j5f3tg3asf2" path="res://UI/Art/Icons/FlowerCount_Icon.png" id="6_5e17p"]
 [ext_resource type="Script" path="res://UI/color_mixer.gd" id="7_4clhd"]
 [ext_resource type="LabelSettings" uid="uid://bnl8kuxhvtcnr" path="res://UI/Label_100.tres" id="8_wpvpw"]
-[ext_resource type="SystemFont" uid="uid://bnfcbcpp4s67w" path="res://UI/Fonts/Avenir_Italic_Settings.tres" id="9_1et0j"]
 [ext_resource type="Texture2D" uid="uid://cwb03687fuevv" path="res://UI/Art/Icons/Play_Icon.png" id="9_tiygn"]
 [ext_resource type="Theme" uid="uid://bd87acx3a4l4n" path="res://UI/Style/SubBee_Theme.tres" id="12_6qbs5"]
 [ext_resource type="PackedScene" uid="uid://ottesxy2rk1h" path="res://UI/button_sound.tscn" id="14_aano1"]
@@ -348,7 +347,6 @@ anchor_bottom = 0.171393
 offset_top = 4.87715e-05
 offset_bottom = 3.50177e-05
 size_flags_vertical = 2
-theme_override_fonts/font = ExtResource("9_1et0j")
 text = "New Best!"
 horizontal_alignment = 2
 script = ExtResource("7_4clhd")
@@ -537,7 +535,6 @@ anchor_top = 0.546856
 anchor_right = 0.89537
 anchor_bottom = 0.597411
 size_flags_vertical = 2
-theme_override_fonts/font = ExtResource("9_1et0j")
 text = "New Best!"
 horizontal_alignment = 2
 script = ExtResource("7_4clhd")
