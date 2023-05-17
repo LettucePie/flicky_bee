@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://b1aibpbthxdp7"]
+[gd_scene load_steps=41 format=3 uid="uid://b1aibpbthxdp7"]
 
 [ext_resource type="Theme" uid="uid://cwjsb0qlm86r5" path="res://UI/Style/Bee_Theme.tres" id="1_g7eow"]
 [ext_resource type="Script" path="res://Play/main_menu.gd" id="2_jrubw"]
@@ -12,8 +12,10 @@
 [ext_resource type="Texture2D" uid="uid://cwb03687fuevv" path="res://UI/Art/Icons/Play_Icon.png" id="6_j0m36"]
 [ext_resource type="Texture2D" uid="uid://mjonwj8u5sxy" path="res://UI/Art/Icons/Edit_Icon.png" id="7_w5kti"]
 [ext_resource type="Texture2D" uid="uid://3mm6eoeg7f01" path="res://UI/Art/Icons/Options_Icon.png" id="8_cikw8"]
+[ext_resource type="Script" path="res://Play/background.gd" id="8_xaef2"]
 [ext_resource type="PackedScene" uid="uid://ottesxy2rk1h" path="res://UI/button_sound.tscn" id="9_nh65q"]
 [ext_resource type="Texture2D" uid="uid://1ygxyq1cbskk" path="res://UI/Art/Icons/Help_Icon.png" id="9_poiqa"]
+[ext_resource type="Texture2D" uid="uid://dk4t2y6bk2sr2" path="res://UI/Art/Menu_BG_Clouds.png" id="9_r1j3s"]
 [ext_resource type="Texture2D" uid="uid://d3eriix1cdvxj" path="res://UI/Art/Icons/Exit_Icon.png" id="10_sr5eo"]
 [ext_resource type="Texture2D" uid="uid://dbhtyv5nc7cd3" path="res://UI/Art/Return_Arrow.png" id="11_bthaf"]
 [ext_resource type="PackedScene" uid="uid://drlmndybhl8t4" path="res://UI/edit.tscn" id="12_g11w1"]
@@ -492,12 +494,24 @@ metro_font = ExtResource("6_7lvee")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_7ws6a")
+stretch_mode = 6
+script = ExtResource("8_xaef2")
+adjust_amount = 120.0
+
+[node name="Clouds" type="TextureRect" parent="Background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_r1j3s")
 stretch_mode = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -507,7 +521,6 @@ libraries = {
 }
 
 [node name="Main" type="Control" parent="."]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -758,10 +771,14 @@ vertical_alignment = 1
 stream = ExtResource("12_yxq8t")
 
 [node name="Edit" parent="." instance=ExtResource("12_g11w1")]
+visible = false
 layout_mode = 1
 anchors_preset = -1
+offset_top = 2600.0
+offset_bottom = 2600.0
 
 [node name="Options" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
