@@ -8,8 +8,8 @@ var collectables : Array
 
 
 func _ready():
-#	if !OS.has_feature("androiddebug"):
-#		self.queue_free()
+	if !OS.is_debug_build():
+		self.queue_free()
 	get_tree().node_added.connect(_node_added)
 	get_tree().node_removed.connect(_node_removed)
 

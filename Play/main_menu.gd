@@ -25,6 +25,8 @@ func _ready():
 	if OS.has_feature("ios") \
 	or OS.has_feature("web"):
 		$Main/ButtonBox/Quit.queue_free()
+	if !OS.is_debug_build():
+		$ClearData.queue_free()
 
 
 func _reflect_settings() -> void:
