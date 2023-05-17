@@ -1,12 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://ctoi4c1j3c0ba"]
+[gd_scene load_steps=13 format=3 uid="uid://ctoi4c1j3c0ba"]
 
 [ext_resource type="Material" uid="uid://claltjg8fkp3t" path="res://Core/Art/Materials/GrassPlane_Mat.tres" id="1_b3e80"]
 [ext_resource type="Script" path="res://Core/grass_patch.gd" id="1_r3gwb"]
+[ext_resource type="PackedScene" uid="uid://ds65sqp6nk8mt" path="res://Core/light.tscn" id="2_f7mj4"]
 [ext_resource type="ArrayMesh" uid="uid://itrba5e45yrc" path="res://Core/Art/Meshes/Grass_Blade_Mesh.res" id="3_8wkuj"]
+[ext_resource type="Environment" uid="uid://bqwftwgkpo7ki" path="res://Core/Enviro_1.tres" id="3_d35p2"]
 [ext_resource type="ArrayMesh" uid="uid://b5cly2h6qtp3r" path="res://Core/Art/Meshes/Grass_Curve_Mesh.res" id="4_ojbqs"]
+[ext_resource type="LightmapGIData" uid="uid://7hyxstnq36b2" path="res://Core/grass_patch.lmbake" id="5_2007f"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_lpjs1"]
+lightmap_size_hint = Vector2i(302, 302)
 material = ExtResource("1_b3e80")
+add_uv2 = true
 size = Vector2(60, 60)
 
 [sub_resource type="MultiMesh" id="MultiMesh_vdqaq"]
@@ -36,6 +41,15 @@ buffer = PackedFloat32Array(-1.06709, 0.284869, 1.04819, 17.0327, 0.0102371, 1.4
 [node name="Grass_Patch" type="Node3D" groups=["Grass_Patch"]]
 script = ExtResource("1_r3gwb")
 
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="Light" parent="." instance=ExtResource("2_f7mj4")]
+visible = false
+light_bake_mode = 2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("3_d35p2")
+
 [node name="Plane" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_lpjs1")
 
@@ -52,3 +66,6 @@ multimesh = SubResource("MultiMesh_hl4sx")
 [node name="GrassMulti_R" type="MultiMeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.9128, 0, 0)
 multimesh = SubResource("MultiMesh_lp25h")
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+light_data = ExtResource("5_2007f")

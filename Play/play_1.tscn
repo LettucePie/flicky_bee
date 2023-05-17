@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Play/play_1.gd" id="1_x43xo"]
 [ext_resource type="PackedScene" uid="uid://pbe74ba2ywah" path="res://Core/player.tscn" id="2_75ge2"]
 [ext_resource type="PackedScene" uid="uid://2gkm2rsvmoiy" path="res://Core/generator.tscn" id="2_yeg2j"]
+[ext_resource type="PackedScene" uid="uid://ds65sqp6nk8mt" path="res://Core/light.tscn" id="4_2bjav"]
 [ext_resource type="Environment" uid="uid://bqwftwgkpo7ki" path="res://Core/Enviro_1.tres" id="4_4jdp8"]
 [ext_resource type="PackedScene" uid="uid://jgdg1uwq2rq6" path="res://UI/arc_visual.tscn" id="4_weoh5"]
 [ext_resource type="PackedScene" uid="uid://yxtju6v5sytc" path="res://UI/knob_visual.tscn" id="5_3g4qb"]
@@ -11,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://ctoi4c1j3c0ba" path="res://Core/grass_patch.tscn" id="8_r0s2t"]
 [ext_resource type="AudioStream" uid="uid://6vdrcpbcjxks" path="res://kenney/Farm Frolics.ogg" id="9_cbbfq"]
 [ext_resource type="Script" path="res://Play/music_fade.gd" id="10_da10t"]
-[ext_resource type="PackedScene" uid="uid://1q4maiuuyl5w" path="res://Core/Obstacles/frog.tscn" id="12_tgr5s"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i3iu5"]
 size = Vector3(19.9062, 2.4957, 10.0144)
@@ -26,15 +26,13 @@ life_time = 15.0
 
 [node name="Generator" parent="." instance=ExtResource("2_yeg2j")]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.899954, 0.232062, 0.369094, -0.435985, 0.479019, 0.761878, 0, -0.846574, 0.532271, 0, 0, 0)
-light_energy = 0.6
-shadow_enabled = true
-directional_shadow_mode = 0
+[node name="Light" parent="." instance=ExtResource("4_2bjav")]
+light_bake_mode = 2
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, -6.97574e-16, -1.5246e-23, -1.5246e-23, -4.37114e-08, 1, -6.97574e-16, -1, -4.37114e-08, 2.08165e-12, 13, 0.025)
 environment = ExtResource("4_4jdp8")
+current = true
 
 [node name="Bottom_Detect" type="Area3D" parent="Camera3D"]
 transform = Transform3D(1, 0, -5.37244e-31, 0, 1, 0, -5.37244e-31, 0, 1, 2.08165e-12, -8, -12.307)
@@ -86,9 +84,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -5, 0)
 
 [node name="Grass_Patch3" parent="." instance=ExtResource("8_r0s2t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -5, -60)
-
-[node name="Frog" parent="." instance=ExtResource("12_tgr5s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.85249)
 
 [connection signal="area_entered" from="Camera3D/Bottom_Detect" to="." method="_on_bottom_detect_area_entered"]
 [connection signal="body_entered" from="Camera3D/Bottom_Detect" to="." method="_on_bottom_detect_area_entered"]
