@@ -507,6 +507,7 @@ libraries = {
 }
 
 [node name="Main" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -757,20 +758,14 @@ vertical_alignment = 1
 stream = ExtResource("12_yxq8t")
 
 [node name="Edit" parent="." instance=ExtResource("12_g11w1")]
-visible = false
 layout_mode = 1
 anchors_preset = -1
-offset_top = 2600.0
-offset_bottom = 2600.0
 
 [node name="Options" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 2600.0
-offset_bottom = 2600.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -819,10 +814,15 @@ text = "Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ShadowToggle" type="CheckButton" parent="Options/VBox"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Shadow"
+
 [node name="MusicLabel" type="Label" parent="Options/VBox"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 1
+size_flags_vertical = 10
 size_flags_stretch_ratio = 1.5
 text = "Music"
 horizontal_alignment = 1
@@ -830,7 +830,7 @@ vertical_alignment = 1
 
 [node name="Music" type="HBoxContainer" parent="Options/VBox"]
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 2
 alignment = 1
 
 [node name="Music_Min" type="TextureButton" parent="Options/VBox/Music"]
@@ -869,7 +869,7 @@ stretch_mode = 5
 [node name="SFXLabel" type="Label" parent="Options/VBox"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 1
+size_flags_vertical = 10
 size_flags_stretch_ratio = 1.5
 text = "SFX"
 horizontal_alignment = 1
@@ -877,7 +877,7 @@ vertical_alignment = 1
 
 [node name="SFX" type="HBoxContainer" parent="Options/VBox"]
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 2
 alignment = 1
 
 [node name="SFX_Min" type="TextureButton" parent="Options/VBox/SFX"]
@@ -1034,6 +1034,7 @@ text = "Clear Data"
 [connection signal="pressed" from="Edit/Done_Edit" to="." method="_on_done_edit_pressed"]
 [connection signal="pressed" from="Options/HBox/Cancel" to="." method="_on_done_options_pressed" binds= [false]]
 [connection signal="pressed" from="Options/HBox/Confirm" to="." method="_on_done_options_pressed" binds= [true]]
+[connection signal="toggled" from="Options/VBox/ShadowToggle" to="." method="_on_shadow_toggled"]
 [connection signal="pressed" from="Options/VBox/Music/Music_Min" to="." method="_on_music_slide_value_changed" binds= [0.0]]
 [connection signal="value_changed" from="Options/VBox/Music/Music_Slide" to="." method="_on_music_slide_value_changed"]
 [connection signal="pressed" from="Options/VBox/Music/Music_Max" to="." method="_on_music_slide_value_changed" binds= [1.0]]

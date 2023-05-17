@@ -1,0 +1,13 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://dr733y7lu7bor"]
+
+[ext_resource type="Texture2D" uid="uid://coh3x6ucy5psb" path="res://UI/Art/CheckButton_Highlight.png" id="1_xi4ci"]
+
+[resource]
+content_margin_left = 64.0
+content_margin_top = 32.0
+content_margin_right = 64.0
+content_margin_bottom = 32.0
+texture = ExtResource("1_xi4ci")
+texture_margin_left = 52.0
+texture_margin_right = 52.0
+texture_margin_bottom = 32.0

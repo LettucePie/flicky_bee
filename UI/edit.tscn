@@ -658,6 +658,7 @@ expand_icon = true
 [node name="ButtonSound" parent="ActionContainer/Buy_USD" instance=ExtResource("7_imp5k")]
 
 [node name="Reward" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -755,6 +756,7 @@ text = "Continue"
 [node name="ButtonSound" parent="Reward/Continue" instance=ExtResource("7_imp5k")]
 
 [node name="PurchaseQueue" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

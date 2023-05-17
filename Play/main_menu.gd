@@ -5,6 +5,7 @@ extends Control
 @onready var persist_scene = preload("res://Play/persist.tscn")
 @onready var play_scene = preload("res://Play/play_1.tscn")
 
+@onready var shadow_toggle = $Options/VBox/ShadowToggle
 @onready var music_slide = $Options/VBox/Music/Music_Slide
 @onready var sfx_slide = $Options/VBox/SFX/SFX_Slide
 
@@ -28,6 +29,7 @@ func _ready():
 
 func _reflect_settings() -> void:
 	if persist_node != null:
+		shadow_toggle.button_pressed = persist_node.shadows
 		music_slide.value = persist_node.music_vol
 		sfx_slide.value = persist_node.sfx_vol
 		AudioServer.set_bus_volume_db(1, linear_to_db(persist_node.music_vol))
@@ -126,6 +128,10 @@ func _on_done_edit_pressed():
 	$AnimationPlayer.play("Edit_Close")
 
 
+func _on_shadow_toggled(button_pressed):
+	print("Shadows Toggled : ", button_pressed)
+
+
 func _on_music_slide_value_changed(value):
 	music_slide.value = value
 
@@ -137,6 +143,7 @@ func _on_sfx_slide_value_changed(value):
 func _on_done_options_pressed(save : bool) -> void:
 	print("Finished with Options, Applying changes : ", save)
 	if persist_node != null and save:
+		persist_node.shadows = shadow_toggle.button_pressed
 		persist_node.music_vol = music_slide.value
 		persist_node.sfx_vol = sfx_slide.value
 		persist_node._save_game()
@@ -172,3 +179,5 @@ func _on_close_help_pressed():
 func _on_clear_data_pressed():
 	pass
 #	persist_node._clear_data()
+
+

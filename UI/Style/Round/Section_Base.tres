@@ -1,0 +1,13 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://cdv1hmfhdqjhp"]
+
+[ext_resource type="Texture2D" uid="uid://dyrwik8m4hjr3" path="res://UI/Art/CheckButton_Base.png" id="1_phpop"]
+
+[resource]
+content_margin_left = 64.0
+content_margin_top = 32.0
+content_margin_right = 64.0
+content_margin_bottom = 32.0
+texture = ExtResource("1_phpop")
+texture_margin_left = 32.0
+texture_margin_right = 32.2012
+texture_margin_bottom = 32.0

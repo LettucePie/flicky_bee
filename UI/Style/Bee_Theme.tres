@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=15 format=3 uid="uid://cwjsb0qlm86r5"]
+[gd_resource type="Theme" load_steps=19 format=3 uid="uid://cwjsb0qlm86r5"]
 
 [ext_resource type="StyleBox" uid="uid://dtri2fhtgsi1b" path="res://UI/Style/Round/Button_Style_DisableRound.tres" id="1_wua48"]
 [ext_resource type="StyleBox" uid="uid://d33iqf0rd8pru" path="res://UI/Style/Round/Button_Style_SelectRound.tres" id="2_thef8"]
@@ -6,8 +6,12 @@
 [ext_resource type="StyleBox" uid="uid://b1cpi6q8g74yn" path="res://UI/Style/Round/Button_Style_HoverRound.tres" id="3_3il3p"]
 [ext_resource type="Texture2D" uid="uid://bpou7bfoxiyso" path="res://UI/Art/Grabber_Handle_Normal.png" id="3_v636i"]
 [ext_resource type="Texture2D" uid="uid://ct72as17nmtpd" path="res://UI/Art/Grabber_Handle_Disabled.png" id="4_822cg"]
+[ext_resource type="Texture2D" uid="uid://btnbcqv221o6u" path="res://UI/Art/ButtonStyles/CheckButton_On.png" id="5_4vieb"]
+[ext_resource type="StyleBox" uid="uid://cdv1hmfhdqjhp" path="res://UI/Style/Round/Section_Base.tres" id="5_f7okk"]
 [ext_resource type="Texture2D" uid="uid://kx6ldlf225k0" path="res://UI/Art/Grabber_Handle_Highlight.png" id="5_vggml"]
+[ext_resource type="StyleBox" uid="uid://dr733y7lu7bor" path="res://UI/Style/Round/Section_Highlight.tres" id="6_bw5pw"]
 [ext_resource type="StyleBox" uid="uid://cm5u404ife8yc" path="res://UI/Style/Slider_Yes.tres" id="6_k1so6"]
+[ext_resource type="Texture2D" uid="uid://ca3tmgu1icmtk" path="res://UI/Art/ButtonStyles/CheckButton_Off.png" id="6_tgp14"]
 [ext_resource type="StyleBox" uid="uid://yxous6lnd8cr" path="res://UI/Style/Slider_No.tres" id="7_3s7pu"]
 [ext_resource type="StyleBox" uid="uid://yrle83fsm8ff" path="res://UI/Style/Square/Panel_Style.tres" id="10_hpgqq"]
 [ext_resource type="SystemFont" uid="uid://dolyccjp7guf1" path="res://UI/Fonts/Avenir_Settings.tres" id="10_tjqru"]
@@ -36,9 +40,22 @@ Button/styles/focus = ExtResource("2_thef8")
 Button/styles/hover = ExtResource("3_3il3p")
 Button/styles/normal = SubResource("StyleBoxTexture_8n0eg")
 Button/styles/pressed = ExtResource("2_thef8")
-CheckButton/colors/font_color = Color(0.875, 0.875, 0.875, 1)
-CheckButton/colors/font_outline_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+CheckButton/colors/font_color = Color(0.972549, 0.92549, 0.964706, 1)
+CheckButton/colors/font_disabled_color = Color(0.972549, 0.92549, 0.964706, 1)
+CheckButton/colors/font_focus_color = Color(0.972549, 0.92549, 0.964706, 1)
+CheckButton/colors/font_hover_color = Color(0.972549, 0.92549, 0.964706, 1)
+CheckButton/colors/font_hover_pressed_color = Color(0.972549, 0.92549, 0.964706, 1)
+CheckButton/colors/font_outline_color = Color(0.192157, 0.192157, 0.192157, 1)
+CheckButton/colors/font_pressed_color = Color(0.972549, 0.92549, 0.964706, 1)
 CheckButton/constants/outline_size = 10
+CheckButton/icons/checked = ExtResource("5_4vieb")
+CheckButton/icons/unchecked = ExtResource("6_tgp14")
+CheckButton/styles/disabled = ExtResource("5_f7okk")
+CheckButton/styles/focus = ExtResource("6_bw5pw")
+CheckButton/styles/hover = ExtResource("6_bw5pw")
+CheckButton/styles/hover_pressed = ExtResource("6_bw5pw")
+CheckButton/styles/normal = ExtResource("5_f7okk")
+CheckButton/styles/pressed = ExtResource("6_bw5pw")
 HScrollBar/styles/grabber = ExtResource("6_k1so6")
 HScrollBar/styles/grabber_highlight = ExtResource("6_k1so6")
 HScrollBar/styles/grabber_pressed = ExtResource("6_k1so6")

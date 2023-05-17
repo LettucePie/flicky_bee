@@ -40,6 +40,7 @@ label_settings = SubResource("LabelSettings_mgxje")
 autowrap_mode = 2
 
 [node name="FPS_Debug" parent="." instance=ExtResource("5_h1wss")]
+visible = false
 
 [connection signal="update_purchases" from="iOS_Plugins" to="." method="_on_ios_update_purchases"]
 [connection signal="timeout" from="iOS_Plugins/Timer" to="iOS_Plugins" method="_check_events"]
