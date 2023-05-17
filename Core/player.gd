@@ -5,6 +5,7 @@ class_name Player
 signal finished_travel(platform)
 signal flick_depleted()
 signal collected(obj)
+signal zoom()
 signal hit()
 
 @export var flick_acc_curve : Curve
@@ -217,6 +218,7 @@ func _on_area_entered(area):
 		bursting = true
 		speed = burst_acc
 		emit_signal("collected", "Wing")
+		emit_signal("zoom")
 		$Pickup.stream = windhook_sound
 		$Pickup.play()
 	if area.is_in_group("Collectable"):

@@ -119,6 +119,7 @@ func _spawn_player() -> void:
 	player.finished_travel.connect(_on_player_finished_travel)
 	player.flick_depleted.connect(_on_player_flick_depleted)
 	player.collected.connect(_on_player_collect)
+	player.zoom.connect(_on_player_zoom)
 	player.hit.connect(_on_player_hit)
 	current_platform = $Generator.starting_platform
 	current_flower = current_platform._return_flower()
@@ -349,6 +350,10 @@ func _on_player_collect(obj) -> void:
 		flight = clamp(flight + 2.0, 0.0, flight_reserve)
 	platform_score += difference
 	$HUD._update_score(difference, platform_score)
+
+
+func _on_player_zoom():
+	_update_camera_target(3.0)
 
 
 func _on_player_hit():
