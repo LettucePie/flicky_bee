@@ -45,7 +45,7 @@ anim_lib = ExtResource("6_8bfam")
 [node name="Turn" type="Node3D" parent="."]
 
 [node name="Bee" parent="Turn" instance=ExtResource("9_hom12")]
-transform = Transform3D(-1.67852e-08, -1.33934e-16, -0.384, 1.33934e-16, 0.384, -1.33934e-16, 0.384, -1.33934e-16, -1.67852e-08, 0, 0, 0)
+transform = Transform3D(-1.67852e-08, 0.0067018, -0.383942, 1.33914e-16, 0.383942, 0.0067018, 0.384, 2.92945e-10, -1.67826e-08, 0, 0, 0)
 
 [node name="Hat" parent="Turn/Bee/Body/Head" index="0" instance=ExtResource("10_k4ydw")]
 

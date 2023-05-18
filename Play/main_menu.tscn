@@ -778,12 +778,6 @@ anchors_preset = -1
 offset_top = 2600.0
 offset_bottom = 2600.0
 
-[node name="PurchaseQueue" parent="Edit" index="6"]
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
-
 [node name="Options" type="Panel" parent="."]
 visible = false
 layout_mode = 1

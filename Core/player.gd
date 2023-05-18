@@ -205,6 +205,7 @@ func _on_area_entered(area):
 	if area.is_in_group("Windhook"):
 		print("Player Touched Windhook")
 		_switch_to_flight()
+		anim.play("Base/Spin")
 		var hook_dir = Vector3.FORWARD
 		if area.rotation.y != 0:
 			print("Tilted WindHook true... Rotation: ", area.rotation)
