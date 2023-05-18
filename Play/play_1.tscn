@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://divwo3i3xqtwj"]
+[gd_scene load_steps=15 format=3 uid="uid://divwo3i3xqtwj"]
 
 [ext_resource type="Script" path="res://Play/play_1.gd" id="1_x43xo"]
 [ext_resource type="PackedScene" uid="uid://pbe74ba2ywah" path="res://Core/player.tscn" id="2_75ge2"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://ds65sqp6nk8mt" path="res://Core/light.tscn" id="4_2bjav"]
 [ext_resource type="Environment" uid="uid://bqwftwgkpo7ki" path="res://Core/Enviro_1.tres" id="4_4jdp8"]
 [ext_resource type="PackedScene" uid="uid://ej68kxh031vn" path="res://UI/hud.tscn" id="5_rm8qy"]
+[ext_resource type="PackedScene" uid="uid://jgdg1uwq2rq6" path="res://UI/arc_visual.tscn" id="6_8ogqw"]
+[ext_resource type="PackedScene" uid="uid://yxtju6v5sytc" path="res://UI/knob_visual.tscn" id="7_0xpq4"]
 [ext_resource type="PackedScene" uid="uid://bnideixfjpsgc" path="res://Core/results.tscn" id="7_jdqey"]
 [ext_resource type="PackedScene" uid="uid://ctoi4c1j3c0ba" path="res://Core/grass_patch.tscn" id="8_r0s2t"]
 [ext_resource type="AudioStream" uid="uid://6vdrcpbcjxks" path="res://kenney/Farm Frolics.ogg" id="9_cbbfq"]
@@ -54,8 +56,11 @@ shape = SubResource("BoxShape3D_i3iu5")
 visible = false
 mesh = SubResource("BoxMesh_r3t2s")
 
+[node name="Arc_Visual" parent="." instance=ExtResource("6_8ogqw")]
+
+[node name="Knob_Visual" parent="." instance=ExtResource("7_0xpq4")]
+
 [node name="HUD" parent="." instance=ExtResource("5_rm8qy")]
-visible = false
 
 [node name="Results" parent="." instance=ExtResource("7_jdqey")]
 visible = false
@@ -80,13 +85,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -5, 0)
 [node name="Grass_Patch3" parent="." instance=ExtResource("8_r0s2t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -5, -60)
 
+[node name="pulling_my_hair_out" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[connection signal="ready" from="Generator" to="." method="_part_ready"]
+[connection signal="ready" from="Camera3D" to="." method="_part_ready"]
 [connection signal="area_entered" from="Camera3D/Bottom_Detect" to="." method="_on_bottom_detect_area_entered"]
 [connection signal="body_entered" from="Camera3D/Bottom_Detect" to="." method="_on_bottom_detect_area_entered"]
 [connection signal="area_entered" from="Camera3D/Top_Detect" to="." method="_on_top_detect_area_entered"]
 [connection signal="body_entered" from="Camera3D/Top_Detect" to="." method="_on_top_detect_area_entered"]
 [connection signal="end_game" from="HUD" to="." method="_on_life_timer_timeout"]
+[connection signal="ready" from="HUD" to="." method="_part_ready"]
 [connection signal="resized" from="HUD" to="." method="_on_hud_resized"]
 [connection signal="play_again" from="Results" to="." method="_on_results_play_again"]
 [connection signal="quit_out" from="Results" to="." method="_on_results_quit_out"]
+[connection signal="ready" from="Results" to="." method="_part_ready"]
 [connection signal="timeout" from="Life_Timer" to="." method="_on_life_timer_timeout"]
 [connection signal="timeout" from="Rest_Timer" to="." method="_on_rest_timer_timeout"]

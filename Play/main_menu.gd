@@ -66,11 +66,22 @@ func _process(delta):
 
 
 func _on_play_pressed():
+	print("Play Pressed")
+#	self.hide()
 	play_node = play_scene.instantiate()
+	play_node.fully_initiated.connect(_play_scene_ready)
 	get_window().add_child(play_node)
-	play_node._setup(self, persist_node)
-	get_tree().set_current_scene(play_node)
-	get_window().remove_child(self)
+#	play_node._setup(self, persist_node)
+#	play_node.call_deferred("_setup", self, persist_node)
+
+
+func _play_scene_ready() -> void:
+	print("Play Scene is ready")
+	if play_node != null:
+		print("Sending self: ", self, " and persist: ", persist_node, " To playscene _setup")
+		play_node._setup(self, persist_node)
+		get_tree().set_current_scene(play_node)
+		get_window().remove_child(self)
 
 
 func _on_edit_pressed():

@@ -1,5 +1,7 @@
 extends Node
 
+signal fully_initiated()
+
 @export var player_scene : PackedScene
 @export var life_time := 10.0
 @export var flight_reserve := 5.0
@@ -13,6 +15,7 @@ enum Collect {Comb, Jar, Flower}
 @onready var collect_values = [comb_value, jar_value, flower_value]
 @onready var collect_names = ["Comb", "Jar", "Flower"]
 
+var ready_parts := 0
 var persist : Persist
 var menu = null
 ##
@@ -59,18 +62,36 @@ var grass_patches : Array
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if get_window().get_child_count() <= 1:
+		print("Play Scene Lonely")
 		_setup(null, null)
 
 
+func _part_ready() -> void:
+	print("Child of PlayScene Ready")
+	ready_parts += 1
+	if ready_parts == 4:
+		_spawn_player()
+	if ready_parts == 5:
+		emit_signal("fully_initiated")
+
+
 func _setup(menu_node : Control, persist_node : Persist):
+	print("PlayScene Setup with menu ", menu_node, " and persist ", persist_node)
 	menu = menu_node
 	persist = persist_node
 	$Generator._clear_platforms()
-	$Generator._generate(20, 0.0, persist.flower)
+	var flower = "default"
+	if persist_node != null:
+		flower = persist.flower
+	$Generator._generate(20, 0.0, flower)
 	camera_target = Vector3.ZERO
-	_spawn_player()
 	_establish_bounds()
 	$Light.shadow_enabled = persist_node.shadows
+	current_platform = $Generator.starting_platform
+	current_flower = current_platform._return_flower()
+	player.set_position(current_platform.get_position())
+	player._assign_accessories(persist.hat, persist.trail)
+	_update_camera_target(6.0)
 	time = life_time
 	flight = flight_reserve
 	$Life_Timer.stop()
@@ -88,8 +109,8 @@ func _setup(menu_node : Control, persist_node : Persist):
 	flick_valid = false
 	game_started = false
 	traveling = false
-#	$Arc_Visual.hide()
-#	$Knob_Visual.hide()
+	$Arc_Visual.hide()
+	$Knob_Visual.hide()
 	$HUD._update_health_bar(time, life_time)
 	$HUD._update_fly_bar(flight, flight_reserve)
 	$HUD._setup()
@@ -114,19 +135,20 @@ func _spawn_player() -> void:
 	if player != null:
 		player._die()
 	player = player_scene.instantiate()
+	add_child.call_deferred(player)
+	player.ready.connect(_player_ready)
 #	player.connect("finished_travel", Callable(self, "_on_player_finished_travel"))
 #	player.connect("flick_depleted", Callable(self, "_on_player_flick_depleted"))
+
+
+func _player_ready() -> void:
+	print("Player Ready")
 	player.finished_travel.connect(_on_player_finished_travel)
 	player.flick_depleted.connect(_on_player_flick_depleted)
 	player.collected.connect(_on_player_collect)
 	player.zoom.connect(_on_player_zoom)
 	player.hit.connect(_on_player_hit)
-	current_platform = $Generator.starting_platform
-	current_flower = current_platform._return_flower()
-	player.set_position(current_platform.get_position())
-	add_child(player)
-	player._assign_accessories(persist.hat, persist.trail)
-	_update_camera_target(6.0)
+	_part_ready()
 
 
 func _update_camera_target(offset : float) -> void:
@@ -151,8 +173,6 @@ func _move_grass_patches() -> void:
 
 
 func _process(delta):
-	$HUD.hide()
-	$Results.hide()
 	$Camera3D.set_position(
 		lerp(
 			$Camera3D.get_position(), camera_target, delta * 2
@@ -190,24 +210,22 @@ func _process_click(event : InputEventMouseButton) -> void:
 		touch_start = event.position
 		if !traveling:
 			player_pos_2d = $Camera3D.unproject_position(player.get_position())
-#			$Arc_Visual._assign_start_point(player_pos_2d)
+			$Arc_Visual._assign_start_point(player_pos_2d)
 		else:
-			pass
-#			$Knob_Visual._assign_start_point(touch_start)
+			$Knob_Visual._assign_start_point(touch_start)
 	elif !event.pressed:
 		touching = false
 		touch_start = Vector2.ZERO
 		if flick_valid:
 			_flick_player()
-#			$Arc_Visual._release(
+			$Arc_Visual._release()
 		else:
-			pass
-#			$Arc_Visual._cancel()
+			$Arc_Visual._cancel()
 		if traveling:
 			if player != null:
 				player._release_flight()
 				flying = false
-#			$Knob_Visual._release()
+			$Knob_Visual._release()
 
 ###
 ### The Logic for controlling which direction the player is flicked,
@@ -234,14 +252,14 @@ func _process_drag(event : InputEventMouseMotion) -> void:
 			)
 			if flick_target.z > player.get_position().z:
 				flick_target.z = player.get_position().z
-#			$Arc_Visual._update_target_point(flick_trajectory)
+			$Arc_Visual._update_target_point(flick_trajectory)
 			if current_flower != null:
 				var angle = touch_start.angle_to_point(event.position)
 				var percent = tension / (max_dimension.y * 0.4)
 				current_flower._bend_flower(angle, percent)
 		else:
 			flick_valid = false
-#			$Arc_Visual._cancel()
+			$Arc_Visual._cancel()
 			if current_flower != null:
 				current_flower._bend_flower(0, 0.0)
 	else:
@@ -254,7 +272,7 @@ func _process_drag(event : InputEventMouseMotion) -> void:
 		if player != null:
 			player._fly_to(dir_3d, flight, tension)
 			flying = true
-#		$Knob_Visual._update_target_point(event.position)
+		$Knob_Visual._update_target_point(event.position)
 
 
 func _physics_process(delta):
@@ -319,8 +337,8 @@ func _on_player_finished_travel(platform):
 	touching = false
 	flick_valid = false
 	flying = false
-#	$Arc_Visual.hide()
-#	$Knob_Visual.hide()
+	$Arc_Visual.hide()
+	$Knob_Visual.hide()
 	_update_camera_target(6.0)
 	$Life_Timer.stop()
 	$Rest_Timer.start(rest_time)
@@ -401,6 +419,7 @@ func _on_top_detect_area_entered(area):
 
 
 func _on_results_play_again():
+	print("Results Play Again")
 	_setup(menu, persist)
 
 
