@@ -88,8 +88,8 @@ func _setup(menu_node : Control, persist_node : Persist):
 	flick_valid = false
 	game_started = false
 	traveling = false
-	$Arc_Visual.hide()
-	$Knob_Visual.hide()
+#	$Arc_Visual.hide()
+#	$Knob_Visual.hide()
 	$HUD._update_health_bar(time, life_time)
 	$HUD._update_fly_bar(flight, flight_reserve)
 	$HUD._setup()
@@ -188,22 +188,24 @@ func _process_click(event : InputEventMouseButton) -> void:
 		touch_start = event.position
 		if !traveling:
 			player_pos_2d = $Camera3D.unproject_position(player.get_position())
-			$Arc_Visual._assign_start_point(player_pos_2d)
+#			$Arc_Visual._assign_start_point(player_pos_2d)
 		else:
-			$Knob_Visual._assign_start_point(touch_start)
+			pass
+#			$Knob_Visual._assign_start_point(touch_start)
 	elif !event.pressed:
 		touching = false
 		touch_start = Vector2.ZERO
 		if flick_valid:
 			_flick_player()
-			$Arc_Visual._release()
+#			$Arc_Visual._release(
 		else:
-			$Arc_Visual._cancel()
+			pass
+#			$Arc_Visual._cancel()
 		if traveling:
 			if player != null:
 				player._release_flight()
 				flying = false
-			$Knob_Visual._release()
+#			$Knob_Visual._release()
 
 ###
 ### The Logic for controlling which direction the player is flicked,
@@ -230,14 +232,14 @@ func _process_drag(event : InputEventMouseMotion) -> void:
 			)
 			if flick_target.z > player.get_position().z:
 				flick_target.z = player.get_position().z
-			$Arc_Visual._update_target_point(flick_trajectory)
+#			$Arc_Visual._update_target_point(flick_trajectory)
 			if current_flower != null:
 				var angle = touch_start.angle_to_point(event.position)
 				var percent = tension / (max_dimension.y * 0.4)
 				current_flower._bend_flower(angle, percent)
 		else:
 			flick_valid = false
-			$Arc_Visual._cancel()
+#			$Arc_Visual._cancel()
 			if current_flower != null:
 				current_flower._bend_flower(0, 0.0)
 	else:
@@ -250,7 +252,7 @@ func _process_drag(event : InputEventMouseMotion) -> void:
 		if player != null:
 			player._fly_to(dir_3d, flight, tension)
 			flying = true
-		$Knob_Visual._update_target_point(event.position)
+#		$Knob_Visual._update_target_point(event.position)
 
 
 func _physics_process(delta):
@@ -284,11 +286,11 @@ func _establish_bounds() -> void:
 	max_dimension = $HUD/Max.get_position()
 	var center = max_dimension * 0.5
 	left_2d_bound = Vector2(
-		clamp(center.x - 540, 0, max_dimension.x), 
+		clamp(center.x - 540, 0, max_dimension.x),
 			0
 		)
 	right_2d_bound = Vector2(
-		clamp(max_dimension.x - left_2d_bound.x, 0, max_dimension.x), 
+		clamp(max_dimension.x - left_2d_bound.x, 0, max_dimension.x),
 			max_dimension.y
 		)
 	var ratio = max_dimension.x / max_dimension.y
@@ -315,8 +317,8 @@ func _on_player_finished_travel(platform):
 	touching = false
 	flick_valid = false
 	flying = false
-	$Arc_Visual.hide()
-	$Knob_Visual.hide()
+#	$Arc_Visual.hide()
+#	$Knob_Visual.hide()
 	_update_camera_target(6.0)
 	$Life_Timer.stop()
 	$Rest_Timer.start(rest_time)
