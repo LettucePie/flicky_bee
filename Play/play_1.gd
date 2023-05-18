@@ -66,7 +66,10 @@ func _setup(menu_node : Control, persist_node : Persist):
 	menu = menu_node
 	persist = persist_node
 	$Generator._clear_platforms()
-	$Generator._generate(20, 0.0, persist.flower)
+	if persist_node == null:
+		$Generator._generate(20, 0.0, "default")
+	else:
+		$Generator._generate(20, 0.0, persist.flower)
 	camera_target = Vector3.ZERO
 	_spawn_player()
 	_establish_bounds()
@@ -125,7 +128,10 @@ func _spawn_player() -> void:
 	current_flower = current_platform._return_flower()
 	player.set_position(current_platform.get_position())
 	add_child(player)
-	player._assign_accessories(persist.hat, persist.trail)
+	if persist == null:
+		player._assign_accessories("default", "default")
+	else:
+		player._assign_accessories(persist.hat, persist.trail)
 	_update_camera_target(6.0)
 
 

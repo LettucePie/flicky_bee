@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Flicky Bee"
-run/main_scene="res://Play/main_menu.tscn"
+run/main_scene="res://Play/play_1.tscn"
 config/features=PackedStringArray("4.0", "Mobile")
 config/icon="res://Publishing/GameIcon.png"
 
