@@ -66,7 +66,6 @@ func _clear_gaps(point) -> void:
 
 
 func _generate(num : int, z_start : float, flower : String) -> void:
-	print("Generate")
 	if platform_scene != null:
 		var z_point = z_start
 		var z_previous = z_start

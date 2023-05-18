@@ -56,6 +56,19 @@ shape = SubResource("BoxShape3D_i3iu5")
 visible = false
 mesh = SubResource("BoxMesh_r3t2s")
 
+[node name="Arc_Visual" parent="." instance=ExtResource("4_weoh5")]
+
+[node name="Knob_Visual" parent="." instance=ExtResource("5_3g4qb")]
+visible = false
+
+[node name="HUD" parent="." instance=ExtResource("5_rm8qy")]
+
+[node name="Results" parent="." instance=ExtResource("7_jdqey")]
+
+[node name="Life_Timer" type="Timer" parent="."]
+
+[node name="Rest_Timer" type="Timer" parent="."]
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("9_cbbfq")
@@ -72,10 +85,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -5, 0)
 [node name="Grass_Patch3" parent="." instance=ExtResource("8_r0s2t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -5, -60)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.719861, 0.694118, 0, -0.694118, 0.719861, 0, 0, 0)
-
 [connection signal="area_entered" from="Camera3D/Bottom_Detect" to="." method="_on_bottom_detect_area_entered"]
 [connection signal="body_entered" from="Camera3D/Bottom_Detect" to="." method="_on_bottom_detect_area_entered"]
 [connection signal="area_entered" from="Camera3D/Top_Detect" to="." method="_on_top_detect_area_entered"]
 [connection signal="body_entered" from="Camera3D/Top_Detect" to="." method="_on_top_detect_area_entered"]
+[connection signal="end_game" from="HUD" to="." method="_on_life_timer_timeout"]
+[connection signal="resized" from="HUD" to="." method="_on_hud_resized"]
+[connection signal="play_again" from="Results" to="." method="_on_results_play_again"]
+[connection signal="quit_out" from="Results" to="." method="_on_results_quit_out"]
+[connection signal="timeout" from="Life_Timer" to="." method="_on_life_timer_timeout"]
+[connection signal="timeout" from="Rest_Timer" to="." method="_on_rest_timer_timeout"]
