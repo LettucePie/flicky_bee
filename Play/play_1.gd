@@ -70,7 +70,7 @@ func _setup(menu_node : Control, persist_node : Persist):
 	camera_target = Vector3.ZERO
 	_spawn_player()
 	_establish_bounds()
-	$Light.shadow_enabled = persist_node.shadows
+#	$Light.shadow_enabled = persist_node.shadows
 	time = life_time
 	flight = flight_reserve
 	$Life_Timer.stop()
