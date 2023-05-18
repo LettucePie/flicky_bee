@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwgh0l2dpnpsf"]
+[gd_scene load_steps=6 format=3 uid="uid://dwgh0l2dpnpsf"]
 
 [ext_resource type="Script" path="res://Play/persist.gd" id="1_x2eam"]
 [ext_resource type="Script" path="res://Play/ios_plugins.gd" id="2_x5bnn"]
 [ext_resource type="Resource" uid="uid://by7b7xlpi6dxw" path="res://Accessory/Trails/PriceTags/SupportTrail_PriceTag.tres" id="3_i4n2t"]
 [ext_resource type="Script" path="res://Play/playstore_plugins.gd" id="4_gydss"]
-[ext_resource type="PackedScene" uid="uid://npe2vhhs2fmy" path="res://Testing/fps_debug.tscn" id="5_h1wss"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mgxje"]
 font_size = 20
@@ -38,8 +37,6 @@ grow_vertical = 2
 text = "Debugging PlayStore"
 label_settings = SubResource("LabelSettings_mgxje")
 autowrap_mode = 2
-
-[node name="FPS_Debug" parent="." instance=ExtResource("5_h1wss")]
 
 [connection signal="update_purchases" from="iOS_Plugins" to="." method="_on_ios_update_purchases"]
 [connection signal="timeout" from="iOS_Plugins/Timer" to="iOS_Plugins" method="_check_events"]
