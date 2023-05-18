@@ -70,4 +70,5 @@ func _set_flower(flower : String):
 			flower_top.queue_free()
 		flower_top = target.instantiate()
 		add_child(flower_top)
+		flower_top.rotation.y = PI / 2
 		_find_trace()
