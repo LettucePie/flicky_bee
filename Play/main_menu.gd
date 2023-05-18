@@ -97,12 +97,11 @@ func _on_edit_pressed():
 
 
 func _spawn_queue() -> void:
-	print("Create queue")
-	print("Create Fail Timout that runs FinishQueue")
+	$PurchaseQueue._queue()
 
 
 func _finish_queue() -> void:
-	print("Kill queue")
+	$PurchaseQueue._stop()
 	_update_current_accessories()
 	$AnimationPlayer.play("Edit_Open")
 	$Edit._set_active_category(0)
@@ -183,3 +182,7 @@ func _on_clear_data_pressed():
 #	persist_node._clear_data()
 
 
+
+
+func _on_purchase_queue_queue_timeout():
+	print("Purchase Queue Timed Out")
