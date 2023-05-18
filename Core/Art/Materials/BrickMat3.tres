@@ -1,6 +1,10 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://b3u67m0yx13w5"]
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b3u67m0yx13w5"]
+
+[ext_resource type="Texture2D" uid="uid://coyk1ke2u63qv" path="res://Core/Art/Textures/Brick_Texture_3.png" id="1_vkalo"]
 
 [resource]
 resource_name = "Brick_Mat_3"
 shading_mode = 2
 vertex_color_use_as_albedo = true
+albedo_color = Color(0.498039, 0.305882, 0.12549, 1)
+albedo_texture = ExtResource("1_vkalo")

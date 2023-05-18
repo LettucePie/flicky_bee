@@ -7,4 +7,5 @@ vertex_color_use_as_albedo = true
 albedo_color = Color(0.906332, 0.868041, 0.309742, 1)
 metallic_specular = 0.8
 roughness = 0.31
+emission_enabled = true
 emission = Color(1, 0.709804, 0, 1)
