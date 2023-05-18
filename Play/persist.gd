@@ -6,6 +6,7 @@ class_name Persist
 const keys = [
 	"version",
 	"shadows",
+	"clutter",
 	"music_vol",
 	"sfx_vol",
 	"furthest_distance",
@@ -20,6 +21,7 @@ const keys = [
 	"flower"]
 
 var shadows := true
+var clutter := true
 var music_vol := 0.8
 var sfx_vol := 0.8
 
@@ -45,6 +47,7 @@ func _save_game() -> void:
 	var save_dict = {
 		"version" = game_ver,
 		"shadows" = shadows,
+		"clutter" = clutter,
 		"music_vol" = music_vol,
 		"sfx_vol" = sfx_vol,
 		"furthest_distance" = furthest_distance,
@@ -86,6 +89,7 @@ func _load_game() -> void:
 					valid = false
 			if valid:
 				shadows = data["shadows"]
+				clutter = data["clutter"]
 				music_vol = data["music_vol"]
 				sfx_vol = data["sfx_vol"]
 				furthest_distance = data["furthest_distance"]
@@ -126,6 +130,8 @@ func _file_surgery(data) -> void:
 	print("Performing File Surgery")
 	if data.has("shadows"):
 		shadows = data["shadows"]
+	if data.has("clutter"):
+		clutter = data["clutter"]
 	if data.has("music_vol"):
 		music_vol = data["music_vol"]
 	if data.has("sfx_vol"):

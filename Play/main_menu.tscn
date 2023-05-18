@@ -779,7 +779,6 @@ offset_top = 2600.0
 offset_bottom = 2600.0
 
 [node name="Options" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -836,6 +835,11 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_vertical = 6
 text = "Shadow"
+
+[node name="ClutterToggle" type="CheckButton" parent="Options/VBox"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Clutter"
 
 [node name="MusicLabel" type="Label" parent="Options/VBox"]
 layout_mode = 2
@@ -1061,6 +1065,7 @@ grow_vertical = 1
 [connection signal="pressed" from="Options/HBox/Cancel" to="." method="_on_done_options_pressed" binds= [false]]
 [connection signal="pressed" from="Options/HBox/Confirm" to="." method="_on_done_options_pressed" binds= [true]]
 [connection signal="toggled" from="Options/VBox/ShadowToggle" to="." method="_on_shadow_toggled"]
+[connection signal="toggled" from="Options/VBox/ClutterToggle" to="." method="_on_clutter_toggle_toggled"]
 [connection signal="pressed" from="Options/VBox/Music/Music_Min" to="." method="_on_music_slide_value_changed" binds= [0.0]]
 [connection signal="value_changed" from="Options/VBox/Music/Music_Slide" to="." method="_on_music_slide_value_changed"]
 [connection signal="pressed" from="Options/VBox/Music/Music_Max" to="." method="_on_music_slide_value_changed" binds= [1.0]]
