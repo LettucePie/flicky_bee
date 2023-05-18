@@ -55,8 +55,10 @@ visible = false
 mesh = SubResource("BoxMesh_r3t2s")
 
 [node name="HUD" parent="." instance=ExtResource("5_rm8qy")]
+visible = false
 
 [node name="Results" parent="." instance=ExtResource("7_jdqey")]
+visible = false
 
 [node name="Life_Timer" type="Timer" parent="."]
 

@@ -151,6 +151,8 @@ func _move_grass_patches() -> void:
 
 
 func _process(delta):
+	$HUD.hide()
+	$Results.hide()
 	$Camera3D.set_position(
 		lerp(
 			$Camera3D.get_position(), camera_target, delta * 2
