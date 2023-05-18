@@ -1,8 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://divwo3i3xqtwj"]
+[gd_scene load_steps=15 format=3 uid="uid://divwo3i3xqtwj"]
 
 [ext_resource type="Script" path="res://Play/play_1.gd" id="1_x43xo"]
 [ext_resource type="PackedScene" uid="uid://pbe74ba2ywah" path="res://Core/player.tscn" id="2_75ge2"]
 [ext_resource type="PackedScene" uid="uid://2gkm2rsvmoiy" path="res://Core/generator.tscn" id="2_yeg2j"]
+[ext_resource type="PackedScene" uid="uid://ds65sqp6nk8mt" path="res://Core/light.tscn" id="4_2bjav"]
+[ext_resource type="Environment" uid="uid://bqwftwgkpo7ki" path="res://Core/Enviro_1.tres" id="4_4jdp8"]
+[ext_resource type="PackedScene" uid="uid://jgdg1uwq2rq6" path="res://UI/arc_visual.tscn" id="4_weoh5"]
+[ext_resource type="PackedScene" uid="uid://yxtju6v5sytc" path="res://UI/knob_visual.tscn" id="5_3g4qb"]
+[ext_resource type="PackedScene" uid="uid://ej68kxh031vn" path="res://UI/hud.tscn" id="5_rm8qy"]
+[ext_resource type="PackedScene" uid="uid://bnideixfjpsgc" path="res://Core/results.tscn" id="7_jdqey"]
 [ext_resource type="PackedScene" uid="uid://ctoi4c1j3c0ba" path="res://Core/grass_patch.tscn" id="8_r0s2t"]
 [ext_resource type="AudioStream" uid="uid://6vdrcpbcjxks" path="res://kenney/Farm Frolics.ogg" id="9_cbbfq"]
 [ext_resource type="Script" path="res://Play/music_fade.gd" id="10_da10t"]
@@ -20,8 +26,12 @@ life_time = 15.0
 
 [node name="Generator" parent="." instance=ExtResource("2_yeg2j")]
 
+[node name="Light" parent="." instance=ExtResource("4_2bjav")]
+light_bake_mode = 2
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, -6.97574e-16, -1.5246e-23, -1.5246e-23, -4.37114e-08, 1, -6.97574e-16, -1, -4.37114e-08, 2.08165e-12, 13, 0.025)
+environment = ExtResource("4_4jdp8")
 current = true
 
 [node name="Bottom_Detect" type="Area3D" parent="Camera3D"]
