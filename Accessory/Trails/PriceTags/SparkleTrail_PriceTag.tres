@@ -1,17 +1,19 @@
 [gd_resource type="Resource" script_class="PriceTag" load_steps=4 format=3 uid="uid://cnl2x30tsw7vp"]
 
-[ext_resource type="Texture2D" uid="uid://bhnan5pcu412w" path="res://Accessory/Trails/SparkleTrail_Icon.png" id="1_3qjvh"]
+[ext_resource type="Texture2D" uid="uid://bhud7xfuk88fo" path="res://Accessory/Trails/SparkleTrail_Icon.png" id="1_3qjvh"]
 [ext_resource type="Script" path="res://Accessory/pricetag_type.gd" id="1_7uvpc"]
 [ext_resource type="Resource" uid="uid://vwxtv4i7agvm" path="res://Accessory/Trails/TrailTypes/SparkleTrail_Type.tres" id="1_t3qa4"]
 
 [resource]
 script = ExtResource("1_7uvpc")
-acc_name = "Sparkle A"
+acc_name = "Sparkle"
 acc_icon = ExtResource("1_3qjvh")
 acc_type = 1
 accessory = ExtResource("1_t3qa4")
 purchase_honey = true
-honey_amount = 60.0
+honey_amount = 100.0
 purchase_usd = false
-usd_amount = 0.99
+usd_amount = "String"
+validated = false
+prod_id = "PRODUCT_ID"
 achievable = false

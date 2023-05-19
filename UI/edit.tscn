@@ -584,19 +584,19 @@ stream = ExtResource("8_nohib")
 
 [node name="Hats" parent="Vbox" instance=ExtResource("6_j53hv")]
 layout_mode = 2
-inventory = Array[Resource("res://Accessory/pricetag_type.gd")]([ExtResource("15_i5exi"), ExtResource("16_2ba6v"), ExtResource("13_ph1gx"), ExtResource("17_4m6ti")])
+inventory = Array[Resource("res://Accessory/pricetag_type.gd")]([ExtResource("16_2ba6v"), ExtResource("15_i5exi"), ExtResource("13_ph1gx"), ExtResource("17_4m6ti")])
 
 [node name="Trails" parent="Vbox" instance=ExtResource("6_j53hv")]
 visible = false
 layout_mode = 2
 category = 1
-inventory = Array[Resource("res://Accessory/pricetag_type.gd")]([ExtResource("18_487ts"), ExtResource("19_kjkkv"), ExtResource("20_rcqpj"), ExtResource("22_gpogs"), ExtResource("23_sqve1")])
+inventory = Array[Resource("res://Accessory/pricetag_type.gd")]([ExtResource("18_487ts"), ExtResource("19_kjkkv"), ExtResource("22_gpogs"), ExtResource("23_sqve1"), ExtResource("20_rcqpj")])
 
 [node name="Flowers" parent="Vbox" instance=ExtResource("6_j53hv")]
 visible = false
 layout_mode = 2
 category = 2
-inventory = Array[Resource("res://Accessory/pricetag_type.gd")]([ExtResource("20_5l4yj"), ExtResource("23_fvjf7")])
+inventory = Array[Resource("res://Accessory/pricetag_type.gd")]([ExtResource("23_fvjf7"), ExtResource("20_5l4yj")])
 
 [node name="Selected" type="Label" parent="."]
 layout_mode = 0

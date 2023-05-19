@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="PriceTag" load_steps=4 format=3 uid="uid://btf1fx35mbsyy"]
 
 [ext_resource type="Script" path="res://Accessory/pricetag_type.gd" id="1_g4pl1"]
-[ext_resource type="Texture2D" uid="uid://ciyem1w52hbn6" path="res://Accessory/Flowers/BlueLily_Icon.png" id="1_mkb7v"]
+[ext_resource type="Texture2D" uid="uid://cdt4e3mpgoo6y" path="res://Accessory/Flowers/BlueLily_Icon.png" id="1_mkb7v"]
 [ext_resource type="Resource" uid="uid://d2meuwp8bo0cg" path="res://Accessory/Flowers/FlowerTypes/Blue_Lily_Type.tres" id="2_23rb4"]
 
 [resource]
@@ -11,7 +11,9 @@ acc_icon = ExtResource("1_mkb7v")
 acc_type = 2
 accessory = ExtResource("2_23rb4")
 purchase_honey = true
-honey_amount = 200.0
+honey_amount = 400.0
 purchase_usd = false
-usd_amount = 0.99
+usd_amount = "String"
+validated = false
+prod_id = "PRODUCT_ID"
 achievable = false

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="PriceTag" load_steps=4 format=3 uid="uid://n7inm04q3qeg"]
 
 [ext_resource type="Script" path="res://Accessory/pricetag_type.gd" id="1_7dgqb"]
-[ext_resource type="Texture2D" uid="uid://bhbsy52c8movr" path="res://Accessory/Hats/TopHat_Icon.png" id="1_iq05f"]
+[ext_resource type="Texture2D" uid="uid://bytxayuv1gnfy" path="res://Accessory/Hats/TopHat_Icon.png" id="1_iq05f"]
 [ext_resource type="Resource" uid="uid://bvxv8h1r67s0h" path="res://Accessory/Hats/HatTypes/TopHat_Type.tres" id="2_l2sy6"]
 
 [resource]
@@ -11,7 +11,9 @@ acc_icon = ExtResource("1_iq05f")
 acc_type = 0
 accessory = ExtResource("2_l2sy6")
 purchase_honey = true
-honey_amount = 80.0
+honey_amount = 120.0
 purchase_usd = false
-usd_amount = 0.99
+usd_amount = "String"
+validated = false
+prod_id = "PRODUCT_ID"
 achievable = false
