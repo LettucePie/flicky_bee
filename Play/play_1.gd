@@ -355,6 +355,8 @@ func _on_player_finished_travel(platform):
 #		$Generator._clear_gaps(last_platform.get_position().z)
 		$Generator._generate(4, last_platform.get_position().z, persist.flower)
 	current_platform = platform
+	time = clamp(time + 1.0, 0.0, life_time)
+	flight = clamp(flight + 2.0, 0.0, flight_reserve)
 	if platform.is_in_group("Platform_Area"):
 		current_flower = current_platform._return_flower()
 		traveling = false
@@ -362,14 +364,13 @@ func _on_player_finished_travel(platform):
 		$Rest_Timer.start(rest_time)
 	elif platform.is_in_group("BounceBud"):
 		_disable_player_input(0.2)
+		$Life_Timer.start(time)
 	touching = false
 	flick_valid = false
 	flying = false
 	$Arc_Visual.hide()
 	$Knob_Visual.hide()
 	_update_camera_target(6.0)
-	time = clamp(time + 1.0, 0.0, life_time)
-	flight = clamp(flight + 2.0, 0.0, flight_reserve)
 	flower_count += 1
 	if persist != null:
 		platform_score += _register_point(Collect.Flower)
