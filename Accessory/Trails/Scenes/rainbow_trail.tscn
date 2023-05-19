@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://bq4o80p0kyckg"]
+
+[ext_resource type="Script" path="res://Accessory/Trails/Scenes/rainbow_trail.gd" id="1_ub484"]
+[ext_resource type="Texture2D" uid="uid://5mx45qfdea5x" path="res://Accessory/Trails/Art/Rainbow_Texture.png" id="2_tqmf4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ygklv"]
+albedo_texture = ExtResource("2_tqmf4")
+emission_operator = 1
+disable_receive_shadows = true
+
+[node name="RainbowTrail" type="MeshInstance3D" groups=["CustomTrail"]]
+script = ExtResource("1_ub484")
+mat = SubResource("StandardMaterial3D_ygklv")
+decay_rate = 4.0

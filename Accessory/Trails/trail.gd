@@ -9,7 +9,10 @@ func _set_active(trail : String) -> void:
 	for t in trails:
 		if t.trail_name == trail:
 			active_trail = t.scene.instantiate()
-			add_child(active_trail)
+			if active_trail.is_in_group("CustomTrail"):
+				get_window().add_child(active_trail)
+			else:
+				add_child(active_trail)
 	_activate_trail(false)
 
 
@@ -30,3 +33,5 @@ func _activate_trail(tf : bool) -> void:
 				if c is GPUParticles3D \
 				or c is GPUParticles2D:
 					c.emitting = tf
+		if active_trail.is_in_group("CustomTrail"):
+			print("CustomTrail Activate: ", tf)

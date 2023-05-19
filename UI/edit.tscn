@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://drlmndybhl8t4"]
+[gd_scene load_steps=37 format=3 uid="uid://drlmndybhl8t4"]
 
 [ext_resource type="Theme" uid="uid://bd87acx3a4l4n" path="res://UI/Style/SubBee_Theme.tres" id="1_3ipnt"]
 [ext_resource type="Theme" uid="uid://cwjsb0qlm86r5" path="res://UI/Style/Bee_Theme.tres" id="1_i3uci"]
@@ -28,6 +28,7 @@
 [ext_resource type="Resource" uid="uid://nnbsxi4jk54l" path="res://Accessory/Trails/PriceTags/HoneyDropTrail_PriceTag.tres" id="22_gpogs"]
 [ext_resource type="AudioStream" uid="uid://dpeo40oq3mlxp" path="res://UI/Sounds/Select_05.wav" id="22_shnoe"]
 [ext_resource type="Resource" uid="uid://dui8o0lp780au" path="res://Accessory/Flowers/PriceTags/Bermuda_Buttercup_Tag.tres" id="23_fvjf7"]
+[ext_resource type="Resource" uid="uid://c1w6jrjpcqro" path="res://Accessory/Trails/PriceTags/RainbowTrail_PriceTag.tres" id="23_sqve1"]
 [ext_resource type="Texture2D" uid="uid://cuqkesnrxfkgs" path="res://UI/Art/Icons/BuyUSD_Icon.png" id="26_f5iov"]
 [ext_resource type="Texture2D" uid="uid://d3eriix1cdvxj" path="res://UI/Art/Icons/Exit_Icon.png" id="29_qinxq"]
 [ext_resource type="PackedScene" uid="uid://ckypgxmb4ff47" path="res://UI/purchase_queue.tscn" id="29_vf1a0"]
@@ -589,7 +590,7 @@ inventory = Array[Resource("res://Accessory/pricetag_type.gd")]([ExtResource("15
 visible = false
 layout_mode = 2
 category = 1
-inventory = Array[Resource("res://Accessory/pricetag_type.gd")]([ExtResource("18_487ts"), ExtResource("19_kjkkv"), ExtResource("20_rcqpj"), ExtResource("22_gpogs")])
+inventory = Array[Resource("res://Accessory/pricetag_type.gd")]([ExtResource("18_487ts"), ExtResource("19_kjkkv"), ExtResource("20_rcqpj"), ExtResource("22_gpogs"), ExtResource("23_sqve1")])
 
 [node name="Flowers" parent="Vbox" instance=ExtResource("6_j53hv")]
 visible = false

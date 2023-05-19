@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="TrailType" load_steps=3 format=3 uid="uid://cu33s6qi1j20"]
+
+[ext_resource type="Script" path="res://Accessory/Trails/trail_type.gd" id="1_0x3l6"]
+[ext_resource type="PackedScene" uid="uid://bq4o80p0kyckg" path="res://Accessory/Trails/Scenes/rainbow_trail.tscn" id="1_bctbs"]
+
+[resource]
+script = ExtResource("1_0x3l6")
+trail_name = "Rainbow"
+scene = ExtResource("1_bctbs")

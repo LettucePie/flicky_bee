@@ -1,6 +1,7 @@
 extends Node
 
 @export var mat : Material
+@export var decay_rate := 1.5
 
 @onready var trace = $Node3D/Trace
 @onready var rainbow = $Node3D/Rainbow
@@ -42,15 +43,23 @@ func _process(delta):
 	if segments.size() > 1:
 		mesh.clear_surfaces()
 		mesh.surface_begin(Mesh.PRIMITIVE_TRIANGLE_STRIP, mat)
+		var clear_segments = []
 		for s in segments:
 			mesh.surface_set_normal(Vector3.UP)
 			mesh.surface_set_uv(Vector2.ZERO)
 			mesh.surface_add_vertex(s[0])
 			mesh.surface_set_normal(Vector3.UP)
-			mesh.surface_set_uv(Vector2.ZERO)
+			mesh.surface_set_uv(Vector2.ONE)
 			mesh.surface_add_vertex(s[1])
 			## Decay
-			s[0] = s[0].lerp(s[2], delta)
-			s[1] = s[1].lerp(s[2], delta)
+			s[0] = s[0].lerp(s[2], delta * decay_rate)
+			s[1] = s[1].lerp(s[2], delta * decay_rate)
+			if s[0].distance_to(s[2]) < 0.1:
+				clear_segments.append(s)
 		mesh.surface_end()
 		rainbow.mesh = mesh
+		if clear_segments.size() > 0:
+			for c in clear_segments:
+				if segments.has(c):
+					segments.erase(c)
+			clear_segments.clear()

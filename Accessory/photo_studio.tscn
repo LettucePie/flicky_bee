@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://c4ap702pmxyr0"]
+[gd_scene load_steps=28 format=3 uid="uid://c4ap702pmxyr0"]
 
 [ext_resource type="PackedScene" uid="uid://ctoi4c1j3c0ba" path="res://Core/grass_patch.tscn" id="1_fmdt3"]
 [ext_resource type="Script" path="res://Accessory/photo_studio.gd" id="1_sd1ja"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://cmuu2kkvy6n4p" path="res://Accessory/Trails/Scenes/sparkle_trail.tscn" id="13_k1mj0"]
 [ext_resource type="PackedScene" uid="uid://bbcurcqhirjgx" path="res://Accessory/Trails/Scenes/dot_trail.tscn" id="14_837ph"]
 [ext_resource type="PackedScene" uid="uid://cxdymjhyjkdbm" path="res://Accessory/Trails/Scenes/honeydrop_trail.tscn" id="16_qgtbi"]
+[ext_resource type="PackedScene" uid="uid://bq4o80p0kyckg" path="res://Accessory/Trails/Scenes/rainbow_trail.tscn" id="17_lt8fw"]
 
 [sub_resource type="Environment" id="Environment_scr24"]
 background_mode = 1
@@ -56,9 +57,11 @@ nodes/TimeScale/position = Vector2(570, 110)
 nodes/output/position = Vector2(730, 130)
 node_connections = [&"output", 0, &"TimeScale", &"Bend_Blend", 0, &"Still", &"Bend_Blend", 1, &"Bend", &"OneShot", 0, &"Bend_Blend", &"OneShot", 1, &"Ripple", &"TimeScale", 0, &"OneShot"]
 
-[node name="PhotoStudio" type="Node3D"]
+[node name="PhotoStudio" type="Node3D" groups=["PhotoStudio"]]
 script = ExtResource("1_sd1ja")
-filename = "HoneyDrop"
+filename = "Rainbow"
+travel = true
+travel_speed = 4.0
 
 [node name="Camera_Spin" type="Node3D" parent="."]
 transform = Transform3D(0.796287, 0, 0.604919, 0, 1, 0, -0.604919, 0, 0.796287, 0, 0, 0)
@@ -154,6 +157,9 @@ visible = false
 visible = false
 
 [node name="HoneyDrop_Trail" parent="TrailSpot" instance=ExtResource("16_qgtbi")]
+visible = false
+
+[node name="RainbowTrail" parent="TrailSpot" instance=ExtResource("17_lt8fw")]
 
 [node name="Bee" parent="." instance=ExtResource("8_orp8m")]
 transform = Transform3D(1.60445, -0.457768, 0, 0.457768, 1.60445, 0, 0, 0, 1.66848, -0.645516, 0, 0)

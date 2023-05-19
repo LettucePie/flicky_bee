@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="PriceTag" load_steps=4 format=3 uid="uid://c1w6jrjpcqro"]
+
+[ext_resource type="Texture2D" uid="uid://dxxoimvmbijk8" path="res://Accessory/Trails/RainbowTrail_Icon.png" id="1_lk3n8"]
+[ext_resource type="Script" path="res://Accessory/pricetag_type.gd" id="1_swpyn"]
+[ext_resource type="Resource" uid="uid://cu33s6qi1j20" path="res://Accessory/Trails/TrailTypes/RainbowTrail_Type.tres" id="2_g3t0s"]
+
+[resource]
+script = ExtResource("1_swpyn")
+acc_name = "Rainbow"
+acc_icon = ExtResource("1_lk3n8")
+acc_type = 1
+accessory = ExtResource("2_g3t0s")
+purchase_honey = true
+honey_amount = 1000.0
+purchase_usd = false
+usd_amount = "String"
+validated = false
+prod_id = "PRODUCT_ID"
+achievable = false
