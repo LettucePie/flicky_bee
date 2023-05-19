@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://ubjjhtqn1pya"]
+
+[ext_resource type="Script" path="res://Testing/testing_rainbow_trail_2.gd" id="1_dx2fi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ygklv"]
+albedo_color = Color(0, 0.788235, 0.796078, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_w2fxt"]
+size = Vector2(6, 6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l3q01"]
+albedo_color = Color(0.980392, 0.368627, 0.690196, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_c2s03"]
+material = SubResource("StandardMaterial3D_l3q01")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_46dwe"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_y2evp"]
+material = SubResource("StandardMaterial3D_46dwe")
+radius = 0.25
+height = 0.5
+
+[node name="TestingRainbowTrail_2" type="Node"]
+script = ExtResource("1_dx2fi")
+mat = SubResource("StandardMaterial3D_ygklv")
+
+[node name="VulkanMacOS" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Node3D"]
+transform = Transform3D(1, -6.97574e-16, -1.5246e-23, -1.5246e-23, -4.37114e-08, 1, -6.97574e-16, -1, -4.37114e-08, 0, 7, 0)
+
+[node name="Floor" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.146613, 0)
+mesh = SubResource("PlaneMesh_w2fxt")
+
+[node name="Cube" type="MeshInstance3D" parent="Node3D/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.13508, 0, 1.91097)
+mesh = SubResource("BoxMesh_c2s03")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node3D"]
+transform = Transform3D(0.965926, 0.183013, 0.183013, -0.258819, 0.683013, 0.683013, 0, -0.707107, 0.707107, 0, 0, 0)
+
+[node name="Trace" type="MeshInstance3D" parent="Node3D"]
+mesh = SubResource("SphereMesh_y2evp")
+
+[node name="Rainbow" type="MeshInstance3D" parent="Node3D"]
