@@ -15,6 +15,7 @@ signal hit()
 @export var wing_sound : AudioStreamWAV
 @export var flower_sound : AudioStreamWAV
 @export var windhook_sound : AudioStreamWAV
+@export var bouncebud_sound : AudioStreamWAV
 @export var hit_sound : AudioStreamWAV
 
 @export var anim_lib : AnimationLibrary
@@ -222,6 +223,11 @@ func _on_area_entered(area):
 		emit_signal("zoom")
 		$Pickup.stream = windhook_sound
 		$Pickup.play()
+	if area.is_in_group("BounceBud"):
+		if !area.bounced:
+			print("Player entered BounceBud from direction ", fly_dir)
+			_landed(area)
+			$BounceTimer.start(0.2)
 	if area.is_in_group("Collectable"):
 		var c_type = area.get_meta("Type")
 		if c_type != null:
@@ -239,17 +245,22 @@ func _on_area_entered(area):
 
 
 func _landed(area) -> void:
-	print("Player Landed on Platform")
+	print("Player Landed")
 	anim.play("Base/Rest")
 	$Buzz.stop()
-	$Pickup.stream = flower_sound
-	$Pickup.play()
 	trail._activate_trail(false)
 	current_platform = area
-	current_flower = current_platform._return_flower()
-	$Turn.remove_child(bee_object)
-	current_flower._return_trace().add_child(bee_object)
-	bee_object.set_rotation(Vector3.ZERO)
+	if area.is_in_group("Platform_Area"):
+		$Pickup.stream = flower_sound
+		current_flower = current_platform._return_flower()
+		$Turn.remove_child(bee_object)
+		if current_flower.has_method("_return_trace"):
+			current_flower._return_trace().add_child(bee_object)
+		bee_object.set_rotation(Vector3.ZERO)
+	elif area.is_in_group("BounceBud"):
+		$Pickup.stream = bouncebud_sound
+		print("Landing on BounceBud")
+	$Pickup.play()
 	platform_count += 1
 	speed = 0
 	flicked = false
@@ -265,6 +276,12 @@ func _landed(area) -> void:
 	emit_signal("finished_travel", area)
 
 
+func _on_bounce_timer_timeout():
+	$BounceTimer.stop()
+	print("Bouncing Player with direction ", previous_dir)
+	_flick_to((previous_dir * fly_acc) + self.position)
+
+
 func _on_magnet_area_entered(area):
 	if area.is_in_group("Collectable"):
 		if !magnet_col.has(area.get_parent()):
@@ -275,4 +292,6 @@ func _on_magnet_area_exited(area):
 	if area.is_in_group("Collectable"):
 		if magnet_col.has(area.get_parent()):
 			magnet_col.erase(area.get_parent())
+
+
 

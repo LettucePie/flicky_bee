@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://pbe74ba2ywah"]
+[gd_scene load_steps=24 format=3 uid="uid://pbe74ba2ywah"]
 
 [ext_resource type="Script" path="res://Core/player.gd" id="1_igtm3"]
 [ext_resource type="AudioStream" uid="uid://dvi65b4n35yoj" path="res://Core/Sound/Pickup_Honey.wav" id="2_4u6o7"]
@@ -10,6 +10,7 @@
 [ext_resource type="AnimationLibrary" uid="uid://c1ugy47v2irx5" path="res://Core/Art/Animations/Bee/Bee_Library.res" id="6_8bfam"]
 [ext_resource type="AudioStream" uid="uid://c0wrsek7p180i" path="res://Core/Sound/Hit.wav" id="7_m1bdf"]
 [ext_resource type="AudioStream" uid="uid://bhnh7nv6qpjpk" path="res://Core/Sound/SFX_WindHook.wav" id="7_m23mq"]
+[ext_resource type="AudioStream" uid="uid://bb0ua6cfv2wd2" path="res://Core/Sound/BounceBud_Sound.wav" id="8_3qwdk"]
 [ext_resource type="PackedScene" uid="uid://ctfd8d5pv7p3t" path="res://Core/Art/Bee.glb" id="9_hom12"]
 [ext_resource type="PackedScene" uid="uid://lyfyke17ra2i" path="res://Accessory/Trails/trail.tscn" id="10_f4457"]
 [ext_resource type="PackedScene" uid="uid://b2wonbiskwb7q" path="res://Accessory/Hats/hat.tscn" id="10_k4ydw"]
@@ -39,6 +40,7 @@ jar_sound = ExtResource("3_d0pwn")
 wing_sound = ExtResource("4_3cdhx")
 flower_sound = ExtResource("5_um41a")
 windhook_sound = ExtResource("7_m23mq")
+bouncebud_sound = ExtResource("8_3qwdk")
 hit_sound = ExtResource("7_m1bdf")
 anim_lib = ExtResource("6_8bfam")
 
@@ -102,8 +104,11 @@ script = ExtResource("12_5hnsk")
 
 [node name="Timer" type="Timer" parent="."]
 
+[node name="BounceTimer" type="Timer" parent="."]
+
 [connection signal="area_entered" from="Magnet" to="." method="_on_magnet_area_entered"]
 [connection signal="area_exited" from="Magnet" to="." method="_on_magnet_area_exited"]
 [connection signal="area_entered" from="Area" to="." method="_on_area_entered"]
+[connection signal="timeout" from="BounceTimer" to="." method="_on_bounce_timer_timeout"]
 
 [editable path="Turn/Bee"]

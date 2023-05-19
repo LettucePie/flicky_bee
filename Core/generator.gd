@@ -11,6 +11,7 @@ class_name Generator
 @export var difficulty_curve : Curve
 @export var max_difficulty := 20.0
 @export var platform_scene : PackedScene
+@export var bouncebud_scene : PackedScene
 @export var booster_scenes : Array[PackedScene]
 @export var obstacle_scenes : Array[PackedScene]
 @export var danger_scenes : Array[PackedScene]
@@ -77,7 +78,7 @@ func _generate(num : int, z_start : float, flower : String) -> void:
 			starting_platform._return_flower()._assign_flower(flower)
 		randomize()
 		var difficulty_progress = difficulty_curve.sample(
-			inverse_lerp(0, 1000, abs(z_point))
+			inverse_lerp(0, 800, abs(z_point))
 		)
 		var difficulty_skew = clamp(
 			lerp(0.0, max_difficulty, difficulty_progress),
@@ -89,7 +90,11 @@ func _generate(num : int, z_start : float, flower : String) -> void:
 #		start.position.z = z_point
 #		add_child(start)
 		for i in num:
-			var new_plat = platform_scene.instantiate()
+			var new_plat = Node.new()
+			if randf() < difficulty_progress:
+				new_plat = bouncebud_scene.instantiate()
+			else:
+				new_plat = platform_scene.instantiate()
 			new_plat.set_position(
 				Vector3(
 					randf_range(-5.5, 5.5),
@@ -99,7 +104,8 @@ func _generate(num : int, z_start : float, flower : String) -> void:
 			)
 			add_child(new_plat)
 			platforms.append(new_plat)
-			new_plat._return_flower()._assign_flower(flower)
+			if new_plat.is_in_group("Platform_Area"):
+				new_plat._return_flower()._assign_flower(flower)
 			## Gen Gaps
 			if abs(z_point) - abs(z_previous) >= 8.5:
 				_shuffle_gaps()

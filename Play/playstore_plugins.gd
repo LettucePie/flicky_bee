@@ -14,6 +14,7 @@ class_name PlaystorePlugin
 ## They can be found here:
 ## https://github.com/godotengine/godot-google-play-billing/pull/36
 ##
+@export var products : Array[PriceTag] = []
 
 @export var debugging := false
 var log : String
@@ -21,6 +22,10 @@ var log : String
 var playstore : Object
 var connected := false
 var sku_integrated := false
+
+
+func _ready():
+	$Debug.visible = debugging
 
 
 func _plugin_integrated() -> bool:
@@ -92,5 +97,6 @@ func _product_details(sku_details) -> void:
 
 
 func _log(s) -> void:
-	log += "\n" + str(s)
-	$Debug.text = log
+	if debugging:
+		log += "\n" + str(s)
+		$Debug.text = log

@@ -69,6 +69,8 @@ visible = false
 
 [node name="Rest_Timer" type="Timer" parent="."]
 
+[node name="Disable_Timer" type="Timer" parent="."]
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("9_cbbfq")
@@ -108,3 +110,4 @@ color = Color(0, 0, 0, 0)
 [connection signal="ready" from="Results" to="." method="_part_ready"]
 [connection signal="timeout" from="Life_Timer" to="." method="_on_life_timer_timeout"]
 [connection signal="timeout" from="Rest_Timer" to="." method="_on_rest_timer_timeout"]
+[connection signal="timeout" from="Disable_Timer" to="." method="_on_disable_timer_timeout"]

@@ -20,6 +20,7 @@ animation = &"Base"
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_mhs7u"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ne50l"]
+graph_offset = Vector2(-7.68, 123.84)
 nodes/Bend/node = SubResource("AnimationNodeAnimation_wocv6")
 nodes/Bend/position = Vector2(0, 190)
 nodes/Bend_Blend/node = SubResource("AnimationNodeBlend2_xuuk7")

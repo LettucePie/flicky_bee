@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://2gkm2rsvmoiy"]
+[gd_scene load_steps=22 format=3 uid="uid://2gkm2rsvmoiy"]
 
 [ext_resource type="Script" path="res://Core/generator.gd" id="1_govy5"]
 [ext_resource type="PackedScene" uid="uid://binixehfbq4hi" path="res://Core/platform.tscn" id="2_47aoa"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dva61vhl13qsd" path="res://Core/Obstacles/brick_pattern_2.tscn" id="4_ilki3"]
 [ext_resource type="PackedScene" uid="uid://q8mgam6ej550" path="res://Core/Obstacles/brick_pattern_3.tscn" id="5_bxuv1"]
 [ext_resource type="PackedScene" uid="uid://jt273xikpqmo" path="res://Core/Boosters/hook_booster_1.tscn" id="5_j55rj"]
+[ext_resource type="PackedScene" uid="uid://byrhd5dr742yc" path="res://Core/bounce_bud.tscn" id="5_peuw6"]
 [ext_resource type="PackedScene" uid="uid://1q4maiuuyl5w" path="res://Core/Obstacles/frog.tscn" id="6_0ilmg"]
 [ext_resource type="PackedScene" uid="uid://db2regjpndaey" path="res://Core/Boosters/hook_booster_2.tscn" id="6_370gm"]
 [ext_resource type="PackedScene" uid="uid://cw7y83phl2tb3" path="res://Core/Collectables/collection_patch_1.tscn" id="7_v1ynf"]
@@ -30,6 +31,7 @@ gen_start = ExtResource("2_qjg4w")
 gen_end = ExtResource("3_560oa")
 difficulty_curve = SubResource("Curve_c8t26")
 platform_scene = ExtResource("2_47aoa")
+bouncebud_scene = ExtResource("5_peuw6")
 booster_scenes = Array[PackedScene]([ExtResource("5_j55rj"), ExtResource("6_370gm"), ExtResource("7_vhfo7"), ExtResource("8_bpket")])
 obstacle_scenes = Array[PackedScene]([ExtResource("3_wpdg5"), ExtResource("4_ilki3"), ExtResource("5_bxuv1")])
 danger_scenes = Array[PackedScene]([ExtResource("6_0ilmg"), ExtResource("7_x15y0")])

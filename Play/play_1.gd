@@ -53,6 +53,7 @@ var flick_trajectory := Vector2.ZERO
 var flick_target := Vector3.ZERO
 var flick_valid := false
 var flying := false
+var disabled := false
 ##
 ##
 ##
@@ -148,7 +149,10 @@ func _player_ready() -> void:
 	player.collected.connect(_on_player_collect)
 	player.zoom.connect(_on_player_zoom)
 	player.hit.connect(_on_player_hit)
-	_part_ready()
+	if ready_parts >= 5 and (menu != null and persist != null):
+		_setup(menu, persist)
+	else:
+		_part_ready()
 
 
 func _update_camera_target(offset : float) -> void:
@@ -170,6 +174,25 @@ func _move_grass_patches() -> void:
 		pos.z -= 120
 		new_back.set_position(pos)
 		grass_patches.push_back(new_back)
+
+
+func _disable_player_input(duration : float) -> void:
+	if duration <= 0:
+		print("Player Disabled until functionally enabled.")
+		disabled = true
+	else:
+		print("Player Disabled for ", duration, " time.")
+		disabled = true
+		$Disable_Timer.start(duration)
+
+
+func _enable_player_input(tf : bool) -> void:
+	if tf:
+		if disabled:
+			$Disable_Timer.stop()
+		disabled = false
+	else:
+		disabled = true
 
 
 func _process(delta):
@@ -196,9 +219,9 @@ func _process(delta):
 
 
 func _input(event):
-	if event is InputEventMouseButton and time > 0.0:
+	if event is InputEventMouseButton and time > 0.0 and !disabled:
 		_process_click(event)
-	if event is InputEventMouseMotion and time > 0.0:
+	if event is InputEventMouseMotion and time > 0.0 and !disabled:
 		if touching:
 			_process_drag(event)
 
@@ -332,16 +355,19 @@ func _on_player_finished_travel(platform):
 #		$Generator._clear_gaps(last_platform.get_position().z)
 		$Generator._generate(4, last_platform.get_position().z, persist.flower)
 	current_platform = platform
-	current_flower = current_platform._return_flower()
-	traveling = false
+	if platform.is_in_group("Platform_Area"):
+		current_flower = current_platform._return_flower()
+		traveling = false
+		$Life_Timer.stop()
+		$Rest_Timer.start(rest_time)
+	elif platform.is_in_group("BounceBud"):
+		_disable_player_input(0.2)
 	touching = false
 	flick_valid = false
 	flying = false
 	$Arc_Visual.hide()
 	$Knob_Visual.hide()
 	_update_camera_target(6.0)
-	$Life_Timer.stop()
-	$Rest_Timer.start(rest_time)
 	time = clamp(time + 1.0, 0.0, life_time)
 	flight = clamp(flight + 2.0, 0.0, flight_reserve)
 	flower_count += 1
@@ -409,6 +435,11 @@ func _on_rest_timer_timeout():
 	$Life_Timer.start(time)
 
 
+func _on_disable_timer_timeout():
+	$Disable_Timer.stop()
+	disabled = false
+
+
 func _on_bottom_detect_area_entered(area):
 	pass
 
@@ -420,7 +451,8 @@ func _on_top_detect_area_entered(area):
 
 func _on_results_play_again():
 	print("Results Play Again")
-	_setup(menu, persist)
+	_spawn_player()
+#	_setup(menu, persist)
 
 
 func _register_progress() -> void:
@@ -464,3 +496,5 @@ func _on_results_quit_out():
 		get_window().add_child(menu)
 		get_tree().set_current_scene(menu)
 		self.queue_free()
+
+
