@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="PriceTag" load_steps=4 format=3 uid="uid://nnbsxi4jk54l"]
+
+[ext_resource type="Script" path="res://Accessory/pricetag_type.gd" id="1_bsbrf"]
+[ext_resource type="Texture2D" uid="uid://bfg83toh15xq2" path="res://Accessory/Trails/HoneyDropTrail_Icon.png" id="1_jbc16"]
+[ext_resource type="Resource" uid="uid://cl6ax6p4fblrg" path="res://Accessory/Trails/TrailTypes/HoneyDropTrail_Type.tres" id="1_qlsim"]
+
+[resource]
+script = ExtResource("1_bsbrf")
+acc_name = "Honey Drop"
+acc_icon = ExtResource("1_jbc16")
+acc_type = 1
+accessory = ExtResource("1_qlsim")
+purchase_honey = true
+honey_amount = 400.0
+purchase_usd = false
+usd_amount = "String"
+validated = false
+prod_id = "PRODUCT_ID"
+achievable = false

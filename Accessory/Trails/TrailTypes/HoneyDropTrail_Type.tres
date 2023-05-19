@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="TrailType" load_steps=3 format=3 uid="uid://cl6ax6p4fblrg"]
+
+[ext_resource type="Script" path="res://Accessory/Trails/trail_type.gd" id="1_4s8sq"]
+[ext_resource type="PackedScene" uid="uid://cxdymjhyjkdbm" path="res://Accessory/Trails/Scenes/honeydrop_trail.tscn" id="1_slkc0"]
+
+[resource]
+script = ExtResource("1_4s8sq")
+trail_name = "Honey Drop"
+scene = ExtResource("1_slkc0")

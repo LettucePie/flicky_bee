@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://c4ap702pmxyr0"]
+[gd_scene load_steps=27 format=3 uid="uid://c4ap702pmxyr0"]
 
 [ext_resource type="PackedScene" uid="uid://ctoi4c1j3c0ba" path="res://Core/grass_patch.tscn" id="1_fmdt3"]
 [ext_resource type="Script" path="res://Accessory/photo_studio.gd" id="1_sd1ja"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bfemdrbpvb5mh" path="res://Accessory/Trails/Scenes/supporter_trail.tscn" id="12_l20hu"]
 [ext_resource type="PackedScene" uid="uid://cmuu2kkvy6n4p" path="res://Accessory/Trails/Scenes/sparkle_trail.tscn" id="13_k1mj0"]
 [ext_resource type="PackedScene" uid="uid://bbcurcqhirjgx" path="res://Accessory/Trails/Scenes/dot_trail.tscn" id="14_837ph"]
+[ext_resource type="PackedScene" uid="uid://cxdymjhyjkdbm" path="res://Accessory/Trails/Scenes/honeydrop_trail.tscn" id="16_qgtbi"]
 
 [sub_resource type="Environment" id="Environment_scr24"]
 background_mode = 1
@@ -57,7 +58,7 @@ node_connections = [&"output", 0, &"TimeScale", &"Bend_Blend", 0, &"Still", &"Be
 
 [node name="PhotoStudio" type="Node3D"]
 script = ExtResource("1_sd1ja")
-filename = "BermudaButter"
+filename = "HoneyDrop"
 
 [node name="Camera_Spin" type="Node3D" parent="."]
 transform = Transform3D(0.796287, 0, 0.604919, 0, 1, 0, -0.604919, 0, 0.796287, 0, 0, 0)
@@ -78,20 +79,8 @@ visible = false
 [node name="Grass_Patch" parent="Grass" instance=ExtResource("1_fmdt3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.17744, 0)
 
-[node name="GrassMulti_Straight" parent="Grass/Grass_Patch" index="1"]
-visible = false
-
-[node name="GrassMulti_Curve" parent="Grass/Grass_Patch" index="2"]
-visible = false
-
 [node name="Grass_Patch2" parent="Grass" instance=ExtResource("1_fmdt3")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -3.28575, 0)
-
-[node name="GrassMulti_Straight" parent="Grass/Grass_Patch2" index="1"]
-visible = false
-
-[node name="GrassMulti_Curve" parent="Grass/Grass_Patch2" index="2"]
-visible = false
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.933013, 0.258819, -0.25, 0.295739, -0.155731, 0.942489, 0.205001, -0.953289, -0.221842, 0, 0, 0)
@@ -112,6 +101,7 @@ mesh = SubResource("CapsuleMesh_d402m")
 
 [node name="Flick_Flower" type="Node3D" parent="."]
 transform = Transform3D(0.526111, 0, 0, 0, 0.526111, 0, 0, 0, 0.526111, 0, 0.940404, 0)
+visible = false
 script = ExtResource("2_uyhg2")
 
 [node name="AnimationTree" type="AnimationTree" parent="Flick_Flower"]
@@ -153,15 +143,17 @@ transform = Transform3D(0.854305, -0.519773, 0, 0.519773, 0.854305, 0, 0, 0, 1, 
 
 [node name="TrailSpot" type="Node3D" parent="."]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0.857735, 0)
-visible = false
 
 [node name="SupporterTrail" parent="TrailSpot" instance=ExtResource("12_l20hu")]
+visible = false
 
 [node name="SparkleTrail" parent="TrailSpot" instance=ExtResource("13_k1mj0")]
 visible = false
 
 [node name="DotTrail" parent="TrailSpot" instance=ExtResource("14_837ph")]
 visible = false
+
+[node name="HoneyDrop_Trail" parent="TrailSpot" instance=ExtResource("16_qgtbi")]
 
 [node name="Bee" parent="." instance=ExtResource("8_orp8m")]
 transform = Transform3D(1.60445, -0.457768, 0, 0.457768, 1.60445, 0, 0, 0, 1.66848, -0.645516, 0, 0)

@@ -1,10 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://lyfyke17ra2i"]
+[gd_scene load_steps=6 format=3 uid="uid://lyfyke17ra2i"]
 
 [ext_resource type="Script" path="res://Accessory/Trails/trail.gd" id="1_5n4uu"]
 [ext_resource type="Resource" uid="uid://b1ga1q8mnbv5q" path="res://Accessory/Trails/TrailTypes/dot_type.tres" id="2_to0je"]
 [ext_resource type="Resource" uid="uid://vwxtv4i7agvm" path="res://Accessory/Trails/TrailTypes/SparkleTrail_Type.tres" id="3_2718s"]
 [ext_resource type="Resource" uid="uid://dmyntt6cmeuvs" path="res://Accessory/Trails/TrailTypes/SupporterTrail_Type.tres" id="4_xn8b7"]
+[ext_resource type="Resource" uid="uid://cl6ax6p4fblrg" path="res://Accessory/Trails/TrailTypes/HoneyDropTrail_Type.tres" id="5_vuo3u"]
 
 [node name="Trail" type="Node3D"]
 script = ExtResource("1_5n4uu")
-trails = Array[Resource("res://Accessory/Trails/trail_type.gd")]([ExtResource("2_to0je"), ExtResource("3_2718s"), ExtResource("4_xn8b7")])
+trails = Array[Resource("res://Accessory/Trails/trail_type.gd")]([ExtResource("2_to0je"), ExtResource("3_2718s"), ExtResource("4_xn8b7"), ExtResource("5_vuo3u")])

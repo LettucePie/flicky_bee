@@ -1,0 +1,35 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=5 format=3 uid="uid://mc6ueckovttd"]
+
+[sub_resource type="Curve" id="Curve_r5c23"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_e6uo1"]
+curve = SubResource("Curve_r5c23")
+
+[sub_resource type="Curve" id="Curve_lbsl8"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_dep16"]
+curve = SubResource("Curve_lbsl8")
+
+[resource]
+emission_shape = 1
+emission_sphere_radius = 0.6
+particle_flag_rotate_y = true
+direction = Vector3(2.08165e-12, -1, -1)
+spread = 55.0
+gravity = Vector3(2.08165e-12, -9.8, 2.08165e-12)
+initial_velocity_min = 0.4
+initial_velocity_max = 1.0
+scale_min = 0.2
+scale_max = 0.4
+scale_curve = SubResource("CurveTexture_e6uo1")
+turbulence_noise_strength = 1.6
+turbulence_noise_speed_random = 4.31
+turbulence_influence_min = 0.33
+turbulence_influence_max = 0.69
+turbulence_initial_displacement_min = -1.0
+turbulence_initial_displacement_max = 1.0
+turbulence_influence_over_life = SubResource("CurveTexture_dep16")
