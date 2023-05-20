@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://dvhl3g02nxhef"]
+
+[ext_resource type="PlaneMesh" uid="uid://clujy68ck7l5h" path="res://Accessory/Trails/Particle_Meshes/confetti_a_mesh.tres" id="1_4odds"]
+[ext_resource type="Material" uid="uid://bapyshftl87gw" path="res://Accessory/Trails/Particle_Materials/ConfettiATrail_PartMat.tres" id="1_jtaji"]
+[ext_resource type="Material" uid="uid://dat6uc3yuqvxq" path="res://Accessory/Trails/Particle_Materials/ConfettiBTrail_PartMat.tres" id="3_v732m"]
+[ext_resource type="PlaneMesh" uid="uid://bl6v7w7mmlxc4" path="res://Accessory/Trails/Particle_Meshes/confetti_b_mesh.tres" id="4_ens6h"]
+[ext_resource type="Material" uid="uid://de48xrcmnjasb" path="res://Accessory/Trails/Particle_Materials/ConfettiCTrail_PartMat.tres" id="5_wqf3d"]
+[ext_resource type="PlaneMesh" uid="uid://gp8finii61fy" path="res://Accessory/Trails/Particle_Meshes/confetti_c_mesh.tres" id="6_podk4"]
+
+[node name="ConfettiTrail_A" type="GPUParticles3D"]
+amount = 5
+randomness = 0.28
+process_material = ExtResource("1_jtaji")
+draw_pass_1 = ExtResource("1_4odds")
+metadata/name = "Dot"
+
+[node name="ConfettiTrail_B" type="GPUParticles3D" parent="."]
+amount = 5
+preprocess = 0.1
+randomness = 0.5
+process_material = ExtResource("3_v732m")
+draw_pass_1 = ExtResource("4_ens6h")
+
+[node name="ConfettiTrail_C" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0883378, 0)
+amount = 5
+preprocess = 0.2
+randomness = 0.1
+process_material = ExtResource("5_wqf3d")
+draw_pass_1 = ExtResource("6_podk4")

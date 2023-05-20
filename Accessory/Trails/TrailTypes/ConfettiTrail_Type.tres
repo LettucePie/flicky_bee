@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="TrailType" load_steps=3 format=3 uid="uid://7qww6ejublwd"]
+
+[ext_resource type="Script" path="res://Accessory/Trails/trail_type.gd" id="1_g8g4q"]
+[ext_resource type="PackedScene" uid="uid://dvhl3g02nxhef" path="res://Accessory/Trails/Scenes/confetti_trail.tscn" id="1_u6l48"]
+
+[resource]
+script = ExtResource("1_g8g4q")
+trail_name = "Confetti"
+scene = ExtResource("1_u6l48")

@@ -1,0 +1,7 @@
+[gd_resource type="PlaneMesh" load_steps=2 format=3 uid="uid://gp8finii61fy"]
+
+[ext_resource type="Material" uid="uid://dc1gui4rnsk5e" path="res://Accessory/Trails/Particle_Materials/Confetti/Confetti_C_Material.tres" id="1_lxgjx"]
+
+[resource]
+material = ExtResource("1_lxgjx")
+size = Vector2(1, 1)

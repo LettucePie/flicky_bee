@@ -16,25 +16,25 @@ func _ready():
 
 func _node_added(node : Node) -> void:
 	if node.is_in_group("Enemy") and !enemies.has(node):
-		print("Enemy Added: ", node)
+#		print("Enemy Added: ", node)
 		enemies.append(node)
 	if node.is_in_group("Collectable") and !collectables.has(node):
-		print("Collectable Added: ", node)
+#		print("Collectable Added: ", node)
 		collectables.append(node)
 	if node.is_in_group("Obstacle") and !obstacles.has(node):
-		print("Obstacle Added: ", node)
+#		print("Obstacle Added: ", node)
 		obstacles.append(node)
 
 
 func _node_removed(node : Node) -> void:
 	if node.is_in_group("Enemy") and enemies.has(node):
-		print("Enemy Removed: ", node)
+#		print("Enemy Removed: ", node)
 		enemies.erase(node)
 	if node.is_in_group("Collectable") and collectables.has(node):
-		print("Collectable Removed: ", node)
+#		print("Collectable Removed: ", node)
 		collectables.erase(node)
 	if node.is_in_group("Obstacle") and obstacles.has(node):
-		print("Obstacle Removed: ", node)
+#		print("Obstacle Removed: ", node)
 		obstacles.erase(node)
 
 

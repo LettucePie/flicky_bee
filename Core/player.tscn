@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://pbe74ba2ywah"]
+[gd_scene load_steps=30 format=3 uid="uid://pbe74ba2ywah"]
 
 [ext_resource type="Script" path="res://Core/player.gd" id="1_igtm3"]
 [ext_resource type="AudioStream" uid="uid://dvi65b4n35yoj" path="res://Core/Sound/Pickup_Honey.wav" id="2_4u6o7"]
@@ -20,6 +20,12 @@
 [ext_resource type="PackedScene" uid="uid://o8tnue50coc5" path="res://Accessory/Hats/Scenes/top_hat.tscn" id="12_lkb12"]
 [ext_resource type="PackedScene" uid="uid://dn17qq7kyauxa" path="res://Accessory/Hats/Scenes/wizard_hat.tscn" id="13_nb16f"]
 [ext_resource type="PackedScene" uid="uid://de1h0vpr7hybu" path="res://Accessory/Hats/Scenes/party_hat.tscn" id="14_my4ai"]
+[ext_resource type="Resource" uid="uid://b1ga1q8mnbv5q" path="res://Accessory/Trails/TrailTypes/dot_type.tres" id="18_e0cxt"]
+[ext_resource type="Resource" uid="uid://vwxtv4i7agvm" path="res://Accessory/Trails/TrailTypes/SparkleTrail_Type.tres" id="19_h6lm1"]
+[ext_resource type="Resource" uid="uid://dmyntt6cmeuvs" path="res://Accessory/Trails/TrailTypes/SupporterTrail_Type.tres" id="20_m1lup"]
+[ext_resource type="Resource" uid="uid://cl6ax6p4fblrg" path="res://Accessory/Trails/TrailTypes/HoneyDropTrail_Type.tres" id="21_x0si1"]
+[ext_resource type="Resource" uid="uid://cu33s6qi1j20" path="res://Accessory/Trails/TrailTypes/RainbowTrail_Type.tres" id="22_2dm6y"]
+[ext_resource type="Resource" uid="uid://7qww6ejublwd" path="res://Accessory/Trails/TrailTypes/ConfettiTrail_Type.tres" id="23_wqphc"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_uaofe"]
 
@@ -65,6 +71,7 @@ visible = false
 
 [node name="Trail" parent="Turn" instance=ExtResource("10_f4457")]
 transform = Transform3D(0.24989, 0.291521, 0.00518818, -0.291547, 0.249912, -1.44712e-08, -0.00337655, -0.00393905, 0.383965, 3.76855e-08, 0.0135113, -0.862141)
+trails = Array[Resource("res://Accessory/Trails/trail_type.gd")]([ExtResource("18_e0cxt"), ExtResource("19_h6lm1"), ExtResource("20_m1lup"), ExtResource("21_x0si1"), ExtResource("22_2dm6y"), ExtResource("23_wqphc")])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_uaofe")
