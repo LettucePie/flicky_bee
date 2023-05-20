@@ -4,8 +4,8 @@
 
 [node name="Hydrangea" type="Node3D"]
 
-[node name="Hydrangea" parent="." instance=ExtResource("2_jy6p5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.04741, 0)
+[node name="Hydrangea2" parent="." instance=ExtResource("2_jy6p5")]
+transform = Transform3D(1.19706, 0, 0, 0, 1.19706, 0, 0, 0, 1.19706, 2.08165e-12, -1.35215, 2.08165e-12)
 
 [node name="Trace" type="Node3D" parent="."]
-transform = Transform3D(1.62, 0, 0, 0, 1.62, 0, 0, 0, 1.62, -0.00216563, 1.14696, 0.00463634)
+transform = Transform3D(1.62, 0, 0, 0, 1.62, 0, 0, 0, 1.62, -0.00216563, 1.31989, 0.00463634)

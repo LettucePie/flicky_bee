@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://drlmndybhl8t4"]
+[gd_scene load_steps=41 format=3 uid="uid://drlmndybhl8t4"]
 
 [ext_resource type="Theme" uid="uid://bd87acx3a4l4n" path="res://UI/Style/SubBee_Theme.tres" id="1_3ipnt"]
 [ext_resource type="Theme" uid="uid://cwjsb0qlm86r5" path="res://UI/Style/Bee_Theme.tres" id="1_i3uci"]
@@ -33,6 +33,7 @@
 [ext_resource type="Resource" uid="uid://c1w6jrjpcqro" path="res://Accessory/Trails/PriceTags/RainbowTrail_PriceTag.tres" id="23_sqve1"]
 [ext_resource type="Texture2D" uid="uid://cuqkesnrxfkgs" path="res://UI/Art/Icons/BuyUSD_Icon.png" id="26_f5iov"]
 [ext_resource type="Resource" uid="uid://clpkbrde55kln" path="res://Accessory/Flowers/PriceTags/Hydrangea_PriceTag.tres" id="27_gki3t"]
+[ext_resource type="Resource" uid="uid://bi5mro5quyorg" path="res://Accessory/Flowers/PriceTags/Carnation_PriceTag.tres" id="29_dgd2w"]
 [ext_resource type="Texture2D" uid="uid://d3eriix1cdvxj" path="res://UI/Art/Icons/Exit_Icon.png" id="29_qinxq"]
 [ext_resource type="PackedScene" uid="uid://ckypgxmb4ff47" path="res://UI/purchase_queue.tscn" id="29_vf1a0"]
 
@@ -599,7 +600,7 @@ inventory = Array[Resource("res://Accessory/pricetag_type.gd")]([ExtResource("18
 visible = false
 layout_mode = 2
 category = 2
-inventory = Array[Resource("res://Accessory/pricetag_type.gd")]([ExtResource("23_fvjf7"), ExtResource("27_gki3t"), ExtResource("20_5l4yj")])
+inventory = Array[Resource("res://Accessory/pricetag_type.gd")]([ExtResource("23_fvjf7"), ExtResource("27_gki3t"), ExtResource("20_5l4yj"), ExtResource("29_dgd2w")])
 
 [node name="Selected" type="Label" parent="."]
 layout_mode = 0

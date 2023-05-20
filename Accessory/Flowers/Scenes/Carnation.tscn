@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cb08b43lds0e7"]
+
+[ext_resource type="PackedScene" uid="uid://bmarwok68sc6b" path="res://Accessory/Flowers/Models/Carnation.glb" id="1_mhbid"]
+
+[node name="Carnation" type="Node3D"]
+
+[node name="Carnation" parent="." instance=ExtResource("1_mhbid")]
+transform = Transform3D(1.3725, 0, 0, 0, 1.3725, 0, 0, 0, 1.3725, 0, -0.166034, 0)
+
+[node name="Trace" type="Node3D" parent="."]
+transform = Transform3D(1.62, 0, 0, 0, 1.62, 0, 0, 0, 1.62, -0.00216563, 1.14696, 0.00463634)

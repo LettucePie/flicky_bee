@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="FlowerType" load_steps=3 format=3 uid="uid://bfplirv0bgsij"]
+
+[ext_resource type="PackedScene" uid="uid://cb08b43lds0e7" path="res://Accessory/Flowers/Scenes/Carnation.tscn" id="1_86a3g"]
+[ext_resource type="Script" path="res://Accessory/Flowers/flower_type.gd" id="1_tpnc5"]
+
+[resource]
+script = ExtResource("1_tpnc5")
+flower_name = "Carnation"
+scene = ExtResource("1_86a3g")

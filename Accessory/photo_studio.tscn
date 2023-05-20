@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://c4ap702pmxyr0"]
+[gd_scene load_steps=32 format=3 uid="uid://c4ap702pmxyr0"]
 
 [ext_resource type="PackedScene" uid="uid://ctoi4c1j3c0ba" path="res://Core/grass_patch.tscn" id="1_fmdt3"]
 [ext_resource type="Script" path="res://Accessory/photo_studio.gd" id="1_sd1ja"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://de1h0vpr7hybu" path="res://Accessory/Hats/Scenes/party_hat.tscn" id="9_14yjo"]
 [ext_resource type="PackedScene" uid="uid://o8tnue50coc5" path="res://Accessory/Hats/Scenes/top_hat.tscn" id="9_c4qnb"]
 [ext_resource type="PackedScene" uid="uid://cung1lolf2y3p" path="res://Accessory/Flowers/Scenes/Hydrangea.tscn" id="9_eu4vv"]
+[ext_resource type="PackedScene" uid="uid://cb08b43lds0e7" path="res://Accessory/Flowers/Scenes/Carnation.tscn" id="10_oa70m"]
 [ext_resource type="PackedScene" uid="uid://c3gbd4va534cq" path="res://Accessory/Hats/Scenes/cap_hat.tscn" id="10_qcbco"]
 [ext_resource type="PackedScene" uid="uid://dn17qq7kyauxa" path="res://Accessory/Hats/Scenes/wizard_hat.tscn" id="11_okglv"]
 [ext_resource type="PackedScene" uid="uid://bfemdrbpvb5mh" path="res://Accessory/Trails/Scenes/supporter_trail.tscn" id="12_l20hu"]
@@ -62,7 +63,7 @@ node_connections = [&"output", 0, &"TimeScale", &"Bend_Blend", 0, &"Still", &"Be
 
 [node name="PhotoStudio" type="Node3D" groups=["PhotoStudio"]]
 script = ExtResource("1_sd1ja")
-filename = "Hydrangea"
+filename = "Carnation"
 
 [node name="Camera_Spin" type="Node3D" parent="."]
 transform = Transform3D(0.796287, 0, 0.604919, 0, 1, 0, -0.604919, 0, 0.796287, 0, 0, 0)
@@ -127,6 +128,9 @@ visible = false
 visible = false
 
 [node name="Hydrangea" parent="Flick_Flower" instance=ExtResource("9_eu4vv")]
+visible = false
+
+[node name="Carnation" parent="Flick_Flower" instance=ExtResource("10_oa70m")]
 
 [node name="HatSpot" type="Node3D" parent="."]
 transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0, 0)

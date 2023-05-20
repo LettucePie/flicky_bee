@@ -1,14 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://bi4np5rns7g3f"]
+[gd_scene load_steps=7 format=3 uid="uid://bi4np5rns7g3f"]
 
 [ext_resource type="PackedScene" uid="uid://2aghnor46fu6" path="res://Core/Art/Flower_Top.glb" id="1_0m481"]
 [ext_resource type="Script" path="res://Accessory/Flowers/flower_head.gd" id="1_jih17"]
 [ext_resource type="Resource" uid="uid://d2meuwp8bo0cg" path="res://Accessory/Flowers/FlowerTypes/Blue_Lily_Type.tres" id="2_skg30"]
 [ext_resource type="Resource" uid="uid://dfd0t02ob8oh8" path="res://Accessory/Flowers/FlowerTypes/BermudaButtercup_Type.tres" id="3_1on7d"]
 [ext_resource type="Resource" uid="uid://dqhlpfryl3127" path="res://Accessory/Flowers/FlowerTypes/Hydrangea_FlowerType.tres" id="4_s3wb2"]
+[ext_resource type="Resource" uid="uid://bfplirv0bgsij" path="res://Accessory/Flowers/FlowerTypes/Carnation_FlowerType.tres" id="5_alqx0"]
 
 [node name="Flower_Head" type="Node3D"]
 script = ExtResource("1_jih17")
-flowers = Array[Resource("res://Accessory/Flowers/flower_type.gd")]([ExtResource("2_skg30"), ExtResource("3_1on7d"), ExtResource("4_s3wb2")])
+flowers = Array[Resource("res://Accessory/Flowers/flower_type.gd")]([ExtResource("2_skg30"), ExtResource("3_1on7d"), ExtResource("4_s3wb2"), ExtResource("5_alqx0")])
 default = NodePath("Flower_Top")
 
 [node name="Flower_Top" parent="." instance=ExtResource("1_0m481")]
