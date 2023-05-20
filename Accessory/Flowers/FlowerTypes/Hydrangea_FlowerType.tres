@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="FlowerType" load_steps=3 format=3 uid="uid://dqhlpfryl3127"]
+
+[ext_resource type="PackedScene" uid="uid://cung1lolf2y3p" path="res://Accessory/Flowers/Scenes/Hydrangea.tscn" id="1_jlvbx"]
+[ext_resource type="Script" path="res://Accessory/Flowers/flower_type.gd" id="1_qter2"]
+
+[resource]
+script = ExtResource("1_qter2")
+flower_name = "Hydrangea"
+scene = ExtResource("1_jlvbx")

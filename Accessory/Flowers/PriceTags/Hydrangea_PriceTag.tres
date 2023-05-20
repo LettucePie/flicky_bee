@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="PriceTag" load_steps=4 format=3 uid="uid://clpkbrde55kln"]
+
+[ext_resource type="Script" path="res://Accessory/pricetag_type.gd" id="1_2xb8m"]
+[ext_resource type="Texture2D" uid="uid://3t5c0honuyuf" path="res://Accessory/Flowers/Hydrangea_Icon.png" id="1_4hf5i"]
+[ext_resource type="Resource" uid="uid://dqhlpfryl3127" path="res://Accessory/Flowers/FlowerTypes/Hydrangea_FlowerType.tres" id="2_8ypb8"]
+
+[resource]
+script = ExtResource("1_2xb8m")
+acc_name = "Hydrangea"
+acc_icon = ExtResource("1_4hf5i")
+acc_type = 2
+accessory = ExtResource("2_8ypb8")
+purchase_honey = true
+honey_amount = 300.0
+purchase_usd = false
+usd_amount = "String"
+validated = false
+prod_id = "PRODUCT_ID"
+achievable = false
