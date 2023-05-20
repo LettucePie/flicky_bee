@@ -12,6 +12,6 @@ background_mode = 2
 background_color = Color(0, 0.380392, 0, 1)
 sky = SubResource("Sky_dtcvi")
 ambient_light_source = 2
-ambient_light_color = Color(0.458824, 0.690196, 0.337255, 1)
+ambient_light_color = Color(0.854902, 0.968627, 0.8, 1)
 ambient_light_energy = 0.2
 reflected_light_source = 2
