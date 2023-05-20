@@ -91,7 +91,6 @@ func _update_actions(equip : bool, redeem : bool, buy : bool, message : String) 
 	if message != "":
 		$ActionContainer/Message.show()
 		$ActionContainer/Message.text = message
-	
 
 
 func _on_equip_pressed():

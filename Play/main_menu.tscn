@@ -1056,6 +1056,7 @@ anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
 
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="pressed" from="Main/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Main/ButtonBox/Edit" to="." method="_on_edit_pressed"]
 [connection signal="pressed" from="Main/ButtonBox/Options" to="." method="_on_options_pressed"]

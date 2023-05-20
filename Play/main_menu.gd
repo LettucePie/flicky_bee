@@ -194,14 +194,14 @@ func _on_close_help_pressed():
 	$AnimationPlayer.play("Help_Close")
 
 
-
 func _on_clear_data_pressed():
 	pass
 #	persist_node._clear_data()
 
 
-
-
 func _on_purchase_queue_queue_timeout():
 	print("Purchase Queue Timed Out")
 
+
+func _on_tree_entered():
+	_update_score()
