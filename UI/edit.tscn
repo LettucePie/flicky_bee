@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://drlmndybhl8t4"]
+[gd_scene load_steps=39 format=3 uid="uid://drlmndybhl8t4"]
 
 [ext_resource type="Theme" uid="uid://bd87acx3a4l4n" path="res://UI/Style/SubBee_Theme.tres" id="1_3ipnt"]
 [ext_resource type="Theme" uid="uid://cwjsb0qlm86r5" path="res://UI/Style/Bee_Theme.tres" id="1_i3uci"]
@@ -20,6 +20,7 @@
 [ext_resource type="Resource" uid="uid://cijvtfhgxgqjt" path="res://Accessory/Hats/PriceTags/CapHat_Tag.tres" id="16_2ba6v"]
 [ext_resource type="Resource" uid="uid://di843samksbgx" path="res://Accessory/Hats/PriceTags/WizardHat_Tag.tres" id="17_4m6ti"]
 [ext_resource type="Resource" uid="uid://bss751a6g6add" path="res://Accessory/Trails/PriceTags/DotTrail_PriceTag.tres" id="18_487ts"]
+[ext_resource type="Resource" uid="uid://c1j17ira7xcem" path="res://Accessory/Hats/PriceTags/Crown_Hat_Tag.tres" id="19_7vwbt"]
 [ext_resource type="Resource" uid="uid://cnl2x30tsw7vp" path="res://Accessory/Trails/PriceTags/SparkleTrail_PriceTag.tres" id="19_kjkkv"]
 [ext_resource type="Resource" uid="uid://btf1fx35mbsyy" path="res://Accessory/Flowers/PriceTags/Blue_Lily_Tag.tres" id="20_5l4yj"]
 [ext_resource type="Resource" uid="uid://by7b7xlpi6dxw" path="res://Accessory/Trails/PriceTags/SupportTrail_PriceTag.tres" id="20_rcqpj"]
@@ -585,7 +586,7 @@ stream = ExtResource("8_nohib")
 
 [node name="Hats" parent="Vbox" instance=ExtResource("6_j53hv")]
 layout_mode = 2
-inventory = Array[Resource("res://Accessory/pricetag_type.gd")]([ExtResource("16_2ba6v"), ExtResource("15_i5exi"), ExtResource("13_ph1gx"), ExtResource("17_4m6ti")])
+inventory = Array[Resource("res://Accessory/pricetag_type.gd")]([ExtResource("16_2ba6v"), ExtResource("15_i5exi"), ExtResource("13_ph1gx"), ExtResource("17_4m6ti"), ExtResource("19_7vwbt")])
 
 [node name="Trails" parent="Vbox" instance=ExtResource("6_j53hv")]
 visible = false

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="PriceTag" load_steps=4 format=3 uid="uid://c1j17ira7xcem"]
+
+[ext_resource type="Texture2D" uid="uid://dqtjmjkttcl8" path="res://Accessory/Hats/Crown_Icon.png" id="1_883ei"]
+[ext_resource type="Script" path="res://Accessory/pricetag_type.gd" id="1_rlvg3"]
+[ext_resource type="Resource" uid="uid://bx35l4af4bywt" path="res://Accessory/Hats/HatTypes/Crown_Hat_Type.tres" id="2_1hjsv"]
+
+[resource]
+script = ExtResource("1_rlvg3")
+acc_name = "Crown"
+acc_icon = ExtResource("1_883ei")
+acc_type = 0
+accessory = ExtResource("2_1hjsv")
+purchase_honey = true
+honey_amount = 1000.0
+purchase_usd = false
+usd_amount = "String"
+validated = false
+prod_id = "PRODUCT_ID"
+achievable = false

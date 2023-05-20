@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="HatType" load_steps=3 format=3 uid="uid://bx35l4af4bywt"]
+
+[ext_resource type="PackedScene" uid="uid://cj16qkosyax6p" path="res://Accessory/Hats/Scenes/crown_hat.tscn" id="1_jusv6"]
+[ext_resource type="Script" path="res://Accessory/Hats/hat_type.gd" id="1_v7pi1"]
+
+[resource]
+script = ExtResource("1_v7pi1")
+hat_name = "Crown"
+scene = ExtResource("1_jusv6")

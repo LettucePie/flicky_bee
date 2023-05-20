@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cj16qkosyax6p"]
+
+[ext_resource type="PackedScene" uid="uid://b4nqjdi77kdph" path="res://Accessory/Hats/Models/Crown.glb" id="1_nc20d"]
+
+[node name="Crown" type="Node3D"]
+
+[node name="Crown" parent="." instance=ExtResource("1_nc20d")]
+transform = Transform3D(0.611148, 0.172465, 0, -0.172465, 0.611148, 0, 0, 0, 0.635017, 0.0959767, 0.340103, 0)

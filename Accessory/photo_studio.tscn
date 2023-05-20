@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://c4ap702pmxyr0"]
+[gd_scene load_steps=30 format=3 uid="uid://c4ap702pmxyr0"]
 
 [ext_resource type="PackedScene" uid="uid://ctoi4c1j3c0ba" path="res://Core/grass_patch.tscn" id="1_fmdt3"]
 [ext_resource type="Script" path="res://Accessory/photo_studio.gd" id="1_sd1ja"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dn17qq7kyauxa" path="res://Accessory/Hats/Scenes/wizard_hat.tscn" id="11_okglv"]
 [ext_resource type="PackedScene" uid="uid://bfemdrbpvb5mh" path="res://Accessory/Trails/Scenes/supporter_trail.tscn" id="12_l20hu"]
 [ext_resource type="PackedScene" uid="uid://cmuu2kkvy6n4p" path="res://Accessory/Trails/Scenes/sparkle_trail.tscn" id="13_k1mj0"]
+[ext_resource type="PackedScene" uid="uid://cj16qkosyax6p" path="res://Accessory/Hats/Scenes/crown_hat.tscn" id="13_kynvs"]
 [ext_resource type="PackedScene" uid="uid://bbcurcqhirjgx" path="res://Accessory/Trails/Scenes/dot_trail.tscn" id="14_837ph"]
 [ext_resource type="PackedScene" uid="uid://cxdymjhyjkdbm" path="res://Accessory/Trails/Scenes/honeydrop_trail.tscn" id="16_qgtbi"]
 [ext_resource type="PackedScene" uid="uid://bq4o80p0kyckg" path="res://Accessory/Trails/Scenes/rainbow_trail.tscn" id="17_lt8fw"]
@@ -60,7 +61,7 @@ node_connections = [&"output", 0, &"TimeScale", &"Bend_Blend", 0, &"Still", &"Be
 
 [node name="PhotoStudio" type="Node3D" groups=["PhotoStudio"]]
 script = ExtResource("1_sd1ja")
-filename = "Confetti"
+filename = "Crown"
 
 [node name="Camera_Spin" type="Node3D" parent="."]
 transform = Transform3D(0.796287, 0, 0.604919, 0, 1, 0, -0.604919, 0, 0.796287, 0, 0, 0)
@@ -90,8 +91,6 @@ shadow_enabled = true
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.14488, 0.644946, 2.58942)
-visible = false
-light_color = Color(0, 0.94902, 0, 1)
 light_energy = 0.385
 light_indirect_energy = 1.727
 shadow_enabled = true
@@ -127,7 +126,6 @@ visible = false
 
 [node name="HatSpot" type="Node3D" parent="."]
 transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0, 0)
-visible = false
 
 [node name="TopHat" parent="HatSpot" instance=ExtResource("9_c4qnb")]
 visible = false
@@ -142,9 +140,13 @@ visible = false
 
 [node name="WizardHat" parent="HatSpot" instance=ExtResource("11_okglv")]
 transform = Transform3D(0.854305, -0.519773, 0, 0.519773, 0.854305, 0, 0, 0, 1, 0, 0, 0)
+visible = false
+
+[node name="Crown" parent="HatSpot" instance=ExtResource("13_kynvs")]
 
 [node name="TrailSpot" type="Node3D" parent="."]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0.857735, 0)
+visible = false
 
 [node name="SupporterTrail" parent="TrailSpot" instance=ExtResource("12_l20hu")]
 visible = false
