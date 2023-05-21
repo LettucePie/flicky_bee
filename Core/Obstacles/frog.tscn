@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://1q4maiuuyl5w"]
+[gd_scene load_steps=7 format=3 uid="uid://1q4maiuuyl5w"]
 
 [ext_resource type="Script" path="res://Core/Obstacles/frog.gd" id="1_evudc"]
 [ext_resource type="PackedScene" uid="uid://xgudm7l021ox" path="res://Core/Art/Frog.glb" id="3_x01xu"]
 [ext_resource type="PackedScene" uid="uid://eyycua2bub72" path="res://Core/Art/Tongue.glb" id="4_ywenn"]
+[ext_resource type="AudioStream" uid="uid://dre07uo3tquh7" path="res://Core/Sound/FrogTounge_Sound.wav" id="5_nyc35"]
 [ext_resource type="Material" uid="uid://cp668a6ut4ukq" path="res://Core/Art/Mono_Material/GlossMaterial.tres" id="5_xw3uc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0djic"]
@@ -52,6 +53,12 @@ bones/1/position = Vector3(0, 14.5208, 0)
 
 [node name="Tongue2" parent="Tongue/Tongue/Armature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("5_xw3uc")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_nyc35")
+volume_db = -4.0
+unit_size = 4.0
+bus = &"SFX"
 
 [connection signal="timeout" from="Lunge" to="." method="_on_lunge_timeout"]
 [connection signal="body_entered" from="Tongue/Area3D" to="." method="_on_area_3d_body_entered"]

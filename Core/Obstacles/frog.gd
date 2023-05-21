@@ -24,6 +24,7 @@ func _on_lunge_timeout() -> void:
 
 func _snap_tongue() -> void:
 	$Tongue/Tongue/AnimationPlayer.play("Snap")
+	$AudioStreamPlayer3D.play()
 	if player_body != null:
 		var self_z = self.get_position().z
 		var player_z = player_body.get_position().z
