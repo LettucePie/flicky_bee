@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://crotvlfh3nj7p"]
+
+[ext_resource type="PackedScene" uid="uid://cv7nvqnxn1hul" path="res://Accessory/Flowers/Models/HoneyRose.glb" id="1_tm371"]
+
+[node name="HoneyRose" type="Node3D"]
+
+[node name="HoneyRose" parent="." instance=ExtResource("1_tm371")]
+transform = Transform3D(1.35557, 0, 0, 0, 1.35557, 0, 0, 0, 1.35557, 0, -0.290022, 0)
+
+[node name="Trace" type="Node3D" parent="."]
+transform = Transform3D(1.62, 0, 0, 0, 1.62, 0, 0, 0, 1.62, -0.00216563, 1.14696, 0.00463634)

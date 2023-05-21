@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://c4ap702pmxyr0"]
+[gd_scene load_steps=33 format=3 uid="uid://c4ap702pmxyr0"]
 
 [ext_resource type="PackedScene" uid="uid://ctoi4c1j3c0ba" path="res://Core/grass_patch.tscn" id="1_fmdt3"]
 [ext_resource type="Script" path="res://Accessory/photo_studio.gd" id="1_sd1ja"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://cb08b43lds0e7" path="res://Accessory/Flowers/Scenes/Carnation.tscn" id="10_oa70m"]
 [ext_resource type="PackedScene" uid="uid://c3gbd4va534cq" path="res://Accessory/Hats/Scenes/cap_hat.tscn" id="10_qcbco"]
 [ext_resource type="PackedScene" uid="uid://dn17qq7kyauxa" path="res://Accessory/Hats/Scenes/wizard_hat.tscn" id="11_okglv"]
+[ext_resource type="PackedScene" uid="uid://crotvlfh3nj7p" path="res://Accessory/Flowers/Scenes/HoneyRose.tscn" id="11_xhawe"]
 [ext_resource type="PackedScene" uid="uid://bfemdrbpvb5mh" path="res://Accessory/Trails/Scenes/supporter_trail.tscn" id="12_l20hu"]
 [ext_resource type="PackedScene" uid="uid://cmuu2kkvy6n4p" path="res://Accessory/Trails/Scenes/sparkle_trail.tscn" id="13_k1mj0"]
 [ext_resource type="PackedScene" uid="uid://cj16qkosyax6p" path="res://Accessory/Hats/Scenes/crown_hat.tscn" id="13_kynvs"]
@@ -63,7 +64,7 @@ node_connections = [&"output", 0, &"TimeScale", &"Bend_Blend", 0, &"Still", &"Be
 
 [node name="PhotoStudio" type="Node3D" groups=["PhotoStudio"]]
 script = ExtResource("1_sd1ja")
-filename = "Carnation"
+filename = "Honey rose"
 
 [node name="Camera_Spin" type="Node3D" parent="."]
 transform = Transform3D(0.796287, 0, 0.604919, 0, 1, 0, -0.604919, 0, 0.796287, 0, 0, 0)
@@ -74,7 +75,7 @@ visible = false
 environment = ExtResource("2_5mrdh")
 
 [node name="GreenCam" type="Camera3D" parent="Camera_Spin"]
-transform = Transform3D(0.946311, 0.162492, -0.279448, 8.56711e-09, 0.864477, 0.502673, 0.323257, -0.475685, 0.818064, -1.2013, 3.29841, 3.44804)
+transform = Transform3D(0.946311, 0.162492, -0.279448, 8.56711e-09, 0.864477, 0.502673, 0.323257, -0.475685, 0.818064, -1.57506, 3.97074, 4.5422)
 environment = SubResource("Environment_scr24")
 current = true
 
@@ -93,7 +94,14 @@ light_color = Color(1, 1, 0.937255, 1)
 shadow_enabled = true
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.14488, 0.644946, 2.58942)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.858, 2.61104, 1.52952)
+light_energy = 0.385
+light_indirect_energy = 1.727
+shadow_enabled = true
+omni_range = 9.69807
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.77558, 2.02815, -1.92879)
 light_energy = 0.385
 light_indirect_energy = 1.727
 shadow_enabled = true
@@ -131,6 +139,9 @@ visible = false
 visible = false
 
 [node name="Carnation" parent="Flick_Flower" instance=ExtResource("10_oa70m")]
+visible = false
+
+[node name="HoneyRose" parent="Flick_Flower" instance=ExtResource("11_xhawe")]
 
 [node name="HatSpot" type="Node3D" parent="."]
 transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0, 0)
