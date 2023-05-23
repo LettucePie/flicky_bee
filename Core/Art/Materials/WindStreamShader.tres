@@ -41,7 +41,7 @@ operator = 1
 
 [resource]
 code = "shader_type spatial;
-render_mode unshaded, shadows_disabled;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx, unshaded, shadows_disabled;
 
 uniform sampler2D tex_frg_2;
 uniform sampler2D tex_frg_5;
