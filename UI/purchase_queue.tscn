@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://bxfma5m0wafux" path="res://UI/Art/BeeBounceFrames/1024/BeeBounce1024_AnimTex.tres" id="2_o856m"]
 
 [node name="PurchaseQueue" type="ColorRect"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

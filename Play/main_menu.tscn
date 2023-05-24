@@ -779,6 +779,7 @@ offset_top = 2600.0
 offset_bottom = 2600.0
 
 [node name="Options" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1049,12 +1050,8 @@ offset_bottom = 0.479977
 text = "Clear Data"
 
 [node name="PurchaseQueue" parent="." instance=ExtResource("28_d0hgc")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
+visible = false
+layout_mode = 1
 
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="pressed" from="Main/Play" to="." method="_on_play_pressed"]

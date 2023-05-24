@@ -110,10 +110,12 @@ func _on_edit_pressed():
 
 
 func _spawn_queue() -> void:
+	print("Spawning QUEUE")
 	$PurchaseQueue._queue()
 
 
 func _finish_queue() -> void:
+	print("Finishing QUEUE")
 	$PurchaseQueue._stop()
 	_update_current_accessories()
 	$AnimationPlayer.play("Edit_Open")
@@ -205,3 +207,14 @@ func _on_purchase_queue_queue_timeout():
 
 func _on_tree_entered():
 	_update_score()
+
+
+func _input(event):
+	if event is InputEventKey:
+		if event.pressed:
+			if event.keycode == KEY_1:
+				_on_edit_pressed()
+			elif event.keycode == KEY_2:
+				_on_options_pressed()
+			elif event.keycode == KEY_3:
+				_on_help_pressed()

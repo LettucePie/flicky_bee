@@ -1,15 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwgh0l2dpnpsf"]
+[gd_scene load_steps=8 format=3 uid="uid://dwgh0l2dpnpsf"]
 
 [ext_resource type="Script" path="res://Play/persist.gd" id="1_x2eam"]
 [ext_resource type="Script" path="res://Play/ios_plugins.gd" id="2_x5bnn"]
 [ext_resource type="Resource" uid="uid://by7b7xlpi6dxw" path="res://Accessory/Trails/PriceTags/SupportTrail_PriceTag.tres" id="3_i4n2t"]
 [ext_resource type="Script" path="res://Play/playstore_plugins.gd" id="4_gydss"]
 [ext_resource type="PackedScene" uid="uid://npe2vhhs2fmy" path="res://Testing/fps_debug.tscn" id="5_vaajg"]
+[ext_resource type="Script" path="res://Play/screenshot.gd" id="6_dq4lg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mgxje"]
 font_size = 20
 
 [node name="Persist" type="Node" groups=["Persist"]]
+process_mode = 3
 script = ExtResource("1_x2eam")
 
 [node name="iOS_Plugins" type="Node" parent="."]
@@ -43,6 +45,10 @@ autowrap_mode = 2
 
 [node name="FPS_Debug" parent="." instance=ExtResource("5_vaajg")]
 visible = false
+
+[node name="Screenshot" type="Node" parent="."]
+script = ExtResource("6_dq4lg")
+filename = "ipad-12.9"
 
 [connection signal="update_purchases" from="iOS_Plugins" to="." method="_on_ios_update_purchases"]
 [connection signal="timeout" from="iOS_Plugins/Timer" to="iOS_Plugins" method="_check_events"]
