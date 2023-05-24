@@ -129,7 +129,8 @@ func _notification(what):
 		print("Device Leaving Focus at ", Time.get_unix_time_from_system())
 		if persist != null:
 			_register_progress()
-		$HUD._on_pause_pressed()
+		if !$Results.visible:
+			$HUD._on_pause_pressed()
 
 
 func _spawn_player() -> void:
