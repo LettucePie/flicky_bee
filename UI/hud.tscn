@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ej68kxh031vn"]
+[gd_scene load_steps=26 format=3 uid="uid://ej68kxh031vn"]
 
 [ext_resource type="Theme" uid="uid://cwjsb0qlm86r5" path="res://UI/Style/Bee_Theme.tres" id="1_lh646"]
 [ext_resource type="Script" path="res://UI/hud.gd" id="1_w0mb1"]
@@ -21,6 +21,172 @@
 [ext_resource type="Texture2D" uid="uid://dbhtyv5nc7cd3" path="res://UI/Art/Return_Arrow.png" id="16_fuy5r"]
 [ext_resource type="AudioStream" uid="uid://dseyc2dk7bfkj" path="res://UI/Sounds/Select_06.wav" id="20_5qsnx"]
 
+[sub_resource type="Curve" id="Curve_kqe0u"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 1, Vector2(0.574559, 0), 0.0, 0.154707, 1, 0, Vector2(0.996677, 0.97511), -0.456116, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Animation" id="Animation_u4i8a"]
+resource_name = "Fine"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Health_Meter/HealthBar:tint_progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Health_Meter/HealthJar:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Health_Meter/HealthJar:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-64, 655)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Health_Meter/HealthJar:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(208, 225)]
+}
+
+[sub_resource type="Animation" id="Animation_fq6c6"]
+resource_name = "Danger"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Health_Meter/HealthBar:tint_progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.403922, 0.333333, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Health_Meter/HealthJar:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.4, 1.4), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Health_Meter/HealthJar:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-64, 655)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Health_Meter/HealthJar:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(208, 225)]
+}
+
+[sub_resource type="Animation" id="Animation_rb160"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Health_Meter/HealthJar:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-63.9999, 662)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Health_Meter/HealthJar:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(193, 193)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Health_Meter/HealthJar:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.4, 1.4)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Health_Meter/HealthBar:tint_progress")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.403922, 0.333333, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mbk51"]
+_data = {
+"Danger": SubResource("Animation_fq6c6"),
+"Fine": SubResource("Animation_u4i8a"),
+"RESET": SubResource("Animation_rb160")
+}
+
 [node name="HUD" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -32,6 +198,7 @@ mouse_filter = 2
 theme = ExtResource("1_lh646")
 script = ExtResource("1_w0mb1")
 score_pop_scene = ExtResource("13_yn6dh")
+danger_curve = SubResource("Curve_kqe0u")
 
 [node name="Max" type="Control" parent="."]
 layout_mode = 1
@@ -42,6 +209,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_mbk51")
+}
 
 [node name="PauseButton" type="TextureButton" parent="."]
 layout_mode = 2
@@ -100,17 +273,18 @@ expand_mode = 4
 z_index = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.61
+anchor_left = -0.019
 anchor_top = 0.858
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 0.0501022
-offset_top = 10.558
-offset_right = 24.0
-offset_bottom = 62.0
+anchor_bottom = 0.998
+offset_left = -62.005
+offset_top = -73.442
+offset_right = 23.9999
+offset_bottom = 0.697978
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.338594
+pivot_offset = Vector2(96, 96)
 texture = ExtResource("4_xo1nj")
 expand_mode = 5
 stretch_mode = 6

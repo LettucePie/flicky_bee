@@ -3,6 +3,7 @@ extends Control
 signal end_game()
 
 @export var score_pop_scene : PackedScene
+@export var danger_curve : Curve
 
 var health_total := 10.0
 var health := 10.0 
@@ -33,9 +34,22 @@ func _setup() -> void:
 	$Pause.hide()
 
 
+func _process(delta):
+	pass
+
+
 func _update_health_bar(new_health : float, total : float) -> void:
 	health_total = total
 	health = clamp(new_health, 0.0, health_total)
+	var danger = danger_curve.sample(inverse_lerp(health_total, 0, health))
+	if danger > 0.0:
+		print("Play Tension")
+		if $AnimationPlayer.current_animation != "Danger":
+			$AnimationPlayer.play("Danger")
+		$AnimationPlayer.speed_scale = clamp(danger, 0.1, 1.0)
+	else:
+		print("Pause Tension")
+		$AnimationPlayer.play("Fine")
 	if hp_bar != null:
 		hp_bar.max_value = health_total
 		hp_bar.value = health
@@ -90,3 +104,4 @@ func _on_return_pressed():
 	get_tree().paused = false
 	emit_signal("end_game")
 	self.hide()
+
