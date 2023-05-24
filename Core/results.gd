@@ -12,6 +12,8 @@ var target_time : int
 var checked_scores : Array
 
 var suspense := false
+var pile_honey := false
+var honey_pile_target := 0
 @onready var record_score = $Panel/Content/Records/RecordScore/RecordScore
 @onready var record_dist = $Panel/Content/Records/RecordDist/RecordDist
 var new_score := false
@@ -35,6 +37,7 @@ var score_tally := 0
 
 func _set_results(sc, score, furthest, persist) -> void:
 	replaying = false
+	suspense = false
 	score_card = sc
 	furthest_distance = furthest
 	checked_scores.clear()
@@ -44,6 +47,7 @@ func _set_results(sc, score, furthest, persist) -> void:
 		l.text = "0"
 	score_tally = 0
 	$Panel/Content/RunScore/RunScore.text = str(score_tally)
+	honey_pile_target = persist.honey_points
 	record_score.text = str(persist.highest_score)
 	record_dist.text = str(
 		snapped(persist.furthest_distance, 0.1)
@@ -132,3 +136,18 @@ func _process(delta):
 			$Panel/Content/BestDist.visible = new_dist
 			$Panel/Content/Records.show()
 			$Panel/Buttons.show()
+			pile_honey = true
+			start_time = current
+			target_time = current + 600
+			$Panel/Content/HoneyPoints.show()
+			$Panel/Content/HoneyPoints/HP.text = "0"
+	if pile_honey:
+		var current = Time.get_ticks_msec()
+#		print("Piling Honey | target_time ",  target_time, " current_time ", current)
+		var time_percent = inverse_lerp(start_time, target_time, current)
+		$Panel/Content/HoneyPoints/HP.text = str(
+			roundi(lerp(0, honey_pile_target, time_percent))
+		)
+		if time_percent >= 1.0:
+			pile_honey = false
+			$Panel/Content/HoneyPoints/HP.text = str(honey_pile_target)

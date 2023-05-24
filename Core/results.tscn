@@ -613,6 +613,65 @@ offset_top = 1.2517e-05
 theme = ExtResource("12_6qbs5")
 metadata/_edit_use_anchors_ = true
 
+[node name="Icon" type="TextureRect" parent="Panel/Content/HoneyPoints"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.029
+anchor_top = 0.059
+anchor_right = 0.197
+anchor_bottom = 0.469
+offset_left = -0.0560009
+offset_top = -0.00335186
+offset_right = -0.20801
+offset_bottom = 0.0360699
+texture = ExtResource("4_8mbaw")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Icon2" type="TextureRect" parent="Panel/Content/HoneyPoints"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.799
+anchor_top = 0.083
+anchor_right = 0.966
+anchor_bottom = 0.469
+offset_left = -0.336021
+offset_top = -8.54739
+offset_right = 0.375982
+offset_bottom = 0.0360699
+texture = ExtResource("4_8mbaw")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Panel/Content/HoneyPoints"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.187
+anchor_top = 0.081
+anchor_right = 0.795
+anchor_bottom = 0.449
+offset_left = -2.56801
+offset_top = 0.163886
+offset_right = 0.119986
+offset_bottom = 0.155359
+text = "Honey Points"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HP" type="Label" parent="Panel/Content/HoneyPoints"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.113
+anchor_top = 0.5
+anchor_right = 0.882
+anchor_bottom = 0.893
+offset_left = 0.367995
+offset_top = -0.000701904
+offset_right = -0.0480251
+offset_bottom = 0.0907228
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Buttons" type="HBoxContainer" parent="Panel"]
 visible = false
 layout_mode = 2
