@@ -136,15 +136,20 @@ func _on_buy_usd_pressed():
 	print("Panic")
 	if persist_node != null:
 		if OS.has_feature("ios") and persist_node.ios_plugs != null:
-			$PurchaseQueue.show()
+			$PurchaseQueue._queue()
 			if !persist_node.ios_plugs.purchase_complete.is_connected(_purchase_result):
 				persist_node.ios_plugs.purchase_complete.connect(_purchase_result)
 			persist_node.ios_plugs._request_purchase(current_tag.prod_id)
 
 
+func _purchase_queue_timeout() -> void:
+	print("Purchase Queue Timed Out, sending Error")
+	_purchase_result(false)
+
+
 func _purchase_result(result) -> void:
 	print("Attempt to purchase was a totally epic ", result)
-	$PurchaseQueue.hide()
+	$PurchaseQueue._stop()
 	if result:
 		persist_node._add_accessory(current_tag.acc_name)
 		_set_current_accessories(

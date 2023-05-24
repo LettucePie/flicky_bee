@@ -763,12 +763,8 @@ text = "Continue"
 [node name="ButtonSound" parent="Reward/Continue" instance=ExtResource("7_imp5k")]
 
 [node name="PurchaseQueue" parent="." instance=ExtResource("29_vf1a0")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
+visible = false
+layout_mode = 1
 
 [node name="PurchaseFailure" type="ColorRect" parent="."]
 visible = false
@@ -852,4 +848,5 @@ text = "Ok"
 [connection signal="pressed" from="Reward/Equip" to="." method="_on_equip_pressed"]
 [connection signal="pressed" from="Reward/Equip" to="Reward" method="_vanish"]
 [connection signal="pressed" from="Reward/Continue" to="Reward" method="_vanish"]
+[connection signal="queue_timeout" from="PurchaseQueue" to="." method="_purchase_queue_timeout"]
 [connection signal="pressed" from="PurchaseFailure/ErrorOk" to="." method="_on_error_ok_pressed"]
