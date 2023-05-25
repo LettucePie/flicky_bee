@@ -190,18 +190,20 @@ func _add_accessory(acc : String) -> void:
 		_save_game()
 
 
-func _on_ios_update_purchases():
-	if ios_plugs.receipts.size() > 0:
-		for r in ios_plugs.receipts:
-			if !accessories.has(r.acc_name):
-				_add_accessory(r.acc_name)
+func _on_ios_update_purchases(result):
+	if result[0] == "SUCCESS":
+		if ios_plugs.receipts.size() > 0:
+			for r in ios_plugs.receipts:
+				if !accessories.has(r.acc_name):
+					_add_accessory(r.acc_name)
 
 
-func _on_play_update_purchases():
-	if play_plugs.receipt_catalog.size() > 0:
-		for r in play_plugs.receipt_catalog:
-			if !accessories.has(r.acc_name):
-				_add_accessory(r.acc_name)
+func _on_play_update_purchases(result):
+	if result[0] == "SUCCESS":
+		if play_plugs.receipt_catalog.size() > 0:
+			for r in play_plugs.receipt_catalog:
+				if !accessories.has(r.acc_name):
+					_add_accessory(r.acc_name)
 
 
 func _clear_data() -> void:
@@ -216,3 +218,4 @@ func _clear_data() -> void:
 	trail = "default"
 	flower = "default"
 	_save_game()
+

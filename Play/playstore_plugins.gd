@@ -16,7 +16,7 @@ class_name PlaystorePlugin
 ##
 
 signal sku_catalog_report()
-signal update_purchases()
+signal update_purchases(result)
 signal purchase_complete(result)
 
 @export var products : Array[PriceTag] = []
@@ -79,6 +79,7 @@ func _request_SKUs() -> void:
 		if prod_ids is PackedStringArray:
 			requesting_sku_catalog = true
 			playstore.querySkuDetails(prod_ids, "inapp")
+			$Timer.start(10)
 			_log("SKU Request Sent")
 		else:
 			_log("ERROR Prod_Ids provided are not a PackedStringArray.")
@@ -95,6 +96,7 @@ func _request_receipts() -> void:
 			if !requesting_receipts:
 				requesting_receipts = true
 				playstore.queryPurchases("inapp")
+				$Timer.start(10)
 				_log("Receipt Request Sent.")
 			else:
 				_log("ERROR Already Requesting Receipts.")
@@ -112,6 +114,7 @@ func _request_purchase(prod_id : String) -> void:
 				_log("Purchase Request Sent.")
 				requesting_purchase = true
 				playstore.purchase(prod_id.to_lower())
+				$Timer.start(10)
 			else:
 				_log("ERROR Already Requesting Purchase.")
 		else:
@@ -164,6 +167,7 @@ func _product_details(sku_details) -> void:
 	_log("Recieved SKU Details")
 	sku_cataloged = true
 	requesting_sku_catalog = false
+	$Timer.stop()
 	sku_catalog = sku_details
 	for s in sku_details:
 		for p in products:
@@ -180,6 +184,7 @@ func _product_details_error(e_code, e_msg, prod_ids) -> void:
 	_log("*** " + str(e_code) + " : " + str(e_msg) + " : " + str(prod_ids))
 	sku_cataloged = false
 	requesting_sku_catalog = false
+	$Timer.stop()
 #	emit_signal("sku_catalog_report")
 
 
@@ -187,6 +192,9 @@ func _receipt_response(receipts) -> void:
 	_log("Received Receipts.")
 	receipts_cataloged = true
 	requesting_receipts = false
+	$Timer.stop()
+	var result = []
+	result[0] = "ERROR"
 	if receipts.has("purchases"):
 		if receipts.purchases.size() > 0:
 			for r in receipts.purchases:
@@ -199,17 +207,24 @@ func _receipt_response(receipts) -> void:
 									"acc_name" : _id_to_name(p.to_upper()),
 									"acc_id" : p.to_upper()
 								})
+							result[0] = "SUCCESS"
+							result[1] = "Restored Purchases."
 						else:
 							_log("ERROR Receipt is missing Products Array.")
+							result[1] = "Failure to process receipts."
 					else:
 						_log("ERROR Purchase State is Incomplete.")
+						result[1] = "Failure to process transactions."
 				else:
 					_log("ERROR Receipt is missing Purchase_State Dictionary Key.")
+					result[1] = "Failure to process receipts."
 		else:
 			_log("ERROR Receipt Purchases Key is Empty.")
+			result[1] = "Failure to process receipts."
 	else:
 		_log("ERROR Receipt is missing Purchases Dictionary Key.")
-	emit_signal("update_purchases")
+		result[1] = "Failure to process receipts."
+	emit_signal("update_purchases", result)
 
 
 func _purchase_complete(receipt) -> void:
@@ -220,6 +235,7 @@ func _purchase_complete(receipt) -> void:
 				if r.purchase_state == 1:
 					_log("Purchase Completed.")
 					requesting_purchase = false
+					$Timer.stop()
 					if r.has("products"):
 						if r.products.size() > 0:
 							for p in r.products:
@@ -248,6 +264,7 @@ func _purchase_error(e_code, e_msg) -> void:
 	_log("***ERROR on Purchase ...")
 	_log("*** " + str(e_code) + " : " + str(e_msg))
 	requesting_purchase = false
+	$Timer.stop()
 	emit_signal("purchase_complete", false)
 
 
@@ -268,3 +285,18 @@ func _id_to_name(id : String) -> String:
 			if p.prod_id == id:
 				result = p.acc_name
 	return result
+
+
+func _on_timer_timeout():
+	$Timer.stop()
+	if requesting_sku_catalog:
+		_log("ERROR Timed Out Requesting SKUS")
+		requesting_sku_catalog = false
+	if requesting_receipts:
+		_log("ERROR Timed Out Requesting Receipts")
+		requesting_receipts = false
+		emit_signal("update_purchases", ["ERROR", "Request Timed Out."])
+	if requesting_purchase:
+		_log("ERROR Timed Out Requesting Purchases")
+		requesting_purchase = false
+		emit_signal("purchase_complete", false)

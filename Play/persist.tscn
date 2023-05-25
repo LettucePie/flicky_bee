@@ -45,6 +45,9 @@ text = "Debugging PlayStore"
 label_settings = SubResource("LabelSettings_mgxje")
 autowrap_mode = 2
 
+[node name="Timer" type="Timer" parent="PlayStore_Plugins"]
+wait_time = 10.0
+
 [node name="FPS_Debug" parent="." instance=ExtResource("5_vaajg")]
 visible = false
 
@@ -55,3 +58,4 @@ filename = "ipad-12.9"
 [connection signal="update_purchases" from="iOS_Plugins" to="." method="_on_ios_update_purchases"]
 [connection signal="timeout" from="iOS_Plugins/Timer" to="iOS_Plugins" method="_check_events"]
 [connection signal="timeout" from="iOS_Plugins/Restore_Buffer" to="iOS_Plugins" method="_on_restore_buffer_timeout"]
+[connection signal="timeout" from="PlayStore_Plugins/Timer" to="PlayStore_Plugins" method="_on_timer_timeout"]

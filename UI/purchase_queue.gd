@@ -6,6 +6,7 @@ func _queue() -> void:
 	print("QUEUE displaying for up to 10 seconds")
 	$Timer.start(10)
 	self.show()
+	$MessagePanel.hide()
 
 
 func _stop() -> void:
@@ -18,3 +19,17 @@ func _on_timer_timeout():
 	$Timer.stop()
 	self.hide()
 	emit_signal("queue_timeout")
+	
+
+func _set_status_message(status : String, message : String) -> void:
+	$MessagePanel/Status.text = status
+	$MessagePanel/Message.text = message
+
+
+func _show_message() -> void:
+	$MessagePanel.show()
+	$Timer.stop()
+
+
+func _on_done_pressed():
+	_stop()

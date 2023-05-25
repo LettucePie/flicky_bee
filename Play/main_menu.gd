@@ -220,8 +220,12 @@ func _on_restore_purchases_pressed():
 		persist_node.play_plugs._request_receipts()
 
 
-func _purchase_restoration_finished():
-	$PurchaseQueue._stop()
+func _purchase_restoration_finished(result):
+	if result[0] == "SUCCESS":
+		$PurchaseQueue._stop()
+	else:
+		$PurchaseQueue._set_status_message(result[0], result[1])
+		$PurchaseQueue._show_message()
 
 
 func _on_close_help_pressed():

@@ -3,7 +3,7 @@ extends Node
 class_name IOSPlugin
 
 signal store_info_complete()
-signal update_purchases()
+signal update_purchases(result)
 signal purchase_complete(result)
 
 @export var products : Array[PriceTag] = []
@@ -78,6 +78,7 @@ func _check_events() -> void:
 				if event.result == "error":
 					print("***ios*** failed to restore purchases aka receipts...")
 					restoring = false
+					emit_signal("update_purchases", ["ERROR", "Failed to Restore Purchases."])
 			else:
 				print("**ios** Rogue Restoring Event ... ", event)
 	if in_app_store.get_pending_event_count() <= 0:
@@ -168,12 +169,13 @@ func _process_receipt(prod_id) -> void:
 				"acc_id" : prod_id
 			})
 			print("***ios*** Added ", p.prod_id, " to receipts aka purchases")
-			emit_signal("update_purchases")
+			emit_signal("update_purchases", ["SUCCESS", "Restored Purchases."])
 
 
 func _on_restore_buffer_timeout():
 	restore_buffer = false
 	$Restore_Buffer.stop()
+	emit_signal("update_purchases", ["ERROR", "Request Timed Out."])
 
 ### Purchasing Section
 

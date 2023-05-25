@@ -1,41 +1,42 @@
 [{ 
-    "purchase_token": "cgdfmiolpldfmolhnkjnhkid.AO-J1Ozx1E48xrGB5A3vgQdK47HZZeL5U-idTOL0b-e_QKD_CCKUgE6a4yo7EgB5d1kBy280DctYM5ctOZXSP4TS-B-4a_rEYKQlzoEuCHplsAiJ0FhGsJE", 
-    "is_acknowledged": false, 
-    "quantity": 1, 
-    "signature": "CyRMYqXmLI3erOqpVB/PcV5bnRZNrtEOrzDo5yV12fSwa4qbR/cMx3pGgJO7op+xO1ah26CRiS3K/agdvWRVtpoZXoTb1/j1XHLhbm0lvskC/Vk62MtnwHLCJaEOF3dqbPFHZWezRnCkptOZOv+pACvH3eMVCktPE9pNtV0OtINlamjq7bqRO6OneW5pKW03/WhiNe8ie4W+29MVLCzyRb7JDtuvpx0ji6zNfBexEv15ZWJ8cFUtjk9wZXA2hvlxa0UGcCchnQ0YtoXzW94NDcVUSi3+qRsincFt73+mjOCG82ysjl6i0ATCcZLseGfRbeBzb/MT1nVu5PdN+oX/qw==", 
-    "package_name": "org.lettucepie.flickybee", 
-    "original_json": "{\"orderId\":\"GPA.3307-6372-8641-11550\",\"packageName\":\"org.lettucepie.flickybee\",\"productId\":\"flickybeesup001\",\"purchaseTime\":1684988621478,\"purchaseState\":0,\"purchaseToken\":\"cgdfmiolpldfmolhnkjnhkid.AO-J1Ozx1E48xrGB5A3vgQdK47HZZeL5U-idTOL0b-e_QKD_CCKUgE6a4yo7EgB5d1kBy280DctYM5ctOZXSP4TS-B-4a_rEYKQlzoEuCHplsAiJ0FhGsJE\",\"quantity\":1,\"acknowledged\":false}", 
-    "purchase_time": 1684988621478, 
-    "order_id": "GPA.3307-6372-8641-11550", 
-    "purchase_state": 1, 
-    "is_auto_renewing": false, 
-    "products": ["flickybeesup001"] }]
+	"purchase_token": "-redact-", 
+	"is_acknowledged": false, 
+	"quantity": 1, 
+	"signature": "-redact-", 
+	"package_name": "org.lettucepie.flickybee", 
+	"original_json": "{\"orderId\":\"GPA.-redact-\",\"packageName\":\"org.lettucepie.flickybee\",\"productId\":\"flickybeesup001\",\"purchaseTime\":1684988621478,\"purchaseState\":0,\"purchaseToken\":\"-redact-\",\"quantity\":1,\"acknowledged\":false}", 
+	"purchase_time": 1684988621478, 
+	"order_id": "GPA.-readct-", 
+	"purchase_state": 1, 
+	"is_auto_renewing": false, 
+	"products": ["flickybeesup001"] 
+}]
 
 
 
 [
-    { 
-        "purchase_token": "jcjgjcdjkbamabklkebgcako.AO-J1Oy0IEVPEfpqVhwsFYOFBX7pIGwRnscGqNgLHMwRZu0Q63JKyyaagceeABUOxUoGXwGhEZl9fNMK-JG-M5hpoUOqQPExEPIB2dRfaVsWiwsl_zuHCjI", 
-        "is_acknowledged": false, 
-        "quantity": 1, 
-        "signature": "g1Nn+2ZoUhhjiTjP4dtU6sDBP03ZYDYhDzs5b7VtGiuSDLAwO1K9Tw5L2/svcuDX/WVkyTwkGTmk5qsFOmsba2AMTzHZXSqb4AnankGKLffBaM3POOaoN5WpJlRnB7tehGmMrKQuJ3u7H8U7pcRR5eyQh4+jJJZorNjB18Bem3bxFkYLgTjUt5XxjhuffogpulPN82Vlk9yVyBBd7cMFCrlJNSVarcALcU4yCkxC03qu+e+3p55c4+9aJaus+pmEXLlGZHZdbgBLkdq61uV73VjJQAr3DPwmODPk3d/Jfvvo06zHAIqgxaOMXDpa4y0RLkextIQP1Pf5ye32OfkcYg==", 
-        "package_name": "org.lettucepie.flickybee", 
-        "original_json": "{
-            \"orderId\":\"GPA.3389-8283-4826-56892\",
-            \"packageName\":\"org.lettucepie.flickybee\",
-            \"productId\":\"flickybeesup001\",
-            \"purchaseTime\":1685019576591,
-            \"purchaseState\":0,
-            \"purchaseToken\":\"jcjgjcdjkbamabklkebgcako.AO-J1Oy0IEVPEfpqVhwsFYOFBX7pIGwRnscGqNgLHMwRZu0Q63JKyyaagceeABUOxUoGXwGhEZl9fNMK-JG-M5hpoUOqQPExEPIB2dRfaVsWiwsl_zuHCjI\",
-            \"quantity\":1,
-            \"acknowledged\":false
-            }", 
-        "purchase_time": 1685019576591, 
-        "order_id": "GPA.3389-8283-4826-56892", 
-        "purchase_state": 1, 
-        "is_auto_renewing": false, 
-        "products": [
-            "flickybeesup001"
-            ] 
-    }
+	{ 
+		"purchase_token": "-redact-", 
+		"is_acknowledged": false, 
+		"quantity": 1, 
+		"signature": "-redact-", 
+		"package_name": "org.lettucepie.flickybee", 
+		"original_json": "{
+			\"orderId\":\"GPA.-redact-\",
+			\"packageName\":\"org.lettucepie.flickybee\",
+			\"productId\":\"flickybeesup001\",
+			\"purchaseTime\":1685019576591,
+			\"purchaseState\":0,
+			\"purchaseToken\":\"-redact-\",
+			\"quantity\":1,
+			\"acknowledged\":false
+			}", 
+		"purchase_time": 1685019576591, 
+		"order_id": "GPA.-redact-", 
+		"purchase_state": 1, 
+		"is_auto_renewing": false, 
+		"products": [
+			"flickybeesup001"
+			] 
+	}
 ]
