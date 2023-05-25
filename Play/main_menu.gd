@@ -219,9 +219,14 @@ func _on_restore_purchases_pressed():
 			persist_node.play_plugs.update_purchases.connect(_purchase_restoration_finished)
 		if persist_node.play_plugs.connected:
 			persist_node.play_plugs._request_receipts()
-		else:
-			if !persist_node.play_plugs.sku_catalog_report.is_connected(_reconnect_playstore):
-				persist_node.play_plugs.sku_catalog_report.connect(_reconnect_playstore)
+		else :
+			if persist_node.play_plugs._connection_state() != 3:
+				if !persist_node.play_plugs.sku_catalog_report.is_connected(_reconnect_playstore):
+					persist_node.play_plugs.sku_catalog_report.connect(_reconnect_playstore)
+					persist_node.play_plugs._establish_connection()
+			else:
+				$PurchaseQueue._set_status_message("ERROR", "Connection to PlayStore is Closed.")
+				$PurchaseQueue._show_message()
 
 
 func _reconnect_playstore():

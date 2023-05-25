@@ -146,9 +146,14 @@ func _on_buy_usd_pressed():
 				persist_node.play_plugs.purchase_complete.connect(_purchase_result)
 			if persist_node.play_plugs.connected:
 				persist_node.play_plugs._request_purchase(current_tag.prod_id)
-			else:
-				if !persist_node.play_plugs.sku_catalog_report.is_connected(_reconnect_playstore):
-					persist_node.play_plugs.sku_catalog_report.connect(_reconnect_playstore)
+			else :
+				if persist_node.play_plugs._connection_state() != 3:
+					if !persist_node.play_plugs.sku_catalog_report.is_connected(_reconnect_playstore):
+						persist_node.play_plugs.sku_catalog_report.connect(_reconnect_playstore)
+						persist_node.play_plugs._establish_connection()
+				else:
+					$PurchaseQueue._stop()
+					$PurchaseFailure/Panel/Label.text = "Connection to Playstore is Closed."
 
 
 func _reconnect_playstore() -> void:

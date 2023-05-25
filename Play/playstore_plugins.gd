@@ -60,10 +60,15 @@ func _plugin_integrated() -> bool:
 
 func _establish_connection() -> void:
 	if playstore.has_signal("connected"):
-		playstore.connected.connect(_connection_established)
+		if !playstore.connected.is_connected(_connection_established):
+			playstore.connected.connect(_connection_established)
 #		print("***play*** Connection Verity Signal found and connected")
 		_log("Connection Verity Signal Found")
-		playstore.startConnection()
+		print(playstore.getConnectionState())
+		if playstore.getConnectionState() == 3:
+			_log("CONNECTION CLOSED AND CANNOT BE REOPENED")
+		else:
+			playstore.startConnection()
 	else:
 #		print("***play*** Connection Verity Signal not found...")
 		_log("Connection Verity Signal NOT Found")
@@ -147,6 +152,7 @@ func _request_acknowledgement(token) -> void:
 func _disconnect_service() -> void:
 	_log("Forcing Disconnect")
 	playstore.endConnection()
+	_disconnected()
 
 
 ## Signal Landing Zone
@@ -403,6 +409,14 @@ func _id_to_name(id : String) -> String:
 			if p.prod_id == id:
 				result = p.acc_name
 	return result
+
+
+func _connection_state() -> int:
+	if playstore != null:
+		print("Returning PlayStore Connection State: ", playstore.getConnectionState())
+		return playstore.getConnectionState()
+	else:
+		return -1
 
 
 func _on_timer_timeout():
