@@ -28,6 +28,13 @@ func _ready():
 		$Main/ButtonBox/Quit.queue_free()
 	if !OS.is_debug_build():
 		$ClearData.queue_free()
+	if OS.has_feature("ios") and persist_node.ios_plugs != null:
+		print("Keep IOS Restore Purchases Button")
+	elif OS.has_feature("playstore") and persist_node.play_plugs != null:
+		print("Keep PlayStore Restore Purchases Button")
+	else:
+		print("Remove Restore Purchases Button.")
+		$Help/VBoxContainer/RestorePurchases.queue_free()
 
 
 func _reflect_settings() -> void:
@@ -199,6 +206,24 @@ func _on_website_pressed():
 	OS.shell_open(web_string)
 
 
+func _on_restore_purchases_pressed():
+	print("Restore Purchases Pressed")
+	if OS.has_feature("ios") and persist_node.ios_plugs != null:
+		$PurchaseQueue._queue()
+		if !persist_node.ios_plugs.update_purchases.is_connected(_purchase_restoration_finished):
+			persist_node.ios_plugs.update_purchases.connect(_purchase_restoration_finished)
+		persist_node.ios_plugs._request_receipts(true)
+	if OS.has_feature("playstore") and persist_node.play_plugs != null:
+		$PurchaseQueue._queue()
+		if !persist_node.play_plugs.update_purchases.is_connected(_purchase_restoration_finished):
+			persist_node.play_plugs.update_purchases.connect(_purchase_restoration_finished)
+		persist_node.play_plugs._request_receipts()
+
+
+func _purchase_restoration_finished():
+	$PurchaseQueue._stop()
+
+
 func _on_close_help_pressed():
 #	$Help.hide()
 	$AnimationPlayer.play("Help_Close")
@@ -226,3 +251,5 @@ func _input(event):
 				_on_options_pressed()
 			elif event.keycode == KEY_3:
 				_on_help_pressed()
+
+

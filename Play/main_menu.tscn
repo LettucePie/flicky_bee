@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://b1aibpbthxdp7"]
+[gd_scene load_steps=43 format=3 uid="uid://b1aibpbthxdp7"]
 
 [ext_resource type="Theme" uid="uid://cwjsb0qlm86r5" path="res://UI/Style/Bee_Theme.tres" id="1_g7eow"]
 [ext_resource type="Script" path="res://Play/main_menu.gd" id="2_jrubw"]
@@ -27,6 +27,7 @@
 [ext_resource type="AudioStream" uid="uid://c3ulofprml32s" path="res://kenney/Flowing Rocks.ogg" id="17_n0hyg"]
 [ext_resource type="Texture2D" uid="uid://ba58knmd8b87x" path="res://UI/Art/Icons/Document_Icon.png" id="18_sr7a0"]
 [ext_resource type="Texture2D" uid="uid://b3s0do66n0h0w" path="res://UI/Art/Icons/Website_Icon.png" id="19_iat23"]
+[ext_resource type="Texture2D" uid="uid://detpp06rg6ye4" path="res://UI/Art/Icons/RestorePurchases_Icon.png" id="26_xkppv"]
 [ext_resource type="PackedScene" uid="uid://ckypgxmb4ff47" path="res://UI/purchase_queue.tscn" id="28_d0hgc"]
 
 [sub_resource type="Animation" id="Animation_otwit"]
@@ -773,8 +774,11 @@ vertical_alignment = 1
 stream = ExtResource("12_yxq8t")
 
 [node name="Edit" parent="." instance=ExtResource("12_g11w1")]
+visible = false
 layout_mode = 1
 anchors_preset = -1
+offset_top = 2600.0
+offset_bottom = 2600.0
 
 [node name="Options" type="Panel" parent="."]
 visible = false
@@ -1001,6 +1005,16 @@ expand_icon = true
 
 [node name="ButtonSound" parent="Help/VBoxContainer/Website" instance=ExtResource("9_nh65q")]
 
+[node name="RestorePurchases" type="Button" parent="Help/VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 200)
+layout_mode = 2
+size_flags_vertical = 6
+text = "Restore Purchases"
+icon = ExtResource("26_xkppv")
+expand_icon = true
+
+[node name="ButtonSound" parent="Help/VBoxContainer/RestorePurchases" instance=ExtResource("9_nh65q")]
+
 [node name="CloseHelp" type="Button" parent="Help/VBoxContainer"]
 custom_minimum_size = Vector2(2.08165e-12, 200)
 layout_mode = 2
@@ -1069,6 +1083,7 @@ layout_mode = 1
 [connection signal="pressed" from="Help/VBoxContainer/TutorialButton" to="." method="_on_tutorial_button_pressed"]
 [connection signal="pressed" from="Help/VBoxContainer/PrivacyPolicy" to="." method="_on_privacy_policy_pressed"]
 [connection signal="pressed" from="Help/VBoxContainer/Website" to="." method="_on_website_pressed"]
+[connection signal="pressed" from="Help/VBoxContainer/RestorePurchases" to="." method="_on_restore_purchases_pressed"]
 [connection signal="pressed" from="Help/VBoxContainer/CloseHelp" to="." method="_on_close_help_pressed"]
 [connection signal="pressed" from="ClearData" to="." method="_on_clear_data_pressed"]
 [connection signal="queue_timeout" from="PurchaseQueue" to="." method="_on_purchase_queue_queue_timeout"]

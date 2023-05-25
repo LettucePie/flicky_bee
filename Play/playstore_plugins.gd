@@ -187,13 +187,16 @@ func _receipt_response(receipts) -> void:
 	_log("Received Receipts " + str(receipts))
 	receipts_cataloged = true
 	requesting_receipts = false
-	for r in receipts:
-		if r.purchase_state == 1:
-			for p in receipts.products:
-				receipt_catalog.append({
-					"acc_name" : _id_to_name(p.to_upper()),
-					"acc_id" : p.to_upper()
-				})
+	if receipts.size() > 0:
+		for r in receipts:
+			if r.has("purchase_state"):
+				if r.purchase_state == 1:
+					if r.has("products"):
+						for p in r.products:
+							receipt_catalog.append({
+								"acc_name" : _id_to_name(p.to_upper()),
+								"acc_id" : p.to_upper()
+							})
 	emit_signal("update_purchases")
 
 
