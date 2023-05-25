@@ -144,7 +144,17 @@ func _on_buy_usd_pressed():
 			$PurchaseQueue._queue()
 			if !persist_node.play_plugs.purchase_complete.is_connected(_purchase_result):
 				persist_node.play_plugs.purchase_complete.connect(_purchase_result)
-			persist_node.play_plugs._request_purchase(current_tag.prod_id)
+			if persist_node.play_plugs.connected:
+				persist_node.play_plugs._request_purchase(current_tag.prod_id)
+			else:
+				if !persist_node.play_plugs.sku_catalog_report.is_connected(_reconnect_playstore):
+					persist_node.play_plugs.sku_catalog_report.connect(_reconnect_playstore)
+
+
+func _reconnect_playstore() -> void:
+	if persist_node.play_plugs.connected:
+		print("Playstore Reconnected and ready to start purchase request")
+		persist_node.play_plugs._request_purchase(current_tag.prod_id)
 
 
 func _purchase_queue_timeout() -> void:

@@ -38,7 +38,7 @@ var receipts_cataloged := false
 var receipt_catalog : Array
 var requesting_purchase := false
 var purchase_limbo : Array
-var acknowleding_purchase := false
+var acknowledging_purchase := false
 
 
 func _ready():
@@ -131,16 +131,22 @@ func _request_acknowledgement(token) -> void:
 	_log("Requesting Acknowledgement for token: " + str(token))
 	if acknowledgement_integrated:
 		if purchase_limbo.size() > 0:
-			if !acknowleding_purchase:
-				acknowleding_purchase = true
+			if !acknowledging_purchase:
+				acknowledging_purchase = true
 				playstore.acknowledgePurchase(token)
 				$Timer.start(10)
+				_log("Acknowledgement Request Sent.")
 			else:
 				_log("ERROR Already Requesting Acknowledgement.")
 		else:
 			_log("ERROR There are no Purchases in Limbo needing acknowledgement.")
 	else:
 		_log("ERROR Acknowledgement Signals are not integrated.")
+
+
+func _disconnect_service() -> void:
+	_log("Forcing Disconnect")
+	playstore.endConnection()
 
 
 ## Signal Landing Zone
@@ -203,7 +209,7 @@ func _product_details(sku_details) -> void:
 				p.validated = true
 				p.usd_amount = s.one_time_purchase_details.formatted_price
 	_request_receipts()
-#	emit_signal("sku_catalog_report")
+	emit_signal("sku_catalog_report")
 
 
 func _product_details_error(e_code, e_msg, prod_ids) -> void:
@@ -212,7 +218,7 @@ func _product_details_error(e_code, e_msg, prod_ids) -> void:
 	sku_cataloged = false
 	requesting_sku_catalog = false
 	$Timer.stop()
-#	emit_signal("sku_catalog_report")
+	emit_signal("sku_catalog_report")
 
 
 ##
@@ -245,37 +251,42 @@ func _receipt_response(receipts) -> void:
 	receipts_cataloged = true
 	requesting_receipts = false
 	$Timer.stop()
-	var result = []
+	var result = ["", ""]
 	result[0] = "ERROR"
-	if receipts.has("purchases"):
-		if receipts.purchases.size() > 0:
-			for r in receipts.purchases:
-				if r.has("purchase_state"):
-					if r.purchase_state == 1:
-						if r.has("products"):
-							for p in r.products:
-								_log("Cataloging Receipt: " + str(_id_to_name(p.to_upper())))
-								receipt_catalog.append({
-									"acc_name" : _id_to_name(p.to_upper()),
-									"acc_id" : p.to_upper()
-								})
-							result[0] = "SUCCESS"
-							result[1] = "Restored Purchases."
+	if receipts is Dictionary:
+		if receipts.has("purchases"):
+			if receipts.purchases.size() > 0:
+				for r in receipts.purchases:
+					if r.has("purchase_state"):
+						if r.purchase_state == 1:
+							if r.has("products"):
+								for p in r.products:
+									_log("Cataloging Receipt: " + str(_id_to_name(p.to_upper())))
+									receipt_catalog.append({
+										"acc_name" : _id_to_name(p.to_upper()),
+										"acc_id" : p.to_upper()
+									})
+								result[0] = "SUCCESS"
+								result[1] = "Restored Purchases."
+							else:
+								_log("ERROR Receipt is missing Products Array.")
+								result[1] = "Failure to process receipts."
 						else:
-							_log("ERROR Receipt is missing Products Array.")
-							result[1] = "Failure to process receipts."
+							_log("ERROR Purchase State is Incomplete.")
+							result[1] = "Failure to process transactions."
 					else:
-						_log("ERROR Purchase State is Incomplete.")
-						result[1] = "Failure to process transactions."
-				else:
-					_log("ERROR Receipt is missing Purchase_State Dictionary Key.")
-					result[1] = "Failure to process receipts."
+						_log("ERROR Receipt is missing Purchase_State Dictionary Key.")
+						result[1] = "Failure to process receipts."
+			else:
+				_log("ERROR Receipt Purchases Key is Empty.")
+				result[1] = "Failure to process receipts."
 		else:
-			_log("ERROR Receipt Purchases Key is Empty.")
+			_log("ERROR Receipt is missing Purchases Dictionary Key.")
 			result[1] = "Failure to process receipts."
 	else:
-		_log("ERROR Receipt is missing Purchases Dictionary Key.")
-		result[1] = "Failure to process receipts."
+		_log("ERROR Receipts recieved isn't a Dictionary.")
+		result[1] = "Failure to fetch any receipts."
+	print("Sending Signal Update Purchases with Result : ", result)
 	emit_signal("update_purchases", result)
 
 
@@ -289,7 +300,7 @@ func _purchase_complete(receipt) -> void:
 					#
 					if r.has("purchase_state"):
 						if r.purchase_state == 1:
-							_log("Purchase Completed.")
+							_log("Purchase STATE = Completed.")
 							requesting_purchase = false
 							$Timer.stop()
 							if r.has("products"):
@@ -307,9 +318,9 @@ func _purchase_complete(receipt) -> void:
 								_log("ERROR Purchase Receipt is missing Products Array.")
 								emit_signal("purchase_complete", false)
 						elif receipt.purchase_state == 2:
-							_log("Purchase Pending...")
+							_log("Purchase STATE = Pending...")
 						else:
-							_log("Unknown issue Purchasing... Output: " + str(receipt))
+							_log("Purchase STATE UNKNOWN: " + str(receipt))
 					else:
 						_log("ERROR Purchase Receipt is missing Purchase_State Dictionary Key.")
 						emit_signal("purchase_complete", false)
@@ -343,7 +354,7 @@ func _purchase_error(e_code, e_msg) -> void:
 
 func _purchase_acknowledge(token) -> void:
 	_log("Recieved Acknowledgement for Token: " + str(token))
-	acknowleding_purchase = false
+	acknowledging_purchase = false
 	if purchase_limbo.size() > 0:
 		var processed_tokens = []
 		for p in purchase_limbo:
@@ -371,7 +382,7 @@ func _purchase_acknowledge(token) -> void:
 
 func _purchase_acknowledge_error(e_code, e_msg, token) -> void:
 	_log("ERROR Purchase Acknowledgement : " + str(e_code) + " : " + str(e_msg) + " : " + str(token))
-	acknowleding_purchase = false
+	acknowledging_purchase = false
 	emit_signal("purchase_complete", false)
 
 
@@ -407,7 +418,7 @@ func _on_timer_timeout():
 		_log("ERROR Timed Out Requesting Purchases")
 		requesting_purchase = false
 		emit_signal("purchase_complete", false)
-	if acknowleging_purchase:
+	if acknowledging_purchase:
 		_log("ERROR Timed Out Purchase Acknowledgement.")
 		acknowledging_purchase = false
 		emit_signal("purchase_complegte", false)

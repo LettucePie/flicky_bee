@@ -217,10 +217,21 @@ func _on_restore_purchases_pressed():
 		$PurchaseQueue._queue()
 		if !persist_node.play_plugs.update_purchases.is_connected(_purchase_restoration_finished):
 			persist_node.play_plugs.update_purchases.connect(_purchase_restoration_finished)
+		if persist_node.play_plugs.connected:
+			persist_node.play_plugs._request_receipts()
+		else:
+			if !persist_node.play_plugs.sku_catalog_report.is_connected(_reconnect_playstore):
+				persist_node.play_plugs.sku_catalog_report.connect(_reconnect_playstore)
+
+
+func _reconnect_playstore():
+	if persist_node.play_plugs.connected:
+		print("PlayStore reconnected, requesting receipts now.")
 		persist_node.play_plugs._request_receipts()
 
 
 func _purchase_restoration_finished(result):
+	print("Purchase Restoration Finished with rewsult: ", result)
 	if result[0] == "SUCCESS":
 		$PurchaseQueue._stop()
 	else:
@@ -257,3 +268,8 @@ func _input(event):
 				_on_help_pressed()
 
 
+func _on_disconnect_pressed():
+	if OS.has_feature("playstore"):
+		persist_node.play_plugs._disconnect_service()
+	else:
+		$disconnect.queue_free()

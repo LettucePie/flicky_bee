@@ -14,7 +14,6 @@ color = Color(0.109804, 0.109804, 0.109804, 0.807843)
 script = ExtResource("1_x8ero")
 
 [node name="Panel" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.154
@@ -103,6 +102,8 @@ offset_bottom = -0.0558959
 text = "Processing..."
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
+clip_text = true
 
 [node name="Done" type="Button" parent="MessagePanel"]
 layout_mode = 1
