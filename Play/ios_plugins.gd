@@ -75,6 +75,7 @@ func _check_events() -> void:
 					_process_receipt(event.product_id)
 				if event.result == "completed":
 					restoring = false
+					emit_signal("update_purchases", ["SUCCESS", "Purchases Restored"])
 				if event.result == "error":
 					print("***ios*** failed to restore purchases aka receipts...")
 					restoring = false
@@ -83,7 +84,7 @@ func _check_events() -> void:
 				print("**ios** Rogue Restoring Event ... ", event)
 	if in_app_store.get_pending_event_count() <= 0:
 		print("**ios** Events has nothing pending")
-		if !purchasing or !restoring or store_info_state != STATE.PENDING:
+		if purchasing or restoring or store_info_state == STATE.PENDING:
 			print("***ios*** Events on Hold. Purchasing = ", purchasing, " Restoring = ", restoring, " StoreInfo = ", store_info_state)
 			hold_count -= 1
 			if hold_count <= 0:
@@ -159,6 +160,7 @@ func _request_receipts(force : bool) -> void:
 		hold_count = 45
 		print("***ios*** Requesting Receipts aka purchases")
 		var request = in_app_store.restore_purchases()
+		$Timer.start(2.0)
 
 
 func _process_receipt(prod_id) -> void:

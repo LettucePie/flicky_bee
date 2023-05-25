@@ -43,13 +43,12 @@ func _update_health_bar(new_health : float, total : float) -> void:
 	health = clamp(new_health, 0.0, health_total)
 	var danger = danger_curve.sample(inverse_lerp(health_total, 0, health))
 	if danger > 0.0:
-		print("Play Tension")
 		if $AnimationPlayer.current_animation != "Danger":
 			$AnimationPlayer.play("Danger")
 		$AnimationPlayer.speed_scale = clamp(danger, 0.1, 1.0)
 	else:
-		print("Pause Tension")
-		$AnimationPlayer.play("Fine")
+		if $AnimationPlayer.current_animation != "Fine":
+			$AnimationPlayer.play("Fine")
 	if hp_bar != null:
 		hp_bar.max_value = health_total
 		hp_bar.value = health

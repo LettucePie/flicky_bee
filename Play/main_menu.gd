@@ -96,22 +96,20 @@ func _play_scene_ready() -> void:
 func _on_edit_pressed():
 	print("Edit Pressed")
 	var queue = false
-	if OS.is_debug_build():
-		if skip_store:
-			queue = false
-		else:
-			if (OS.has_feature("ios") and persist_node.ios_plugs != null) \
-			or OS.has_feature("playstore"):
-				queue = true
+	if (OS.has_feature("ios") and persist_node.ios_plugs != null) \
+	or (OS.has_feature("playstore") and persist_node.play_plugs != null):
+		queue = true
 	if queue and OS.has_feature("ios"):
 		var plugin = persist_node.ios_plugs
 		if plugin.store_info_state == plugin.STATE.EMPTY:
 			plugin.store_info_complete.connect(_finish_queue)
+			print("***ios*** Edit Button Requesting store info.")
 			plugin._request_store_info()
 			_spawn_queue()
 		elif plugin.store_info_state == plugin.STATE.COMPLETE:
+			print("***ios*** Edit Button loading in previously requested Store Info")
 			_finish_queue()
-	if queue and OS.has_feature("playstore"):
+	elif queue and OS.has_feature("playstore"):
 		var plugin = persist_node.play_plugs
 		if !plugin.sku_cataloged and !plugin.requesting_sku_catalog:
 			plugin.sku_catalog_report.connect(_finish_queue)
@@ -119,7 +117,6 @@ func _on_edit_pressed():
 			_spawn_queue()
 		elif plugin.sku_cataloged:
 			_finish_queue()
-#	elif queue and OS.has_feature("android"):
 	else:
 		_finish_queue()
 
@@ -238,11 +235,8 @@ func _reconnect_playstore():
 func _purchase_restoration_finished(result):
 	print("Purchase Restoration Finished with rewsult: ", result)
 	if result[0] != "HALT":
-		if result[0] == "SUCCESS":
-			$PurchaseQueue._stop()
-		else:
-			$PurchaseQueue._set_status_message(result[0], result[1])
-			$PurchaseQueue._show_message()
+		$PurchaseQueue._set_status_message(result[0], result[1])
+		$PurchaseQueue._show_message()
 	else:
 		$PurchaseQueue._extend(30)
 
