@@ -89,6 +89,7 @@ func _request_SKUs() -> void:
 
 func _request_receipts() -> void:
 	_log("Requesting Receipts.")
+	receipt_catalog.clear()
 	if receipt_integrated:
 		if sku_cataloged:
 			if !requesting_receipts:
@@ -186,7 +187,13 @@ func _receipt_response(receipts) -> void:
 	_log("Received Receipts " + str(receipts))
 	receipts_cataloged = true
 	requesting_receipts = false
-	receipt_catalog = receipts
+	for r in receipts:
+		if r.purchase_state == 1:
+			for p in receipts.products:
+				receipt_catalog.append({
+					"acc_name" : _id_to_name(p.to_upper()),
+					"acc_id" : p.to_upper()
+				})
 	emit_signal("update_purchases")
 
 
@@ -197,6 +204,10 @@ func _purchase_complete(receipt) -> void:
 		requesting_purchase = false
 		if get_parent().has_method("_add_accessory"):
 			for p in receipt.products:
+				receipt_catalog.append({
+					"acc_name" : _id_to_name(p.to_upper()),
+					"acc_id" : p.to_upper()
+				})
 				get_parent()._add_accessory(_id_to_name(p.to_upper()))
 		emit_signal("purchase_complete", true)
 	elif receipt.purchase_state == 2:

@@ -163,7 +163,10 @@ func _request_receipts(force : bool) -> void:
 func _process_receipt(prod_id) -> void:
 	for p in products:
 		if p.prod_id == prod_id:
-			receipts.append(p)
+			receipts.append({
+				"acc_name" : _id_to_name(prod_id),
+				"acc_id" : prod_id
+			})
 			print("***ios*** Added ", p.prod_id, " to receipts aka purchases")
 			emit_signal("update_purchases")
 
@@ -197,14 +200,17 @@ func _check_ownership(prod_id : String) -> bool:
 	var result = false
 	if receipts.size() > 0:
 		for r in receipts:
-			if r.prod_id == prod_id:
+			if r.acc_id == prod_id:
 				result = true
 	return result
 
 
 func _process_purchase(event) -> void:
 	print("***ios*** purchase processed: ", event)
-	receipts.append(event.product_id)
+	receipts.append({
+		"acc_name" : _id_to_name(event.product_id),
+		"acc_id" : event.product_id
+	})
 	if get_parent().has_method("_add_accessory"):
 		get_parent()._add_accessory(_id_to_name(event.product_id))
 	in_app_store.finish_transaction(event.product_id)
