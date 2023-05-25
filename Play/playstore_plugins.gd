@@ -18,6 +18,7 @@ class_name PlaystorePlugin
 signal sku_catalog_report()
 signal update_purchases(result)
 signal purchase_complete(result)
+signal turtle_speed_purchase()
 
 @export var products : Array[PriceTag] = []
 
@@ -36,8 +37,10 @@ var sku_catalog = null
 var requesting_receipts := false
 var receipts_cataloged := false
 var receipt_catalog : Array
+var resuming_billing := false
 var requesting_purchase := false
 var purchase_limbo : Array
+var turtle_purchase := false
 var acknowledging_purchase := false
 
 
@@ -121,9 +124,10 @@ func _request_purchase(prod_id : String) -> void:
 			if !requesting_purchase:
 				_log("Purchase Request Sent.")
 				requesting_purchase = true
+				turtle_purchase = false
 				purchase_limbo.clear()
 				playstore.purchase(prod_id.to_lower())
-				$Timer.start(10)
+				$Timer.start(60)
 			else:
 				_log("ERROR Already Requesting Purchase.")
 		else:
@@ -165,6 +169,9 @@ func _connection_established() -> void:
 	if playstore.has_signal("disconnected"):
 		_log("*Disconnect* Signal Connected.")
 		playstore.disconnected.connect(_disconnected)
+	if playstore.has_signal("billing_resume"):
+		_log("*Billing Resume* Signal Connected.")
+		playstore.billing_resume.connect(_billing_resume)
 	if playstore.has_signal("product_details_query_completed"):
 		_log("*Product Query Complete* Signal Connected.")
 		playstore.product_details_query_completed.connect(_product_details)
@@ -265,17 +272,37 @@ func _receipt_response(receipts) -> void:
 				for r in receipts.purchases:
 					if r.has("purchase_state"):
 						if r.purchase_state == 1:
-							if r.has("products"):
-								for p in r.products:
-									_log("Cataloging Receipt: " + str(_id_to_name(p.to_upper())))
-									receipt_catalog.append({
-										"acc_name" : _id_to_name(p.to_upper()),
-										"acc_id" : p.to_upper()
-									})
-								result[0] = "SUCCESS"
-								result[1] = "Restored Purchases."
+							if r.has("is_acknowledged"):
+								if r.has("products"):
+									for p in r.products:
+										if r.is_acknowledged:
+											_log("Cataloging Receipt: " + str(_id_to_name(p.to_upper())))
+											receipt_catalog.append({
+												"acc_name" : _id_to_name(p.to_upper()),
+												"acc_id" : p.to_upper()
+											})
+											resuming_billing = false
+										else:
+											_log("ERROR Receipt is not yet acknowledged...")
+											_log("Adding Receipt to Limbo.")
+											resuming_billing = true
+											purchase_limbo.append({
+												"token" : r.purchase_token,
+												"acc_name" : _id_to_name(p.to_upper()),
+												"acc_id" : p.to_upper()
+											})
+									if purchase_limbo.size() > 0:
+										_request_acknowledgement(r.purchase_token)
+										result[0] = "HALT"
+										result[1] = "Completing Past Transactions."
+									else:
+										result[0] = "SUCCESS"
+										result[1] = "Restored Purchases."
+								else:
+									_log("ERROR Receipt is missing Products Array.")
+									result[1] = "Failure to process receipts."
 							else:
-								_log("ERROR Receipt is missing Products Array.")
+								_log("ERROR Receipt is missing Acknowledgment Dictionary Key.")
 								result[1] = "Failure to process receipts."
 						else:
 							_log("ERROR Purchase State is Incomplete.")
@@ -292,12 +319,16 @@ func _receipt_response(receipts) -> void:
 	else:
 		_log("ERROR Receipts recieved isn't a Dictionary.")
 		result[1] = "Failure to fetch any receipts."
+	if receipt_catalog.size() > 0 and get_parent().has_method("_add_accessory"):
+		for r in receipt_catalog:
+			get_parent()._add_accessory(r.acc_name)
 	print("Sending Signal Update Purchases with Result : ", result)
 	emit_signal("update_purchases", result)
 
 
 func _purchase_complete(receipt) -> void:
 	_log("Purchase Note Received")
+	print(receipt)
 	if receipt.size() > 0:
 		for r in receipt:
 			if r.has("is_acknowledged"):
@@ -305,6 +336,7 @@ func _purchase_complete(receipt) -> void:
 					#
 					#
 					if r.has("purchase_state"):
+						print("Purchase State : ", r.purchase_state)
 						if r.purchase_state == 1:
 							_log("Purchase STATE = Completed.")
 							requesting_purchase = false
@@ -323,22 +355,21 @@ func _purchase_complete(receipt) -> void:
 							else:
 								_log("ERROR Purchase Receipt is missing Products Array.")
 								emit_signal("purchase_complete", false)
-						elif receipt.purchase_state == 2:
+							if purchase_limbo.size() > 0:
+								_request_acknowledgement(r.purchase_token)
+							else:
+								_log("ERROR Failed to stash Purchase into Limbo.")
+								emit_signal("purchase_complete", false)
+						elif r.purchase_state == 2:
 							_log("Purchase STATE = Pending...")
+							turtle_purchase = true
+							$Timer.start(60)
+							emit_signal("turtle_speed_purchase")
 						else:
 							_log("Purchase STATE UNKNOWN: " + str(receipt))
 					else:
 						_log("ERROR Purchase Receipt is missing Purchase_State Dictionary Key.")
 						emit_signal("purchase_complete", false)
-					#
-					#
-					if purchase_limbo.size() > 0:
-						_request_acknowledgement(r.purchase_token)
-					else:
-						_log("ERROR Failed to stash Purchase into Limbo.")
-						emit_signal("purchase_complete", false)
-					#
-					#
 				else:
 					_log("ERROR Purchase is already Acknowledged...")
 					emit_signal("purchase_complete", false)
@@ -360,6 +391,7 @@ func _purchase_error(e_code, e_msg) -> void:
 
 func _purchase_acknowledge(token) -> void:
 	_log("Recieved Acknowledgement for Token: " + str(token))
+	var status = false
 	acknowledging_purchase = false
 	if purchase_limbo.size() > 0:
 		var processed_tokens = []
@@ -376,13 +408,27 @@ func _purchase_acknowledge(token) -> void:
 					get_parent()._add_accessory(p.acc_name)
 				if purchase_limbo.has(p):
 					purchase_limbo.erase(p)
-			emit_signal("purchase_complete", true)
+			status = true
 		else:
 			_log("ERROR Failed to find Token Pairs.")
-			emit_signal("purchase_complete", false)
+			status = false
 	else:
 		_log("ERROR There is nothing in Purchase Limbo.")
-		emit_signal("purchase_complete", false)
+		status = false
+	if resuming_billing:
+		var result = ["", ""]
+		if status:
+			result[0] = "SUCCESS"
+			result[1] = "Finished Previous Purchases and Restored."
+		else:
+			result[0] = "ERROR"
+			result[1] = "Failed to Finish Previous Transactions."
+		emit_signal("update_purchases", result)
+		resuming_billing = false
+		emit_signal("purchase_complete", status)
+	else:
+		emit_signal("purchase_complete", status)
+	$Timer.stop()
 #
 
 
@@ -390,6 +436,13 @@ func _purchase_acknowledge_error(e_code, e_msg, token) -> void:
 	_log("ERROR Purchase Acknowledgement : " + str(e_code) + " : " + str(e_msg) + " : " + str(token))
 	acknowledging_purchase = false
 	emit_signal("purchase_complete", false)
+	$Timer.stop()
+
+
+func _billing_resume() -> void:
+	_log("Pending Billing has finished.")
+	resuming_billing = true
+	_request_receipts()
 
 
 ## Tools
@@ -430,8 +483,15 @@ func _on_timer_timeout():
 		emit_signal("update_purchases", ["ERROR", "Request Timed Out."])
 	if requesting_purchase:
 		_log("ERROR Timed Out Requesting Purchases")
-		requesting_purchase = false
-		emit_signal("purchase_complete", false)
+		if turtle_purchase:
+			_log("Turtle Speed Purchase Mode, trying again")
+			turtle_purchase = false
+			requesting_purchase = true
+			$Timer.start(60)
+			emit_signal("turtle_speed_purchase")
+		else:
+			requesting_purchase = false
+			emit_signal("purchase_complete", false)
 	if acknowledging_purchase:
 		_log("ERROR Timed Out Purchase Acknowledgement.")
 		acknowledging_purchase = false

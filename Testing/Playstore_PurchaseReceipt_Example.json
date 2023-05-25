@@ -40,3 +40,22 @@
 			] 
 	}
 ]
+
+
+## Example with Delayed Failure
+
+[
+	{ 
+		"purchase_token": "-redacted-", 
+		"is_acknowledged": false, 
+		"quantity": 1, 
+		"signature": "-redacted-", 
+		"package_name": "org.lettucepie.flickybee", 
+		"original_json": "{\"orderId\":\"GPA.-redacted-\",\"packageName\":\"org.lettucepie.flickybee\",\"productId\":\"flickybeesup001\",\"purchaseTime\":1685033896352,\"purchaseState\":4,\"purchaseToken\":\"-redacted=\",\"quantity\":1,\"acknowledged\":false}", 
+		"purchase_time": 1685033896352, 
+		"order_id": "GPA.-redacted-", 
+		"purchase_state": 2, 
+		"is_auto_renewing": false, 
+		"products": ["flickybeesup001"] 
+	}
+]

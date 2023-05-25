@@ -2,11 +2,24 @@ extends ColorRect
 
 signal queue_timeout()
 
+var quips = [
+	"How's the weather?",
+	"Taking a bit...",
+	"Ya like bees?",
+	"Mmm awkward"
+]
+
 func _queue() -> void:
-	print("QUEUE displaying for up to 10 seconds")
-	$Timer.start(10)
+	print("QUEUE displaying for up to 30 seconds")
+	$Timer.start(30)
+	$Panel/Label.text = "Processing..."
 	self.show()
 	$MessagePanel.hide()
+
+
+func _extend(t : float) -> void:
+	$Timer.start(t)
+	$Panel/Label.text = quips.pick_random()
 
 
 func _stop() -> void:

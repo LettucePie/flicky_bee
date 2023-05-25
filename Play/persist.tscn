@@ -46,7 +46,7 @@ label_settings = SubResource("LabelSettings_mgxje")
 autowrap_mode = 2
 
 [node name="Timer" type="Timer" parent="PlayStore_Plugins"]
-wait_time = 10.0
+wait_time = 60.0
 
 [node name="FPS_Debug" parent="." instance=ExtResource("5_vaajg")]
 visible = false

@@ -144,6 +144,8 @@ func _on_buy_usd_pressed():
 			$PurchaseQueue._queue()
 			if !persist_node.play_plugs.purchase_complete.is_connected(_purchase_result):
 				persist_node.play_plugs.purchase_complete.connect(_purchase_result)
+			if !persist_node.play_plugs.turtle_speed_purchase.is_connected(_purchase_turtle_speed):
+				persist_node.play_plugs.turtle_speed_purchase.connect(_purchase_turtle_speed)
 			if persist_node.play_plugs.connected:
 				persist_node.play_plugs._request_purchase(current_tag.prod_id)
 			else :
@@ -153,6 +155,7 @@ func _on_buy_usd_pressed():
 						persist_node.play_plugs._establish_connection()
 				else:
 					$PurchaseQueue._stop()
+					$PurchaseFailure.show()
 					$PurchaseFailure/Panel/Label.text = "Connection to Playstore is Closed."
 
 
@@ -165,6 +168,11 @@ func _reconnect_playstore() -> void:
 func _purchase_queue_timeout() -> void:
 	print("Purchase Queue Timed Out, sending Error")
 	_purchase_result(false)
+
+
+func _purchase_turtle_speed() -> void:
+	print("Purchase is moving at turtle speed...")
+	$PurchaseQueue._extend(65)
 
 
 func _purchase_result(result) -> void:

@@ -237,11 +237,14 @@ func _reconnect_playstore():
 
 func _purchase_restoration_finished(result):
 	print("Purchase Restoration Finished with rewsult: ", result)
-	if result[0] == "SUCCESS":
-		$PurchaseQueue._stop()
+	if result[0] != "HALT":
+		if result[0] == "SUCCESS":
+			$PurchaseQueue._stop()
+		else:
+			$PurchaseQueue._set_status_message(result[0], result[1])
+			$PurchaseQueue._show_message()
 	else:
-		$PurchaseQueue._set_status_message(result[0], result[1])
-		$PurchaseQueue._show_message()
+		$PurchaseQueue._extend(30)
 
 
 func _on_close_help_pressed():
@@ -272,9 +275,3 @@ func _input(event):
 			elif event.keycode == KEY_3:
 				_on_help_pressed()
 
-
-func _on_disconnect_pressed():
-	if OS.has_feature("playstore"):
-		persist_node.play_plugs._disconnect_service()
-	else:
-		$disconnect.queue_free()
