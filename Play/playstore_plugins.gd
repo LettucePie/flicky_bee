@@ -29,6 +29,7 @@ var connected := false
 var sku_integrated := false
 var receipt_integrated := false
 var purchase_integrated := false
+var acknowledgement_integrated := false
 var sku_cataloged := false
 var requesting_sku_catalog := false
 var sku_catalog = null
@@ -36,6 +37,8 @@ var requesting_receipts := false
 var receipts_cataloged := false
 var receipt_catalog : Array
 var requesting_purchase := false
+var purchase_limbo : Array
+var acknowleding_purchase := false
 
 
 func _ready():
@@ -108,11 +111,12 @@ func _request_receipts() -> void:
 
 func _request_purchase(prod_id : String) -> void:
 	_log("Requesting Purchase of prod_id: " + prod_id.to_lower())
-	if purchase_integrated:
+	if purchase_integrated and acknowledgement_integrated:
 		if sku_cataloged:
 			if !requesting_purchase:
 				_log("Purchase Request Sent.")
 				requesting_purchase = true
+				purchase_limbo.clear()
 				playstore.purchase(prod_id.to_lower())
 				$Timer.start(10)
 			else:
@@ -121,6 +125,22 @@ func _request_purchase(prod_id : String) -> void:
 			_log("ERROR Cannot Make Purchases until SKU is Cataloged.")
 	else:
 		_log("ERROR Purchase Signals are not integrated.")
+
+
+func _request_acknowledgement(token) -> void:
+	_log("Requesting Acknowledgement for token: " + str(token))
+	if acknowledgement_integrated:
+		if purchase_limbo.size() > 0:
+			if !acknowleding_purchase:
+				acknowleding_purchase = true
+				playstore.acknowledgePurchase(token)
+				$Timer.start(10)
+			else:
+				_log("ERROR Already Requesting Acknowledgement.")
+		else:
+			_log("ERROR There are no Purchases in Limbo needing acknowledgement.")
+	else:
+		_log("ERROR Acknowledgement Signals are not integrated.")
 
 
 ## Signal Landing Zone
@@ -151,6 +171,13 @@ func _connection_established() -> void:
 	if playstore.has_signal("purchase_error"):
 		_log("*Purchase Error* Signal Connected.")
 		playstore.purchase_error.connect(_purchase_error)
+	if playstore.has_signal("purchase_acknowledged"):
+		_log("*Purchase Acknowledge* Signal Connected.")
+		playstore.purchase_acknowledged.connect(_purchase_acknowledge)
+		acknowledgement_integrated = true
+	if playstore.has_signal("purchase_acknowledgement_error"):
+		_log("*Purchase Acknowledge Error* Signal Connected.")
+		playstore.purchase_acknowledgement_error.connect(_purchase_acknowledge_error)
 	##
 	## Initialize
 	##
@@ -186,6 +213,31 @@ func _product_details_error(e_code, e_msg, prod_ids) -> void:
 	requesting_sku_catalog = false
 	$Timer.stop()
 #	emit_signal("sku_catalog_report")
+
+
+##
+## I would like to quickly try to justify what is going on, and why I'm
+## casually typing out IF ELSE Nightmare soup.
+##
+## This would be my very first app where I have ever used App Store and 
+## Playstore integration. Up until now, I have never asked anyone for
+## any money, in any of my creations.
+##
+## I not only have no idea what to do if something goes wrong with a 
+## purchase, but I am also completely terrified of being in that 
+## situation.
+##
+## Also, this plugin is in a slightly messy state. It's thrown together
+## in a state where Godot 4.0 just came out, and Google Billing has to be
+## updated. The Documentation tries its best, but I'm still mostly tredding
+## through the dark.
+##
+## So... in the unlikely case this is viewed and critiqued by others...
+## Yes, this code looks barbaric.
+## Yes, it could be more optimized.
+## No, I am not sorry.
+## Yes, I am terrified.
+##
 
 
 func _receipt_response(receipts) -> void:
@@ -231,33 +283,54 @@ func _purchase_complete(receipt) -> void:
 	_log("Purchase Note Received")
 	if receipt.size() > 0:
 		for r in receipt:
-			if r.has("purchase_state"):
-				if r.purchase_state == 1:
-					_log("Purchase Completed.")
-					requesting_purchase = false
-					$Timer.stop()
-					if r.has("products"):
-						if r.products.size() > 0:
-							for p in r.products:
-								receipt_catalog.append({
-									"acc_name" : _id_to_name(p.to_upper()),
-									"acc_id" : p.to_upper()
-								})
-								if get_parent().has_method("_add_accessory"):
-									get_parent()._add_accessory(_id_to_name(p.to_upper()))
-							emit_signal("purchase_complete", true)
+			if r.has("is_acknowledged"):
+				if !r.is_acknowledged:
+					#
+					#
+					if r.has("purchase_state"):
+						if r.purchase_state == 1:
+							_log("Purchase Completed.")
+							requesting_purchase = false
+							$Timer.stop()
+							if r.has("products"):
+								if r.products.size() > 0:
+									for p in r.products:
+										purchase_limbo.append({
+											"token" : r.purchase_token,
+											"acc_name" : _id_to_name(p.to_upper()),
+											"acc_id" : p.to_upper()
+										})
+								else:
+									_log("ERROR Purchase Receipt Product Array is Empty.")
+									emit_signal("purchase_complete", false)
+							else:
+								_log("ERROR Purchase Receipt is missing Products Array.")
+								emit_signal("purchase_complete", false)
+						elif receipt.purchase_state == 2:
+							_log("Purchase Pending...")
 						else:
-							_log("ERROR Purchase Receipt Product Array is Empty.")
+							_log("Unknown issue Purchasing... Output: " + str(receipt))
 					else:
-						_log("ERROR Purchase Receipt is missing Products Array.")
-				elif receipt.purchase_state == 2:
-					_log("Purchase Pending...")
+						_log("ERROR Purchase Receipt is missing Purchase_State Dictionary Key.")
+						emit_signal("purchase_complete", false)
+					#
+					#
+					if purchase_limbo.size() > 0:
+						_request_acknowledgement(r.purchase_token)
+					else:
+						_log("ERROR Failed to stash Purchase into Limbo.")
+						emit_signal("purchase_complete", false)
+					#
+					#
 				else:
-					_log("Unknown issue Purchasing... Output: " + str(receipt))
+					_log("ERROR Purchase is already Acknowledged...")
+					emit_signal("purchase_complete", false)
 			else:
-				_log("ERROR Purchase Receipt is missing Purchase_State Dictionary Key.")
+				_log("ERROR Purchase Receipt is missing Acknowledgement Dictionary Key.")
+				emit_signal("purchase_complete", false)
 	else:
 		_log("ERROR Purchase Receipt is an Empty Array.")
+		emit_signal("purchase_complete", false)
 
 
 func _purchase_error(e_code, e_msg) -> void:
@@ -265,6 +338,40 @@ func _purchase_error(e_code, e_msg) -> void:
 	_log("*** " + str(e_code) + " : " + str(e_msg))
 	requesting_purchase = false
 	$Timer.stop()
+	emit_signal("purchase_complete", false)
+
+
+func _purchase_acknowledge(token) -> void:
+	_log("Recieved Acknowledgement for Token: " + str(token))
+	acknowleding_purchase = false
+	if purchase_limbo.size() > 0:
+		var processed_tokens = []
+		for p in purchase_limbo:
+			if p.token == token:
+				processed_tokens.append(p)
+		if processed_tokens.size() > 0:
+			for p in processed_tokens:
+				receipt_catalog.append({
+					"acc_name" : p.acc_name,
+					"acc_id" : p.acc_id
+				})
+				if get_parent().has_method("_add_accessory"):
+					get_parent()._add_accessory(p.acc_name)
+				if purchase_limbo.has(p):
+					purchase_limbo.erase(p)
+			emit_signal("purchase_complete", true)
+		else:
+			_log("ERROR Failed to find Token Pairs.")
+			emit_signal("purchase_complete", false)
+	else:
+		_log("ERROR There is nothing in Purchase Limbo.")
+		emit_signal("purchase_complete", false)
+#
+
+
+func _purchase_acknowledge_error(e_code, e_msg, token) -> void:
+	_log("ERROR Purchase Acknowledgement : " + str(e_code) + " : " + str(e_msg) + " : " + str(token))
+	acknowleding_purchase = false
 	emit_signal("purchase_complete", false)
 
 
@@ -300,3 +407,7 @@ func _on_timer_timeout():
 		_log("ERROR Timed Out Requesting Purchases")
 		requesting_purchase = false
 		emit_signal("purchase_complete", false)
+	if acknowleging_purchase:
+		_log("ERROR Timed Out Purchase Acknowledgement.")
+		acknowledging_purchase = false
+		emit_signal("purchase_complegte", false)
