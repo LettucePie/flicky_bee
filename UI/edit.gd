@@ -73,7 +73,7 @@ func _tag_selected(t : PriceTag) -> void:
 	$ActionContainer/Equip.text = "Equip"
 	$ActionContainer/Equip/ButtonSound._set_sound(4)
 	$ActionContainer/Buy_Points.text = str(t.honey_amount) + " HP"
-	$ActionContainer/Buy_USD.text = "$" + str(t.usd_amount)
+	$ActionContainer/Buy_USD.text = str(t.usd_amount)
 	if t.acc_name == persist_node.hat \
 	or t.acc_name == persist_node.trail \
 	or t.acc_name == persist_node.flower:

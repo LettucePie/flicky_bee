@@ -28,7 +28,6 @@ wait_time = 10.0
 [node name="PlayStore_Plugins" type="Node" parent="."]
 script = ExtResource("4_gydss")
 products = Array[Resource("res://Accessory/pricetag_type.gd")]([ExtResource("3_i4n2t")])
-debugging = true
 
 [node name="Debug" type="Label" parent="PlayStore_Plugins"]
 top_level = true
