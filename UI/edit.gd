@@ -142,7 +142,9 @@ func _on_buy_usd_pressed():
 			persist_node.ios_plugs._request_purchase(current_tag.prod_id)
 		if OS.has_feature("playstore") and persist_node.play_plugs != null:
 			$PurchaseQueue._queue()
-			
+			if !persist_node.play_plugs.purchase_complete.is_connected(_purchase_result):
+				persist_node.play_plugs.purchase_complete.connect(_purchase_result)
+			persist_node.play_plugs._request_purchase(current_tag.prod_id)
 
 
 func _purchase_queue_timeout() -> void:

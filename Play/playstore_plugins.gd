@@ -103,6 +103,22 @@ func _request_receipts() -> void:
 		_log("ERROR Receipt Signals are not integrated.")
 
 
+func _request_purchase(prod_id : String) -> void:
+	_log("Requesting Purchase of prod_id: " + prod_id.to_lower())
+	if purchase_integrated:
+		if sku_cataloged:
+			if !requesting_purchase:
+				_log("Purchase Request Sent.")
+				requesting_purchase = true
+				playstore.purchase(prod_id.to_lower())
+			else:
+				_log("ERROR Already Requesting Purchase.")
+		else:
+			_log("ERROR Cannot Make Purchases until SKU is Cataloged.")
+	else:
+		_log("ERROR Purchase Signals are not integrated.")
+
+
 ## Signal Landing Zone
 
 
@@ -124,7 +140,16 @@ func _connection_established() -> void:
 		_log("*Receipt Response* Signal Connected.")
 		playstore.query_purchases_response.connect(_receipt_response)
 		receipt_integrated = true
-	
+	if playstore.has_signal("purchases_updated"):
+		_log("*Purchases Updated* Signal Connected.")
+		playstore.purchases_updated.connect(_purchase_complete)
+		purchase_integrated = true
+	if playstore.has_signal("purchase_error"):
+		_log("*Purchase Error* Signal Connected.")
+		playstore.purchase_error.connect(_purchase_error)
+	##
+	## Initialize
+	##
 	if !sku_cataloged and sku_integrated:
 		_request_SKUs()
 
@@ -165,6 +190,26 @@ func _receipt_response(receipts) -> void:
 	emit_signal("update_purchases")
 
 
+func _purchase_complete(receipt) -> void:
+	_log("Purchase Note Received.")
+	if receipt.purchase_state == 1:
+		_log("Purchase Completed.")
+		requesting_purchase = false
+		if get_parent().has_method("_add_accessory"):
+			for p in receipt.products:
+				get_parent()._add_accessory(_id_to_name(p.to_upper()))
+		emit_signal("purchase_complete", true)
+	elif receipt.purchase_state == 2:
+		_log("Purchase Pending...")
+
+
+func _purchase_error(e_code, e_msg) -> void:
+	_log("***ERROR on Purchase ...")
+	_log("*** " + str(e_code) + " : " + str(e_msg))
+	requesting_purchase = false
+	emit_signal("purchase_complete", false)
+
+
 ## Tools
 
 
@@ -173,3 +218,12 @@ func _log(s) -> void:
 	if debugging:
 		log += "\n" + str(s)
 		$Debug.text = log
+
+
+func _id_to_name(id : String) -> String:
+	var result = ""
+	if products.size() > 0:
+		for p in products:
+			if p.prod_id == id:
+				result = p.acc_name
+	return result
