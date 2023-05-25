@@ -94,7 +94,7 @@ func _on_edit_pressed():
 			queue = false
 		else:
 			if (OS.has_feature("ios") and persist_node.ios_plugs != null) \
-			or OS.has_feature("android"):
+			or OS.has_feature("playstore"):
 				queue = true
 	if queue and OS.has_feature("ios"):
 		var plugin = persist_node.ios_plugs
@@ -103,6 +103,14 @@ func _on_edit_pressed():
 			plugin._request_store_info()
 			_spawn_queue()
 		elif plugin.store_info_state == plugin.STATE.COMPLETE:
+			_finish_queue()
+	if queue and OS.has_feature("playstore"):
+		var plugin = persist_node.play_plugs
+		if !plugin.sku_cataloged and !plugin.requesting_sku_catalog:
+			plugin.sku_catalog_report.connect(_finish_queue)
+			plugin._request_SKUs()
+			_spawn_queue()
+		elif plugin.sku_cataloged:
 			_finish_queue()
 #	elif queue and OS.has_feature("android"):
 	else:

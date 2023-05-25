@@ -8,7 +8,9 @@
 [ext_resource type="Script" path="res://Play/screenshot.gd" id="6_dq4lg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mgxje"]
-font_size = 20
+font_size = 30
+font_color = Color(0.0352941, 0.0352941, 0.0352941, 1)
+outline_size = 1
 
 [node name="Persist" type="Node" groups=["Persist"]]
 process_mode = 3
