@@ -16,6 +16,8 @@ class_name PlaystorePlugin
 ##
 
 signal sku_catalog_report()
+signal update_purchases()
+signal purchase_complete(result)
 
 @export var products : Array[PriceTag] = []
 
@@ -25,13 +27,22 @@ var log : String
 var playstore : Object
 var connected := false
 var sku_integrated := false
+var receipt_integrated := false
+var purchase_integrated := false
 var sku_cataloged := false
 var requesting_sku_catalog := false
 var sku_catalog = null
+var requesting_receipts := false
+var receipts_cataloged := false
+var receipt_catalog = null
+var requesting_purchase := false
 
 
 func _ready():
 	$Debug.visible = debugging
+	if OS.has_feature("playstore"):
+		pass
+#		_request_SKUs()
 
 
 func _plugin_integrated() -> bool:
@@ -76,6 +87,22 @@ func _request_SKUs() -> void:
 		_log("ERROR Request not sent because signal callback is missing.")
 
 
+func _request_receipts() -> void:
+	_log("Requesting Receipts.")
+	if receipt_integrated:
+		if sku_cataloged:
+			if !requesting_receipts:
+				requesting_receipts = true
+				playstore.queryPurchases("inapp")
+				_log("Receipt Request Sent.")
+			else:
+				_log("ERROR Already Requesting Receipts.")
+		else:
+			_log("ERROR Cannot Request Receipts until SKU is Cataloged.")
+	else:
+		_log("ERROR Receipt Signals are not integrated.")
+
+
 ## Signal Landing Zone
 
 
@@ -93,6 +120,13 @@ func _connection_established() -> void:
 	if playstore.has_signal("product_details_query_error"):
 		_log("*Product Query Error* Signal Connected.")
 		playstore.product_details_query_error.connect(_product_details_error)
+	if playstore.has_signal("query_purchases_response"):
+		_log("*Receipt Response* Signal Connected.")
+		playstore.query_purchases_response.connect(_receipt_response)
+		receipt_integrated = true
+	
+	if !sku_cataloged and sku_integrated:
+		_request_SKUs()
 
 
 func _disconnected() -> void:
@@ -111,7 +145,8 @@ func _product_details(sku_details) -> void:
 				_log("Setting " + str(p.prod_id) + " to VALID with local price: " + str(s.one_time_purchase_details.formatted_price))
 				p.validated = true
 				p.usd_amount = s.one_time_purchase_details.formatted_price
-	emit_signal("sku_catalog_report")
+	_request_receipts()
+#	emit_signal("sku_catalog_report")
 
 
 func _product_details_error(e_code, e_msg, prod_ids) -> void:
@@ -119,13 +154,22 @@ func _product_details_error(e_code, e_msg, prod_ids) -> void:
 	_log("*** " + str(e_code) + " : " + str(e_msg) + " : " + str(prod_ids))
 	sku_cataloged = false
 	requesting_sku_catalog = false
-	emit_signal("sku_catalog_report")
+#	emit_signal("sku_catalog_report")
+
+
+func _receipt_response(receipts) -> void:
+	_log("Received Receipts " + str(receipts))
+	receipts_cataloged = true
+	requesting_receipts = false
+	receipt_catalog = receipts
+	emit_signal("update_purchases")
 
 
 ## Tools
 
 
 func _log(s) -> void:
+	print(s)
 	if debugging:
 		log += "\n" + str(s)
 		$Debug.text = log

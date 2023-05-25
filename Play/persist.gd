@@ -197,6 +197,11 @@ func _on_ios_update_purchases():
 				_add_accessory(p.acc_name)
 
 
+func _on_play_update_purchases():
+	if play_plugs.receipt_catalog.size() > 0:
+		pass
+
+
 func _clear_data() -> void:
 	print("CLEARING DATA")
 	furthest_distance = 0.0
