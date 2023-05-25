@@ -34,7 +34,7 @@ var requesting_sku_catalog := false
 var sku_catalog = null
 var requesting_receipts := false
 var receipts_cataloged := false
-var receipt_catalog = null
+var receipt_catalog : Array
 var requesting_purchase := false
 
 
@@ -184,37 +184,64 @@ func _product_details_error(e_code, e_msg, prod_ids) -> void:
 
 
 func _receipt_response(receipts) -> void:
-	_log("Received Receipts " + str(receipts))
+	_log("Received Receipts.")
 	receipts_cataloged = true
 	requesting_receipts = false
-	if receipts.size() > 0:
-		for r in receipts:
-			if r.has("purchase_state"):
-				if r.purchase_state == 1:
-					if r.has("products"):
-						for p in r.products:
-							receipt_catalog.append({
-								"acc_name" : _id_to_name(p.to_upper()),
-								"acc_id" : p.to_upper()
-							})
+	if receipts.has("purchases"):
+		if receipts.purchases.size() > 0:
+			for r in receipts.purchases:
+				if r.has("purchase_state"):
+					if r.purchase_state == 1:
+						if r.has("products"):
+							for p in r.products:
+								_log("Cataloging Receipt: " + str(_id_to_name(p.to_upper())))
+								receipt_catalog.append({
+									"acc_name" : _id_to_name(p.to_upper()),
+									"acc_id" : p.to_upper()
+								})
+						else:
+							_log("ERROR Receipt is missing Products Array.")
+					else:
+						_log("ERROR Purchase State is Incomplete.")
+				else:
+					_log("ERROR Receipt is missing Purchase_State Dictionary Key.")
+		else:
+			_log("ERROR Receipt Purchases Key is Empty.")
+	else:
+		_log("ERROR Receipt is missing Purchases Dictionary Key.")
 	emit_signal("update_purchases")
 
 
 func _purchase_complete(receipt) -> void:
-	_log("Purchase Note Received.")
-	if receipt.purchase_state == 1:
-		_log("Purchase Completed.")
-		requesting_purchase = false
-		if get_parent().has_method("_add_accessory"):
-			for p in receipt.products:
-				receipt_catalog.append({
-					"acc_name" : _id_to_name(p.to_upper()),
-					"acc_id" : p.to_upper()
-				})
-				get_parent()._add_accessory(_id_to_name(p.to_upper()))
-		emit_signal("purchase_complete", true)
-	elif receipt.purchase_state == 2:
-		_log("Purchase Pending...")
+	_log("Purchase Note Received")
+	if receipt.size() > 0:
+		for r in receipt:
+			if r.has("purchase_state"):
+				if r.purchase_state == 1:
+					_log("Purchase Completed.")
+					requesting_purchase = false
+					if r.has("products"):
+						if r.products.size() > 0:
+							for p in r.products:
+								receipt_catalog.append({
+									"acc_name" : _id_to_name(p.to_upper()),
+									"acc_id" : p.to_upper()
+								})
+								if get_parent().has_method("_add_accessory"):
+									get_parent()._add_accessory(_id_to_name(p.to_upper()))
+							emit_signal("purchase_complete", true)
+						else:
+							_log("ERROR Purchase Receipt Product Array is Empty.")
+					else:
+						_log("ERROR Purchase Receipt is missing Products Array.")
+				elif receipt.purchase_state == 2:
+					_log("Purchase Pending...")
+				else:
+					_log("Unknown issue Purchasing... Output: " + str(receipt))
+			else:
+				_log("ERROR Purchase Receipt is missing Purchase_State Dictionary Key.")
+	else:
+		_log("ERROR Purchase Receipt is an Empty Array.")
 
 
 func _purchase_error(e_code, e_msg) -> void:
