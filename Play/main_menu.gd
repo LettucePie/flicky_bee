@@ -1,6 +1,7 @@
 extends Control
 
 @export var skip_store := false
+@export var audio_bus : AudioBusLayout
 
 @onready var persist_scene = preload("res://Play/persist.tscn")
 @onready var play_scene = preload("res://Play/play_1.tscn")

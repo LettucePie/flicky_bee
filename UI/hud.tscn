@@ -1,20 +1,19 @@
-[gd_scene load_steps=26 format=3 uid="uid://ej68kxh031vn"]
+[gd_scene load_steps=25 format=3 uid="uid://ej68kxh031vn"]
 
 [ext_resource type="Theme" uid="uid://cwjsb0qlm86r5" path="res://UI/Style/Bee_Theme.tres" id="1_lh646"]
 [ext_resource type="Script" path="res://UI/hud.gd" id="1_w0mb1"]
-[ext_resource type="Texture2D" uid="uid://bdcf73hhgoh4j" path="res://UI/Art/Right_Meter_Crop_Overlay.png" id="3_hvlpn"]
 [ext_resource type="Texture2D" uid="uid://clxkmmfr23b0f" path="res://UI/Art/Right_Meter_Fill.png" id="3_rko4g"]
 [ext_resource type="Texture2D" uid="uid://doku0qpvqhxs5" path="res://UI/Art/Center_Dock.png" id="4_4x2ru"]
 [ext_resource type="Theme" uid="uid://bd87acx3a4l4n" path="res://UI/Style/SubBee_Theme.tres" id="4_7tbs7"]
 [ext_resource type="Texture2D" uid="uid://6u1f1d80ph0y" path="res://UI/Art/Right_Meter_Bar.png" id="4_k0lhi"]
 [ext_resource type="Texture2D" uid="uid://dy6u46yboy53x" path="res://UI/Art/Left_Meter_Bar.png" id="4_m5gb1"]
-[ext_resource type="Texture2D" uid="uid://ckr6oq13yw13j" path="res://UI/Art/Health_Jar.png" id="4_xo1nj"]
 [ext_resource type="Texture2D" uid="uid://e7fxljf38dy3" path="res://UI/Art/Icons/Pause_Icon.png" id="5_a1frm"]
 [ext_resource type="Texture2D" uid="uid://d2c6t17xfaleb" path="res://UI/Art/Left_Meter_Overlay.png" id="5_gfkuu"]
 [ext_resource type="PackedScene" uid="uid://ottesxy2rk1h" path="res://UI/button_sound.tscn" id="6_ttbs4"]
 [ext_resource type="Texture2D" uid="uid://dsgpuvqv8e812" path="res://UI/Art/Left_Meter_Fill.png" id="7_haw5s"]
 [ext_resource type="AudioStream" uid="uid://4k73umle8tkt" path="res://UI/Sounds/Select_02.wav" id="7_ilu2f"]
 [ext_resource type="Texture2D" uid="uid://v7ojar4c3ctt" path="res://UI/Art/Wings.png" id="7_pajgt"]
+[ext_resource type="Texture2D" uid="uid://b1shck77ob0tc" path="res://UI/Art/Right_Meter_Crop_Overlay_Jar.png" id="10_bsxpm"]
 [ext_resource type="LabelSettings" uid="uid://ban0wox1lr7ix" path="res://UI/Label_Setting_Big.tres" id="11_j2abc"]
 [ext_resource type="PackedScene" uid="uid://cy60dhgo0wcen" path="res://UI/score_pop.tscn" id="13_yn6dh"]
 [ext_resource type="Texture2D" uid="uid://cwb03687fuevv" path="res://UI/Art/Icons/Play_Icon.png" id="16_1p7ni"]
@@ -41,42 +40,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 0.403922, 0.333333, 1), Color(1, 1, 1, 1)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Health_Meter/HealthJar:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.4, 1.4), Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Health_Meter/HealthJar:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-64, 655)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Health_Meter/HealthJar:size")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(208, 225)]
-}
 
 [sub_resource type="Animation" id="Animation_u4i8a"]
 resource_name = "Fine"
@@ -92,92 +55,20 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Health_Meter/HealthJar:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Health_Meter/HealthJar:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-64, 655)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Health_Meter/HealthJar:size")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(208, 225)]
-}
 
 [sub_resource type="Animation" id="Animation_rb160"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Health_Meter/HealthJar:position")
+tracks/0/path = NodePath("Health_Meter/Overlay/HealthJar:size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-63.9999, 662)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Health_Meter/HealthJar:size")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
 "values": [Vector2(193, 193)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Health_Meter/HealthJar:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1.4, 1.4)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Health_Meter/HealthBar:tint_progress")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 0.403922, 0.333333, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mbk51"]
@@ -246,11 +137,11 @@ anchors_preset = -1
 anchor_left = 0.419
 anchor_top = 0.053
 anchor_right = 1.0
-anchor_bottom = 0.879
-offset_left = -0.399775
-offset_top = 0.00299737
-offset_right = 0.0339508
-offset_bottom = -0.271057
+anchor_bottom = 0.961
+offset_left = 0.00497445
+offset_top = 0.00300053
+offset_right = -6.10352e-05
+offset_bottom = 0.110979
 grow_horizontal = 2
 grow_vertical = 2
 value = 100.0
@@ -266,28 +157,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_hvlpn")
+texture = ExtResource("10_bsxpm")
 expand_mode = 4
-
-[node name="HealthJar" type="TextureRect" parent="Health_Meter"]
-z_index = 1
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.796
-anchor_top = 0.928
-anchor_right = 1.0
-anchor_bottom = 0.951
-offset_left = -147.58
-offset_top = -132.872
-offset_right = 23.9999
-offset_bottom = 40.601
-grow_horizontal = 2
-grow_vertical = 2
-rotation = -0.338594
-pivot_offset = Vector2(96, 96)
-texture = ExtResource("4_xo1nj")
-expand_mode = 5
-stretch_mode = 6
 
 [node name="Flight_Meter" type="TextureRect" parent="."]
 self_modulate = Color(0.294118, 0.305882, 0.411765, 1)
