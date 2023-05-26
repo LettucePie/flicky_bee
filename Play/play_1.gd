@@ -343,7 +343,7 @@ func _establish_bounds() -> void:
 		0.0,
 		1.0
 	)
-	var fov_offset = lerp(0.0, 10.0, fov_percent)
+	var fov_offset = lerp(10.0, 20.0, fov_percent)
 	$Camera3D.fov = 75 + fov_offset
 
 

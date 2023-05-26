@@ -52,7 +52,6 @@ visible = false
 
 [node name="Screenshot" type="Node" parent="."]
 script = ExtResource("6_dq4lg")
-filename = "ipad-12.9"
 
 [connection signal="update_purchases" from="iOS_Plugins" to="." method="_on_ios_update_purchases"]
 [connection signal="timeout" from="iOS_Plugins/Timer" to="iOS_Plugins" method="_check_events"]
