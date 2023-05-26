@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://b1aibpbthxdp7"]
+[gd_scene load_steps=44 format=3 uid="uid://b1aibpbthxdp7"]
 
 [ext_resource type="Theme" uid="uid://cwjsb0qlm86r5" path="res://UI/Style/Bee_Theme.tres" id="1_g7eow"]
 [ext_resource type="Script" path="res://Play/main_menu.gd" id="2_jrubw"]
@@ -469,6 +469,9 @@ colors = PackedColorArray(0, 0, 0, 0.619608, 0, 0, 0, 0)
 gradient = SubResource("Gradient_ylvs1")
 fill_from = Vector2(1, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_aswjs"]
+font_size = 38
+
 [sub_resource type="SystemFont" id="SystemFont_fu0dq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_sy0hj"]
@@ -774,11 +777,8 @@ vertical_alignment = 1
 stream = ExtResource("12_yxq8t")
 
 [node name="Edit" parent="." instance=ExtResource("12_g11w1")]
-visible = false
 layout_mode = 1
 anchors_preset = -1
-offset_top = 2600.0
-offset_bottom = 2600.0
 
 [node name="Options" type="Panel" parent="."]
 visible = false
@@ -958,12 +958,18 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
 
+[node name="Version" type="Label" parent="Help/VBoxContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_aswjs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Label" type="Label" parent="Help/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
 text = "Made by Matthew Leemhuis \"LettucePie\"
 
-Menu and Play Songs are built on songs by Kenney.NL
+Menu and Play Songs songs by Kenney.NL
 
 Originally made for a Game Jam using:
 Godot 4

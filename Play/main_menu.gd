@@ -45,6 +45,7 @@ func _reflect_settings() -> void:
 		sfx_slide.value = persist_node.sfx_vol
 		AudioServer.set_bus_volume_db(1, linear_to_db(persist_node.music_vol))
 		AudioServer.set_bus_volume_db(2, linear_to_db(persist_node.sfx_vol))
+		$Help/VBoxContainer/Version.text = "Version " + str(persist_node.game_ver)
 
 
 func _update_score() -> void:
