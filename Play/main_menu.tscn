@@ -507,7 +507,7 @@ grow_vertical = 2
 texture = ExtResource("3_7ws6a")
 stretch_mode = 6
 script = ExtResource("8_xaef2")
-adjust_amount = 120.0
+adjust_amount = 80.0
 
 [node name="Clouds" type="TextureRect" parent="Background"]
 layout_mode = 1
