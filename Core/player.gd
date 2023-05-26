@@ -227,7 +227,6 @@ func _on_area_entered(area):
 	if area.is_in_group("BounceBud"):
 		if area.bounced == false:
 			print("_on_area_enter> Player entered BounceBud from direction ", fly_dir, " at position ", get_position())
-			area.bounced = true
 			_landed(area)
 			$BounceTimer.start(0.2)
 	if area.is_in_group("Collectable"):
