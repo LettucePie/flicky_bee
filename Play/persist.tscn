@@ -31,6 +31,7 @@ script = ExtResource("4_gydss")
 products = Array[Resource("res://Accessory/pricetag_type.gd")]([ExtResource("3_i4n2t")])
 
 [node name="Debug" type="Label" parent="PlayStore_Plugins"]
+visible = false
 top_level = true
 anchors_preset = -1
 anchor_top = 0.075
