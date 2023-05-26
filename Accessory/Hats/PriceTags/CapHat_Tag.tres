@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="PriceTag" load_steps=4 format=3 uid="uid://cijvtfhgxgqjt"]
 
-[ext_resource type="Texture2D" uid="uid://c25iubo4kv26o" path="res://Accessory/Hats/CapHat_Icon.png" id="1_8rrwr"]
+[ext_resource type="Texture2D" uid="uid://dnlkwaaw4i3p1" path="res://Accessory/Hats/CapHat_Icon.png" id="1_8rrwr"]
 [ext_resource type="Script" path="res://Accessory/pricetag_type.gd" id="1_42uoa"]
 [ext_resource type="Resource" uid="uid://ce6ytrn7epavu" path="res://Accessory/Hats/HatTypes/CapHat_Type.tres" id="1_bybrq"]
 
@@ -13,5 +13,7 @@ accessory = ExtResource("1_bybrq")
 purchase_honey = true
 honey_amount = 50.0
 purchase_usd = false
-usd_amount = 0.99
+usd_amount = "String"
+validated = false
+prod_id = "PRODUCT_ID"
 achievable = false

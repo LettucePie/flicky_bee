@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dct8el8r5vk0u" path="res://UI/Art/Bee_WingsDown.png" id="3_wig8w"]
 [ext_resource type="Texture2D" uid="uid://gl5djc5egdua" path="res://UI/Art/Flower_Bent.png" id="4_b44q4"]
 [ext_resource type="Texture2D" uid="uid://bhc21f01u6gn7" path="res://UI/Art/Bee_WingsUp.png" id="4_q5wwr"]
-[ext_resource type="AudioStream" uid="uid://lg63eic6usgi" path="res://UI/Sounds/Select_02.wav" id="4_q7qv4"]
+[ext_resource type="AudioStream" uid="uid://4k73umle8tkt" path="res://UI/Sounds/Select_02.wav" id="4_q7qv4"]
 [ext_resource type="Texture2D" uid="uid://2xwops3h5d2w" path="res://UI/Art/Bee_Face1.png" id="5_7skah"]
 [ext_resource type="Texture2D" uid="uid://cl27f1b8akiff" path="res://UI/Art/Bee_Face2.png" id="6_6mjk0"]
 [ext_resource type="Texture2D" uid="uid://bshanm53atq63" path="res://UI/Art/Bee_Face3.png" id="7_bws6n"]
