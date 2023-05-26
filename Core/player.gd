@@ -144,6 +144,7 @@ func _die() -> void:
 
 
 func _flick_to(target : Vector3) -> void:
+	print("_flick_to> Flicking to ", target)
 	bee_object.get_parent().remove_child(bee_object)
 	$Turn.add_child(bee_object)
 	bee_object.set_rotation(Vector3(0, PI * -0.5, 0))
@@ -224,8 +225,9 @@ func _on_area_entered(area):
 		$Pickup.stream = windhook_sound
 		$Pickup.play()
 	if area.is_in_group("BounceBud"):
-		if !area.bounced:
-			print("Player entered BounceBud from direction ", fly_dir)
+		if area.bounced == false:
+			print("_on_area_enter> Player entered BounceBud from direction ", fly_dir, " at position ", get_position())
+			area.bounced = true
 			_landed(area)
 			$BounceTimer.start(0.2)
 	if area.is_in_group("Collectable"):
@@ -245,7 +247,7 @@ func _on_area_entered(area):
 
 
 func _landed(area) -> void:
-	print("Player Landed")
+	print("_landed> Player Landed in area : ", area)
 	anim.play("Base/Rest")
 	$Buzz.stop()
 	trail._activate_trail(false)
@@ -259,7 +261,7 @@ func _landed(area) -> void:
 		bee_object.set_rotation(Vector3.ZERO)
 	elif area.is_in_group("BounceBud"):
 		$Pickup.stream = bouncebud_sound
-		print("Landing on BounceBud")
+		print("_landed> Landing on BounceBud")
 	$Pickup.play()
 	platform_count += 1
 	speed = 0
@@ -269,16 +271,20 @@ func _landed(area) -> void:
 	previous_dir = fly_dir
 	fly_dir = Vector3.FORWARD
 	var area_pos = area.get_position()
+	area_pos = area.get_parent().to_global(area_pos)
 	var pos = self.get_position()
 	pos.x = area_pos.x
 	pos.z = area_pos.z
 	self.set_position(pos)
+	print("_landed> Area Pos = ", area_pos)
+	print("_landed> Setting player pos to ", pos)
 	emit_signal("finished_travel", area)
 
 
 func _on_bounce_timer_timeout():
+	print("_on_bounce_timer> Bounce Timer Elapsed")
 	$BounceTimer.stop()
-	print("Bouncing Player with direction ", previous_dir)
+	print("_on_bounce_timer> Bouncing Player with direction ", previous_dir)
 	_flick_to((previous_dir * fly_acc) + self.position)
 
 

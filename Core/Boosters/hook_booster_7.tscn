@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://dnuc21jqlren8"]
+
+[ext_resource type="Script" path="res://Core/Boosters/hook_booster.gd" id="1_byyon"]
+[ext_resource type="PackedScene" uid="uid://gb2yeb77jx7e" path="res://Core/windhook.tscn" id="2_nmmyl"]
+[ext_resource type="PackedScene" uid="uid://csgnx6hw84lqs" path="res://Core/Collectables/collection_patch_4.tscn" id="3_2wfc5"]
+[ext_resource type="PackedScene" uid="uid://cr7dimn48747s" path="res://Core/Collectables/jar.tscn" id="4_3lk1i"]
+[ext_resource type="PackedScene" uid="uid://c0nqvm20gdc4u" path="res://Core/Collectables/wing.tscn" id="5_p8k7f"]
+
+[node name="HookBooster_7" type="Node3D"]
+script = ExtResource("1_byyon")
+
+[node name="Windhook2" parent="." instance=ExtResource("2_nmmyl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 2.5)
+
+[node name="CollectionPatch_4" parent="Windhook2" instance=ExtResource("3_2wfc5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.19993)
+
+[node name="Jar" parent="." instance=ExtResource("4_3lk1i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -1)
+
+[node name="Wing" parent="." instance=ExtResource("5_p8k7f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3)

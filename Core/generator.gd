@@ -91,7 +91,7 @@ func _generate(num : int, z_start : float, flower : String) -> void:
 #		add_child(start)
 		for i in num:
 			var new_plat = Node.new()
-			if randf() < difficulty_progress:
+			if (randf() + 0.125) < difficulty_progress:
 				new_plat = bouncebud_scene.instantiate()
 			else:
 				new_plat = platform_scene.instantiate()

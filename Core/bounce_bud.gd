@@ -9,11 +9,12 @@ func _ready():
 
 
 func _on_body_entered(body):
-	if body.is_in_group("Player") and !bounced:
+	if body.is_in_group("Player") and bounced == false:
 		bounced = true
 		$AnimationPlayer.play("Boing")
 
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "Boing":
+		bounced = true
 		$AnimationPlayer.play("Shrink")

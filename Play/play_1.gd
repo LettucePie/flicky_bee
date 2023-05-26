@@ -179,10 +179,10 @@ func _move_grass_patches() -> void:
 
 func _disable_player_input(duration : float) -> void:
 	if duration <= 0:
-		print("Player Disabled until functionally enabled.")
+		print("_disable_player> Player Disabled until functionally enabled.")
 		disabled = true
 	else:
-		print("Player Disabled for ", duration, " time.")
+		print("_disable_player> Player Disabled for ", duration, " time.")
 		disabled = true
 		$Disable_Timer.start(duration)
 
@@ -348,11 +348,12 @@ func _establish_bounds() -> void:
 
 
 func _on_player_finished_travel(platform):
+	print("_on_player_finished> Player entering platform : ", platform)
 	if $Generator.platforms.find(platform) >= 5:
 		for i in 4:
 			$Generator.platforms.pop_front().queue_free()
 		var last_platform = $Generator.platforms.back()
-		$Generator._clear_gaps(player.position.z + 8.0)
+		$Generator._clear_gaps(player.position.z + 10.0)
 #		$Generator._clear_gaps(last_platform.get_position().z)
 		$Generator._generate(4, last_platform.get_position().z, persist.flower)
 	current_platform = platform

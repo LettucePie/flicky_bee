@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://2gkm2rsvmoiy"]
+[gd_scene load_steps=25 format=3 uid="uid://2gkm2rsvmoiy"]
 
 [ext_resource type="Script" path="res://Core/generator.gd" id="1_govy5"]
 [ext_resource type="PackedScene" uid="uid://binixehfbq4hi" path="res://Core/platform.tscn" id="2_47aoa"]
@@ -17,9 +17,12 @@
 [ext_resource type="PackedScene" uid="uid://dq16gf651uk3t" path="res://Core/Boosters/hook_booster_4.tscn" id="8_bpket"]
 [ext_resource type="PackedScene" uid="uid://w01qs4s6aouq" path="res://Core/Collectables/collection_patch_2.tscn" id="8_l56k5"]
 [ext_resource type="PackedScene" uid="uid://b854y86ayr4a4" path="res://Core/Collectables/collection_patch_3.tscn" id="9_5cfgi"]
+[ext_resource type="PackedScene" uid="uid://4qa3c62qkv05" path="res://Core/Boosters/hook_booster_5.tscn" id="10_d5tks"]
 [ext_resource type="PackedScene" uid="uid://csgnx6hw84lqs" path="res://Core/Collectables/collection_patch_4.tscn" id="10_movi4"]
+[ext_resource type="PackedScene" uid="uid://kb75b6c7pqn2" path="res://Core/Boosters/hook_booster_6.tscn" id="11_0p8d4"]
 [ext_resource type="PackedScene" uid="uid://ck3xxvx2rrhh2" path="res://Core/Collectables/collection_patch_jar_1.tscn" id="11_w2wr3"]
 [ext_resource type="PackedScene" uid="uid://bei5i40hikwu6" path="res://Core/Collectables/collection_patch_wing_1.tscn" id="12_1ycrh"]
+[ext_resource type="PackedScene" uid="uid://dnuc21jqlren8" path="res://Core/Boosters/hook_booster_7.tscn" id="12_3qaoa"]
 
 [sub_resource type="Curve" id="Curve_c8t26"]
 _data = [Vector2(2.08165e-12, 0.15), 0.0, 0.192868, 0, 0, Vector2(0.278, 0.16), 0.104672, 0.104672, 0, 0, Vector2(1, 1), 0.0997758, 0.0, 0, 0]
@@ -32,7 +35,7 @@ gen_end = ExtResource("3_560oa")
 difficulty_curve = SubResource("Curve_c8t26")
 platform_scene = ExtResource("2_47aoa")
 bouncebud_scene = ExtResource("5_peuw6")
-booster_scenes = Array[PackedScene]([ExtResource("5_j55rj"), ExtResource("6_370gm"), ExtResource("7_vhfo7"), ExtResource("8_bpket")])
+booster_scenes = Array[PackedScene]([ExtResource("5_j55rj"), ExtResource("6_370gm"), ExtResource("7_vhfo7"), ExtResource("8_bpket"), ExtResource("10_d5tks"), ExtResource("11_0p8d4"), ExtResource("12_3qaoa"), ExtResource("12_1ycrh")])
 obstacle_scenes = Array[PackedScene]([ExtResource("3_wpdg5"), ExtResource("4_ilki3"), ExtResource("5_bxuv1")])
 danger_scenes = Array[PackedScene]([ExtResource("6_0ilmg"), ExtResource("7_x15y0")])
 collection_patches = Array[PackedScene]([ExtResource("7_v1ynf"), ExtResource("8_l56k5"), ExtResource("9_5cfgi"), ExtResource("10_movi4"), ExtResource("7_v1ynf"), ExtResource("8_l56k5"), ExtResource("9_5cfgi"), ExtResource("10_movi4"), ExtResource("11_w2wr3"), ExtResource("12_1ycrh")])
