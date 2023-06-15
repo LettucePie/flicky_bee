@@ -5,5 +5,5 @@
 
 [resource]
 script = ExtResource("1_1d8ae")
-trail_name = "Sparkle A"
+trail_name = "Sparkle"
 scene = ExtResource("1_lalsl")
