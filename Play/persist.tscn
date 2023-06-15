@@ -15,7 +15,7 @@ outline_size = 1
 [node name="Persist" type="Node" groups=["Persist"]]
 process_mode = 3
 script = ExtResource("1_x2eam")
-game_ver = 1.2
+game_ver = 1.3
 
 [node name="iOS_Plugins" type="Node" parent="."]
 script = ExtResource("2_x5bnn")
