@@ -32,7 +32,7 @@ _subresources={
 "materials": {
 "BaseMaterial": {
 "use_external/enabled": true,
-"use_external/path": "res://Core/Art/Mono_Material/BaseMaterial.tres"
+"use_external/path": "res://Core/Art/Materials/Honey_Mat_Glow.tres"
 }
 },
 "meshes": {
