@@ -1,0 +1,14 @@
+Play as a bee and casually travel from flower to flower, collecting honey and avoiding danger. You get tired over time, eventually returning to your hive with a score of Honey Points. Spend the Honey Points on various cosmetics to spice up your next run.
+
+Made with:
+- Godot 4
+- LMMS
+- Krita
+- blender
+- Audacity
+
+Menu and Play songs by KenneyNL
+
+-----------------
+This originally started as my entry to Mini Jam 128 : Health
+https://itch.io/jam/mini-jam-128-health
