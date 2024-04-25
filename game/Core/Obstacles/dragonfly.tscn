@@ -87,10 +87,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2, 2.08165e-12)
 curve = SubResource("Curve3D_7ui8j")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(-0.735984, 5.6786e-06, 0.676867, -4.54704e-13, 0.999866, -8.38929e-06, -0.676858, -6.17465e-06, -0.735995, -24.8692, -0.668159, -0.667246)
+transform = Transform3D(-0.735984, 5.67853e-06, 0.676868, -4.54704e-13, 0.999853, -8.3893e-06, -0.676858, -6.17457e-06, -0.735995, -24.8692, -0.668159, -0.667246)
 
 [node name="Dragonfly" parent="Path3D/PathFollow3D" instance=ExtResource("1_85p06")]
-transform = Transform3D(-0.17, 5.92937e-17, -2.56693e-08, 5.92937e-17, 0.17, -5.92937e-17, 2.56693e-08, -5.92937e-17, -0.17, 0, 0, 0)
+transform = Transform3D(-0.17, 0, -1.48619e-08, 0, 0.17, 0, 1.48619e-08, 0, -0.17, 0, 0, 0)
 
 [node name="Body" parent="Path3D/PathFollow3D/Dragonfly" index="0"]
 surface_material_override/0 = ExtResource("3_42ptg")
