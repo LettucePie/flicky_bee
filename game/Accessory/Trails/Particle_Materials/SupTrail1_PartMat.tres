@@ -22,17 +22,17 @@ point_count = 2
 curve = SubResource("Curve_lbsl8")
 
 [resource]
+particle_flag_rotate_y = true
 emission_shape = 1
 emission_sphere_radius = 0.5
-particle_flag_rotate_y = true
+angle_min = -404.8
+angle_max = 720.0
 spread = 180.0
-gravity = Vector3(2.08165e-12, -3, 2.08165e-12)
 initial_velocity_min = 0.5
 initial_velocity_max = 0.5
 angular_velocity_min = 37.24
 angular_velocity_max = 37.24
-angle_min = -404.8
-angle_max = 720.0
+gravity = Vector3(2.08165e-12, -3, 2.08165e-12)
 scale_min = 0.5
 scale_max = 0.9
 scale_curve = SubResource("CurveTexture_fgphd")

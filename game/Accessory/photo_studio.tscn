@@ -60,7 +60,7 @@ nodes/Still/position = Vector2(0, 90)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_mhs7u")
 nodes/TimeScale/position = Vector2(570, 110)
 nodes/output/position = Vector2(730, 130)
-node_connections = [&"output", 0, &"TimeScale", &"Bend_Blend", 0, &"Still", &"Bend_Blend", 1, &"Bend", &"OneShot", 0, &"Bend_Blend", &"OneShot", 1, &"Ripple", &"TimeScale", 0, &"OneShot"]
+node_connections = [&"Bend_Blend", 0, &"Still", &"Bend_Blend", 1, &"Bend", &"OneShot", 0, &"Bend_Blend", &"OneShot", 1, &"Ripple", &"TimeScale", 0, &"OneShot", &"output", 0, &"TimeScale"]
 
 [node name="PhotoStudio" type="Node3D" groups=["PhotoStudio"]]
 script = ExtResource("1_sd1ja")

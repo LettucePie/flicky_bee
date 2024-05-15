@@ -522,10 +522,10 @@ texture = ExtResource("9_r1j3s")
 stretch_mode = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Intro"
 libraries = {
 "": SubResource("AnimationLibrary_lyqgt")
 }
+autoplay = "Intro"
 
 [node name="Main" type="Control" parent="."]
 modulate = Color(1, 1, 1, 0)
