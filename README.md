@@ -5,13 +5,19 @@ A Game originally made for Mini Jam 128 : Health
 Link to the Game Page
 https://lettucepie.itch.io/flicky-bee
 
+[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
+     alt="Get it on F-Droid"
+     height="80">](https://f-droid.org/packages/org.lettucepie.flickybee/)
+[<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png"
+     alt="Get it on Google Play"
+     height="80">](https://play.google.com/store/apps/details?id=org.lettucepie.flickybee)
+
 ## Setup
 
 - Download Godot Engine 4.2.2
 - Download the Project
 - Open the Project in Godot Engine by adding it to the Project List.
 - Run the Project by hitting the Play Button located in the top right.
-
 
 ## Design Notes
 
