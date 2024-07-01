@@ -98,7 +98,7 @@ func _stage_setting(step : int):
 		suspense = true
 
 
-func _process(delta):
+func _process(_delta):
 	if replaying:
 		var current = Time.get_ticks_msec()
 		var percent = inverse_lerp(

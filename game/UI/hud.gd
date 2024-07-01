@@ -34,10 +34,6 @@ func _setup() -> void:
 	$Pause.hide()
 
 
-func _process(delta):
-	pass
-
-
 func _update_health_bar(new_health : float, total : float) -> void:
 	health_total = total
 	health = clamp(new_health, 0.0, health_total)

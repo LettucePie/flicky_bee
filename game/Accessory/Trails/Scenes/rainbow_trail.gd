@@ -33,7 +33,7 @@ func _ready() -> void:
 			get_window().add_child.call_deferred(self)
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if chase != null:
 		if chase.get_position() != previous_position:
 			growth += chase.get_position().distance_to(previous_position)

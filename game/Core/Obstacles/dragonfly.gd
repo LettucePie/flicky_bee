@@ -32,9 +32,9 @@ func _generate_curve() -> void:
 			points.append(new_point)
 			index += 1
 	if points.size() > 0:
-		var first_point = points[0]
+		#var first_point = points[0]
 		var last_point = points[points.size() - 2]
-		var loop_point_out = Vector3.ZERO
+		#var loop_point_out = Vector3.ZERO
 		var curve = Curve3D.new()
 		index = 0
 		for p in points:
@@ -91,7 +91,3 @@ func _on_area_3d_body_entered(body):
 	if body.is_in_group("Player"):
 		if body.has_method("_hit"):
 			body._hit()
-
-
-func _on_area_3d_body_exited(body):
-	pass # Replace with function body.

@@ -7,8 +7,3 @@ func _ready():
 		$Node3D/MultiMeshInstance3D.hide()
 	if get_window().has_node("Persist"):
 		$Node3D/MultiMeshInstance3D.visible = get_window().get_node("Persist").clutter
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

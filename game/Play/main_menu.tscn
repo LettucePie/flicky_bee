@@ -781,6 +781,8 @@ stream = ExtResource("12_yxq8t")
 [node name="Edit" parent="." instance=ExtResource("12_g11w1")]
 layout_mode = 1
 anchors_preset = -1
+offset_right = 1080.0
+offset_bottom = 1920.0
 
 [node name="Options" type="Panel" parent="."]
 visible = false
@@ -788,6 +790,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 1080.0
+offset_bottom = 1920.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -946,6 +950,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 1080.0
+offset_bottom = 1920.0
 grow_horizontal = 2
 grow_vertical = 2
 

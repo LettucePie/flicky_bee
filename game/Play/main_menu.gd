@@ -71,11 +71,6 @@ func _hide_submenus() -> void:
 	$DarkFade.hide()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
 func _on_play_pressed():
 	print("Play Pressed")
 #	self.hide()

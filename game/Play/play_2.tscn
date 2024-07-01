@@ -1,0 +1,113 @@
+[gd_scene load_steps=15 format=3 uid="uid://dplwt2o1yjiun"]
+
+[ext_resource type="Script" path="res://Play/play_1.gd" id="1_8kuhp"]
+[ext_resource type="PackedScene" uid="uid://pbe74ba2ywah" path="res://Core/player.tscn" id="2_jebu4"]
+[ext_resource type="PackedScene" uid="uid://2gkm2rsvmoiy" path="res://Core/generator.tscn" id="3_cmxhb"]
+[ext_resource type="PackedScene" uid="uid://ds65sqp6nk8mt" path="res://Core/light.tscn" id="4_wavbw"]
+[ext_resource type="Environment" uid="uid://bqwftwgkpo7ki" path="res://Core/Enviro_1.tres" id="5_b75ue"]
+[ext_resource type="PackedScene" uid="uid://jgdg1uwq2rq6" path="res://UI/arc_visual.tscn" id="6_a2bkp"]
+[ext_resource type="PackedScene" uid="uid://yxtju6v5sytc" path="res://UI/knob_visual.tscn" id="7_6ex80"]
+[ext_resource type="PackedScene" uid="uid://ej68kxh031vn" path="res://UI/hud.tscn" id="8_4d6h7"]
+[ext_resource type="PackedScene" uid="uid://bnideixfjpsgc" path="res://Core/results.tscn" id="9_guarb"]
+[ext_resource type="AudioStream" uid="uid://6vdrcpbcjxks" path="res://kenney/Farm Frolics.ogg" id="10_4ihvs"]
+[ext_resource type="Script" path="res://Play/music_fade.gd" id="11_1gxr5"]
+[ext_resource type="PackedScene" uid="uid://ctoi4c1j3c0ba" path="res://Core/grass_patch.tscn" id="12_ilk3i"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i3iu5"]
+size = Vector3(19.9062, 2.4957, 10.0144)
+
+[sub_resource type="BoxMesh" id="BoxMesh_r3t2s"]
+size = Vector3(20, 3, 10)
+
+[node name="Play_1" type="Node" groups=["Play"]]
+script = ExtResource("1_8kuhp")
+player_scene = ExtResource("2_jebu4")
+life_time = 15.0
+
+[node name="Generator" parent="." instance=ExtResource("3_cmxhb")]
+
+[node name="Light" parent="." instance=ExtResource("4_wavbw")]
+light_bake_mode = 2
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, -6.97574e-16, -1.5246e-23, -1.5246e-23, -4.37114e-08, 1, -6.97574e-16, -1, -4.37114e-08, 2.08165e-12, 13, 0.025)
+environment = ExtResource("5_b75ue")
+current = true
+
+[node name="Bottom_Detect" type="Area3D" parent="Camera3D"]
+transform = Transform3D(1, 0, -5.37244e-31, 0, 1, 0, -5.37244e-31, 0, 1, 2.08165e-12, -8, -12.307)
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/Bottom_Detect"]
+shape = SubResource("BoxShape3D_i3iu5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D/Bottom_Detect"]
+visible = false
+mesh = SubResource("BoxMesh_r3t2s")
+
+[node name="Top_Detect" type="Area3D" parent="Camera3D"]
+transform = Transform3D(1, 0, -5.37244e-31, 0, 1, 0, -5.37244e-31, 0, 1, 2.08165e-12, 7, -12.307)
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/Top_Detect"]
+shape = SubResource("BoxShape3D_i3iu5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D/Top_Detect"]
+visible = false
+mesh = SubResource("BoxMesh_r3t2s")
+
+[node name="Arc_Visual" parent="." instance=ExtResource("6_a2bkp")]
+
+[node name="Knob_Visual" parent="." instance=ExtResource("7_6ex80")]
+
+[node name="HUD" parent="." instance=ExtResource("8_4d6h7")]
+
+[node name="Results" parent="." instance=ExtResource("9_guarb")]
+visible = false
+
+[node name="Life_Timer" type="Timer" parent="."]
+
+[node name="Rest_Timer" type="Timer" parent="."]
+
+[node name="Disable_Timer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("10_4ihvs")
+autoplay = true
+bus = &"Music"
+script = ExtResource("11_1gxr5")
+
+[node name="Grass_Patch1" parent="." instance=ExtResource("12_ilk3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -5, 60)
+
+[node name="Grass_Patch2" parent="." instance=ExtResource("12_ilk3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -5, 0)
+
+[node name="Grass_Patch3" parent="." instance=ExtResource("12_ilk3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -5, -60)
+
+[node name="pulling_my_hair_out" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[connection signal="ready" from="Generator" to="." method="_part_ready"]
+[connection signal="ready" from="Camera3D" to="." method="_part_ready"]
+[connection signal="area_entered" from="Camera3D/Bottom_Detect" to="." method="_on_bottom_detect_area_entered"]
+[connection signal="body_entered" from="Camera3D/Bottom_Detect" to="." method="_on_bottom_detect_area_entered"]
+[connection signal="area_entered" from="Camera3D/Top_Detect" to="." method="_on_top_detect_area_entered"]
+[connection signal="body_entered" from="Camera3D/Top_Detect" to="." method="_on_top_detect_area_entered"]
+[connection signal="end_game" from="HUD" to="." method="_on_life_timer_timeout"]
+[connection signal="ready" from="HUD" to="." method="_part_ready"]
+[connection signal="resized" from="HUD" to="." method="_on_hud_resized"]
+[connection signal="play_again" from="Results" to="." method="_on_results_play_again"]
+[connection signal="quit_out" from="Results" to="." method="_on_results_quit_out"]
+[connection signal="ready" from="Results" to="." method="_part_ready"]
+[connection signal="timeout" from="Life_Timer" to="." method="_on_life_timer_timeout"]
+[connection signal="timeout" from="Rest_Timer" to="." method="_on_rest_timer_timeout"]
+[connection signal="timeout" from="Disable_Timer" to="." method="_on_disable_timer_timeout"]

@@ -10,11 +10,6 @@ func _ready():
 	$Line2D.add_point(Vector2.ZERO)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
 func _assign_start_point(point : Vector2) -> void:
 	start_point = point
 	self.show()

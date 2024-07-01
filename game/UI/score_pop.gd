@@ -6,7 +6,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	var pos = get_position()
 	pos = pos.move_toward(Vector2.UP, 2 * $Timer.time_left)
 	modulate = Color(1.0, 1.0, 1.0, $Timer.time_left)

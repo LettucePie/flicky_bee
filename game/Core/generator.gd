@@ -30,7 +30,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 
@@ -51,7 +51,7 @@ func _clear_platforms() -> void:
 
 func _clear_gaps(point) -> void:
 	print("Clearing Gaps behind Point: ", point)
-	var stray_gaps : Array
+	var stray_gaps : Array = []
 	if gaps.size() > 0:
 		for g in gaps:
 			var pos = g.get_position()
@@ -66,7 +66,7 @@ func _clear_gaps(point) -> void:
 	stray_gaps.clear()
 
 
-func _generate(num : int, z_start : float, flower : String) -> void:
+func _generate(num : int, z_start : float, flower_name : String) -> void:
 	if platform_scene != null:
 		var z_point = z_start
 		var z_previous = z_start
@@ -75,7 +75,7 @@ func _generate(num : int, z_start : float, flower : String) -> void:
 			starting_platform.set_position(Vector3(0, 0, z_point))
 			platforms.append(starting_platform)
 			add_child(starting_platform)
-			starting_platform._return_flower()._assign_flower(flower)
+			starting_platform._return_flower()._assign_flower(flower_name)
 		randomize()
 		var difficulty_progress = difficulty_curve.sample(
 			inverse_lerp(0, 800, abs(z_point))
@@ -105,7 +105,7 @@ func _generate(num : int, z_start : float, flower : String) -> void:
 			add_child(new_plat)
 			platforms.append(new_plat)
 			if new_plat.is_in_group("Platform_Area"):
-				new_plat._return_flower()._assign_flower(flower)
+				new_plat._return_flower()._assign_flower(flower_name)
 			## Gen Gaps
 			if abs(z_point) - abs(z_previous) >= 8.5:
 				_shuffle_gaps()

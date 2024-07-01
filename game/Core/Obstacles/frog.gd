@@ -33,7 +33,7 @@ func _snap_tongue() -> void:
 				player_body._hit()
 
 
-func _on_animation_player_animation_finished(anim_name):
+func _on_animation_player_animation_finished(_anim_name):
 	$Tongue/Tongue.hide()
 	anim.play(idles.pick_random())
 

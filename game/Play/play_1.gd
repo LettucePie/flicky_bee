@@ -443,7 +443,7 @@ func _on_disable_timer_timeout():
 	disabled = false
 
 
-func _on_bottom_detect_area_entered(area):
+func _on_bottom_detect_area_entered(_area):
 	pass
 
 

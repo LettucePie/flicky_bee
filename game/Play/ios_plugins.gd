@@ -159,7 +159,7 @@ func _request_receipts(force : bool) -> void:
 		restoring = true
 		hold_count = 45
 		print("***ios*** Requesting Receipts aka purchases")
-		var request = in_app_store.restore_purchases()
+		var _request = in_app_store.restore_purchases()
 		$Timer.start(2.0)
 
 
@@ -190,7 +190,7 @@ func _request_purchase(prod_id : String) -> void:
 		print("***ios*** Requesting Purchase: ", prod_id)
 		purchasing = true
 		hold_count = 45
-		var request = in_app_store.purchase(
+		var _request = in_app_store.purchase(
 			{"product_id" : prod_id}
 		)
 		$Timer.start()

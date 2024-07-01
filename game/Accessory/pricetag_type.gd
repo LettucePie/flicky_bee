@@ -8,7 +8,7 @@ enum ACC_TYPE {HAT, TRAIL, FLOWER}
 @export var acc_type : ACC_TYPE
 @export var accessory : Resource
 @export var purchase_honey := true
-@export var honey_amount := 50.0
+@export var honey_amount : int = 50
 @export var purchase_usd := false
 @export var usd_amount := "String"
 @export var validated := false

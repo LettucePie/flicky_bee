@@ -21,7 +21,7 @@ func _ready():
 	head_boneid = skeleton.find_bone("Head")
 
 
-func _process(delta):
+func _process(_delta):
 	var head_tran = skeleton.get_bone_global_pose(head_boneid)
 	var head_quat = head_tran.basis.get_rotation_quaternion()
 	head.set_quaternion(head_quat)

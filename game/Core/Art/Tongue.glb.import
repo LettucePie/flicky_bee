@@ -1830,12 +1830,6 @@ _subresources={
 "slice_99/start_frame": 0,
 "slices/amount": null
 }
-},
-"materials": {
-"@MATERIAL:0": {
-"use_external/enabled": true,
-"use_external/path": "res://Core/Art/Mono_Material/BaseMaterial.tres"
-}
 }
 }
 gltf/naming_version=0

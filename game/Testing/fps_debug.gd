@@ -38,7 +38,7 @@ func _node_removed(node : Node) -> void:
 		obstacles.erase(node)
 
 
-func _process(delta):
+func _process(_delta):
 	label.text = "FPS " + str(Performance.get_monitor(Performance.TIME_FPS))
 	label.text += "\nENEM_COUNT " + str(enemies.size())
 	label.text += "\nOBST_COUNT " + str(obstacles.size())

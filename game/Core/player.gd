@@ -70,6 +70,7 @@ func _assign_accessories(hat_name : String, trail_name : String) -> void:
 
 
 func _physics_process(delta):
+	var pos = self.get_position()
 	if flicked:
 		if bursting:
 #			fly_dir = fly_dir.lerp(Vector3.FORWARD, 0.3)
@@ -85,7 +86,7 @@ func _physics_process(delta):
 			speed = fly_acc * fly_force
 			$Buzz.pitch_scale = 0.9 + fly_force
 		else:
-			var pos = self.get_position()
+			pos = self.get_position()
 			var distance = pos.distance_to(flick_target)
 			var percent = distance / total_distance
 			speed = lerp(
@@ -116,7 +117,7 @@ func _physics_process(delta):
 			var m_pos = m.get_global_position()
 			var dir = m_pos.direction_to(self.get_position())
 			m.global_translate(dir * 5 * delta)
-	var pos = self.get_position()
+	pos = self.get_position()
 	pos.x = clamp(pos.x, -6.25, 6.25)
 	self.set_position(pos)
 
@@ -165,7 +166,7 @@ func _flick_to(target : Vector3) -> void:
 	trail._activate_trail(true)
 
 
-func _fly_to(direction : Vector3, flight : float, tension : float) -> void:
+func _fly_to(direction : Vector3, flight : float, _tension : float) -> void:
 	flown = true
 	fly_target_force = 0.4
 	if flight > 0.0:

@@ -23,7 +23,7 @@ signal turtle_speed_purchase()
 @export var products : Array[PriceTag] = []
 
 @export var debugging := false
-var log : String
+var log_out : String
 
 var playstore : Object
 var connected := false
@@ -451,8 +451,8 @@ func _billing_resume() -> void:
 func _log(s) -> void:
 	print(s)
 	if debugging:
-		log += "\n" + str(s)
-		$Debug.text = log
+		log_out += "\n" + str(s)
+		$Debug.text = log_out
 
 
 func _id_to_name(id : String) -> String:

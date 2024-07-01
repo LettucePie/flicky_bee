@@ -11,7 +11,7 @@ func _blink() -> void:
 	blink_count = 3
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if blinking:
 		frame_count -= 1
 		if frame_count <= 0:
