@@ -99,6 +99,7 @@ color = Color(0, 0, 0, 0)
 
 [node name="windy_zone" parent="." instance=ExtResource("13_eem4v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.3195)
+debugging = true
 
 [connection signal="ready" from="Generator" to="." method="_part_ready"]
 [connection signal="ready" from="Camera3D" to="." method="_part_ready"]

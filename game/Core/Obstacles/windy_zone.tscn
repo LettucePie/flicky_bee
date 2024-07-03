@@ -1,4 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpgn5w6agfbsu"]
+[gd_scene load_steps=11 format=3 uid="uid://dpgn5w6agfbsu"]
+
+[ext_resource type="Script" path="res://Core/Obstacles/windy_zone.gd" id="1_uify3"]
+[ext_resource type="Curve" uid="uid://mfjoxmpw0shh" path="res://Core/Obstacles/gust_curves/gust_curve_A.tres" id="2_xh4xa"]
+[ext_resource type="Curve" uid="uid://eb8coy03socu" path="res://Core/Obstacles/gust_curves/gust_curve_B.tres" id="3_78vs8"]
+[ext_resource type="Curve" uid="uid://cf8u2chww2coo" path="res://Core/Obstacles/gust_curves/gust_curve_C.tres" id="4_uaeuv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dslye"]
 size = Vector3(24, 16, 20)
@@ -12,10 +17,33 @@ texture_filter = 0
 material = SubResource("StandardMaterial3D_sool3")
 size = Vector3(24, 16, 20)
 
+[sub_resource type="BoxMesh" id="BoxMesh_3s6ic"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hiwsf"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_8bjkx"]
+material = SubResource("StandardMaterial3D_hiwsf")
+
 [node name="windy_zone" type="Area3D"]
+collision_mask = 2
+script = ExtResource("1_uify3")
+gust_curves = Array[Curve]([ExtResource("2_xh4xa"), ExtResource("3_78vs8"), ExtResource("4_uaeuv")])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_dslye")
 
 [node name="debug_display" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_q6hmu")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="debug_wind_center" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_3s6ic")
+
+[node name="debug_wind_target" type="MeshInstance3D" parent="debug_wind_center"]
+mesh = SubResource("SphereMesh_8bjkx")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
