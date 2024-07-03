@@ -84,10 +84,10 @@ func _setup(menu_node : Control, persist_node : Persist):
 	var flower = "default"
 	if persist_node != null:
 		flower = persist.flower
+		$Light.shadow_enabled = persist_node.shadows
 	$Generator._generate(20, 0.0, flower)
 	camera_target = Vector3.ZERO
 	_establish_bounds()
-	$Light.shadow_enabled = persist_node.shadows
 	current_platform = $Generator.starting_platform
 	current_flower = current_platform._return_flower()
 	player.set_position(current_platform.get_position())

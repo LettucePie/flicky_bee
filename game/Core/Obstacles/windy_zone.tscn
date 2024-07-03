@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpgn5w6agfbsu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dslye"]
+size = Vector3(24, 16, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sool3"]
+transparency = 1
+albedo_color = Color(0.294118, 0.466667, 1, 0.0980392)
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_q6hmu"]
+material = SubResource("StandardMaterial3D_sool3")
+size = Vector3(24, 16, 20)
+
+[node name="windy_zone" type="Area3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_dslye")
+
+[node name="debug_display" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_q6hmu")
