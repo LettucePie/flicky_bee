@@ -6,7 +6,7 @@ extends Node3D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_generate_curve()
-	$Path3D/PathFollow3D/Dragonfly/AnimationPlayer.play("Wings")
+	$Path3D/PathFollow3D/Dragonfly/AnimationPlayer.play("WingsFlap")
 
 
 func _generate_curve() -> void:

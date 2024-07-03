@@ -17,6 +17,7 @@ enum Collect {Comb, Jar, Flower}
 
 var ready_parts := 0
 var persist : Persist
+var flower : String = "default"
 var menu = null
 ##
 ## Player Status
@@ -81,17 +82,17 @@ func _setup(menu_node : Control, persist_node : Persist):
 	menu = menu_node
 	persist = persist_node
 	$Generator._clear_platforms()
-	var flower = "default"
+	flower = "default"
 	if persist_node != null:
 		flower = persist.flower
 		$Light.shadow_enabled = persist_node.shadows
+		player._assign_accessories(persist.hat, persist.trail)
 	$Generator._generate(20, 0.0, flower)
 	camera_target = Vector3.ZERO
 	_establish_bounds()
 	current_platform = $Generator.starting_platform
 	current_flower = current_platform._return_flower()
 	player.set_position(current_platform.get_position())
-	player._assign_accessories(persist.hat, persist.trail)
 	_update_camera_target(6.0)
 	time = life_time
 	flight = flight_reserve
@@ -355,7 +356,7 @@ func _on_player_finished_travel(platform):
 		var last_platform = $Generator.platforms.back()
 		$Generator._clear_gaps(player.position.z + 10.0)
 #		$Generator._clear_gaps(last_platform.get_position().z)
-		$Generator._generate(4, last_platform.get_position().z, persist.flower)
+		$Generator._generate(4, last_platform.get_position().z, flower)
 	current_platform = platform
 	time = clamp(time + 1.0, 0.0, life_time)
 	flight = clamp(flight + 2.0, 0.0, flight_reserve)
