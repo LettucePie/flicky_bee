@@ -7,7 +7,7 @@ extends Area3D
 @onready var gust_curve : Curve = gust_curves.front()
 var gust_step_index : int = 0
 @export var gust_dir : Vector3 = Vector3.RIGHT
-@export var gust_intensity : float = 0.25
+@export var gust_intensity : float = 0.8
 var player : Player = null
 
 var influence : Vector3
@@ -30,7 +30,7 @@ func _physics_process(delta):
 	if player != null:
 		print("Push Player by ", influence)
 		if player.flicked:
-			player.position += influence
+			player.push = influence
 	if debugging:
 		$debug_wind_center/debug_wind_target.position = influence * 4
 
@@ -47,10 +47,14 @@ func queue_next_gust():
 func _on_body_entered(body):
 	if body is Player:
 		player = body
+		#if !player.flown:
+			#print("Player Velocity upon entering: ", player.velocity)
+			#player._switch_to_flight()
 
 
 func _on_body_exited(body):
 	if player != null and body == player:
+		print("Player Left Windy Zone")
 		player = null
 
 

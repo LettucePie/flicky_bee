@@ -49,6 +49,7 @@ var speed := 0.0
 var bursting := false
 var burst_duration = 100
 var burst_acc = 12.0
+var push : Vector3 = Vector3.ZERO
 ##
 ##
 ##
@@ -95,6 +96,13 @@ func _physics_process(delta):
 				flick_acc_curve.sample(percent)
 				)
 			speed += 2
+			## TODO
+			## Solve issue where flick never depletes if wind pushes bee
+			## away from target.
+			## Maybe change the target dynamicaly with the wind or 
+			## change how flicking works in windzones entirely.
+			## Also consider if flowers and flicking will ever be in
+			## windzones.
 			if pos.distance_to(flick_target) <= 0.05:
 				emit_signal("flick_depleted")
 				flown = true
@@ -107,7 +115,9 @@ func _physics_process(delta):
 					$Buzz.playing = true
 			self.set_position(pos)
 		velocity = fly_dir * speed
+		velocity += push
 		velocity.y = 0
+		push = lerp(push, Vector3.ZERO, 0.5)
 		if move_and_slide():
 			if !flown:
 				emit_signal("flick_depleted")
