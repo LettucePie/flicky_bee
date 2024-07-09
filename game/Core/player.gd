@@ -105,12 +105,8 @@ func _physics_process(delta):
 				)
 			speed += 2
 			## TODO
-			## Solve issue where flick never depletes if wind pushes bee
-			## away from target.
-			## Maybe change the target dynamicaly with the wind or 
-			## change how flicking works in windzones entirely.
-			## Also consider if flowers and flicking will ever be in
-			## windzones.
+			## REverse Percent Travel curve to eliminate weird speedup?
+			## Test out more wind push settings
 			if distance_traveled >= total_distance:
 				emit_signal("flick_depleted")
 				flown = true
