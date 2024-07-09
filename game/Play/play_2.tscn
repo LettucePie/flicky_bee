@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dplwt2o1yjiun"]
+[gd_scene load_steps=20 format=3 uid="uid://dplwt2o1yjiun"]
 
 [ext_resource type="Script" path="res://Play/play_1.gd" id="1_8kuhp"]
 [ext_resource type="PackedScene" uid="uid://pbe74ba2ywah" path="res://Core/player.tscn" id="2_jebu4"]
@@ -25,6 +25,12 @@ albedo_color = Color(0.938537, 0.367999, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_expfr"]
 material = SubResource("StandardMaterial3D_8epkb")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vt36d"]
+albedo_color = Color(0.266667, 0.745098, 0.972549, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_wbnfb"]
+material = SubResource("StandardMaterial3D_vt36d")
 
 [node name="Play_2" type="Node" groups=["Play"]]
 script = ExtResource("1_8kuhp")
@@ -109,6 +115,9 @@ debugging = true
 
 [node name="flickto_marker" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_expfr")
+
+[node name="velo_marker" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_wbnfb")
 
 [connection signal="ready" from="Generator" to="." method="_part_ready"]
 [connection signal="ready" from="Camera3D" to="." method="_part_ready"]

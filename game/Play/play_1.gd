@@ -219,6 +219,8 @@ func _process(delta):
 			furthest_distance = abs(player.get_position().z)
 			$HUD._update_distance(snapped(furthest_distance, 0.1))
 	$flickto_marker.position = player.flick_target
+	$velo_marker.position = player.position
+	$velo_marker.position += player.velocity * 0.5
 
 
 func _input(event):
