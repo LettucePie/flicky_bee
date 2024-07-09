@@ -29,6 +29,7 @@ var bee_object : Node3D
 var flick_target : Vector3
 var start_point : Vector3
 var total_distance : float
+var distance_traveled : float = 0.0
 var flicked := false
 var flown := false
 var trace := true
@@ -39,6 +40,7 @@ var platform_count := 0
 ## Movement
 ##
 var previous_dir : Vector3
+var previous_pos : Vector3
 var fly_dir := Vector3.FORWARD
 var fly_force := 1.0
 var fly_target_force := 1.0
@@ -71,9 +73,11 @@ func _assign_accessories(hat_name : String, trail_name : String) -> void:
 
 
 func _physics_process(delta):
+	previous_pos = self.get_position_delta()
 	var pos = self.get_position()
 	if flicked:
 		if bursting:
+			## Wind Burst
 #			fly_dir = fly_dir.lerp(Vector3.FORWARD, 0.3)
 			speed = lerp(speed, burst_acc * 0.66, delta * 0.5)
 			burst_duration -= 1
@@ -83,13 +87,17 @@ func _physics_process(delta):
 				fly_force = 1.0
 				fly_target_force = 0.4
 		elif flown:
+			## Flight Control
 			fly_force = lerp(fly_force, fly_target_force, delta * 3)
 			speed = fly_acc * fly_force
 			$Buzz.pitch_scale = 0.9 + fly_force
 		else:
+			## Assume Flicking
 			pos = self.get_position()
-			var distance = pos.distance_to(flick_target)
-			var percent = distance / total_distance
+			distance_traveled += previous_pos.length()
+			print("\nprev pos : ", previous_pos, " | pos: ", pos)
+			var percent = distance_traveled / total_distance
+			print("PERCENT of Travel: ", percent, " | ", distance_traveled, " / ", total_distance)
 			speed = lerp(
 				initial_acc,
 				final_acc,
@@ -103,7 +111,7 @@ func _physics_process(delta):
 			## change how flicking works in windzones entirely.
 			## Also consider if flowers and flicking will ever be in
 			## windzones.
-			if pos.distance_to(flick_target) <= 0.05:
+			if distance_traveled >= total_distance:
 				emit_signal("flick_depleted")
 				flown = true
 				fly_force = 0.5
@@ -165,6 +173,7 @@ func _flick_to(target : Vector3) -> void:
 	start_point = self.get_position()
 	flick_target.y = start_point.y
 	total_distance = start_point.distance_to(flick_target)
+	distance_traveled = 0.0
 	speed = initial_acc
 	flown = false
 	bursting = false
@@ -237,7 +246,6 @@ func _on_area_entered(area):
 		$Pickup.play()
 	if area.is_in_group("BounceBud"):
 		if area.bounced == false:
-			print("_on_area_enter> Player entered BounceBud from direction ", fly_dir, " at position ", get_position())
 			_landed(area)
 			$BounceTimer.start(0.2)
 	if area.is_in_group("Collectable"):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dplwt2o1yjiun"]
+[gd_scene load_steps=18 format=3 uid="uid://dplwt2o1yjiun"]
 
 [ext_resource type="Script" path="res://Play/play_1.gd" id="1_8kuhp"]
 [ext_resource type="PackedScene" uid="uid://pbe74ba2ywah" path="res://Core/player.tscn" id="2_jebu4"]
@@ -20,7 +20,13 @@ size = Vector3(19.9062, 2.4957, 10.0144)
 [sub_resource type="BoxMesh" id="BoxMesh_r3t2s"]
 size = Vector3(20, 3, 10)
 
-[node name="Play_1" type="Node" groups=["Play"]]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8epkb"]
+albedo_color = Color(0.938537, 0.367999, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_expfr"]
+material = SubResource("StandardMaterial3D_8epkb")
+
+[node name="Play_2" type="Node" groups=["Play"]]
 script = ExtResource("1_8kuhp")
 player_scene = ExtResource("2_jebu4")
 life_time = 15.0
@@ -100,6 +106,9 @@ color = Color(0, 0, 0, 0)
 [node name="windy_zone" parent="." instance=ExtResource("13_eem4v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.3195)
 debugging = true
+
+[node name="flickto_marker" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_expfr")
 
 [connection signal="ready" from="Generator" to="." method="_part_ready"]
 [connection signal="ready" from="Camera3D" to="." method="_part_ready"]

@@ -31,6 +31,7 @@ func _physics_process(delta):
 		print("Push Player by ", influence)
 		if player.flicked:
 			player.push = influence
+			#player.position += influence
 	if debugging:
 		$debug_wind_center/debug_wind_target.position = influence * 4
 

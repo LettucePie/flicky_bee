@@ -218,6 +218,7 @@ func _process(delta):
 		if abs(player.get_position().z) > furthest_distance:
 			furthest_distance = abs(player.get_position().z)
 			$HUD._update_distance(snapped(furthest_distance, 0.1))
+	$flickto_marker.position = player.flick_target
 
 
 func _input(event):
@@ -314,6 +315,7 @@ func _flick_player() -> void:
 		traveling = true
 		current_flower._flick_flower()
 		player._flick_to(flick_target)
+		$flickto_marker.position = flick_target
 		if !game_started:
 			game_started = true
 		$Life_Timer.start(time)
