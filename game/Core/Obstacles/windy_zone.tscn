@@ -1,11 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://dpgn5w6agfbsu"]
+[gd_scene load_steps=12 format=3 uid="uid://dpgn5w6agfbsu"]
 
 [ext_resource type="Script" path="res://Core/Obstacles/windy_zone.gd" id="1_uify3"]
 [ext_resource type="Curve" uid="uid://mfjoxmpw0shh" path="res://Core/Obstacles/gust_curves/gust_curve_A.tres" id="2_xh4xa"]
 [ext_resource type="Curve" uid="uid://eb8coy03socu" path="res://Core/Obstacles/gust_curves/gust_curve_B.tres" id="3_78vs8"]
 [ext_resource type="Curve" uid="uid://cf8u2chww2coo" path="res://Core/Obstacles/gust_curves/gust_curve_C.tres" id="4_uaeuv"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_dslye"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ykap7"]
+resource_local_to_scene = true
 size = Vector3(24, 16, 20)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sool3"]
@@ -25,13 +26,16 @@ albedo_color = Color(1, 0, 0, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_8bjkx"]
 material = SubResource("StandardMaterial3D_hiwsf")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_whyfo"]
+size = Vector3(24, 16, 20)
+
 [node name="windy_zone" type="Area3D"]
 collision_mask = 2
 script = ExtResource("1_uify3")
 gust_curves = Array[Curve]([ExtResource("2_xh4xa"), ExtResource("3_78vs8"), ExtResource("4_uaeuv")])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_dslye")
+shape = SubResource("BoxShape3D_ykap7")
 
 [node name="debug_display" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_q6hmu")
@@ -43,6 +47,22 @@ mesh = SubResource("BoxMesh_3s6ic")
 
 [node name="debug_wind_target" type="MeshInstance3D" parent="debug_wind_center"]
 mesh = SubResource("SphereMesh_8bjkx")
+
+[node name="NorthDetection" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+collision_layer = 4
+collision_mask = 4
+
+[node name="detect_shape" type="CollisionShape3D" parent="NorthDetection"]
+shape = SubResource("BoxShape3D_whyfo")
+
+[node name="SouthDetection" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+collision_layer = 4
+collision_mask = 4
+
+[node name="detect_shape" type="CollisionShape3D" parent="SouthDetection"]
+shape = SubResource("BoxShape3D_whyfo")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

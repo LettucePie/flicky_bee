@@ -12,7 +12,7 @@ top_radius = 1.5
 bottom_radius = 1.5
 height = 0.6
 
-[node name="Platform" type="Area3D" groups=["Platform_Area"]]
+[node name="Platform" type="Area3D" groups=["Checkpoint", "Platform_Area"]]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_du06j")
