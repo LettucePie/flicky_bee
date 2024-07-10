@@ -41,35 +41,34 @@ func _physics_process(delta):
 			#player.position += influence
 	if debugging:
 		$debug_wind_center/debug_wind_target.position = influence * 4
+	#shape_wind_area()
 
 
 func shape_wind_area():
-	var north_bodies = $NorthDetection.get_overlapping_bodies()
-	var south_bodies = $SouthDetection.get_overlapping_bodies()
+	var north_count = $NorthRay.get_collision_count()
+	var south_count = $SouthRay.get_collision_count()
 	var closest_distance : float = wind_area_shape.size.z / 2
-	var north_target : Node3D = north_bodies.front()
-	var south_target : Node3D = south_bodies.front()
-	if north_bodies.size() > 0:
-		for nb in north_bodies:
-			if nb.is_in_group("Checkpoint"):
-				var distance = self.global_position.distance_to(nb.global_position)
+	var north_target : Vector3 = Vector3.ZERO
+	var south_target : Vector3 = Vector3.ZERO
+	if north_count > 0:
+		for ni in north_count:
+			if $NorthRay.get_collider(ni).is_in_group("Checkpoint"):
+				var target = $NorthRay.get_collision_point(ni)
+				var distance = self.global_position.distance_to(target)
 				if distance < closest_distance:
 					closest_distance = distance
-					north_target = nb
-	if south_bodies.size() > 0:
-		for sb in south_bodies:
-			if sb.is_in_group("Checkpoint"):
-				var distance = self.global_position.distance_to(sb.global_position)
-				if distance > closest_distance:
+					north_target = target
+	if south_count > 0:
+		for si in south_count:
+			if $SouthRay.get_collider(si).is_in_group("Checkpoint"):
+				var target = $SouthRay.get_collision_point(si)
+				var distance = self.global_position.distance_to(target)
+				if distance < closest_distance:
 					closest_distance = distance
-					south_target = sb
+					south_target = target
 	print("Closest Distance for Wind Area is : ", closest_distance)
-	print("North Target: ", north_target)
-	if north_target != null:
-		print("POS: ", north_target.global_position)
-	print("South Target: ", south_target)
-	if south_target != null:
-		print("POS: ", south_target.global_position)
+	print("North Target: ", north_target, " North Count: ", north_count)
+	print("South Target: ", south_target, " South Count: ", south_count)
 	wind_area_shape.size.z = closest_distance * 2
 	if debugging:
 		$debug_display.mesh.size.z = closest_distance * 2

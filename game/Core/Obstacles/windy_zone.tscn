@@ -26,7 +26,7 @@ albedo_color = Color(1, 0, 0, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_8bjkx"]
 material = SubResource("StandardMaterial3D_hiwsf")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_whyfo"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_2lgqk"]
 size = Vector3(24, 16, 20)
 
 [node name="windy_zone" type="Area3D"]
@@ -48,21 +48,21 @@ mesh = SubResource("BoxMesh_3s6ic")
 [node name="debug_wind_target" type="MeshInstance3D" parent="debug_wind_center"]
 mesh = SubResource("SphereMesh_8bjkx")
 
-[node name="NorthDetection" type="Area3D" parent="."]
+[node name="NorthRay" type="ShapeCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
-collision_layer = 4
+shape = SubResource("BoxShape3D_2lgqk")
+target_position = Vector3(0, 0, 0)
 collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
 
-[node name="detect_shape" type="CollisionShape3D" parent="NorthDetection"]
-shape = SubResource("BoxShape3D_whyfo")
-
-[node name="SouthDetection" type="Area3D" parent="."]
+[node name="SouthRay" type="ShapeCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
-collision_layer = 4
+shape = SubResource("BoxShape3D_2lgqk")
+target_position = Vector3(0, 0, 0)
 collision_mask = 4
-
-[node name="detect_shape" type="CollisionShape3D" parent="SouthDetection"]
-shape = SubResource("BoxShape3D_whyfo")
+collide_with_areas = true
+collide_with_bodies = false
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
