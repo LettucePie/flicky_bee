@@ -40,11 +40,12 @@ node_connections = [&"Bend_Blend", 0, &"Still", &"Bend_Blend", 1, &"Bend", &"One
 script = ExtResource("1_lqgyg")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../Flower_Stem")
 tree_root = SubResource("AnimationNodeBlendTree_ne50l")
 anim_player = NodePath("../Flower_Stem/AnimationPlayer")
-active = true
 parameters/Bend_Blend/blend_amount = 0.0
 parameters/OneShot/active = false
+parameters/OneShot/internal_active = false
 parameters/OneShot/request = 0
 parameters/TimeScale/scale = 2.0
 

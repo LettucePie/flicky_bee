@@ -7,7 +7,7 @@ extends Area3D
 @onready var gust_curve : Curve = gust_curves.front()
 var gust_step_index : int = 0
 @export var gust_dir : Vector3 = Vector3.RIGHT
-@export var gust_intensity : float = 3.0
+@export var gust_intensity : float = 5.0
 var player : Player = null
 
 var influence : Vector3
