@@ -82,7 +82,6 @@ func _physics_process(delta):
 			speed = lerp(speed, burst_acc * 0.66, delta * 0.5)
 			burst_duration -= 1
 			if burst_duration <= 0:
-				print("Burst Finished")
 				bursting = false
 				fly_force = 1.0
 				fly_target_force = 0.4
@@ -95,9 +94,7 @@ func _physics_process(delta):
 			## Assume Flicking
 			pos = self.get_position()
 			distance_traveled += previous_pos.length()
-			print("\nprev pos : ", previous_pos, " | pos: ", pos)
 			var percent = distance_traveled / total_distance
-			print("PERCENT of Travel: ", percent, " | ", distance_traveled, " / ", total_distance)
 			speed = lerp(
 				initial_acc,
 				final_acc,
@@ -159,7 +156,6 @@ func _die() -> void:
 
 
 func _flick_to(target : Vector3) -> void:
-	print("_flick_to> Flicking to ", target)
 	bee_object.get_parent().remove_child(bee_object)
 	$Turn.add_child(bee_object)
 	bee_object.set_rotation(Vector3(0, PI * -0.5, 0))
@@ -221,16 +217,14 @@ func _on_area_entered(area):
 			if area != current_platform:
 				_landed(area)
 	if area.is_in_group("Windhook"):
-		print("Player Touched Windhook")
 		_switch_to_flight()
 		anim.play("Base/Spin")
 		var hook_dir = Vector3.FORWARD
-		if area.rotation.y != 0:
-			print("Tilted WindHook true... Rotation: ", area.rotation)
+		#if area.rotation.y != 0:
+			#print("Tilted WindHook true... Rotation: ", area.rotation)
 		hook_dir = hook_dir.rotated(
 			Vector3.UP, area.rotation.y
 		)
-		print("Hook Direction: ", hook_dir)
 		_point_forward(hook_dir)
 		fly_dir = hook_dir
 		burst_duration = 45
@@ -261,7 +255,6 @@ func _on_area_entered(area):
 
 
 func _landed(area) -> void:
-	print("_landed> Player Landed in area : ", area)
 	anim.play("Base/Rest")
 	$Buzz.stop()
 	trail._activate_trail(false)
@@ -275,7 +268,6 @@ func _landed(area) -> void:
 		bee_object.set_rotation(Vector3.ZERO)
 	elif area.is_in_group("BounceBud"):
 		$Pickup.stream = bouncebud_sound
-		print("_landed> Landing on BounceBud")
 	$Pickup.play()
 	platform_count += 1
 	speed = 0
@@ -290,15 +282,11 @@ func _landed(area) -> void:
 	pos.x = area_pos.x
 	pos.z = area_pos.z
 	self.set_position(pos)
-	print("_landed> Area Pos = ", area_pos)
-	print("_landed> Setting player pos to ", pos)
 	emit_signal("finished_travel", area)
 
 
 func _on_bounce_timer_timeout():
-	print("_on_bounce_timer> Bounce Timer Elapsed")
 	$BounceTimer.stop()
-	print("_on_bounce_timer> Bouncing Player with direction ", previous_dir)
 	_flick_to((previous_dir * fly_acc) + self.position)
 
 

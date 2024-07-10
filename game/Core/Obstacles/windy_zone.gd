@@ -50,28 +50,27 @@ func shape_wind_area():
 	var closest_distance : float = wind_area_shape.size.z / 2
 	var north_target : Vector3 = Vector3.ZERO
 	var south_target : Vector3 = Vector3.ZERO
+	var gpos : Vector3 = self.global_position
 	if north_count > 0:
 		for ni in north_count:
 			if $NorthRay.get_collider(ni).is_in_group("Checkpoint"):
 				var target = $NorthRay.get_collision_point(ni)
-				var distance = self.global_position.distance_to(target)
-				if distance < closest_distance:
-					closest_distance = distance
+				if abs(gpos.z - target.z) < closest_distance:
+					closest_distance = abs(gpos.z - target.z)
 					north_target = target
 	if south_count > 0:
 		for si in south_count:
 			if $SouthRay.get_collider(si).is_in_group("Checkpoint"):
 				var target = $SouthRay.get_collision_point(si)
-				var distance = self.global_position.distance_to(target)
-				if distance < closest_distance:
-					closest_distance = distance
+				if abs(gpos.z - target.z) < closest_distance:
+					closest_distance = abs(gpos.z - target.z)
 					south_target = target
 	print("Closest Distance for Wind Area is : ", closest_distance)
 	print("North Target: ", north_target, " North Count: ", north_count)
 	print("South Target: ", south_target, " South Count: ", south_count)
-	wind_area_shape.size.z = closest_distance * 2
+	wind_area_shape.size.z = closest_distance * 1.9
 	if debugging:
-		$debug_display.mesh.size.z = closest_distance * 2
+		$debug_display.mesh.size.z = closest_distance * 1.9
 
 
 func queue_next_gust():
