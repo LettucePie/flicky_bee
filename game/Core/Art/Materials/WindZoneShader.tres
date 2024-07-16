@@ -1,6 +1,6 @@
-[gd_resource type="VisualShader" load_steps=10 format=3 uid="uid://cnxwn6rglkh8w"]
+[gd_resource type="VisualShader" load_steps=10 format=3 uid="uid://drdhgosikxya8"]
 
-[ext_resource type="FastNoiseLite" uid="uid://bimvii2jfgfwc" path="res://Core/Art/Materials/WindStream_Noise.tres" id="1_fjr3u"]
+[ext_resource type="FastNoiseLite" uid="uid://cqa4yipg62cfb" path="res://Core/Art/Materials/WindZone_Noise.tres" id="1_75lud"]
 
 [sub_resource type="Gradient" id="Gradient_6okvo"]
 offsets = PackedFloat32Array(0.572985, 0.714597, 1)
@@ -12,26 +12,27 @@ height = 20
 generate_mipmaps = false
 normalize = false
 color_ramp = SubResource("Gradient_6okvo")
-noise = ExtResource("1_fjr3u")
+noise = ExtResource("1_75lud")
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_aj4gy"]
+output_port_for_preview = 0
 texture = SubResource("NoiseTexture2D_h4bjl")
 
 [sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_hsxby"]
 default_input_values = [1, Vector2(0.8, 0.8), 2, Vector2(0.5, 0.5)]
 function = 1
 
-[sub_resource type="Gradient" id="Gradient_hnsc6"]
-offsets = PackedFloat32Array(0, 0.296552, 0.427586, 0.535632, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0.924731, 0.924731, 0.924731, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1)
+[sub_resource type="Gradient" id="Gradient_fk2re"]
+offsets = PackedFloat32Array(0, 0.49827, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_cdsq2"]
-gradient = SubResource("Gradient_hnsc6")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_s2bda"]
+gradient = SubResource("Gradient_fk2re")
 fill_to = Vector2(0, 1)
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_7h3qu"]
 output_port_for_preview = 0
-texture = SubResource("GradientTexture2D_cdsq2")
+texture = SubResource("GradientTexture2D_s2bda")
 
 [sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_lfsp3"]
 output_port_for_preview = 0
@@ -68,7 +69,7 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-255.926, 15.148)
+graph_offset = Vector2(-98.4051, 670.839)
 flags/unshaded = true
 flags/shadows_disabled = true
 nodes/fragment/0/position = Vector2(800, 200)

@@ -1,6 +1,6 @@
 [gd_resource type="VisualShader" load_steps=6 format=3 uid="uid://b16abyqwp87h3"]
 
-[ext_resource type="FastNoiseLite" uid="uid://bimvii2jfgfwc" path="res://Core/WindStream_Noise.tres" id="1_tddum"]
+[ext_resource type="FastNoiseLite" uid="uid://bimvii2jfgfwc" path="res://Core/Art/Materials/WindStream_Noise.tres" id="1_tddum"]
 
 [sub_resource type="Gradient" id="Gradient_6okvo"]
 offsets = PackedFloat32Array(0.572985, 0.714597, 1)

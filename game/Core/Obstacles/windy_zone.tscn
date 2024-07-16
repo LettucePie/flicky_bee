@@ -1,63 +1,31 @@
-[gd_scene load_steps=13 format=3 uid="uid://dpgn5w6agfbsu"]
+[gd_scene load_steps=8 format=3 uid="uid://dpgn5w6agfbsu"]
 
 [ext_resource type="Script" path="res://Core/Obstacles/windy_zone.gd" id="1_uify3"]
-[ext_resource type="Curve" uid="uid://mfjoxmpw0shh" path="res://Core/Obstacles/gust_curves/gust_curve_A.tres" id="2_xh4xa"]
-[ext_resource type="Curve" uid="uid://eb8coy03socu" path="res://Core/Obstacles/gust_curves/gust_curve_B.tres" id="3_78vs8"]
-[ext_resource type="Curve" uid="uid://cf8u2chww2coo" path="res://Core/Obstacles/gust_curves/gust_curve_C.tres" id="4_uaeuv"]
-[ext_resource type="Texture2D" uid="uid://c4imp2o811mv7" path="res://Core/Art/Textures/wind_particle_sprite.png" id="5_55my1"]
+[ext_resource type="Shader" uid="uid://drdhgosikxya8" path="res://Core/Art/Materials/WindZoneShader.tres" id="2_k0ujf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ykap7"]
 resource_local_to_scene = true
 size = Vector3(24, 16, 20)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sool3"]
-transparency = 1
-albedo_color = Color(0.294118, 0.466667, 1, 0.0980392)
-texture_filter = 0
-
-[sub_resource type="BoxMesh" id="BoxMesh_q6hmu"]
-material = SubResource("StandardMaterial3D_sool3")
-size = Vector3(24, 16, 20)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_2lgqk"]
 size = Vector3(24, 16, 20)
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8cf6v"]
-resource_local_to_scene = true
-emission_shape_offset = Vector3(-24, 0, 0)
-emission_shape_scale = Vector3(6, 2, 10)
-emission_shape = 3
-emission_box_extents = Vector3(1, 1, 1)
-spread = 20.0
-initial_velocity_min = 50.0
-initial_velocity_max = 50.0
-gravity = Vector3(0, -2, 0)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0jgt2"]
+render_priority = 0
+shader = ExtResource("2_k0ujf")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mmteq"]
-transparency = 1
-no_depth_test = true
-albedo_texture = ExtResource("5_55my1")
-billboard_mode = 3
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
+[sub_resource type="BoxMesh" id="BoxMesh_77633"]
+material = SubResource("ShaderMaterial_0jgt2")
+size = Vector3(20, 0.1, 54)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_hmnjn"]
-material = SubResource("StandardMaterial3D_mmteq")
-orientation = 2
+[sub_resource type="PrismMesh" id="PrismMesh_1jvjs"]
 
-[node name="windy_zone" type="Area3D"]
+[node name="windy_zone" type="Area3D" groups=["wind_zone"]]
 collision_mask = 2
 script = ExtResource("1_uify3")
-gust_curves = Array[Curve]([ExtResource("2_xh4xa"), ExtResource("3_78vs8"), ExtResource("4_uaeuv")])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_ykap7")
-
-[node name="debug_display" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_q6hmu")
-
-[node name="Timer" type="Timer" parent="."]
 
 [node name="NorthRay" type="ShapeCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
@@ -75,13 +43,13 @@ collision_mask = 4
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="wind_particles" type="GPUParticles3D" parent="."]
+[node name="windshadermesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 cast_shadow = 0
-lifetime = 4.0
-visibility_aabb = AABB(-11.9952, -8.01278, -10.0701, 23.9905, 16.0256, 20.1401)
-process_material = SubResource("ParticleProcessMaterial_8cf6v")
-draw_pass_1 = SubResource("PlaneMesh_hmnjn")
+mesh = SubResource("BoxMesh_77633")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PrismMesh_1jvjs")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

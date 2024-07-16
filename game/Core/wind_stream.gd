@@ -1,7 +1,7 @@
 extends MeshInstance3D
 
-@onready var noise = preload("res://Core/WindStream_Noise.tres")
-@export var stream_speed := 6.0
+@export var noise : FastNoiseLite
+@export var stream_speed := 60.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

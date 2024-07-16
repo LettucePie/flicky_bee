@@ -17,21 +17,20 @@ class_name Generator
 @export var danger_scenes : Array[PackedScene]
 #@export var grass_patch_scene : PackedScene
 @export var collection_patches : Array[PackedScene]
+## Settings
+@export_range(0.0, 1.0, 0.05) var danger_ratio : float = 0.5
+
 
 var platforms : Array
 var starting_platform : Node3D
 var flower := "default"
 #var grass_patches : Array
 var gaps : Array
+@onready var windzone_manager : WindZoneManager = WindZoneManager.new()
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
+	self.add_child(windzone_manager)
 
 
 func _clear_platforms() -> void:
@@ -117,14 +116,15 @@ func _generate(num : int, z_start : float, flower_name : String) -> void:
 				var bonus_z = z_center
 				if abs(z_point) - abs(z_previous) >= 12.0:
 					new_gap = booster_scenes.front().instantiate()
-					if abs(z_center) - abs(z_previous) >= 8.0:
+					if abs(z_center) - abs(z_previous) >= 8.0 \
+					and randf() < danger_ratio:
 						bonus_gap = danger_scenes.front().instantiate()
 						bonus_z = lerp(z_previous, z_center, 0.5)
 				elif randf() >= 0.5:
-					if randf() >= 0.5:
-						new_gap = danger_scenes.front().instantiate()
-					else:
+					if randf() >= danger_ratio:
 						new_gap = obstacle_scenes.front().instantiate()
+					else:
+						new_gap = danger_scenes.front().instantiate()
 				else:
 					x_pos = randf_range(-4.0, 4.0)
 					new_gap = collection_patches.front().instantiate()
@@ -133,7 +133,8 @@ func _generate(num : int, z_start : float, flower_name : String) -> void:
 						0.08,
 						0.9
 					)
-					if randf() <= danger_difficulty:
+					if randf() <= danger_difficulty\
+					and danger_ratio > 0.0:
 						bonus_gap = danger_scenes.front().instantiate()
 				if new_gap != null:
 					new_gap.set_position(
@@ -143,6 +144,9 @@ func _generate(num : int, z_start : float, flower_name : String) -> void:
 							z_center
 						)
 					)
+					if new_gap.is_in_group("wind_zone") \
+					and new_gap.has_method("assign_wind_zone_manager"):
+						new_gap.assign_wind_zone_manager(windzone_manager)
 					gaps.append(new_gap)
 					add_child(new_gap)
 					if bonus_gap != null:

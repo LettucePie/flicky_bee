@@ -1,0 +1,4 @@
+[gd_resource type="FastNoiseLite" format=3 uid="uid://cqa4yipg62cfb"]
+
+[resource]
+offset = Vector3(0, 9, 0)

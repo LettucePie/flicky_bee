@@ -38,6 +38,8 @@ player_scene = ExtResource("2_jebu4")
 life_time = 15.0
 
 [node name="Generator" parent="." instance=ExtResource("3_cmxhb")]
+obstacle_scenes = Array[PackedScene]([ExtResource("13_eem4v")])
+danger_ratio = 0.0
 
 [node name="Light" parent="." instance=ExtResource("4_wavbw")]
 light_bake_mode = 2
@@ -108,9 +110,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
-
-[node name="windy_zone" parent="." instance=ExtResource("13_eem4v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.3195)
 
 [node name="flickto_marker" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_expfr")
