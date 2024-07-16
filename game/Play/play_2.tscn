@@ -111,7 +111,6 @@ color = Color(0, 0, 0, 0)
 
 [node name="windy_zone" parent="." instance=ExtResource("13_eem4v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.3195)
-debugging = true
 
 [node name="flickto_marker" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_expfr")

@@ -1,10 +1,8 @@
 extends Area3D
 
-## Debug
-@export var debugging : bool = false
-
 ## Properties
 @onready var wind_area_shape : BoxShape3D = $CollisionShape3D.shape
+@onready var wind_particle_processor : ParticleProcessMaterial = $wind_particles.process_material
 
 ## Settings
 @export var playspeed : float = 3.0
@@ -23,8 +21,6 @@ func _ready():
 	$Timer.wait_time = playspeed
 	$Timer.autostart = true
 	$Timer.start()
-	$debug_display.visible = debugging
-	$debug_wind_center.visible = debugging
 	call_deferred("shape_wind_area")
 
 
@@ -39,8 +35,6 @@ func _physics_process(delta):
 		if player.flicked:
 			player.push = influence
 			#player.position += influence
-	if debugging:
-		$debug_wind_center/debug_wind_target.position = influence * 4
 	#shape_wind_area()
 
 
@@ -69,8 +63,6 @@ func shape_wind_area():
 	print("North Target: ", north_target, " North Count: ", north_count)
 	print("South Target: ", south_target, " South Count: ", south_count)
 	wind_area_shape.size.z = closest_distance * 1.9
-	if debugging:
-		$debug_display.mesh.size.z = closest_distance * 1.9
 
 
 func queue_next_gust():
