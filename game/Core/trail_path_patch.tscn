@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://ke5ecjpnw8sn"]
+
+[ext_resource type="Script" path="res://Core/grass_patch.gd" id="1_8yxfa"]
+[ext_resource type="Material" uid="uid://bjfk4a1j1cw64" path="res://Core/Art/Materials/trail_plane_mat.tres" id="2_tehb1"]
+[ext_resource type="PackedScene" uid="uid://c2h2go2axl5po" path="res://Core/Art/trail_path.glb" id="3_o6qbl"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lpjs1"]
+lightmap_size_hint = Vector2i(302, 302)
+material = ExtResource("2_tehb1")
+add_uv2 = true
+size = Vector2(60, 60)
+
+[node name="Trail_Patch" type="Node3D" groups=["Grass_Patch"]]
+script = ExtResource("1_8yxfa")
+
+[node name="Plane2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 3.50675, 0)
+mesh = SubResource("PlaneMesh_lpjs1")
+
+[node name="Plane3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 3.50675, 0)
+mesh = SubResource("PlaneMesh_lpjs1")
+
+[node name="trail_path_Center" parent="." instance=ExtResource("3_o6qbl")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)

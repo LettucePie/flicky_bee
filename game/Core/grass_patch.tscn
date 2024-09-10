@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ctoi4c1j3c0ba"]
+[gd_scene load_steps=15 format=3 uid="uid://ctoi4c1j3c0ba"]
 
 [ext_resource type="Material" uid="uid://claltjg8fkp3t" path="res://Core/Art/Materials/GrassPlane_Mat.tres" id="1_b3e80"]
 [ext_resource type="Script" path="res://Core/grass_patch.gd" id="1_r3gwb"]
@@ -11,7 +11,19 @@
 [ext_resource type="MultiMesh" uid="uid://qsigpv7io51a" path="res://Core/Art/Meshes/grass_left_light_multimesh.tres" id="9_bbomw"]
 [ext_resource type="MultiMesh" uid="uid://bvj1lum5yip5r" path="res://Core/Art/Meshes/grass_right_light_multimesh.tres" id="10_svi8p"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_lpjs1"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_fuh3j"]
+lightmap_size_hint = Vector2i(302, 302)
+material = ExtResource("1_b3e80")
+add_uv2 = true
+size = Vector2(60, 60)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_os3q0"]
+lightmap_size_hint = Vector2i(302, 302)
+material = ExtResource("1_b3e80")
+add_uv2 = true
+size = Vector2(60, 60)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_srgk0"]
 lightmap_size_hint = Vector2i(302, 302)
 material = ExtResource("1_b3e80")
 add_uv2 = true
@@ -29,15 +41,15 @@ script = ExtResource("1_r3gwb")
 [node name="Camera3D" type="Camera3D" parent="."]
 
 [node name="Plane" type="MeshInstance3D" parent="."]
-mesh = SubResource("PlaneMesh_lpjs1")
+mesh = SubResource("PlaneMesh_fuh3j")
 
 [node name="Plane2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 0)
-mesh = SubResource("PlaneMesh_lpjs1")
+mesh = SubResource("PlaneMesh_os3q0")
 
 [node name="Plane3" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, 0)
-mesh = SubResource("PlaneMesh_lpjs1")
+mesh = SubResource("PlaneMesh_srgk0")
 
 [node name="ThirdPlane" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)

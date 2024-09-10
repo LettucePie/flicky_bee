@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dqbbm5ljwmkwr"]
+
+[ext_resource type="Texture2D" uid="uid://buuawpktp7b3b" path="res://Core/Art/Textures/trail_path_tex.png" id="1_c1tjv"]
+
+[resource]
+resource_name = "trail_path_material"
+albedo_texture = ExtResource("1_c1tjv")
+metallic = 1.0
