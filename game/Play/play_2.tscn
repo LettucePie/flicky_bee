@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dplwt2o1yjiun"]
+[gd_scene load_steps=21 format=3 uid="uid://dplwt2o1yjiun"]
 
 [ext_resource type="Script" path="res://Play/play_1.gd" id="1_8kuhp"]
 [ext_resource type="PackedScene" uid="uid://pbe74ba2ywah" path="res://Core/player.tscn" id="2_jebu4"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://Play/music_fade.gd" id="11_1gxr5"]
 [ext_resource type="PackedScene" uid="uid://ctoi4c1j3c0ba" path="res://Core/grass_patch.tscn" id="12_ilk3i"]
 [ext_resource type="PackedScene" uid="uid://dpgn5w6agfbsu" path="res://Core/Obstacles/windy_zone.tscn" id="13_eem4v"]
+[ext_resource type="PackedScene" uid="uid://ke5ecjpnw8sn" path="res://Core/trail_path_patch.tscn" id="14_kb3ha"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i3iu5"]
 size = Vector3(19.9062, 2.4957, 10.0144)
@@ -95,12 +96,15 @@ script = ExtResource("11_1gxr5")
 
 [node name="Grass_Patch1" parent="." instance=ExtResource("12_ilk3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -5, 60)
+visible = false
 
 [node name="Grass_Patch2" parent="." instance=ExtResource("12_ilk3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -5, 0)
+visible = false
 
 [node name="Grass_Patch3" parent="." instance=ExtResource("12_ilk3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -5, -60)
+visible = false
 
 [node name="pulling_my_hair_out" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -116,6 +120,14 @@ mesh = SubResource("BoxMesh_expfr")
 
 [node name="velo_marker" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_wbnfb")
+
+[node name="Trail_Patch1" parent="." instance=ExtResource("14_kb3ha")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 60)
+
+[node name="Trail_Patch2" parent="." instance=ExtResource("14_kb3ha")]
+
+[node name="Trail_Patch3" parent="." instance=ExtResource("14_kb3ha")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -60)
 
 [connection signal="ready" from="Generator" to="." method="_part_ready"]
 [connection signal="ready" from="Camera3D" to="." method="_part_ready"]

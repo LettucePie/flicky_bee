@@ -14,12 +14,12 @@ size = Vector2(60, 60)
 script = ExtResource("1_8yxfa")
 
 [node name="Plane2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 3.50675, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.4086, -0.493247, 0)
 mesh = SubResource("PlaneMesh_lpjs1")
 
 [node name="Plane3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 3.50675, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.5914, -0.493247, 0)
 mesh = SubResource("PlaneMesh_lpjs1")
 
 [node name="trail_path_Center" parent="." instance=ExtResource("3_o6qbl")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -2.59136, -4, 0)
