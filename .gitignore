@@ -7,6 +7,7 @@ game/export_presets.cfg
 # Import Stuff
 *.kra~
 *.blend1
+*.kra-autosave*
 
 # Mono-specific ignores
 .mono/
