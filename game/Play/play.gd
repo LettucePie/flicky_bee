@@ -10,6 +10,7 @@ signal fully_initiated()
 @export var comb_value : int = 1
 @export var jar_value : int = 2
 @export var flower_value : int = 2
+@export var bg_patches : Array[Node3D] = []
 
 enum Collect {Comb, Jar, Flower}
 @onready var collect_values = [comb_value, jar_value, flower_value]
@@ -55,10 +56,6 @@ var flick_target := Vector3.ZERO
 var flick_valid := false
 var flying := false
 var disabled := false
-##
-##
-##
-var grass_patches : Array
 
 
 # Called when the node enters the scene tree for the first time.
@@ -117,11 +114,10 @@ func _setup(menu_node : Control, persist_node : Persist):
 	$HUD._update_fly_bar(flight, flight_reserve)
 	$HUD._setup()
 	$Results.hide()
-	grass_patches = [$Grass_Patch1, $Grass_Patch2, $Grass_Patch3]
-	var grass_point = 60
-	for g in grass_patches:
-		g.set_position(Vector3(0, -5, grass_point))
-		grass_point -= 60
+	var bg_point = 60
+	for bg in bg_patches:
+		bg.set_position(Vector3(0, -5, bg_point))
+		bg_point -= 60
 
 
 func _notification(what):
@@ -163,19 +159,18 @@ func _update_camera_target(offset : float) -> void:
 	camera_offset.y = 13.0
 	camera_offset.z -= offset
 	camera_target = camera_offset
-	if grass_patches.size() > 0:
-		_move_grass_patches()
+	if bg_patches.size() > 0:
+		_move_bg_patches()
 
 
-func _move_grass_patches() -> void:
-	var mid_z = grass_patches[1].get_position().z
-#	var back_z = grass_patches.back().get_position().z
+func _move_bg_patches() -> void:
+	var mid_z = bg_patches[1].get_position().z
 	if camera_target.z < mid_z:
-		var new_back = grass_patches.pop_front()
+		var new_back = bg_patches.pop_front()
 		var pos = new_back.get_position()
 		pos.z -= 120
 		new_back.set_position(pos)
-		grass_patches.push_back(new_back)
+		bg_patches.push_back(new_back)
 
 
 func _disable_player_input(duration : float) -> void:

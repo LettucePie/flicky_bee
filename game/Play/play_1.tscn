@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://divwo3i3xqtwj"]
 
-[ext_resource type="Script" path="res://Play/play_1.gd" id="1_x43xo"]
+[ext_resource type="Script" path="res://Play/play.gd" id="1_vmdlg"]
 [ext_resource type="PackedScene" uid="uid://pbe74ba2ywah" path="res://Core/player.tscn" id="2_75ge2"]
 [ext_resource type="PackedScene" uid="uid://2gkm2rsvmoiy" path="res://Core/generator.tscn" id="2_yeg2j"]
 [ext_resource type="PackedScene" uid="uid://ds65sqp6nk8mt" path="res://Core/light.tscn" id="4_2bjav"]
@@ -19,10 +19,11 @@ size = Vector3(19.9062, 2.4957, 10.0144)
 [sub_resource type="BoxMesh" id="BoxMesh_r3t2s"]
 size = Vector3(20, 3, 10)
 
-[node name="Play_1" type="Node" groups=["Play"]]
-script = ExtResource("1_x43xo")
+[node name="Play_1" type="Node" node_paths=PackedStringArray("bg_patches") groups=["Play"]]
+script = ExtResource("1_vmdlg")
 player_scene = ExtResource("2_75ge2")
 life_time = 15.0
+bg_patches = [NodePath("Grass_Patch1"), NodePath("Grass_Patch2"), NodePath("Grass_Patch3")]
 
 [node name="Generator" parent="." instance=ExtResource("2_yeg2j")]
 

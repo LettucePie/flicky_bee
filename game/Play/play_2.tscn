@@ -1,6 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://dplwt2o1yjiun"]
+[gd_scene load_steps=20 format=3 uid="uid://dplwt2o1yjiun"]
 
-[ext_resource type="Script" path="res://Play/play_1.gd" id="1_8kuhp"]
+[ext_resource type="Script" path="res://Play/play.gd" id="1_8kuhp"]
 [ext_resource type="PackedScene" uid="uid://pbe74ba2ywah" path="res://Core/player.tscn" id="2_jebu4"]
 [ext_resource type="PackedScene" uid="uid://2gkm2rsvmoiy" path="res://Core/generator.tscn" id="3_cmxhb"]
 [ext_resource type="PackedScene" uid="uid://ds65sqp6nk8mt" path="res://Core/light.tscn" id="4_wavbw"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://bnideixfjpsgc" path="res://Core/results.tscn" id="9_guarb"]
 [ext_resource type="AudioStream" uid="uid://6vdrcpbcjxks" path="res://kenney/Farm Frolics.ogg" id="10_4ihvs"]
 [ext_resource type="Script" path="res://Play/music_fade.gd" id="11_1gxr5"]
-[ext_resource type="PackedScene" uid="uid://ctoi4c1j3c0ba" path="res://Core/grass_patch.tscn" id="12_ilk3i"]
 [ext_resource type="PackedScene" uid="uid://dpgn5w6agfbsu" path="res://Core/Obstacles/windy_zone.tscn" id="13_eem4v"]
 [ext_resource type="PackedScene" uid="uid://ke5ecjpnw8sn" path="res://Core/trail_path_patch.tscn" id="14_kb3ha"]
 
@@ -33,10 +32,11 @@ albedo_color = Color(0.266667, 0.745098, 0.972549, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_wbnfb"]
 material = SubResource("StandardMaterial3D_vt36d")
 
-[node name="Play_2" type="Node" groups=["Play"]]
+[node name="Play_2" type="Node" node_paths=PackedStringArray("bg_patches") groups=["Play"]]
 script = ExtResource("1_8kuhp")
 player_scene = ExtResource("2_jebu4")
 life_time = 15.0
+bg_patches = [NodePath("Trail_Patch1"), NodePath("Trail_Patch2"), NodePath("Trail_Patch3")]
 
 [node name="Generator" parent="." instance=ExtResource("3_cmxhb")]
 obstacle_scenes = Array[PackedScene]([ExtResource("13_eem4v")])
@@ -93,18 +93,6 @@ stream = ExtResource("10_4ihvs")
 autoplay = true
 bus = &"Music"
 script = ExtResource("11_1gxr5")
-
-[node name="Grass_Patch1" parent="." instance=ExtResource("12_ilk3i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -5, 60)
-visible = false
-
-[node name="Grass_Patch2" parent="." instance=ExtResource("12_ilk3i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -5, 0)
-visible = false
-
-[node name="Grass_Patch3" parent="." instance=ExtResource("12_ilk3i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -5, -60)
-visible = false
 
 [node name="pulling_my_hair_out" type="ColorRect" parent="."]
 anchors_preset = 15
