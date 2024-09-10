@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://byrhd5dr742yc"]
+[gd_scene load_steps=8 format=3 uid="uid://byrhd5dr742yc"]
 
 [ext_resource type="PackedScene" uid="uid://x6ey6hxdu7fj" path="res://Core/Art/Bounce_Bud.glb" id="1_f3pn1"]
 [ext_resource type="Script" path="res://Core/bounce_bud.gd" id="1_sn1yh"]
+[ext_resource type="PackedScene" uid="uid://c5jwnotrdurj5" path="res://Core/Art/GrassBlade_Collection_1.glb" id="3_3d8ug"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_7m6ee"]
 radius = 0.873932
@@ -62,6 +63,14 @@ libraries = {
 
 [node name="Bounce_Bud" parent="." instance=ExtResource("1_f3pn1")]
 transform = Transform3D(0.6, 0, 0, 0, 1, 0, 0, 0, 0.6, 0, -1.58486, 0)
+
+[node name="Deco" type="Node3D" parent="."]
+
+[node name="GrassBlade_Collection_12" parent="Deco" instance=ExtResource("3_3d8ug")]
+transform = Transform3D(0.546986, 0, 0, 0, 0.531877, -0.127673, 0, 0.127673, 0.531877, 0, -6.06303, 0.18112)
+
+[node name="GrassBlade_Collection_13" parent="Deco" instance=ExtResource("3_3d8ug")]
+transform = Transform3D(-0.292624, 0.14351, -0.510791, 0, 0.583328, 0.163889, 0.530568, 0.0791497, -0.281716, -1.29196, -6.68376, -1.31405)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

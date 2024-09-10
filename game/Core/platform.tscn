@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://binixehfbq4hi"]
+[gd_scene load_steps=6 format=3 uid="uid://binixehfbq4hi"]
 
 [ext_resource type="Script" path="res://Core/platform.gd" id="1_du06j"]
 [ext_resource type="PackedScene" uid="uid://xx8vpt1dc2ub" path="res://Core/flick_flower.tscn" id="2_n0h51"]
+[ext_resource type="PackedScene" uid="uid://c5jwnotrdurj5" path="res://Core/Art/GrassBlade_Collection_1.glb" id="3_k5884"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_x2q1f"]
 height = 4.06212
@@ -29,3 +30,11 @@ skeleton = NodePath("")
 
 [node name="Flick_Flower" parent="." instance=ExtResource("2_n0h51")]
 transform = Transform3D(0.48, 0, 0, 0, 0.48, 0, 0, 0, 0.48, 0, 0, 0)
+
+[node name="Deco" type="Node3D" parent="."]
+
+[node name="GrassBlade_Collection_12" parent="Deco" instance=ExtResource("3_k5884")]
+transform = Transform3D(0.550567, -0.0245335, -0.00214357, 0.0242947, 0.54893, -0.0426079, 0.0040318, 0.0424709, 0.549464, -0.309208, -5.32678, 0)
+
+[node name="GrassBlade_Collection_13" parent="Deco" instance=ExtResource("3_k5884")]
+transform = Transform3D(-0.138355, 0.0218707, 0.202878, 0.010868, 0.245558, -0.0190602, -0.203764, -0.00175313, -0.138771, 0.216488, -5.32678, -0.431822)

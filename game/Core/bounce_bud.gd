@@ -6,6 +6,7 @@ var bounced := false
 func _ready():
 	rotation.y = randf_range(0, PI * 1.9)
 	bounced = false
+	$Deco.rotation.y = randf_range(0, PI)
 
 
 func _on_body_entered(body):
