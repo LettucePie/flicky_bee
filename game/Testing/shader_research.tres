@@ -1,0 +1,66 @@
+[gd_resource type="VisualShader" load_steps=9 format=3 uid="uid://dpipwh4x7yl1q"]
+
+[ext_resource type="Texture2D" uid="uid://grwce6p0nkp4" path="res://Accessory/Trails/Art/Sparkle_Particle.png" id="1_2i2qq"]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_scawh"]
+output_port_for_preview = 0
+input_name = "normal"
+
+[sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_dnv20"]
+function = 0
+
+[sub_resource type="Gradient" id="Gradient_g1ml0"]
+offsets = PackedFloat32Array(0, 0.28481)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_tbnt6"]
+seed = 2
+frequency = 0.002
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0cidn"]
+seamless = true
+color_ramp = SubResource("Gradient_g1ml0")
+noise = SubResource("FastNoiseLite_tbnt6")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_a34b0"]
+output_port_for_preview = 0
+texture = SubResource("NoiseTexture2D_0cidn")
+texture_type = 2
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_bf5qk"]
+output_port_for_preview = 0
+texture = ExtResource("1_2i2qq")
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform sampler2D tex_frg_5 : hint_normal;
+uniform sampler2D tex_frg_6;
+
+
+
+void fragment() {
+// Texture2D:5
+	vec4 n_out5p0 = texture(tex_frg_5, UV);
+
+
+// Texture2D:6
+	vec4 n_out6p0 = texture(tex_frg_6, vec2(n_out5p0.xy));
+
+
+// Output:0
+	ALBEDO = vec3(n_out6p0.xyz);
+
+
+}
+"
+graph_offset = Vector2(-446.258, 9.41806)
+nodes/fragment/3/node = SubResource("VisualShaderNodeInput_scawh")
+nodes/fragment/3/position = Vector2(-660, 220)
+nodes/fragment/4/node = SubResource("VisualShaderNodeFloatFunc_dnv20")
+nodes/fragment/4/position = Vector2(1020, 1120)
+nodes/fragment/5/node = SubResource("VisualShaderNodeTexture_a34b0")
+nodes/fragment/5/position = Vector2(-240, 180)
+nodes/fragment/6/node = SubResource("VisualShaderNodeTexture_bf5qk")
+nodes/fragment/6/position = Vector2(80, 200)
+nodes/fragment/connections = PackedInt32Array(6, 0, 0, 0, 5, 0, 6, 0)

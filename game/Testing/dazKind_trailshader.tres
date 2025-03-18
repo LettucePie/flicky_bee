@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://752cd3th6x30"]
+
+[ext_resource type="Shader" path="res://Testing/trail_dazKind.gdshader" id="1_wcfjc"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vdmv4"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_k0r60"]
+noise = SubResource("FastNoiseLite_vdmv4")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_wcfjc")
+shader_parameter/gradientRemap = Vector4(0.708, -2.683, 0, 0.264)
+shader_parameter/beamRemap = Vector4(0.404, 1.12, 1, 200)
+shader_parameter/color1 = null
+shader_parameter/color2 = Color(0.794009, 0.475204, 0.64741, 1)
+shader_parameter/scale = Vector3(1, 50, 0)
+shader_parameter/threshold = 0.993
+shader_parameter/offset = 1.5
+shader_parameter/noise = SubResource("NoiseTexture2D_k0r60")

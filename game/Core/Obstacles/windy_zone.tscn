@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://dpgn5w6agfbsu"]
+[gd_scene load_steps=5 format=3 uid="uid://dpgn5w6agfbsu"]
 
 [ext_resource type="Script" path="res://Core/Obstacles/windy_zone.gd" id="1_uify3"]
-[ext_resource type="Shader" uid="uid://drdhgosikxya8" path="res://Core/Art/Materials/WindZoneShader.tres" id="2_k0ujf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ykap7"]
 resource_local_to_scene = true
@@ -9,14 +8,6 @@ size = Vector3(24, 16, 20)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2lgqk"]
 size = Vector3(24, 16, 20)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0jgt2"]
-render_priority = 0
-shader = ExtResource("2_k0ujf")
-
-[sub_resource type="BoxMesh" id="BoxMesh_77633"]
-material = SubResource("ShaderMaterial_0jgt2")
-size = Vector3(20, 0.1, 54)
 
 [sub_resource type="PrismMesh" id="PrismMesh_1jvjs"]
 
@@ -42,11 +33,6 @@ target_position = Vector3(0, 0, 0)
 collision_mask = 4
 collide_with_areas = true
 collide_with_bodies = false
-
-[node name="windshadermesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-cast_shadow = 0
-mesh = SubResource("BoxMesh_77633")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("PrismMesh_1jvjs")

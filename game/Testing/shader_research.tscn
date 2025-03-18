@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://d1gc0wyd7tk22"]
+
+[ext_resource type="Shader" path="res://Testing/trail_dazKind.gdshader" id="1_2mefq"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_lldxg"]
+size = Vector3(50, 0.5, 50)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_j134t"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ci0x8"]
+radius = 1.5
+height = 3.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vdmv4"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_k0r60"]
+noise = SubResource("FastNoiseLite_vdmv4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fb6yt"]
+render_priority = 0
+shader = ExtResource("1_2mefq")
+shader_parameter/gradientRemap = Vector4(0.708, -2.683, 0, 0.264)
+shader_parameter/beamRemap = Vector4(0.404, 1.12, 1, 200)
+shader_parameter/color1 = null
+shader_parameter/color2 = Color(0.794009, 0.475204, 0.64741, 1)
+shader_parameter/scale = Vector3(1, 50, 0)
+shader_parameter/threshold = 0.993
+shader_parameter/offset = 1.5
+shader_parameter/noise = SubResource("NoiseTexture2D_k0r60")
+
+[node name="ShaderResearch" type="Node3D"]
+
+[node name="floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_lldxg")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.641838, 0.489205, -0.590528, 0, 0.770079, 0.637948, 0.76684, -0.409459, 0.494266, 0, 2.54528, 0)
+shadow_enabled = true
+
+[node name="post" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.47109, 0.651163, 0.939066)
+mesh = SubResource("CylinderMesh_j134t")
+
+[node name="Mat" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.80159, 0)
+mesh = SubResource("SphereMesh_ci0x8")
+surface_material_override/0 = SubResource("ShaderMaterial_fb6yt")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 0.728849, 0.684674, 0, -0.684674, 0.728849, 0, 7.32826, 6.38529)
