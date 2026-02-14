@@ -495,5 +495,3 @@ func _on_results_quit_out():
 		get_window().add_child(menu)
 		get_tree().set_current_scene(menu)
 		self.queue_free()
-
-

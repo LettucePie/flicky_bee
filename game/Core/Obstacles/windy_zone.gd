@@ -60,4 +60,3 @@ func _on_body_entered(body):
 func _on_body_exited(body):
 	if player != null and body == player:
 		player = null
-

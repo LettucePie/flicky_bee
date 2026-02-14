@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Flicky Bee"
 run/main_scene="res://Play/main_menu.tscn"
-config/features=PackedStringArray("4.2", "Mobile")
+config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://Publishing/GameIcon.png"
 
 [display]
@@ -22,6 +22,10 @@ window/size/viewport_height=1920
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 window/handheld/orientation=1
+
+[filesystem]
+
+import/blender/enabled=false
 
 [gui]
 

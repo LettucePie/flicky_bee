@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dpgn5w6agfbsu"]
+[gd_scene load_steps=8 format=3 uid="uid://dpgn5w6agfbsu"]
 
 [ext_resource type="Script" path="res://Core/Obstacles/windy_zone.gd" id="1_uify3"]
 
@@ -9,7 +9,24 @@ size = Vector3(24, 16, 20)
 [sub_resource type="BoxShape3D" id="BoxShape3D_2lgqk"]
 size = Vector3(24, 16, 20)
 
-[sub_resource type="PrismMesh" id="PrismMesh_1jvjs"]
+[sub_resource type="Curve" id="Curve_ysnqf"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_xyqo7"]
+curve = SubResource("Curve_ysnqf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bh145"]
+emission_shape = 3
+emission_box_extents = Vector3(20, 0.5, 40)
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = -2.23517e-06
+linear_accel_curve = SubResource("CurveTexture_xyqo7")
+
+[sub_resource type="SphereMesh" id="SphereMesh_h64x5"]
 
 [node name="windy_zone" type="Area3D" groups=["wind_zone"]]
 collision_mask = 2
@@ -34,8 +51,12 @@ collision_mask = 4
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("PrismMesh_1jvjs")
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 24
+lifetime = 5.0
+preprocess = 5.0
+process_material = SubResource("ParticleProcessMaterial_bh145")
+draw_pass_1 = SubResource("SphereMesh_h64x5")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -17,8 +17,8 @@ vec3 blend_linear_light(vec3 base, vec3 blend, float opacity) {
 	return blend;
 }
 float map(float value, float from_min, float from_max, float to_min, float to_max) {
-	return abs(from_max - from_min) > 0.0001 ? 
-		to_min + (from_min > from_max ? 1.0 - smoothstep(from_max, from_min, value) : smoothstep(from_min, from_max, value)) * (to_max - to_min) : 
+	return abs(from_max - from_min) > 0.0001 ?
+		to_min + (from_min > from_max ? 1.0 - smoothstep(from_max, from_min, value) : smoothstep(from_min, from_max, value)) * (to_max - to_min) :
 		0.0;
 }
 
