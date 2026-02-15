@@ -7,6 +7,8 @@ var assigned : bool = false
 
 ## Components
 @onready var wind_area_shape : BoxShape3D = $CollisionShape3D.shape
+@onready var wind_particles : GPUParticles3D = $WindParticles
+@onready var particle_mat : ParticleProcessMaterial = wind_particles.process_material
 
 ## Dynamic
 var player : Player = null
@@ -44,12 +46,16 @@ func shape_wind_area():
 					closest_distance = abs(gpos.z - target.z)
 					south_target = target
 	wind_area_shape.size.z = closest_distance * 1.9
+	particle_mat.emission_box_extents.z = wind_area_shape.size.z
 
 
 func _physics_process(delta):
 	if player != null and assigned:
 		if player.flicked:
 			player.push = wind_manager.influence
+	wind_particles.lifetime = wind_manager.influence.length() + 4
+	particle_mat.gravity = wind_manager.influence * 2
+	
 
 
 func _on_body_entered(body):
