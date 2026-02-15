@@ -16,3 +16,5 @@ data_*/
 # Mobile Export Stuff
 game/ios/
 game/android/
+game/exports/
+game/exports

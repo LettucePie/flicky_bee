@@ -40,7 +40,9 @@ linear_accel_max = -2.23517e-06
 scale_curve = SubResource("CurveTexture_82g4c")
 scale_over_velocity_curve = SubResource("CurveTexture_fw7ml")
 
-[sub_resource type="SphereMesh" id="SphereMesh_h64x5"]
+[sub_resource type="SphereMesh" id="SphereMesh_pe5jh"]
+radial_segments = 16
+rings = 8
 
 [node name="windy_zone" type="Area3D" groups=["wind_zone"]]
 collision_mask = 2
@@ -74,7 +76,7 @@ amount = 24
 lifetime = 5.0
 preprocess = 5.0
 process_material = SubResource("ParticleProcessMaterial_bh145")
-draw_pass_1 = SubResource("SphereMesh_h64x5")
+draw_pass_1 = SubResource("SphereMesh_pe5jh")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.957521, 0.288363, 0, -0.288363, 0.957521, 0, 19.7123, 26.6871)

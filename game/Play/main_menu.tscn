@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://b1aibpbthxdp7"]
+[gd_scene load_steps=48 format=3 uid="uid://b1aibpbthxdp7"]
 
 [ext_resource type="Theme" uid="uid://cwjsb0qlm86r5" path="res://UI/Style/Bee_Theme.tres" id="1_g7eow"]
 [ext_resource type="Script" path="res://Play/main_menu.gd" id="2_jrubw"]
@@ -7,9 +7,12 @@
 [ext_resource type="AudioBusLayout" uid="uid://cbxl0a7oitk4f" path="res://default_bus_layout.tres" id="3_y2voh"]
 [ext_resource type="Texture2D" uid="uid://dljmarbop3jwl" path="res://UI/Art/Title_Cropped.png" id="4_nq71u"]
 [ext_resource type="Theme" uid="uid://bd87acx3a4l4n" path="res://UI/Style/SubBee_Theme.tres" id="4_r8si4"]
+[ext_resource type="PackedScene" uid="uid://dwgh0l2dpnpsf" path="res://Play/persist.tscn" id="4_t0ywt"]
 [ext_resource type="Texture2D" uid="uid://dy7du7g11r1p4" path="res://UI/Art/Score_Card.png" id="5_2laek"]
 [ext_resource type="SystemFont" uid="uid://dolyccjp7guf1" path="res://UI/Fonts/Avenir_Settings.tres" id="5_uvas2"]
+[ext_resource type="PackedScene" uid="uid://divwo3i3xqtwj" path="res://Play/play_1.tscn" id="5_y7hjn"]
 [ext_resource type="FontFile" uid="uid://bq4c0sjajpvnb" path="res://UI/Fonts/Metropolis/Metropolis-Bold.otf" id="6_7lvee"]
+[ext_resource type="PackedScene" uid="uid://dplwt2o1yjiun" path="res://Play/play_2.tscn" id="6_drhe8"]
 [ext_resource type="Texture2D" uid="uid://cwb03687fuevv" path="res://UI/Art/Icons/Play_Icon.png" id="6_j0m36"]
 [ext_resource type="Texture2D" uid="uid://mjonwj8u5sxy" path="res://UI/Art/Icons/Edit_Icon.png" id="7_w5kti"]
 [ext_resource type="Texture2D" uid="uid://3mm6eoeg7f01" path="res://UI/Art/Icons/Options_Icon.png" id="8_cikw8"]
@@ -491,6 +494,9 @@ grow_vertical = 2
 theme = ExtResource("1_g7eow")
 script = ExtResource("2_jrubw")
 audio_bus = ExtResource("3_y2voh")
+persist_scene = ExtResource("4_t0ywt")
+play_scene = ExtResource("5_y7hjn")
+play_scene_2 = ExtResource("6_drhe8")
 
 [node name="Font_Adjust" type="Node" parent="."]
 script = ExtResource("3_gw206")

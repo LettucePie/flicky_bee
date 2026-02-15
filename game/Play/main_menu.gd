@@ -3,8 +3,9 @@ extends Control
 @export var skip_store := false
 @export var audio_bus : AudioBusLayout
 
-@onready var persist_scene = preload("res://Play/persist.tscn")
-@onready var play_scene = preload("res://Play/play_1.tscn")
+@export var persist_scene : PackedScene
+@export var play_scene : PackedScene
+@export var play_scene_2 :PackedScene
 
 @onready var shadow_toggle = $Options/VBox/ShadowToggle
 @onready var clutter_toggle = $Options/VBox/ClutterToggle
@@ -265,4 +266,3 @@ func _input(event):
 				_on_options_pressed()
 			elif event.keycode == KEY_3:
 				_on_help_pressed()
-
