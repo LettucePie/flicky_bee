@@ -65,6 +65,9 @@ func _ready():
 	anim.add_animation_library("Base", anim_lib)
 	anim.play("Base/Rest")
 	pass # Replace with function body.
+	if get_node("Test") != null:
+		for i in 3:
+			print("REMOVE TEST LABEL")
 
 
 func _assign_accessories(hat_name : String, trail_name : String) -> void:
@@ -131,6 +134,9 @@ func _physics_process(delta):
 	pos = self.get_position()
 	pos.x = clamp(pos.x, -6.25, 6.25)
 	self.set_position(pos)
+	
+	if has_node("Test"):
+		$Test.text = str(push)
 
 
 func _switch_to_flight() -> void:
@@ -300,6 +306,3 @@ func _on_magnet_area_exited(area):
 	if area.is_in_group("Collectable"):
 		if magnet_col.has(area.get_parent()):
 			magnet_col.erase(area.get_parent())
-
-
-

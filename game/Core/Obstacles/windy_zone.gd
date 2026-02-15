@@ -9,6 +9,10 @@ var assigned : bool = false
 @onready var wind_area_shape : BoxShape3D = $CollisionShape3D.shape
 @onready var wind_particles : GPUParticles3D = $WindParticles
 @onready var particle_mat : ParticleProcessMaterial = wind_particles.process_material
+@export var TESTING_AREA : bool = false
+@export var TEST_DOT : PackedScene
+@export var TEST_ENTER_MAT : StandardMaterial3D
+@export var TEST_EXIT_MAT : StandardMaterial3D
 
 ## Dynamic
 var player : Player = null
@@ -46,7 +50,7 @@ func shape_wind_area():
 					closest_distance = abs(gpos.z - target.z)
 					south_target = target
 	wind_area_shape.size.z = closest_distance * 1.9
-	particle_mat.emission_box_extents.z = wind_area_shape.size.z
+	particle_mat.emission_box_extents.z = wind_area_shape.size.z * 0.75
 
 
 func _physics_process(delta):
@@ -61,8 +65,18 @@ func _physics_process(delta):
 func _on_body_entered(body):
 	if body is Player:
 		player = body
+		_spawn_test_dot_at_position(body.global_position, TEST_ENTER_MAT)
 
 
 func _on_body_exited(body):
 	if player != null and body == player:
 		player = null
+		_spawn_test_dot_at_position(body.global_position, TEST_EXIT_MAT)
+
+
+func _spawn_test_dot_at_position(pos : Vector3, over_mat : StandardMaterial3D):
+	if TESTING_AREA and OS.is_debug_build():
+		var new_dot : MeshInstance3D = TEST_DOT.instantiate(1)
+		new_dot.global_position = pos
+		new_dot.material_override = over_mat
+		get_window().add_child(new_dot)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://pbe74ba2ywah"]
+[gd_scene load_steps=28 format=3 uid="uid://pbe74ba2ywah"]
 
 [ext_resource type="Script" path="res://Core/player.gd" id="1_igtm3"]
 [ext_resource type="AudioStream" uid="uid://dvi65b4n35yoj" path="res://Core/Sound/Pickup_Honey.wav" id="2_4u6o7"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://b2wonbiskwb7q" path="res://Accessory/Hats/hat.tscn" id="10_k4ydw"]
 [ext_resource type="Texture2D" uid="uid://c3f4c4g4lsp6l" path="res://Core/Art/Textures/Hit_FX1.png" id="11_cb7ww"]
 [ext_resource type="Script" path="res://Core/hurt_blink.gd" id="12_5hnsk"]
+[ext_resource type="Script" path="res://Accessory/Trails/trail_type.gd" id="14_5id44"]
 [ext_resource type="Resource" uid="uid://b1ga1q8mnbv5q" path="res://Accessory/Trails/TrailTypes/dot_type.tres" id="18_e0cxt"]
 [ext_resource type="Resource" uid="uid://vwxtv4i7agvm" path="res://Accessory/Trails/TrailTypes/SparkleTrail_Type.tres" id="19_h6lm1"]
 [ext_resource type="Resource" uid="uid://dmyntt6cmeuvs" path="res://Accessory/Trails/TrailTypes/SupporterTrail_Type.tres" id="20_m1lup"]
@@ -30,6 +31,9 @@ radius = 1.65
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7w1m1"]
 radius = 0.7
+
+[sub_resource type="LabelSettings" id="LabelSettings_jahum"]
+font_size = 43
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 collision_layer = 2
@@ -55,7 +59,7 @@ transform = Transform3D(-1.67852e-08, 0.0067018, -0.383942, 1.33914e-16, 0.38394
 
 [node name="Trail" parent="Turn" instance=ExtResource("10_f4457")]
 transform = Transform3D(0.24989, 0.291521, 0.00518818, -0.291547, 0.249912, -1.44712e-08, -0.00337655, -0.00393905, 0.383965, 3.76855e-08, 0.0135113, -0.862141)
-trails = Array[Resource("res://Accessory/Trails/trail_type.gd")]([ExtResource("18_e0cxt"), ExtResource("19_h6lm1"), ExtResource("20_m1lup"), ExtResource("21_x0si1"), ExtResource("22_2dm6y"), ExtResource("23_wqphc")])
+trails = Array[ExtResource("14_5id44")]([ExtResource("18_e0cxt"), ExtResource("19_h6lm1"), ExtResource("20_m1lup"), ExtResource("21_x0si1"), ExtResource("22_2dm6y"), ExtResource("23_wqphc")])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_uaofe")
@@ -96,6 +100,16 @@ script = ExtResource("12_5hnsk")
 [node name="Timer" type="Timer" parent="."]
 
 [node name="BounceTimer" type="Timer" parent="."]
+
+[node name="Test" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_jahum")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="area_entered" from="Magnet" to="." method="_on_magnet_area_entered"]
 [connection signal="area_exited" from="Magnet" to="." method="_on_magnet_area_exited"]

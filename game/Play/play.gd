@@ -3,7 +3,8 @@ extends Node
 signal fully_initiated()
 
 @export var player_scene : PackedScene
-@export var life_time := 10.0
+@export var life_time := 15.0
+@export var TEST_OVERRIDE : bool = false
 @export var flight_reserve := 5.0
 @export var rest_time := 2.0
 @export var flight_bound := 90.0
@@ -91,6 +92,8 @@ func _setup(menu_node : Control, persist_node : Persist):
 	current_flower = current_platform._return_flower()
 	player.set_position(current_platform.get_position())
 	_update_camera_target(6.0)
+	if OS.is_debug_build() and TEST_OVERRIDE:
+		life_time = 400
 	time = life_time
 	flight = flight_reserve
 	$Life_Timer.stop()

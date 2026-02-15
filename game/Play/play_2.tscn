@@ -35,7 +35,7 @@ material = SubResource("StandardMaterial3D_vt36d")
 [node name="Play_2" type="Node" node_paths=PackedStringArray("bg_patches") groups=["Play"]]
 script = ExtResource("1_8kuhp")
 player_scene = ExtResource("2_jebu4")
-life_time = 15.0
+TEST_OVERRIDE = true
 bg_patches = [NodePath("Trail_Patch1"), NodePath("Trail_Patch2"), NodePath("Trail_Patch3")]
 
 [node name="Generator" parent="." instance=ExtResource("3_cmxhb")]

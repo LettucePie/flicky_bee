@@ -22,7 +22,6 @@ size = Vector3(20, 3, 10)
 [node name="Play_1" type="Node" node_paths=PackedStringArray("bg_patches") groups=["Play"]]
 script = ExtResource("1_vmdlg")
 player_scene = ExtResource("2_75ge2")
-life_time = 15.0
 bg_patches = [NodePath("Grass_Patch1"), NodePath("Grass_Patch2"), NodePath("Grass_Patch3")]
 
 [node name="Generator" parent="." instance=ExtResource("2_yeg2j")]

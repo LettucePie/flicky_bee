@@ -1,6 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://dpgn5w6agfbsu"]
+[gd_scene load_steps=13 format=3 uid="uid://dpgn5w6agfbsu"]
 
 [ext_resource type="Script" path="res://Core/Obstacles/windy_zone.gd" id="1_uify3"]
+[ext_resource type="PackedScene" uid="uid://by1wn7kxdwwjy" path="res://Testing/test_dot.tscn" id="2_ugg2h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qokbg"]
+albedo_color = Color(0.494118, 1, 0.552941, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c4og1"]
+albedo_color = Color(1, 0.129412, 0.156863, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ykap7"]
 resource_local_to_scene = true
@@ -38,6 +45,10 @@ scale_over_velocity_curve = SubResource("CurveTexture_fw7ml")
 [node name="windy_zone" type="Area3D" groups=["wind_zone"]]
 collision_mask = 2
 script = ExtResource("1_uify3")
+TESTING_AREA = true
+TEST_DOT = ExtResource("2_ugg2h")
+TEST_ENTER_MAT = SubResource("StandardMaterial3D_qokbg")
+TEST_EXIT_MAT = SubResource("StandardMaterial3D_c4og1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_ykap7")

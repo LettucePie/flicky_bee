@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://by1wn7kxdwwjy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xej0b"]
+albedo_color = Color(1, 0, 0.584314, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_lxdxu"]
+material = SubResource("StandardMaterial3D_xej0b")
+
+[node name="Node3D" type="MeshInstance3D"]
+mesh = SubResource("PrismMesh_lxdxu")
