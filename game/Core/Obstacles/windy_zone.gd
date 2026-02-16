@@ -77,6 +77,6 @@ func _on_body_exited(body):
 func _spawn_test_dot_at_position(pos : Vector3, over_mat : StandardMaterial3D):
 	if TESTING_AREA and OS.is_debug_build():
 		var new_dot : MeshInstance3D = TEST_DOT.instantiate(1)
+		get_window().add_child(new_dot)
 		new_dot.global_position = pos
 		new_dot.material_override = over_mat
-		get_window().add_child(new_dot)
