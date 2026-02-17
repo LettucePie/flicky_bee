@@ -336,6 +336,18 @@ tracks/5/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Help:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_2umxj"]
 resource_name = "Options_Close"
@@ -534,7 +546,6 @@ libraries = {
 autoplay = "Intro"
 
 [node name="Main" type="Control" parent="."]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -787,8 +798,6 @@ stream = ExtResource("12_yxq8t")
 [node name="Edit" parent="." instance=ExtResource("12_g11w1")]
 visible = false
 layout_mode = 1
-offset_right = 1080.0
-offset_bottom = 1920.0
 
 [node name="Options" type="Panel" parent="."]
 visible = false
@@ -796,8 +805,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1080.0
-offset_bottom = 1920.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -956,8 +963,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1080.0
-offset_bottom = 1920.0
 grow_horizontal = 2
 grow_vertical = 2
 
