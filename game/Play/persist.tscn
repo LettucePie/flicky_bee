@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dwgh0l2dpnpsf"]
+[gd_scene load_steps=9 format=3 uid="uid://dwgh0l2dpnpsf"]
 
 [ext_resource type="Script" path="res://Play/persist.gd" id="1_x2eam"]
 [ext_resource type="Script" path="res://Play/ios_plugins.gd" id="2_x5bnn"]
+[ext_resource type="Script" path="res://Accessory/pricetag_type.gd" id="3_20c62"]
 [ext_resource type="Resource" uid="uid://by7b7xlpi6dxw" path="res://Accessory/Trails/PriceTags/SupportTrail_PriceTag.tres" id="3_i4n2t"]
 [ext_resource type="Script" path="res://Play/playstore_plugins.gd" id="4_gydss"]
 [ext_resource type="PackedScene" uid="uid://npe2vhhs2fmy" path="res://Testing/fps_debug.tscn" id="5_vaajg"]
@@ -19,7 +20,7 @@ game_ver = 1.3
 
 [node name="iOS_Plugins" type="Node" parent="."]
 script = ExtResource("2_x5bnn")
-products = Array[Resource("res://Accessory/pricetag_type.gd")]([ExtResource("3_i4n2t")])
+products = Array[ExtResource("3_20c62")]([ExtResource("3_i4n2t")])
 
 [node name="Timer" type="Timer" parent="iOS_Plugins"]
 
@@ -28,7 +29,7 @@ wait_time = 10.0
 
 [node name="PlayStore_Plugins" type="Node" parent="."]
 script = ExtResource("4_gydss")
-products = Array[Resource("res://Accessory/pricetag_type.gd")]([ExtResource("3_i4n2t")])
+products = Array[ExtResource("3_20c62")]([ExtResource("3_i4n2t")])
 
 [node name="Debug" type="Label" parent="PlayStore_Plugins"]
 visible = false
@@ -50,7 +51,6 @@ autowrap_mode = 2
 wait_time = 60.0
 
 [node name="FPS_Debug" parent="." instance=ExtResource("5_vaajg")]
-visible = false
 
 [node name="Screenshot" type="Node" parent="."]
 script = ExtResource("6_dq4lg")

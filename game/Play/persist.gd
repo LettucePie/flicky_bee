@@ -218,4 +218,3 @@ func _clear_data() -> void:
 	trail = "default"
 	flower = "default"
 	_save_game()
-

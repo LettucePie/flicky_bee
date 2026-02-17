@@ -1,5 +1,6 @@
 extends Node3D
 
+@export var optimize_test : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,3 +15,6 @@ func _ready():
 		else:
 			$HeavyFoliage.queue_free()
 			$LightFoliage.show()
+	if optimize_test:
+		$HeavyFoliage.queue_free()
+		$LightFoliage.queue_free()

@@ -37,6 +37,7 @@ size = Vector2(20, 60)
 
 [node name="Grass_Patch" type="Node3D" groups=["Grass_Patch"]]
 script = ExtResource("1_r3gwb")
+optimize_test = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
 
@@ -57,19 +58,24 @@ visible = false
 mesh = SubResource("PlaneMesh_e0f54")
 
 [node name="HeavyFoliage" type="Node3D" parent="."]
+visible = false
 
 [node name="GrassMulti_Straight" type="MultiMeshInstance3D" parent="HeavyFoliage"]
+gi_mode = 0
 multimesh = ExtResource("3_18qme")
 
 [node name="GrassMulti_Curve" type="MultiMeshInstance3D" parent="HeavyFoliage"]
+gi_mode = 0
 multimesh = ExtResource("4_xexh8")
 
 [node name="GrassMulti_L" type="MultiMeshInstance3D" parent="HeavyFoliage"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.352709, 0, 0)
+gi_mode = 0
 multimesh = ExtResource("5_jxcmy")
 
 [node name="GrassMulti_R" type="MultiMeshInstance3D" parent="HeavyFoliage"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.9128, 0, 0)
+gi_mode = 0
 multimesh = ExtResource("6_lnjxa")
 
 [node name="LightFoliage" type="Node3D" parent="."]
