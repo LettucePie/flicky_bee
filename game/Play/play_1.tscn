@@ -27,7 +27,6 @@ bg_patches = [NodePath("Grass_Patch1"), NodePath("Grass_Patch2"), NodePath("Gras
 [node name="Generator" parent="." instance=ExtResource("2_yeg2j")]
 
 [node name="Light" parent="." instance=ExtResource("4_2bjav")]
-light_bake_mode = 2
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, -6.97574e-16, -1.5246e-23, -1.5246e-23, -4.37114e-08, 1, -6.97574e-16, -1, -4.37114e-08, 2.08165e-12, 13, 0.025)
