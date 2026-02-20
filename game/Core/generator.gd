@@ -175,7 +175,3 @@ func _shuffle_gaps() -> void:
 	collection_patches.shuffle()
 	danger_scenes.shuffle()
 	obstacle_scenes.shuffle()
-
-
-func _process(delta: float) -> void:
-	$Label.text = "Generator Child Count: " + str(get_child_count())

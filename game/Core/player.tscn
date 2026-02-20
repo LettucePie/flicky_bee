@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://pbe74ba2ywah"]
+[gd_scene load_steps=27 format=3 uid="uid://pbe74ba2ywah"]
 
 [ext_resource type="Script" path="res://Core/player.gd" id="1_igtm3"]
 [ext_resource type="AudioStream" uid="uid://dvi65b4n35yoj" path="res://Core/Sound/Pickup_Honey.wav" id="2_4u6o7"]
@@ -31,9 +31,6 @@ radius = 1.65
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7w1m1"]
 radius = 0.7
-
-[sub_resource type="LabelSettings" id="LabelSettings_jahum"]
-font_size = 43
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 collision_layer = 2
@@ -100,16 +97,6 @@ script = ExtResource("12_5hnsk")
 [node name="Timer" type="Timer" parent="."]
 
 [node name="BounceTimer" type="Timer" parent="."]
-
-[node name="Test" type="Label" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-label_settings = SubResource("LabelSettings_jahum")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [connection signal="area_entered" from="Magnet" to="." method="_on_magnet_area_entered"]
 [connection signal="area_exited" from="Magnet" to="." method="_on_magnet_area_exited"]

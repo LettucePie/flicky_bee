@@ -134,9 +134,6 @@ func _physics_process(delta):
 	pos = self.get_position()
 	pos.x = clamp(pos.x, -6.25, 6.25)
 	self.set_position(pos)
-	
-	if has_node("Test"):
-		$Test.text = str(push)
 
 
 func _switch_to_flight() -> void:

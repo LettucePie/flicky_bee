@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://2gkm2rsvmoiy"]
+[gd_scene load_steps=25 format=3 uid="uid://2gkm2rsvmoiy"]
 
 [ext_resource type="Script" path="res://Core/generator.gd" id="1_govy5"]
 [ext_resource type="PackedScene" uid="uid://binixehfbq4hi" path="res://Core/platform.tscn" id="2_47aoa"]
@@ -28,9 +28,6 @@
 _data = [Vector2(2.08165e-12, 0.15), 0.0, 0.192868, 0, 0, Vector2(0.278, 0.16), 0.104672, 0.104672, 0, 0, Vector2(1, 1), 0.0997758, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="LabelSettings" id="LabelSettings_sujyl"]
-font_size = 28
-
 [node name="Generator" type="Node3D"]
 script = ExtResource("1_govy5")
 gen_start = ExtResource("2_qjg4w")
@@ -45,14 +42,3 @@ collection_patches = Array[PackedScene]([ExtResource("7_v1ynf"), ExtResource("8_
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.937002, 0.189498, 0.293459, -0.349324, 0.508296, 0.787152, 0, -0.840075, 0.542471, 0, 0, 0)
-
-[node name="Label" type="Label" parent="."]
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.536
-offset_bottom = 0.880005
-grow_horizontal = 2
-grow_vertical = 2
-label_settings = SubResource("LabelSettings_sujyl")
-horizontal_alignment = 1
-vertical_alignment = 1
