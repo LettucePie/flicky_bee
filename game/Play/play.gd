@@ -66,6 +66,7 @@ func _ready():
 		_setup(null, null)
 
 
+## Incremental Loading
 func _part_ready() -> void:
 	print("Child of PlayScene Ready")
 	ready_parts += 1
@@ -167,13 +168,14 @@ func _update_camera_target(offset : float) -> void:
 
 
 func _move_bg_patches() -> void:
-	var mid_z = bg_patches[1].get_position().z
-	if camera_target.z < mid_z:
-		var new_back = bg_patches.pop_front()
-		var pos = new_back.get_position()
-		pos.z -= 120
-		new_back.set_position(pos)
-		bg_patches.push_back(new_back)
+	if camera_target.z < bg_patches[1].get_position().z:
+		var current_patch = bg_patches[1]
+		var next_patch = bg_patches[2]
+		var future_patch = bg_patches[0]
+		bg_patches.clear()
+		next_patch.position.z = current_patch.position.z - 60
+		future_patch.position.z = next_patch.position.z - 60
+		bg_patches = [current_patch, next_patch, future_patch]
 
 
 func _disable_player_input(duration : float) -> void:
