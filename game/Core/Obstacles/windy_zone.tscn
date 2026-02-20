@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Core/Obstacles/windy_zone.gd" id="1_uify3"]
 [ext_resource type="PackedScene" uid="uid://by1wn7kxdwwjy" path="res://Testing/test_dot.tscn" id="2_ugg2h"]
 [ext_resource type="Material" uid="uid://bonshw73v2yun" path="res://Core/Art/Materials/WindZone_Material.tres" id="3_xyh7d"]
-[ext_resource type="Script" path="res://Core/wind_stream.gd" id="4_v46gw"]
+[ext_resource type="Script" path="res://Core/wind_zone.gd" id="4_s02rp"]
 [ext_resource type="FastNoiseLite" uid="uid://bk7x0pkx7vppg" path="res://Core/Art/Materials/WindZone_Noise.tres" id="5_fjeur"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qokbg"]
@@ -94,7 +94,7 @@ transform = Transform3D(1, 0, 0, 0, 0.957521, 0.288363, 0, -0.288363, 0.957521, 
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_xgeux")
-script = ExtResource("4_v46gw")
+script = ExtResource("4_s02rp")
 noise = ExtResource("5_fjeur")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

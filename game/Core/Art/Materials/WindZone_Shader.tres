@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=10 format=3 uid="uid://88vjiyiw5f3l"]
+[gd_resource type="VisualShader" load_steps=11 format=3 uid="uid://88vjiyiw5f3l"]
 
 [ext_resource type="FastNoiseLite" uid="uid://bk7x0pkx7vppg" path="res://Core/Art/Materials/WindZone_Noise.tres" id="1_rbprj"]
 
@@ -40,20 +40,29 @@ operator = 1
 default_input_values = [1, Vector2(4, 1), 2, Vector2(0, 0)]
 function = 1
 
+[sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_2cir7"]
+parameter_name = "UVScale"
+default_value_enabled = true
+default_value = Vector2(1, 1)
+
 [resource]
 code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx, unshaded, shadows_disabled;
 
+uniform vec2 UVScale = vec2(1.000000, 1.000000);
 uniform sampler2D tex_frg_2;
 uniform sampler2D tex_frg_5;
 
 
 
 void fragment() {
+// Vector2Parameter:8
+	vec2 n_out8p0 = UVScale;
+
+
 // UVFunc:7
-	vec2 n_in7p1 = vec2(4.00000, 1.00000);
 	vec2 n_in7p2 = vec2(0.00000, 0.00000);
-	vec2 n_out7p0 = (UV - n_in7p2) * n_in7p1 + n_in7p2;
+	vec2 n_out7p0 = (UV - n_in7p2) * n_out8p0 + n_in7p2;
 
 
 // Texture2D:2
@@ -75,7 +84,7 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-458.836, 93.32)
+graph_offset = Vector2(-828.01, 138.022)
 flags/unshaded = true
 flags/shadows_disabled = true
 nodes/fragment/0/position = Vector2(800, 200)
@@ -87,4 +96,6 @@ nodes/fragment/6/node = SubResource("VisualShaderNodeVectorOp_sjj8q")
 nodes/fragment/6/position = Vector2(400, 600)
 nodes/fragment/7/node = SubResource("VisualShaderNodeUVFunc_jrjn0")
 nodes/fragment/7/position = Vector2(-420, 260)
-nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 2, 0, 6, 0, 5, 0, 6, 1, 6, 0, 0, 1, 7, 0, 2, 0)
+nodes/fragment/8/node = SubResource("VisualShaderNodeVec2Parameter_2cir7")
+nodes/fragment/8/position = Vector2(-800, 260)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 2, 0, 6, 0, 5, 0, 6, 1, 6, 0, 0, 1, 7, 0, 2, 0, 8, 0, 7, 1)

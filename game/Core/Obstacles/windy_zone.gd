@@ -13,6 +13,7 @@ var assigned : bool = false
 @export var TEST_DOT : PackedScene
 @export var TEST_ENTER_MAT : StandardMaterial3D
 @export var TEST_EXIT_MAT : StandardMaterial3D
+@export var wind_zone_shader : Shader
 
 ## Dynamic
 var player : Player = null
@@ -21,6 +22,9 @@ var influence : Vector3
 
 func _ready():
 	call_deferred("shape_wind_area")
+	print("TODO")
+	print("somehow make it so that we can scale unique instances of each WindZone with affecting scale of other windzones since they share a material and shader.")
+	print("probably like, instancing lmao")
 
 
 func assign_wind_zone_manager(manager : WindZoneManager):
