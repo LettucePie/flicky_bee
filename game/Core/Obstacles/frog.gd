@@ -48,5 +48,3 @@ func _on_area_3d_body_exited(body) -> void:
 	if body.is_in_group("Player"):
 		player_present = false
 		player_body = null
-
-

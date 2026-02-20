@@ -38,9 +38,6 @@ var hat := "default"
 var trail := "default"
 var flower := "default"
 
-var ios_plugs : IOSPlugin
-var play_plugs : PlaystorePlugin
-
 
 func _save_game() -> void:
 	print("Saving ...")
@@ -109,21 +106,6 @@ func _load_game() -> void:
 	else:
 		print("No File to Load... Creating initial Save")
 		_save_game()
-	if OS.has_feature("ios"):
-		ios_plugs = null
-		if $iOS_Plugins._plugin_integrated():
-			print("Integrated to iOS Plugins")
-			ios_plugs = $iOS_Plugins
-	else:
-		$iOS_Plugins.queue_free()
-	if OS.has_feature("playstore"):
-		play_plugs = null
-		if $PlayStore_Plugins._plugin_integrated():
-			print("Integrated to Playstore Plugins")
-			play_plugs = $PlayStore_Plugins
-			play_plugs._establish_connection()
-	else:
-		$PlayStore_Plugins.queue_free()
 
 
 func _file_surgery(data) -> void:
@@ -188,22 +170,6 @@ func _add_accessory(acc : String) -> void:
 	if !accessories.has(acc):
 		accessories.append(acc)
 		_save_game()
-
-
-func _on_ios_update_purchases(result):
-	if result[0] == "SUCCESS":
-		if ios_plugs.receipts.size() > 0:
-			for r in ios_plugs.receipts:
-				if !accessories.has(r.acc_name):
-					_add_accessory(r.acc_name)
-
-
-func _on_play_update_purchases(result):
-	if result[0] == "SUCCESS":
-		if play_plugs.receipt_catalog.size() > 0:
-			for r in play_plugs.receipt_catalog:
-				if !accessories.has(r.acc_name):
-					_add_accessory(r.acc_name)
 
 
 func _clear_data() -> void:

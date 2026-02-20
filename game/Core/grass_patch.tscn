@@ -37,7 +37,6 @@ size = Vector2(20, 60)
 
 [node name="Grass_Patch" type="Node3D" groups=["Grass_Patch"]]
 script = ExtResource("1_r3gwb")
-optimize_test = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
 

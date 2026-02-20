@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=4 uid="uid://b38gsdjvdmhmm"]
+[gd_scene load_steps=12 format=4 uid="uid://b38gsdjvdmhmm"]
 
 [ext_resource type="Script" path="res://Core/Collectables/Collectable.gd" id="1_df7ol"]
 [ext_resource type="Material" uid="uid://bdvfsfad5byji" path="res://Core/Art/Mono_Material/BaseMaterial.tres" id="2_fwbys"]
 [ext_resource type="Material" uid="uid://cp668a6ut4ukq" path="res://Core/Art/Mono_Material/GlossMaterial.tres" id="3_x7hw2"]
+[ext_resource type="Material" uid="uid://6fqyilk4h7yd" path="res://Core/Art/Materials/Honey_Mat_Glow.tres" id="4_jma6p"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_eaxah"]
 _surfaces = [{
@@ -184,16 +185,19 @@ transform = Transform3D(0.273548, -0.114003, -0.0466352, 0.114003, 0.27734, -0.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.647198, 0.689302)
 mesh = SubResource("ArrayMesh_ggmec")
 skeleton = NodePath("")
+surface_material_override/1 = ExtResource("4_jma6p")
 
 [node name="Hex_001" type="MeshInstance3D" parent="Turn/Tilt/Honey_Comb"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.217024, -0.809323)
 mesh = SubResource("ArrayMesh_0443r")
 skeleton = NodePath("")
+surface_material_override/1 = ExtResource("4_jma6p")
 
 [node name="Hex_002" type="MeshInstance3D" parent="Turn/Tilt/Honey_Comb"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08424, 0.68612)
 mesh = SubResource("ArrayMesh_p8qcy")
 skeleton = NodePath("")
+surface_material_override/1 = ExtResource("4_jma6p")
 
 [node name="Area3D" type="Area3D" parent="." groups=["Collectable"]]
 collision_layer = 4
