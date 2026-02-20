@@ -49,16 +49,16 @@ func shape_wind_area():
 				if abs(gpos.z - target.z) < closest_distance:
 					closest_distance = abs(gpos.z - target.z)
 					south_target = target
-	wind_area_shape.size.z = closest_distance * 1.9
-	particle_mat.emission_box_extents.z = wind_area_shape.size.z * 0.75
+	#wind_area_shape.size.z = closest_distance * 1.9
+	#particle_mat.emission_box_extents.z = wind_area_shape.size.z * 0.75
 
 
 func _physics_process(delta):
 	if player != null and assigned:
 		if player.flicked:
 			player.push = wind_manager.influence
-	wind_particles.lifetime = wind_manager.influence.length() + 4
-	particle_mat.gravity = wind_manager.influence * 2
+	#wind_particles.lifetime = wind_manager.influence.length() + 4
+	#particle_mat.gravity = wind_manager.influence * 2
 	
 
 

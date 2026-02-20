@@ -1,8 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://dpgn5w6agfbsu"]
+[gd_scene load_steps=17 format=3 uid="uid://dpgn5w6agfbsu"]
 
 [ext_resource type="Script" path="res://Core/Obstacles/windy_zone.gd" id="1_uify3"]
 [ext_resource type="PackedScene" uid="uid://by1wn7kxdwwjy" path="res://Testing/test_dot.tscn" id="2_ugg2h"]
-[ext_resource type="Material" uid="uid://cq8xwb87ki5cy" path="res://Core/Art/Materials/WindStreamMaterial.tres" id="3_lpj1m"]
+[ext_resource type="Material" uid="uid://bonshw73v2yun" path="res://Core/Art/Materials/WindStreamMaterial_Scaling.tres" id="3_xyh7d"]
+[ext_resource type="Script" path="res://Core/wind_stream.gd" id="4_v46gw"]
+[ext_resource type="FastNoiseLite" uid="uid://bimvii2jfgfwc" path="res://Core/Art/Materials/WindStream_Noise.tres" id="5_5tk6b"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qokbg"]
 albedo_color = Color(0.494118, 1, 0.552941, 1)
@@ -45,11 +47,9 @@ scale_over_velocity_curve = SubResource("CurveTexture_fw7ml")
 radial_segments = 16
 rings = 8
 
-[sub_resource type="Gradient" id="Gradient_kg7hg"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_vrdna"]
-gradient = SubResource("Gradient_kg7hg")
-repeat = 1
+[sub_resource type="PlaneMesh" id="PlaneMesh_xgeux"]
+material = ExtResource("3_xyh7d")
+size = Vector2(40, 60)
 
 [node name="windy_zone" type="Area3D" groups=["wind_zone"]]
 collision_mask = 2
@@ -90,10 +90,12 @@ draw_pass_1 = SubResource("SphereMesh_pe5jh")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.957521, 0.288363, 0, -0.288363, 0.957521, 0, 19.7123, 26.6871)
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(-2.14174e-06, -32.2494, -4.37114e-08, 0, -1.40967e-06, 1, -48.9974, 1.40967e-06, 1.91069e-15, 0, 0, 0)
-material_override = ExtResource("3_lpj1m")
-texture = SubResource("GradientTexture2D_vrdna")
+[node name="WindStream" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_xgeux")
+script = ExtResource("4_v46gw")
+noise = ExtResource("5_5tk6b")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
