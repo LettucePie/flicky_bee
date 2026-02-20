@@ -1,22 +1,22 @@
 [gd_resource type="VisualShader" load_steps=10 format=3 uid="uid://88vjiyiw5f3l"]
 
-[ext_resource type="FastNoiseLite" uid="uid://bimvii2jfgfwc" path="res://Core/Art/Materials/WindStream_Noise.tres" id="1_bovy8"]
+[ext_resource type="FastNoiseLite" uid="uid://bk7x0pkx7vppg" path="res://Core/Art/Materials/WindZone_Noise.tres" id="1_rbprj"]
 
 [sub_resource type="Gradient" id="Gradient_6okvo"]
 offsets = PackedFloat32Array(0.572985, 0.714597, 1)
 colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_h4bjl"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3wddb"]
 width = 1000
 height = 20
 generate_mipmaps = false
 normalize = false
 color_ramp = SubResource("Gradient_6okvo")
-noise = ExtResource("1_bovy8")
+noise = ExtResource("1_rbprj")
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_jsxdo"]
 output_port_for_preview = 0
-texture = SubResource("NoiseTexture2D_h4bjl")
+texture = SubResource("NoiseTexture2D_3wddb")
 
 [sub_resource type="Gradient" id="Gradient_fk2re"]
 offsets = PackedFloat32Array(0, 0.49827, 1)
