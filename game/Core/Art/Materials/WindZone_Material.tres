@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bonshw73v2yun"]
 
-[ext_resource type="Shader" uid="uid://88vjiyiw5f3l" path="res://Core/Art/Materials/WindStreamShader_Scaling.tres" id="1_6r7v5"]
+[ext_resource type="Shader" uid="uid://88vjiyiw5f3l" path="res://Core/Art/Materials/WindZone_Shader.tres" id="1_6r7v5"]
 
 [resource]
 render_priority = 0

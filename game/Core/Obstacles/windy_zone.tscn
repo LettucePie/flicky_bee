@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://Core/Obstacles/windy_zone.gd" id="1_uify3"]
 [ext_resource type="PackedScene" uid="uid://by1wn7kxdwwjy" path="res://Testing/test_dot.tscn" id="2_ugg2h"]
-[ext_resource type="Material" uid="uid://bonshw73v2yun" path="res://Core/Art/Materials/WindStreamMaterial_Scaling.tres" id="3_xyh7d"]
+[ext_resource type="Material" uid="uid://bonshw73v2yun" path="res://Core/Art/Materials/WindZone_Material.tres" id="3_xyh7d"]
 [ext_resource type="Script" path="res://Core/wind_stream.gd" id="4_v46gw"]
-[ext_resource type="FastNoiseLite" uid="uid://bimvii2jfgfwc" path="res://Core/Art/Materials/WindStream_Noise.tres" id="5_5tk6b"]
+[ext_resource type="FastNoiseLite" uid="uid://bk7x0pkx7vppg" path="res://Core/Art/Materials/WindZone_Noise.tres" id="5_fjeur"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qokbg"]
 albedo_color = Color(0.494118, 1, 0.552941, 1)
@@ -90,12 +90,12 @@ draw_pass_1 = SubResource("SphereMesh_pe5jh")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.957521, 0.288363, 0, -0.288363, 0.957521, 0, 19.7123, 26.6871)
 
-[node name="WindStream" type="MeshInstance3D" parent="."]
+[node name="WindZone" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_xgeux")
 script = ExtResource("4_v46gw")
-noise = ExtResource("5_5tk6b")
+noise = ExtResource("5_fjeur")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

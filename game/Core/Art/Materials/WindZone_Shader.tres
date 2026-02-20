@@ -1,6 +1,6 @@
 [gd_resource type="VisualShader" load_steps=10 format=3 uid="uid://88vjiyiw5f3l"]
 
-[ext_resource type="FastNoiseLite" uid="uid://bimvii2jfgfwc" path="res://Core/Art/Materials/WindStream_Noise.tres" id="1_yifr6"]
+[ext_resource type="FastNoiseLite" uid="uid://bimvii2jfgfwc" path="res://Core/Art/Materials/WindStream_Noise.tres" id="1_bovy8"]
 
 [sub_resource type="Gradient" id="Gradient_6okvo"]
 offsets = PackedFloat32Array(0.572985, 0.714597, 1)
@@ -12,7 +12,7 @@ height = 20
 generate_mipmaps = false
 normalize = false
 color_ramp = SubResource("Gradient_6okvo")
-noise = ExtResource("1_yifr6")
+noise = ExtResource("1_bovy8")
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_jsxdo"]
 output_port_for_preview = 0
@@ -75,7 +75,7 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-609.844, 148.178)
+graph_offset = Vector2(-458.836, 93.32)
 flags/unshaded = true
 flags/shadows_disabled = true
 nodes/fragment/0/position = Vector2(800, 200)
