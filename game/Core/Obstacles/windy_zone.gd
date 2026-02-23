@@ -13,18 +13,19 @@ var assigned : bool = false
 @export var TEST_DOT : PackedScene
 @export var TEST_ENTER_MAT : StandardMaterial3D
 @export var TEST_EXIT_MAT : StandardMaterial3D
+@onready var wind_zone : MeshInstance3D = $WindZone
+@export var wind_zone_mat : ShaderMaterial
 @export var wind_zone_shader : Shader
 
 ## Dynamic
 var player : Player = null
 var influence : Vector3
+var instanced_material : ShaderMaterial
+var instanced_shader : Shader
 
 
 func _ready():
 	call_deferred("shape_wind_area")
-	print("TODO")
-	print("somehow make it so that we can scale unique instances of each WindZone with affecting scale of other windzones since they share a material and shader.")
-	print("probably like, instancing lmao")
 
 
 func assign_wind_zone_manager(manager : WindZoneManager):
@@ -53,6 +54,12 @@ func shape_wind_area():
 				if abs(gpos.z - target.z) < closest_distance:
 					closest_distance = abs(gpos.z - target.z)
 					south_target = target
+	var mesh : Mesh = wind_zone.mesh
+	instanced_material = wind_zone_mat.duplicate()
+	instanced_shader = wind_zone_shader.duplicate()
+	instanced_material.set_shader(instanced_shader)
+	mesh.surface_set_material(0, instanced_material)
+	print("windzone_distance ", closest_distance)
 	#wind_area_shape.size.z = closest_distance * 1.9
 	#particle_mat.emission_box_extents.z = wind_area_shape.size.z * 0.75
 
