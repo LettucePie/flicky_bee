@@ -7,30 +7,36 @@ class_name Generator
 ##
 @export var gen_start : PackedScene
 @export var gen_end : PackedScene
-##
+
+
+## Gameplay
 @export var difficulty_curve : Curve
 @export var max_difficulty := 20.0
+@export var feature_set : FeatureSet
 @export var platform_scene : PackedScene
 @export var bouncebud_scene : PackedScene
 @export var booster_scenes : Array[PackedScene]
 @export var obstacle_scenes : Array[PackedScene]
 @export var danger_scenes : Array[PackedScene]
-#@export var grass_patch_scene : PackedScene
 @export var collection_patches : Array[PackedScene]
-## Settings
 @export_range(0.0, 1.0, 0.05) var danger_ratio : float = 0.5
 
 
+## Dynamic
 var platforms : Array
 var starting_platform : Node3D
 var flower := "default"
-#var grass_patches : Array
 var gaps : Array
-@onready var windzone_manager : WindZoneManager = WindZoneManager.new()
+
+## Features
+var windzone_manager : WindZoneManager = null
 
 
 func _ready():
-	self.add_child(windzone_manager)
+	if feature_set.wind_zones and windzone_manager == null:
+		windzone_manager = WindZoneManager.new()
+		windzone_manager.name = "WindZoneManager"
+		self.add_child(windzone_manager)
 
 
 func _clear_platforms() -> void:
@@ -145,7 +151,8 @@ func _generate(num : int, z_start : float, flower_name : String) -> void:
 						)
 					)
 					if new_gap.is_in_group("wind_zone") \
-					and new_gap.has_method("assign_wind_zone_manager"):
+					and new_gap.has_method("assign_wind_zone_manager") \
+					and feature_set.wind_zones:
 						new_gap.assign_wind_zone_manager(windzone_manager)
 					gaps.append(new_gap)
 					add_child(new_gap)

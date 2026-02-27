@@ -5,8 +5,11 @@ class_name WindZoneManager
 var playspeed : float = 3.0
 @onready var gust_curves : Array[Curve] = [
 	preload("res://Core/Obstacles/gust_curves/gust_curve_A.tres"),
+	preload("res://Core/Obstacles/gust_curves/gust_curve_D.tres"),
 	preload("res://Core/Obstacles/gust_curves/gust_curve_B.tres"),
-	preload("res://Core/Obstacles/gust_curves/gust_curve_C.tres")
+	preload("res://Core/Obstacles/gust_curves/gust_curve_D.tres"),
+	preload("res://Core/Obstacles/gust_curves/gust_curve_C.tres"),
+	preload("res://Core/Obstacles/gust_curves/gust_curve_D.tres")
 ]
 @onready var gust_curve : Curve = gust_curves.front()
 var gust_step_index : int = 0
