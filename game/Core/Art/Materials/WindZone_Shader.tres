@@ -1,6 +1,7 @@
-[gd_resource type="VisualShader" load_steps=13 format=3 uid="uid://88vjiyiw5f3l"]
+[gd_resource type="VisualShader" load_steps=12 format=3 uid="uid://88vjiyiw5f3l"]
 
 [ext_resource type="FastNoiseLite" uid="uid://bk7x0pkx7vppg" path="res://Core/Art/Materials/WindZone_Noise.tres" id="1_rbprj"]
+[ext_resource type="Texture2D" uid="uid://c326kc0wmlonb" path="res://Core/Art/Textures/WindZone_Shader_MaskTex.tres" id="2_i6bno"]
 
 [sub_resource type="VisualShaderNodeVec3Parameter" id="VisualShaderNodeVec3Parameter_61s0c"]
 parameter_name = "Darken"
@@ -23,17 +24,9 @@ noise = ExtResource("1_rbprj")
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_jsxdo"]
 texture = SubResource("NoiseTexture2D_3wddb")
 
-[sub_resource type="Gradient" id="Gradient_fk2re"]
-offsets = PackedFloat32Array(0, 0.49827, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_s2bda"]
-gradient = SubResource("Gradient_fk2re")
-fill_to = Vector2(0, 1)
-
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_vv8p4"]
 output_port_for_preview = 0
-texture = SubResource("GradientTexture2D_s2bda")
+texture = ExtResource("2_i6bno")
 
 [sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_sjj8q"]
 default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(0, 0, 0, 0)]
@@ -102,14 +95,14 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-445.266, 126.812)
+graph_offset = Vector2(-449.822, 388.154)
 flags/unshaded = true
 flags/shadows_disabled = true
 nodes/fragment/0/position = Vector2(800, 200)
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_jsxdo")
 nodes/fragment/2/position = Vector2(-200, 200)
 nodes/fragment/5/node = SubResource("VisualShaderNodeTexture_vv8p4")
-nodes/fragment/5/position = Vector2(-200, 800)
+nodes/fragment/5/position = Vector2(-300, 800)
 nodes/fragment/6/node = SubResource("VisualShaderNodeVectorOp_sjj8q")
 nodes/fragment/6/position = Vector2(200, 600)
 nodes/fragment/7/node = SubResource("VisualShaderNodeUVFunc_jrjn0")

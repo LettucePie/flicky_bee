@@ -1,0 +1,7 @@
+[gd_resource type="GradientTexture2D" load_steps=2 format=3 uid="uid://c326kc0wmlonb"]
+
+[ext_resource type="Gradient" uid="uid://cyq3pk2k0r5vo" path="res://Core/Art/Textures/WindZone_Shader_MaskGrad.tres" id="1_b0310"]
+
+[resource]
+gradient = ExtResource("1_b0310")
+fill_to = Vector2(0, 1)

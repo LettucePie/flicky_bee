@@ -64,14 +64,11 @@ func _physics_process(delta):
 	if player != null and assigned:
 		if player.flicked:
 			player.push = wind_manager.influence
-	var darken : Vector3 = Vector3(1, 1, 1)
-	#print(wind_manager.influence)
-	#print(wind_manager.influence.length())
-	var percent : float = inverse_lerp(0, 5, wind_manager.influence.length())
-	darken *= percent
-	print("TODO, darken not working?")
-	print("darken: ", darken, " percent: ", percent, " influence: ", wind_manager.influence)
-	wind_zone.set_instance_shader_parameter("Darken", darken)
+	
+	#var darken : Vector3 = Vector3(1, 1, 1)
+	#var percent : float = inverse_lerp(0, 5, wind_manager.influence.length())
+	#darken *= percent
+	#wind_zone.set_instance_shader_parameter("Darken", darken)
 	#var alpha_color : Color = Color.WHITE
 	#alpha_color.a = lerpf(0.1, 1.0, inverse_lerp(0.0, 5.0, influence.length()))
 	#wind_zone.modulate()
