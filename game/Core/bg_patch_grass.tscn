@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://ctoi4c1j3c0ba"]
 
 [ext_resource type="Material" uid="uid://claltjg8fkp3t" path="res://Core/Art/Materials/GrassPlane_Mat.tres" id="1_b3e80"]
-[ext_resource type="Script" path="res://Core/grass_patch.gd" id="1_r3gwb"]
+[ext_resource type="Script" path="res://Core/bg_patch.gd" id="1_r3gwb"]
 [ext_resource type="MultiMesh" uid="uid://d4h58011aixuq" path="res://Core/Art/Meshes/grass_straight_heavy_multimesh.tres" id="3_18qme"]
 [ext_resource type="MultiMesh" uid="uid://dfa7t2pw7s8cq" path="res://Core/Art/Meshes/grass_curve_heavy_multimesh.tres" id="4_xexh8"]
 [ext_resource type="MultiMesh" uid="uid://ddwo5ckibib86" path="res://Core/Art/Meshes/grass_left_heavy_multimesh.tres" id="5_jxcmy"]
@@ -57,7 +57,6 @@ visible = false
 mesh = SubResource("PlaneMesh_e0f54")
 
 [node name="HeavyFoliage" type="Node3D" parent="."]
-visible = false
 
 [node name="GrassMulti_Straight" type="MultiMeshInstance3D" parent="HeavyFoliage"]
 gi_mode = 0

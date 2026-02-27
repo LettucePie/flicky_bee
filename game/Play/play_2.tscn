@@ -12,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://6vdrcpbcjxks" path="res://kenney/Farm Frolics.ogg" id="10_4ihvs"]
 [ext_resource type="Script" path="res://Play/music_fade.gd" id="11_1gxr5"]
 [ext_resource type="PackedScene" uid="uid://dpgn5w6agfbsu" path="res://Core/Obstacles/windy_zone.tscn" id="13_eem4v"]
-[ext_resource type="PackedScene" uid="uid://ke5ecjpnw8sn" path="res://Core/trail_path_patch.tscn" id="14_kb3ha"]
+[ext_resource type="PackedScene" uid="uid://ke5ecjpnw8sn" path="res://Core/bg_patch_trail.tscn" id="14_kb3ha"]
 [ext_resource type="Texture2D" uid="uid://c326kc0wmlonb" path="res://Core/Art/Textures/WindZone_Shader_MaskTex.tres" id="14_y81lo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i3iu5"]
@@ -36,7 +36,14 @@ material = SubResource("StandardMaterial3D_vt36d")
 [node name="Play_2" type="Node" node_paths=PackedStringArray("bg_patches") groups=["Play"]]
 script = ExtResource("1_8kuhp")
 player_scene = ExtResource("2_jebu4")
+life_time = null
 TEST_OVERRIDE = true
+flight_reserve = null
+rest_time = null
+flight_bound = null
+comb_value = null
+jar_value = null
+flower_value = null
 bg_patches = [NodePath("Trail_Patch1"), NodePath("Trail_Patch2"), NodePath("Trail_Patch3")]
 
 [node name="Generator" parent="." instance=ExtResource("3_cmxhb")]

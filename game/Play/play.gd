@@ -11,7 +11,7 @@ signal fully_initiated()
 @export var comb_value : int = 1
 @export var jar_value : int = 2
 @export var flower_value : int = 2
-@export var bg_patches : Array[Node3D] = []
+@export var bg_patches : Array[BG_Patch] = []
 
 enum Collect {Comb, Jar, Flower}
 @onready var collect_values = [comb_value, jar_value, flower_value]
@@ -175,6 +175,7 @@ func _move_bg_patches() -> void:
 		bg_patches.clear()
 		next_patch.position.z = current_patch.position.z - 60
 		future_patch.position.z = next_patch.position.z - 60
+		future_patch.shuffle_aux_deco()
 		bg_patches = [current_patch, next_patch, future_patch]
 
 
