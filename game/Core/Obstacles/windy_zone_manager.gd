@@ -50,8 +50,8 @@ func _physics_process(delta):
 	color_target_left = Color.WHITE.lerp(Color.BLACK, curve_percent)
 	color_target_right = color_target_left
 	wind_zone_mask_grad.colors[0] = wind_zone_mask_grad.colors[0].lerp(color_target_left, 0.05)
-	wind_zone_mask_grad.colors[2] = wind_zone_mask_grad.colors[2].lerp(color_target_right, 0.033)
-	wind_zone_mask_grad.colors[1] = wind_zone_mask_grad.colors[0].lerp(wind_zone_mask_grad.colors[2], 0.5)
+	wind_zone_mask_grad.colors[2] = wind_zone_mask_grad.colors[2].lerp(color_target_right, 0.013)
+	wind_zone_mask_grad.colors[1] = wind_zone_mask_grad.colors[0].lerp(wind_zone_mask_grad.colors[2], 0.07)
 	#print(color_target_left)
 
 
