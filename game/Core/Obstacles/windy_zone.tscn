@@ -47,7 +47,6 @@ radial_segments = 16
 rings = 8
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_xgeux"]
-material = ExtResource("3_xyh7d")
 size = Vector2(40, 60)
 
 [node name="windy_zone" type="Area3D" groups=["wind_zone"]]
@@ -93,6 +92,7 @@ transform = Transform3D(1, 0, 0, 0, 0.957521, 0.288363, 0, -0.288363, 0.957521, 
 
 [node name="WindZone" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+material_override = ExtResource("3_xyh7d")
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_xgeux")
 

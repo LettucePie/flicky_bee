@@ -6,3 +6,4 @@
 render_priority = 0
 shader = ExtResource("1_kqwkk")
 shader_parameter/UVScale = Vector2(1, 1)
+shader_parameter/Darken = Vector3(1, 1, 1)

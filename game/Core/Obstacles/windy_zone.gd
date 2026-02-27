@@ -20,8 +20,6 @@ var assigned : bool = false
 ## Dynamic
 var player : Player = null
 var influence : Vector3
-var instanced_material : ShaderMaterial
-var instanced_shader : Shader
 
 
 func _ready():
@@ -55,13 +53,9 @@ func shape_wind_area():
 					closest_distance = abs(gpos.z - target.z)
 					south_target = target
 	var mesh : Mesh = wind_zone.mesh
-	instanced_material = wind_zone_mat.duplicate()
-	instanced_shader = wind_zone_shader.duplicate()
-	instanced_material.set_shader(instanced_shader)
-	mesh.surface_set_material(0, instanced_material)
 	print("windzone_distance ", closest_distance)
-	instanced_material.set_shader_parameter("UVScale", Vector2(closest_distance * 0.33, 1))
 	mesh.size = Vector2(closest_distance * 3.2, 60)
+	wind_zone.set_instance_shader_parameter("UVScale", Vector2(closest_distance * 0.33, 1))
 	#wind_area_shape.size.z = closest_distance * 1.9
 	#particle_mat.emission_box_extents.z = wind_area_shape.size.z * 0.75
 
@@ -70,13 +64,14 @@ func _physics_process(delta):
 	if player != null and assigned:
 		if player.flicked:
 			player.push = wind_manager.influence
-	if instanced_material != null:
-		var darken : Vector3 = Vector3(1, 1, 1)
-		darken.lerp(Vector3.ZERO, influence.length())
-		print("TODO, darken not working?")
-		print("darken: ", darken)
-		
-		instanced_material.set_shader_parameter("Darken", darken)
+	var darken : Vector3 = Vector3(1, 1, 1)
+	#print(wind_manager.influence)
+	#print(wind_manager.influence.length())
+	var percent : float = inverse_lerp(0, 5, wind_manager.influence.length())
+	darken *= percent
+	print("TODO, darken not working?")
+	print("darken: ", darken, " percent: ", percent, " influence: ", wind_manager.influence)
+	wind_zone.set_instance_shader_parameter("Darken", darken)
 	#var alpha_color : Color = Color.WHITE
 	#alpha_color.a = lerpf(0.1, 1.0, inverse_lerp(0.0, 5.0, influence.length()))
 	#wind_zone.modulate()

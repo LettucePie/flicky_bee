@@ -16,7 +16,7 @@ var gust_intensity : float = 5.0
 ## WindShader visual Settings
 @onready var wind_zone_noise : FastNoiseLite = \
 	preload("res://Core/Art/Materials/WindZone_Noise.tres")
-var shader_speed_min : float = 10.0
+var shader_speed_min : float = 20.0
 var shader_speed_max : float = 55.0
 
 ## Dynamic

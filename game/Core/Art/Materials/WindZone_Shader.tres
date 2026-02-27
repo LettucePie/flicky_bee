@@ -4,6 +4,7 @@
 
 [sub_resource type="VisualShaderNodeVec3Parameter" id="VisualShaderNodeVec3Parameter_61s0c"]
 parameter_name = "Darken"
+qualifier = 2
 default_value_enabled = true
 default_value = Vector3(1, 1, 1)
 
@@ -20,7 +21,6 @@ color_ramp = SubResource("Gradient_6okvo")
 noise = ExtResource("1_rbprj")
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_jsxdo"]
-output_port_for_preview = 0
 texture = SubResource("NoiseTexture2D_3wddb")
 
 [sub_resource type="Gradient" id="Gradient_fk2re"]
@@ -36,7 +36,6 @@ output_port_for_preview = 0
 texture = SubResource("GradientTexture2D_s2bda")
 
 [sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_sjj8q"]
-output_port_for_preview = 0
 default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(0, 0, 0, 0)]
 op_type = 2
 operator = 1
@@ -47,11 +46,11 @@ function = 1
 
 [sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_2cir7"]
 parameter_name = "UVScale"
+qualifier = 2
 default_value_enabled = true
 default_value = Vector2(1, 1)
 
 [sub_resource type="VisualShaderNodeColorOp" id="VisualShaderNodeColorOp_nj3sf"]
-output_port_for_preview = 0
 default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1)]
 operator = 2
 
@@ -59,10 +58,10 @@ operator = 2
 code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx, unshaded, shadows_disabled;
 
-uniform vec2 UVScale = vec2(1.000000, 1.000000);
+instance uniform vec2 UVScale = vec2(1.000000, 1.000000);
 uniform sampler2D tex_frg_2;
 uniform sampler2D tex_frg_5;
-uniform vec3 Darken = vec3(1.000000, 1.000000, 1.000000);
+instance uniform vec3 Darken = vec3(1.000000, 1.000000, 1.000000);
 
 
 
@@ -103,7 +102,7 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(11.1683, 890.635)
+graph_offset = Vector2(-445.266, 126.812)
 flags/unshaded = true
 flags/shadows_disabled = true
 nodes/fragment/0/position = Vector2(800, 200)
