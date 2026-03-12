@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ej68kxh031vn" path="res://UI/hud.tscn" id="8_4d6h7"]
 [ext_resource type="PackedScene" uid="uid://bnideixfjpsgc" path="res://Core/results.tscn" id="9_guarb"]
 [ext_resource type="Script" path="res://Play/music_fade.gd" id="11_1gxr5"]
-[ext_resource type="AudioStream" uid="uid://ceohh6ii40pho" path="res://Core/Sound/WindyTrailSong_Draft1.wav" id="12_dioa2"]
+[ext_resource type="AudioStream" uid="uid://ce8arydbdbla0" path="res://Core/Sound/WindyTrailSong_Draft2.wav" id="12_in5cd"]
 [ext_resource type="PackedScene" uid="uid://dpgn5w6agfbsu" path="res://Core/Obstacles/windy_zone.tscn" id="13_eem4v"]
 [ext_resource type="PackedScene" uid="uid://ke5ecjpnw8sn" path="res://Core/bg_patch_trail.tscn" id="14_kb3ha"]
 
@@ -94,7 +94,7 @@ visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
-stream = ExtResource("12_dioa2")
+stream = ExtResource("12_in5cd")
 autoplay = true
 bus = &"Music"
 script = ExtResource("11_1gxr5")
